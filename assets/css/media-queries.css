@@ -1,0 +1,169 @@
+
+/*
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+
+@media (min-width: 1281px) {
+
+  /* TEMPLATES */
+  .action_btn {
+    width: 20vmin;
+    height: 5vmin;
+  }
+
+  /* COLLECTION */
+  .collection-row {
+    height: 100px;
+  }
+  .collection-img {
+    width: 100px;
+  }
+  .collection-img img {
+    width: 100%;
+  }
+  .collection-description {
+    width: 325px;
+  }
+  .collection-stats {
+    width: 100px;
+  }
+
+  /* OVERLAY */
+  .content-overlay {
+    width: 500px;
+  }
+
+  /* CARD SELECTION */
+  #team-overlay {
+    width: 500px;
+  }
+  #select-player-comparison-overlay {
+    width: 500px;
+  }
+
+  /* CARD DETAILS */
+  .header-subtitle {
+    height: 5vmin;
+  }
+  #card-stats-content-1 {
+    height: 20vh;
+  }
+  #card-stats-upgrade-container {
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  #card-stats-ugprade-progress {
+    flex-direction: row;
+  }
+  #card-stats-ugprade-progress {
+    height: 42%;
+    width: 90%;
+  }
+  #card-stats-upgrade-cards-collected-box, #card-stats-upgrade-minutes-played-box {
+    width: 45%;
+    height: 80%;
+  }
+  .card-stats-stats-content-row-rating-box {
+    width: 5vmin;
+    height: 5vmin;
+  }
+  #collection-back-to-top {
+    width: 15%;
+  }
+
+  /* PLAY BY PLAY */
+  .play-stats-boxscore-right-stats-row {
+    padding-left: 550px;
+  }
+
+}
+
+@media (min-height: 500px) and (max-height: 700px) and (min-width: 800px) {
+  #wrapper {
+    width: 400px;
+  }
+  .collection-row {
+    height: 75px;
+  }
+  .collection-img {
+    width: 75px;
+  }
+  .collection-description {
+    width: 225px;
+  }
+  .collection-stats {
+    width: 100px;
+  }
+  #shop-overlay {
+    width: 400px;
+  }
+  #team-overlay {
+    width: 400px;
+  }
+  #select-player-comparison-overlay {
+    width: 100%;
+  }
+  #play-overlay {
+    width: 400px;
+  }
+}
+
+
+/*
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+
+  //CSS
+
+}
+
+/*
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+  //CSS
+
+}
+
+/*
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+
+  //CSS
+
+}
+
+/*
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 481px) and (max-width: 767px) {
+
+  //CSS
+
+}
+
+/*
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+
+  #wrapper {
+    width: 100vw;
+    height: 100vh;
+    background: darkgrey;
+  }
+}
