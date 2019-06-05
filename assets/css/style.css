@@ -178,6 +178,79 @@ body {
   0% { opacity: 0 }
   69%, 100% { opacity: 1 }
 }
+.warning-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 90%;
+    height: 50%;
+    border: solid 2px white;
+    border-radius: 2%;
+}
+.warning-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 30%;
+    background: #d24d57;
+    border-top-left-radius: 2%;
+    border-top-right-radius: 2%;
+}
+.warning-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 70%;
+    background: #2A2723;
+}
+.warning-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    height: 50%;
+}
+.warning-action {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 50%;
+}
+.warning-action-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    height: 100%;
+}
+.warning-action-cancel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+}
+.warning-action-proceed {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+}
+.warning-action-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    height: 50%;
+    border: solid 1px white;
+    border-radius: 1%;
+}
 /* HOMEPAGE */
 #home-content-container {
     width: 100%;
@@ -249,6 +322,20 @@ body {
     height: 100%;
 }
 /* SETTINGS */
+#settings-container {
+    font-family: 'Raleway', sans-serif;
+}
+#settings-overlay {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, .81);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    color: white;
+}
 #settings-content {
     display: flex;
     justify-content: flex-start;
@@ -272,7 +359,6 @@ body {
     align-items: center;
     width: 100%;
     background: lightgrey;
-    font-family: 'Raleway', sans-serif;
 }
 .settings-row-content {
     display: flex;
@@ -294,6 +380,12 @@ body {
 }
 #settings-reset-submit-button {
     color: white;
+    background: #d24d57;
+}
+#settings-overlay-warning-action-cancel-button {
+    background: grey;
+}
+#settings-overlay-warning-action-proceed-button {
     background: #d24d57;
 }
 /* COLLECTION */

@@ -504,8 +504,75 @@ function loadSettings() {
     let reset_button = document.getElementById("settings-reset-submit");
 
     reset_button.addEventListener("click", function() {
-        indexedDB.deleteDatabase("database");
-        location.reload();
+
+        let overlay = document.getElementById("settings-overlay");
+        overlay.innerHTML = "";
+        overlay.style.display = "flex";
+
+        let warning_box = document.createElement("div");
+        warning_box.id = "settings-overlay-warning-box";
+        warning_box.className = "warning-box";
+        overlay.appendChild(warning_box);
+
+        let warning_title = document.createElement("div");
+        warning_title.id = "settings-overlay-warning-title";
+        warning_title.className = "warning-title";
+        warning_box.appendChild(warning_title);
+        warning_title.innerHTML = "Warning!";
+
+        let warning_content = document.createElement("div");
+        warning_content.id = "settings-overlay-warning-content";
+        warning_content.className = "warning-content";
+        warning_box.appendChild(warning_content);
+
+        let warning_message = document.createElement("div");
+        warning_message.id = "settings-overlay-warning-message";
+        warning_message.className = "warning-message";
+        warning_content.appendChild(warning_message);
+        warning_message.innerHTML = "Are you sure you want to reset? All data will be deleted.";
+
+        let warning_action = document.createElement("div");
+        warning_action.id = "settings-overlay-warning-action";
+        warning_action.className = "warning-action";
+        warning_content.appendChild(warning_action);
+
+        let warning_action_container = document.createElement("div");
+        warning_action_container.id = "settings-overlay-warning-action-container";
+        warning_action_container.className = "warning-action-container";
+        warning_action.appendChild(warning_action_container);
+
+        let warning_action_cancel = document.createElement("div");
+        warning_action_cancel.id = "settings-overlay-warning-action-cancel";
+        warning_action_cancel.className = "warning-action-cancel";
+        warning_action_container.appendChild(warning_action_cancel);
+
+        let warning_action_cancel_button = document.createElement("div");
+        warning_action_cancel_button.id = "settings-overlay-warning-action-cancel-button";
+        warning_action_cancel_button.className = "warning-action-button";
+        warning_action_cancel.appendChild(warning_action_cancel_button);
+        warning_action_cancel_button.innerHTML = "Cancel";
+
+        let warning_action_proceed = document.createElement("div");
+        warning_action_proceed.id = "settings-overlay-warning-action-proceed";
+        warning_action_proceed.className = "warning-action-proceed";
+        warning_action_container.appendChild(warning_action_proceed);
+
+        let warning_action_proceed_button = document.createElement("div");
+        warning_action_proceed_button.id = "settings-overlay-warning-action-proceed-button";
+        warning_action_proceed_button.className = "warning-action-button";
+        warning_action_proceed.appendChild(warning_action_proceed_button);
+        warning_action_proceed_button.innerHTML = "Reset";
+
+        warning_action_cancel_button.addEventListener("click", function() {
+            overlay.style.display = "none";
+        });
+
+        warning_action_proceed_button.addEventListener("click", function() {
+
+            indexedDB.deleteDatabase("database");
+            location.reload();
+
+        });
     });
 
 }
