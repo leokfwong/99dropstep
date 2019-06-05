@@ -263,6 +263,9 @@ body {
 .settings-title {
     font-weight: bold;
 }
+.settings-text {
+    font-size: 81%;
+}
 .settings-row {
     display: flex;
     justify-content: center;
@@ -281,6 +284,17 @@ body {
 }
 #settings-row-promocode {
     height: 25%;
+}
+#settings-promocode-submit-button {
+    color: white;
+    background: #22a7f0;
+}
+#settings-row-reset {
+    height: 25%;
+}
+#settings-reset-submit-button {
+    color: white;
+    background: #d24d57;
 }
 /* COLLECTION */
 #collection-back-to-top {
