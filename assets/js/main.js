@@ -501,6 +501,13 @@ function loadSettings() {
 
     });
 
+    let reset_button = document.getElementById("settings-reset-submit");
+
+    reset_button.addEventListener("click", function() {
+        indexedDB.deleteDatabase("database");
+        location.reload();
+    });
+
 }
 
 /* Function loads the items inside the shop based on shop_json
