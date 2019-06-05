@@ -604,7 +604,7 @@ function loadShop() {
             shop_row.appendChild(shop_img_div);
 
             let shop_img = document.createElement("img");
-            shop_img.src = "../nbaxdesign/assets/images/store/" + shop[i].filename + ".png";
+            shop_img.src = "assets/images/store/" + shop[i].filename + ".png";
             shop_img.id = "shop-img-div-img-" + i;
             shop_img.className = "shop-img-div-img";
             shop_img_div.appendChild(shop_img);
