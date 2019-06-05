@@ -1599,17 +1599,12 @@ function loadCardDetails(id) {
                                         itm_old_rating_box.style.background = getRatingColor(Math.round(calculateRatings(card_replace).overall));
                                     }
 
-                                    let img_old;
+                                    let img_old = document.createElement("img");
+                                    img_old.id = "select-player-comparison-image-old-img";
+                                    img_old.className = "select-player-comparison-image-img";
                                     if (card_replace == "") {
-                                        img_old = document.createElement("div");
-                                        img_old.id = "select-player-comparison-image-old-img";
-                                        img_old.className = "select-player-comparison-image-img";
-                                        img_old.innerHTML = "NA"
-                                        img_old.style.border = "solid 1px grey";
+                                        img_old.src = "assets/images/misc/NA_player_card.png";
                                     } else {
-                                        img_old = document.createElement("img");
-                                        img_old.id = "select-player-comparison-image-old-img";
-                                        img_old.className = "select-player-comparison-image-img";
                                         img_old.src = "assets/images/cards/" + card_replace.image + "_" + card_replace.id + "_card.png";
                                     }
                                     itm_old.appendChild(img_old);
