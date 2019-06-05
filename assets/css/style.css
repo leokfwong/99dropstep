@@ -265,12 +265,19 @@ body {
 }
 .settings-row {
     display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     background: lightgrey;
     font-family: 'Raleway', sans-serif;
+}
+.settings-row-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 90%;
+    height: 90%;
 }
 #settings-row-promocode {
     height: 25%;
