@@ -1915,7 +1915,7 @@ function loadGameModes() {
     let content = document.getElementById("gamemodes-content");
     content.innerHTML = "";
 
-    let modes_array = ["Quick Game", "Campaign"];
+    let modes_array = ["Quick Game", "Campaign", "Playoffs"];
 
     for (let i = 0; i < modes_array.length; i++) {
 
@@ -1929,68 +1929,107 @@ function loadGameModes() {
 
             row.addEventListener("click", function() {
 
-                displaySpecificPage("play-container");
-
-                let agents = ["usr", "cpu"];
-
-                for (let i = 0; i < agents.length; i++) {
-
-                    let oncourt;
-                    if (agents[i] == "usr") {
-                        oncourt = document.getElementById("play-sct-3");
-                        oncourt.innerHTML = "";
-                    } else {
-                        oncourt = document.getElementById("play-sct-1");
-                        oncourt.innerHTML = "";
-                    }
-
-                    for (let j = 0; j < 5; j++) {
-
-                        let player_div = document.createElement("div");
-                        player_div.id = "play-" + agents[i] + "-oncourt-player-" + (j + 1);
-                        player_div.className = "play-oncourt-player";
-                        oncourt.appendChild(player_div);
-
-                        let status = document.createElement("div");
-                        status.id = "play-" + agents[i] + "-oncourt-player-status-" + (j + 1);
-                        status.className = "play-oncourt-player-status";
-                        player_div.appendChild(status);
-
-                        let stamina_bar = document.createElement("div");
-                        stamina_bar.id = "play-" + agents[i] + "-oncourt-player-stamina-bar-" + (j + 1);
-                        stamina_bar.className = "play-oncourt-player-stamina-bar";
-                        status.appendChild(stamina_bar);
-
-                        let stamina_fill = document.createElement("div");
-                        stamina_fill.id = "play-" + agents[i] + "-oncourt-player-stamina-fill-" + (j + 1);
-                        stamina_fill.className = "play-oncourt-player-stamina-fill";
-                        stamina_bar.appendChild(stamina_fill);
-
-                        let pending_sub = document.createElement("div");
-                        pending_sub.id = "play-" + agents[i] + "-oncourt-player-pending-sub-" + (j + 1);
-                        pending_sub.className = "play-oncourt-player-pending-sub";
-                        status.appendChild(pending_sub);
-
-                        let sub_light = document.createElement("div");
-                        sub_light.id = "play-" + agents[i] + "-oncourt-player-sub-light-" + (j + 1);
-                        sub_light.className = "play-oncourt-player-sub-light";
-                        pending_sub.appendChild(sub_light);
-
-                        let player_image = document.createElement("div");
-                        player_image.id = "play-" + agents[i] + "-oncourt-player-image-" + (j + 1);
-                        player_image.className = "play-oncourt-player-image";
-                        player_div.appendChild(player_image);
-
-                    }
-                }
-
-                initializePlayStats();
+                initializePlay();
 
             });
+
+        } else if (modes_array[i] == "Campaign") {
+
+        } else if (modes_array[i] == "Playoffs") {
+
+            row.addEventListener("click", function() {
+
+                initializePlayoffsTeamSelection();
+
+            });
+
+        } else {
 
         }
 
     }
+
+}
+
+function initializePlayoffsTeamSelection() {
+
+    displaySpecificPage("gamemodes-playoffs-team-selection");
+
+    let content = document.getElementById("gamemodes-playoffs-team-selection-content");
+    content.innerHTML = "";
+
+    for (let i = 0; i < playoffs_teams_json.length; i++) {
+
+        let row = document.createElement("div");
+        row.id = "gamemodes-playoffs-team-selection-row-" + (i + 1);
+        row.className = "gamemodes-playoffs-team-selection-row";
+        content.appendChild(row);
+        row.style.backgroundImage = "url(assets/images/playoffs/" + playoffs_teams_json[i].image + ".png)";
+
+    }
+
+    console.log(playoffs_teams_json[0].name);
+
+}
+
+function initializePlay() {
+
+    displaySpecificPage("play-container");
+
+    let agents = ["usr", "cpu"];
+
+    for (let i = 0; i < agents.length; i++) {
+
+        let oncourt;
+        if (agents[i] == "usr") {
+            oncourt = document.getElementById("play-sct-3");
+            oncourt.innerHTML = "";
+        } else {
+            oncourt = document.getElementById("play-sct-1");
+            oncourt.innerHTML = "";
+        }
+
+        for (let j = 0; j < 5; j++) {
+
+            let player_div = document.createElement("div");
+            player_div.id = "play-" + agents[i] + "-oncourt-player-" + (j + 1);
+            player_div.className = "play-oncourt-player";
+            oncourt.appendChild(player_div);
+
+            let status = document.createElement("div");
+            status.id = "play-" + agents[i] + "-oncourt-player-status-" + (j + 1);
+            status.className = "play-oncourt-player-status";
+            player_div.appendChild(status);
+
+            let stamina_bar = document.createElement("div");
+            stamina_bar.id = "play-" + agents[i] + "-oncourt-player-stamina-bar-" + (j + 1);
+            stamina_bar.className = "play-oncourt-player-stamina-bar";
+            status.appendChild(stamina_bar);
+
+            let stamina_fill = document.createElement("div");
+            stamina_fill.id = "play-" + agents[i] + "-oncourt-player-stamina-fill-" + (j + 1);
+            stamina_fill.className = "play-oncourt-player-stamina-fill";
+            stamina_bar.appendChild(stamina_fill);
+
+            let pending_sub = document.createElement("div");
+            pending_sub.id = "play-" + agents[i] + "-oncourt-player-pending-sub-" + (j + 1);
+            pending_sub.className = "play-oncourt-player-pending-sub";
+            status.appendChild(pending_sub);
+
+            let sub_light = document.createElement("div");
+            sub_light.id = "play-" + agents[i] + "-oncourt-player-sub-light-" + (j + 1);
+            sub_light.className = "play-oncourt-player-sub-light";
+            pending_sub.appendChild(sub_light);
+
+            let player_image = document.createElement("div");
+            player_image.id = "play-" + agents[i] + "-oncourt-player-image-" + (j + 1);
+            player_image.className = "play-oncourt-player-image";
+            player_div.appendChild(player_image);
+
+        }
+    }
+
+    initializePlayStats();
 
 }
 

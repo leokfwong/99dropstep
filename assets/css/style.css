@@ -1528,6 +1528,24 @@ input#collection-search-input-box {
     color: white;
     border-bottom: solid 2px white;
 }
+/* PLAYOFFS TEAM SELECTION */
+#gamemodes-playoffs-team-selection-content {
+    display: block;
+    background: white;
+    width: 100%;
+    height: 92%;
+    overflow-y: auto;
+    position: relative;
+    font-family: 'Raleway', sans-serif;
+}
+.gamemodes-playoffs-team-selection-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 20%;
+    background-size: cover;
+}
 /* PLAY */
 #play-content {
     display: block;

@@ -163,6 +163,14 @@ let boxscore_stats_array = ["min", "pts", "reb", "ast", "stl", "blk", "ba", "fgm
 
 let time_distribution_default = [{"seconds":1,"probability":1},{"seconds":2,"probability":1},{"seconds":3,"probability":1},{"seconds":4,"probability":1},{"seconds":5,"probability":1},{"seconds":6,"probability":2},{"seconds":7,"probability":2},{"seconds":8,"probability":2},{"seconds":9,"probability":2},{"seconds":10,"probability":2},{"seconds":11,"probability":4},{"seconds":12,"probability":5},{"seconds":13,"probability":6},{"seconds":14,"probability":7},{"seconds":15,"probability":9},{"seconds":16,"probability":10},{"seconds":17,"probability":9},{"seconds":18,"probability":8},{"seconds":19,"probability":7},{"seconds":20,"probability":6},{"seconds":21,"probability":5},{"seconds":22,"probability":4},{"seconds":23,"probability":3},{"seconds":24,"probability":2}];
 
+let playoffs_teams_json = [{
+    "id": "0001",
+    "name": "New York Knicks",
+    "season": "2018-2019",
+    "roster": ["0188", "0289", "0290", "0292", "0291", "0125", "0293", "0185", "0063", "0126"],
+    "image": "new_york_knicks_2018-2019_banner"
+}]
+
 const players_json = [{
     "id": "0001",
     "type": "player",
