@@ -1030,122 +1030,155 @@ function loadCollection() {
             collection = subsetCollection(collection);
             let collection_cards = document.getElementById("collection-cards");
             collection_cards.innerHTML = "";
-            for (let i = 0; i < collection.length; i++) {
 
-                let id = collection[i].id;
+            if (collection.length > 0) {
 
-                let row = document.createElement("div");
-                row.id = "collection-row-" + id;
-                row.className = "collection-row";
-                collection_cards.appendChild(row);
+                for (let i = 0; i < collection.length; i++) {
 
-                row.addEventListener("click", function() {
-                    displaySpecificPage("card-stats-container");
-                    loadCardDetails(collection[i].id);
+                    let id = collection[i].id;
+
+                    let row = document.createElement("div");
+                    row.id = "collection-row-" + id;
+                    row.className = "collection-row";
+                    collection_cards.appendChild(row);
+
+                    row.addEventListener("click", function() {
+                        displaySpecificPage("card-stats-container");
+                        loadCardDetails(collection[i].id);
+                    });
+
+                    let img_div = document.createElement("div");
+                    img_div.id = "collection-img-" + id;
+                    img_div.className = "collection-img";
+                    row.appendChild(img_div);
+
+                    let img = document.createElement("img");
+                    img.src = "assets/images/thumbs/" + collection[i].image + "_" + collection[i].id + ".png";
+
+                    let img_overlay = document.createElement("div");
+                    img_overlay.id = "collection-img-overlay-" + id;
+                    img_overlay.className = "collection-img-overlay";
+
+                    let new_icon = document.createElement("div");
+                    new_icon.id = "collection-img-overlay-icon-" + id;
+                    new_icon.className = "collection-img-overlay-icon";
+                    img_overlay.appendChild(new_icon);
+                    new_icon.innerHTML = "NEW";
+
+                    img_div.appendChild(img);
+
+                    if (collection[i].new == true) {
+                        img_div.appendChild(img_overlay);
+                    }
+
+                    let description = document.createElement("div");
+                    description.id = "collection-description-" + id;
+                    description.className = "collection-description";
+                    row.appendChild(description);
+                    description.style.background = collection[i].color2;
+                    description.style.color = collection[i].color3;
+
+                    let description_box = document.createElement("div");
+                    description_box.id = "collection-description-box-" + id;
+                    description_box.className = "collection-description-box";
+                    description.appendChild(description_box);
+
+                    let descr_row_1 = document.createElement("div");
+                    descr_row_1.id = "collection-description-row-1";
+                    descr_row_1.className = "collection-description-row";
+                    description_box.appendChild(descr_row_1);
+                    descr_row_1.innerHTML = collection[i].first + " " + collection[i].last;
+
+                    if ((collection[i].first.length + collection[i].last.length) > 15) {
+                        descr_row_1.style.fontSize = "81%";
+                    }
+
+                    let descr_row_2 = document.createElement("div");
+                    descr_row_2.id = "collection-description-row-2";
+                    descr_row_2.className = "collection-description-row";
+                    description_box.appendChild(descr_row_2);
+                    descr_row_2.innerHTML = collection[i].position;
+
+                    let descr_row_3 = document.createElement("div");
+                    descr_row_3.id = "collection-description-row-3";
+                    descr_row_3.className = "collection-description-row";
+                    description_box.appendChild(descr_row_3);
+                    descr_row_3.innerHTML = collection[i].team;
+
+                    let stats = document.createElement("div");
+                    stats.id = "collection-stats-" + id;
+                    stats.className = "collection-stats";
+                    row.appendChild(stats);
+                    stats.style.background = collection[i].color2;
+
+                    let rating = document.createElement("div");
+                    rating.id = "collection-rating-" + id;
+                    rating.className = "collection-rating";
+                    stats.appendChild(rating);
+
+                    let rating_box = document.createElement("div");
+                    rating_box.id = "collection-rating-box-" + id;
+                    rating_box.className = "collection-rating-box";
+                    rating.appendChild(rating_box);
+                    let rating_obj = calculateRatings(collection[i]);
+                    rating_box.innerHTML = Math.round(rating_obj.overall);
+                    rating_box.style.background = getRatingColor(Math.round(rating_obj.overall));
+
+                    let count = document.createElement("div");
+                    count.id = "collection-count-" + id;
+                    count.className = "collection-count";
+                    stats.appendChild(count);
+
+                    let count_box = document.createElement("div");
+                    count_box.id = "collection-count-box-" + id;
+                    count_box.className = "collection-count-box";
+                    count.appendChild(count_box);
+
+                    let count_fill = document.createElement("div");
+                    count_fill.id = "collection-count-fill-" + id;
+                    count_fill.className = "collection-count-fill";
+                    count_box.appendChild(count_fill);
+                    let cnt = collection[i].count / 20 * 100;
+                    if (cnt > 100) {
+                        cnt = 100
+                    };
+                    count_fill.style.width = cnt + "%";
+
+                    let count_text = document.createElement("div");
+                    count_text.id = "collection-count-text-" + id;
+                    count_text.className = "collection-count-text";
+                    count_box.appendChild(count_text);
+                    count_text.innerHTML = `${collection[i].count}/20`;
+
+                }
+            } else {
+
+                let empty_collection = document.createElement("div");
+                empty_collection.id = "collection-empty-container";
+                collection_cards.appendChild(empty_collection);
+
+                let empty_collection_message = document.createElement("div");
+                empty_collection_message.id = "collection-empty-message";
+                empty_collection.appendChild(empty_collection_message);
+                empty_collection_message.innerHTML = "Your collection is currently empty. Cards are available for purchase at the Shop.";
+
+                let empty_collection_action = document.createElement("div");
+                empty_collection_action.id = "collection-empty-action";
+                empty_collection.appendChild(empty_collection_action);
+
+                let empty_collection_action_button = document.createElement("div");
+                empty_collection_action_button.id = "collection-empty-action-button";
+                empty_collection_action_button.className = "action_btn";
+                empty_collection_action.appendChild(empty_collection_action_button);
+                empty_collection_action_button.innerHTML = "Shop";
+
+                empty_collection_action_button.addEventListener("click", function() {
+
+                    displaySpecificPage("shop-container");
+                    loadShop();
+
                 });
 
-                let img_div = document.createElement("div");
-                img_div.id = "collection-img-" + id;
-                img_div.className = "collection-img";
-                row.appendChild(img_div);
-
-                let img = document.createElement("img");
-                img.src = "assets/images/thumbs/" + collection[i].image + "_" + collection[i].id + ".png";
-
-                let img_overlay = document.createElement("div");
-                img_overlay.id = "collection-img-overlay-" + id;
-                img_overlay.className = "collection-img-overlay";
-
-                let new_icon = document.createElement("div");
-                new_icon.id = "collection-img-overlay-icon-" + id;
-                new_icon.className = "collection-img-overlay-icon";
-                img_overlay.appendChild(new_icon);
-                new_icon.innerHTML = "NEW";
-
-                img_div.appendChild(img);
-
-                if (collection[i].new == true) {
-                    img_div.appendChild(img_overlay);
-                }
-
-                let description = document.createElement("div");
-                description.id = "collection-description-" + id;
-                description.className = "collection-description";
-                row.appendChild(description);
-                description.style.background = collection[i].color2;
-                description.style.color = collection[i].color3;
-
-                let description_box = document.createElement("div");
-                description_box.id = "collection-description-box-" + id;
-                description_box.className = "collection-description-box";
-                description.appendChild(description_box);
-
-                let descr_row_1 = document.createElement("div");
-                descr_row_1.id = "collection-description-row-1";
-                descr_row_1.className = "collection-description-row";
-                description_box.appendChild(descr_row_1);
-                descr_row_1.innerHTML = collection[i].first + " " + collection[i].last;
-
-                if ((collection[i].first.length + collection[i].last.length) > 15) {
-                    descr_row_1.style.fontSize = "81%";
-                }
-
-                let descr_row_2 = document.createElement("div");
-                descr_row_2.id = "collection-description-row-2";
-                descr_row_2.className = "collection-description-row";
-                description_box.appendChild(descr_row_2);
-                descr_row_2.innerHTML = collection[i].position;
-
-                let descr_row_3 = document.createElement("div");
-                descr_row_3.id = "collection-description-row-3";
-                descr_row_3.className = "collection-description-row";
-                description_box.appendChild(descr_row_3);
-                descr_row_3.innerHTML = collection[i].team;
-
-                let stats = document.createElement("div");
-                stats.id = "collection-stats-" + id;
-                stats.className = "collection-stats";
-                row.appendChild(stats);
-                stats.style.background = collection[i].color2;
-
-                let rating = document.createElement("div");
-                rating.id = "collection-rating-" + id;
-                rating.className = "collection-rating";
-                stats.appendChild(rating);
-
-                let rating_box = document.createElement("div");
-                rating_box.id = "collection-rating-box-" + id;
-                rating_box.className = "collection-rating-box";
-                rating.appendChild(rating_box);
-                let rating_obj = calculateRatings(collection[i]);
-                rating_box.innerHTML = Math.round(rating_obj.overall);
-                rating_box.style.background = getRatingColor(Math.round(rating_obj.overall));
-
-                let count = document.createElement("div");
-                count.id = "collection-count-" + id;
-                count.className = "collection-count";
-                stats.appendChild(count);
-
-                let count_box = document.createElement("div");
-                count_box.id = "collection-count-box-" + id;
-                count_box.className = "collection-count-box";
-                count.appendChild(count_box);
-
-                let count_fill = document.createElement("div");
-                count_fill.id = "collection-count-fill-" + id;
-                count_fill.className = "collection-count-fill";
-                count_box.appendChild(count_fill);
-                let cnt = collection[i].count / 20 * 100;
-                if (cnt > 100) {
-                    cnt = 100
-                };
-                count_fill.style.width = cnt + "%";
-
-                let count_text = document.createElement("div");
-                count_text.id = "collection-count-text-" + id;
-                count_text.className = "collection-count-text";
-                count_box.appendChild(count_text);
-                count_text.innerHTML = `${collection[i].count}/20`;
 
             }
 

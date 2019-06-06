@@ -552,6 +552,7 @@ input#collection-search-input-box {
     flex-direction: column;
     width: 100%;
     height: 80%;
+    background: lightgrey;
 }
 .collection-row {
     display: flex;
@@ -677,6 +678,34 @@ input#collection-search-input-box {
 }
 .collection-count-text {
     position: absolute;
+}
+#collection-empty-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 30%;
+    font-family: 'Raleway', sans-serif;
+}
+#collection-empty-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    height: 50%;
+    font-size: 81%;
+}
+#collection-empty-action {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 50%;
+}
+#collection-empty-action-button {
+    background: lightgreen;
+    color: #2A2723;
 }
 /* TEAM */
 #team-content {
