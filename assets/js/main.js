@@ -302,6 +302,13 @@ function loadTeams() {
                     row.appendChild(add_player);
                     add_player.innerHTML = "ADD PLAYER";
 
+                    add_player.addEventListener("click", function() {
+
+                        displaySpecificPage("collection-container");
+                        loadCollection();
+
+                    });
+
                 } else {
 
                     // Create div for player image
@@ -482,7 +489,7 @@ function loadSettings() {
 
         let input = document.getElementById("settings-promocode-input-box").value.toLowerCase();
 
-        if (input == "unlockall") {
+        if (input.toLowerCase() == "unlockall") {
 
             clearTable("collection");
 

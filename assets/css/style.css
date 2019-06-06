@@ -106,10 +106,10 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 20vmin;
-    height: 7vmin;
+    width: 21vmin;
+    height: 8vmin;
     border: solid 2px white;
-    border-radius: 3px;
+    border-radius: 2px;
     font-weight: bold;
     color: #2A2723;
 }
