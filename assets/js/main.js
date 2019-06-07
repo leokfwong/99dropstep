@@ -1952,42 +1952,136 @@ function loadCardDetails(id) {
 
 function loadGameModes() {
 
-    let content = document.getElementById("gamemodes-content");
-    content.innerHTML = "";
+    // Fetch user related data
+    fetchRecord("userdata", "0001", function(summary) {
 
-    let modes_array = ["Quick Game", "Campaign", "Playoffs"];
+        // Fetch current team ID (1-5)
+        let team_id = summary.team.toString();
 
-    for (let i = 0; i < modes_array.length; i++) {
+        // Fetch team related data based on team ID
+        fetchRecord("teams", team_id, function(team) {
 
-        let row = document.createElement("div");
-        row.id = "gamemodes-row-" + (i + 1);
-        row.className = "gamemodes-row";
-        content.appendChild(row);
-        row.innerHTML = modes_array[i];
+            let content = document.getElementById("gamemodes-content");
+            content.innerHTML = "";
 
-        if (modes_array[i] == "Quick Game") {
+            let modes_array = ["Quick Game", "Campaign", "Playoffs"];
 
-            row.addEventListener("click", function() {
+            for (let i = 0; i < modes_array.length; i++) {
 
-                initializePlay();
+                let row = document.createElement("div");
+                row.id = "gamemodes-row-" + (i + 1);
+                row.className = "gamemodes-row";
+                content.appendChild(row);
+                row.innerHTML = modes_array[i];
 
-            });
+                if (modes_array[i] == "Quick Game") {
 
-        } else if (modes_array[i] == "Campaign") {
+                    row.addEventListener("click", function() {
 
-        } else if (modes_array[i] == "Playoffs") {
+                        let ready_team = true;
 
-            row.addEventListener("click", function() {
+                        for (let i = 0; i < team.players.length; i++) {
 
-                initializePlayoffsTeamSelection();
+                            if (team.players[i] == "") {
+                                ready_team = false;
+                                break;
+                            }
 
-            });
+                        }
 
-        } else {
+                        if (ready_team) {
+                            initializePlay();
+                        } else {
+                            console.log("Not ready");
+                            let warning = document.getElementById("warning-container");
+                            warning.innerHTML = "";
+                            warning.style.display = "flex";
 
-        }
+                            let warning_box = document.createElement("div");
+                            warning_box.id = "warning-overlay-warning-box";
+                            warning_box.className = "warning-box";
+                            warning.appendChild(warning_box);
 
-    }
+                            let warning_title = document.createElement("div");
+                            warning_title.id = "warning-overlay-warning-title";
+                            warning_title.className = "warning-title";
+                            warning_box.appendChild(warning_title);
+                            warning_title.innerHTML = "Warning!";
+
+                            let warning_content = document.createElement("div");
+                            warning_content.id = "warning-overlay-warning-content";
+                            warning_content.className = "warning-content";
+                            warning_box.appendChild(warning_content);
+
+                            let warning_message = document.createElement("div");
+                            warning_message.id = "warning-overlay-warning-message";
+                            warning_message.className = "warning-message";
+                            warning_content.appendChild(warning_message);
+                            warning_message.innerHTML = "Your team must contain 10 players in total.";
+
+                            let warning_action = document.createElement("div");
+                            warning_action.id = "warning-overlay-warning-action";
+                            warning_action.className = "warning-action";
+                            warning_content.appendChild(warning_action);
+
+                            let warning_action_container = document.createElement("div");
+                            warning_action_container.id = "warning-overlay-warning-action-container";
+                            warning_action_container.className = "warning-action-container";
+                            warning_action.appendChild(warning_action_container);
+
+                            let warning_action_cancel = document.createElement("div");
+                            warning_action_cancel.id = "warning-overlay-warning-action-cancel";
+                            warning_action_cancel.className = "warning-action-cancel";
+                            warning_action_container.appendChild(warning_action_cancel);
+
+                            let warning_action_cancel_button = document.createElement("div");
+                            warning_action_cancel_button.id = "warning-overlay-warning-action-cancel-button";
+                            warning_action_cancel_button.className = "warning-action-button";
+                            warning_action_cancel.appendChild(warning_action_cancel_button);
+                            warning_action_cancel_button.innerHTML = "Cancel";
+
+                            let warning_action_proceed = document.createElement("div");
+                            warning_action_proceed.id = "warning-overlay-warning-action-proceed";
+                            warning_action_proceed.className = "warning-action-proceed";
+                            warning_action_container.appendChild(warning_action_proceed);
+
+                            let warning_action_proceed_button = document.createElement("div");
+                            warning_action_proceed_button.id = "warning-overlay-warning-action-proceed-button";
+                            warning_action_proceed_button.className = "warning-action-button";
+                            warning_action_proceed.appendChild(warning_action_proceed_button);
+                            warning_action_proceed_button.innerHTML = "Team";
+
+                            warning_action_cancel_button.addEventListener("click", function() {
+                                warning.style.display = "none";
+                            });
+
+                            warning_action_proceed_button.addEventListener("click", function() {
+
+                                displaySpecificPage("team-container");
+
+                            });
+
+                        }
+
+                    });
+
+                } else if (modes_array[i] == "Campaign") {
+
+                } else if (modes_array[i] == "Playoffs") {
+
+                    row.addEventListener("click", function() {
+
+                        initializePlayoffsTeamSelection();
+
+                    });
+
+                } else {
+
+                }
+
+            }
+        });
+    });
 
 }
 
