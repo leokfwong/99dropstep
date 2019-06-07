@@ -106,8 +106,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 21vmin;
-    height: 8vmin;
+    width: 25vmin;
+    height: 10vmin;
     border: solid 2px white;
     border-radius: 2px;
     font-weight: bold;
@@ -1197,6 +1197,10 @@ input#collection-search-input-box {
 #card-stats-level-box-text, #card-stats-salary-box-text, #card-stats-height-box-text, #card-stats-weight-box-text, #card-stats-country-box-text {
     height: 60%;
     font-weight: bold;
+}
+#card-stats-country-box-text {
+    font-size: 75%;
+    text-align: center;
 }
 #card-stats-card-image {
     display: flex;
