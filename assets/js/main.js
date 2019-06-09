@@ -657,7 +657,7 @@ function loadShop() {
             shop_catalog_button.id = "shop-catalog-button-" + i;
             shop_catalog_button.className = "shop-catalog-button";
             shop_catalog_container.appendChild(shop_catalog_button);
-            shop_catalog_button.innerHTML = "C";
+            shop_catalog_button.innerHTML = "<i class='fas fa-book'></i>";
 
             let shop_buy_container = document.createElement("div");
             shop_buy_container.id = "shop-buy-container-" + i;

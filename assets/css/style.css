@@ -1452,10 +1452,13 @@ input#collection-search-input-box {
 }
 .shop-catalog-container {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     width: 40%;
     height: 100%;
+}
+.shop-catalog-button {
+    font-size: 200%;
 }
 .shop-buy-container {
     display: flex;
@@ -1465,8 +1468,8 @@ input#collection-search-input-box {
     height: 100%;
 }
 .shop-buy-button {
-    background: lightgreen;
-    color: #2A2723;
+    background: #22B573;
+    color: white;
 }
 #shop-overlay-main-container {
 }
