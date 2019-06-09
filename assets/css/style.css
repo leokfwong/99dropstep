@@ -119,7 +119,7 @@ body {
     align-items: center;
     width: 100vw;
     height: 100vh;
-    background: rgba(0, 0, 0, .81);
+    background: rgba(0, 0, 0, .9);
     position: fixed;
     z-index: 1;
     font-family: 'Raleway', sans-serif;
@@ -1377,7 +1377,7 @@ input#collection-search-input-box {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: lightgrey;
+    background: #2A2723;
     width: 100%;
     height: 10%;
     font-family: 'Raleway', sans-serif;
@@ -1393,11 +1393,8 @@ input#collection-search-input-box {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: green;
-    color: white;
-    height: 33%;
-    width: 60%;
-    padding: 5%;
+    background: #E1C773;
+    color: #2A2723;
 }
 #shop-shelves {
     display: block;
@@ -1407,17 +1404,18 @@ input#collection-search-input-box {
 .shop-row {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
     width: 100%;
     height: 33%;
-    border-bottom: solid 1px lightgrey;
+    background: url("../images/misc/shelf_bg.png");
+    background-size: cover;
 }
 .shop-img-div {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 40%;
-    height: 90%;
+    height: 75%;
 }
 .shop-img-div img {
     height: 100%;
@@ -1428,37 +1426,47 @@ input#collection-search-input-box {
     align-items: center;
     flex-direction: column;
     width: 60%;
-    height: 90%;
-    background: lightgrey;
+    height: 70%;
     padding: 2%;
     font-family: 'Raleway', sans-serif;
+    color: white;
 }
-.shop-info-row {
+.shop-row-sct {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    width: 90%;
-    height: 30%;
+    width: 100%;
+    height: 50%;
 }
-.shop-list-btn {
+.shop-price-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+.shop-price-value {
+    font-size: 170%;
+    font-weight: bold;
+}
+.shop-catalog-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 25%;
-    height: 70%;
-    color: white;
-    background: grey;
-    padding: 3%;
+    width: 40%;
+    height: 100%;
 }
-.shop-buy-btn {
+.shop-buy-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 25%;
-    height: 70%;
-    color: white;
+    width: 60%;
+    height: 100%;
+}
+.shop-buy-button {
     background: lightgreen;
-    padding: 3%;
+    color: #2A2723;
 }
 #shop-overlay-main-container {
 }

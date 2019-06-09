@@ -7,7 +7,7 @@ window.onload = function() {
 
         // Display home page, update data in background, and load the collection
         displayHomePage();
-        //updateData();
+        updateData();
         loadCollection();
         loadTeams();
 
@@ -621,40 +621,56 @@ function loadShop() {
             shop_info.className = "shop-info";
             shop_row.appendChild(shop_info);
 
-            let shop_list_div = document.createElement("div");
-            shop_list_div.id = "shop-list-div-" + i;
-            shop_list_div.className = "shop-list-div shop-info-row";
-            shop_info.appendChild(shop_list_div);
+            let shop_row_sct_1 = document.createElement("div");
+            shop_row_sct_1.id = "shop-row-sct-1-" + i;
+            shop_row_sct_1.className = "shop-row-sct";
+            shop_info.appendChild(shop_row_sct_1);
 
-            let shop_list_btn = document.createElement("div");
-            shop_list_btn.id = "shop-list-btn-" + i;
-            shop_list_btn.className = "shop-list-btn";
-            shop_list_div.appendChild(shop_list_btn);
-            shop_list_btn.innerHTML = "Catalog";
+            let shop_price_container = document.createElement("div");
+            shop_price_container.id = "shop-price-container-" + i;
+            shop_price_container.className = "shop-price-container";
+            shop_row_sct_1.appendChild(shop_price_container);
 
-            let shop_price_div = document.createElement("div");
-            shop_price_div.id = "shop-price-div-" + i;
-            shop_price_div.className = "shop-price-div shop-info-row";
-            shop_info.appendChild(shop_price_div);
+            let shop_price_title = document.createElement("div");
+            shop_price_title.id = "shop-price-title-" + i;
+            shop_price_title.className = "shop-price-title";
+            shop_price_container.appendChild(shop_price_title);
+            shop_price_title.innerHTML = "Price:";
 
-            let shop_price = document.createElement("div");
-            shop_price.id = "shop-price-" + i;
-            shop_price.className = "shop-price";
-            shop_price_div.appendChild(shop_price);
-            shop_price.innerHTML = shop[i].price + "$";
+            let shop_price_value = document.createElement("div");
+            shop_price_value.id = "shop-price-value-" + i;
+            shop_price_value.className = "shop-price-value";
+            shop_price_container.appendChild(shop_price_value);
+            shop_price_value.innerHTML = "$200";
 
-            let shop_buy_div = document.createElement("div");
-            shop_buy_div.id = "shop-buy-div-" + i;
-            shop_buy_div.className = "shop-buy-div shop-info-row";
-            shop_info.appendChild(shop_buy_div);
+            let shop_row_sct_2 = document.createElement("div");
+            shop_row_sct_2.id = "shop-row-sct-2-" + i;
+            shop_row_sct_2.className = "shop-row-sct";
+            shop_info.appendChild(shop_row_sct_2);
 
-            let shop_buy_btn = document.createElement("div");
-            shop_buy_btn.id = "shop-buy-btn-" + i;
-            shop_buy_btn.className = "shop-buy-btn";
-            shop_buy_div.appendChild(shop_buy_btn);
-            shop_buy_btn.innerHTML = "Buy";
+            let shop_catalog_container = document.createElement("div");
+            shop_catalog_container.id = "shop-catalog-container-" + i;
+            shop_catalog_container.className = "shop-catalog-container";
+            shop_row_sct_2.appendChild(shop_catalog_container);
 
-            shop_buy_btn.addEventListener("click", function() {
+            let shop_catalog_button = document.createElement("div");
+            shop_catalog_button.id = "shop-catalog-button-" + i;
+            shop_catalog_button.className = "shop-catalog-button";
+            shop_catalog_container.appendChild(shop_catalog_button);
+            shop_catalog_button.innerHTML = "C";
+
+            let shop_buy_container = document.createElement("div");
+            shop_buy_container.id = "shop-buy-container-" + i;
+            shop_buy_container.className = "shop-buy-container";
+            shop_row_sct_2.appendChild(shop_buy_container);
+
+            let shop_buy_button = document.createElement("div");
+            shop_buy_button.id = "shop-buy-button-" + i;
+            shop_buy_button.className = "shop-buy-button action_btn";
+            shop_buy_container.appendChild(shop_buy_button);
+            shop_buy_button.innerHTML = "Buy";
+
+            shop_buy_button.addEventListener("click", function() {
 
                 buyItem(shop[i].content, 9, shop[i].price);
 
