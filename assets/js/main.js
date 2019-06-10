@@ -502,6 +502,20 @@ function loadSettings() {
 
             }
 
+        } else if (input.toLowerCase() == "moneyteam") {
+
+            // Fetch user data
+            fetchRecord("userdata", "0001", function(summary) {
+
+                summary.totalcoins += 50000;
+                // Update user related data
+                removeRecord("userdata", "0001");
+                addRecord("userdata", summary);
+
+            });
+
+            console.log("moneyteam");
+
         } else {
             console.log("Incorrect code.")
         }

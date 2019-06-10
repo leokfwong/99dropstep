@@ -6727,7 +6727,7 @@ const players_json = [{
     "fgaaverage": 14,
     "color1": "#325447",
     "color2": "#16241f",
-    "color3": "#9e283f",
+    "color3": "#ffffff",
     "image": "villanueva_charlie_milwaukee_bucks"
 }, {
     "id": "0110",
@@ -16987,7 +16987,7 @@ const players_json = [{
     "fgaaverage": 19,
     "color1": "#e84d4d",
     "color2": "#aa2222",
-    "color3": "#090007",
+    "color3": "#ffffff",
     "image": "lillard_damian_portland_trailblazers"
 }, {
     "id": "0281",

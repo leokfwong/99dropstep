@@ -576,7 +576,6 @@ input#collection-search-input-box {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, .9);
 }
 .collection-img-overlay-icon {
     display: flex;
@@ -590,6 +589,7 @@ input#collection-search-input-box {
     font-weight: bold;
     color: white;
     border-radius: 2px;
+    border: solid 2px white;
 }
 .collection-img img {
     position: absolute;
