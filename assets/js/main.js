@@ -161,6 +161,7 @@ function loadTeams() {
             // Create box within rating container
             let team_rating_box = document.createElement("div");
             team_rating_box.id = "team-summary-rating-box";
+            team_rating_box.className = "team-rating-box";
             team_rating_container.appendChild(team_rating_box);
             team_rating_box.innerHTML = "NA";
 
@@ -350,6 +351,7 @@ function loadTeams() {
                     // Calculate mean and update rating
                     let overall = calculateTeamRating(team_rating_array, "overall");
                     team_rating_box.innerHTML = Math.round(overall);
+                    team_rating_box.style.background = getRatingColor(overall);
 
                     // Calculate team offense and update values
                     let offense = calculateTeamRating(team_rating_array, "offense");
@@ -3452,7 +3454,7 @@ function simulateShotSuccess(play) {
 
             if (play.passer != "") {
                 play.team[play.possession].roster[play.passer.gamestats.pos - 1].gamestats.stats["ast"] += 1;
-                play.team[play.possession].roster[play.passer.gamestats.pos - 1].gamestats.stats["tg"] += 2;
+                play.team[play.possession].roster[play.passer.gamestats.pos - 1].gamestats.stats["tg"] += 1;
                 console.log("Assist made by " + play.passer.first + " " + play.passer.last);
             }
 
@@ -3924,11 +3926,11 @@ function simulateRebound(play) {
     if (rebound_type == "offensive") {
         play.team[play.possession].roster[rebounder.gamestats.pos - 1].gamestats.stats.reb += 1;
         play.team[play.possession].roster[rebounder.gamestats.pos - 1].gamestats.stats.oreb += 1;
-        play.team[play.possession].roster[rebounder.gamestats.pos - 1].gamestats.stats["tg"] += 3;
+        play.team[play.possession].roster[rebounder.gamestats.pos - 1].gamestats.stats["tg"] += 2;
     } else {
         play.team[fetchOtherAgent(play.possession)].roster[rebounder.gamestats.pos - 1].gamestats.stats.reb += 1;
         play.team[fetchOtherAgent(play.possession)].roster[rebounder.gamestats.pos - 1].gamestats.stats.dreb += 1;
-        play.team[fetchOtherAgent(play.possession)].roster[rebounder.gamestats.pos - 1].gamestats.stats["tg"] += 2;
+        play.team[fetchOtherAgent(play.possession)].roster[rebounder.gamestats.pos - 1].gamestats.stats["tg"] += 1;
     }
 
     console.log(rebounder.first + " " + rebounder.last + " gets " + rebound_type + " rebound");
