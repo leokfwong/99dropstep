@@ -588,96 +588,174 @@ function loadSettings() {
 @params {} none */
 function loadShop() {
 
-    // Get all records in shop table
-    fetchTable("shop", function(array) {
+    // Fetch user data
+    fetchRecord("userdata", "0001", function(summary) {
 
-        let shop = array;
+        // Get all records in shop table
+        fetchTable("shop", function(array) {
 
-        // Clear div inside shop
-        let shop_shelves = document.getElementById("shop-shelves");
-        shop_shelves.innerHTML = "";
+            let shop = array;
 
-        // Iterate through items inside shop
-        for (let i = 0; i < shop.length; i++) {
+            // Clear div inside shop
+            let shop_shelves = document.getElementById("shop-shelves");
+            shop_shelves.innerHTML = "";
 
-            let shop_row = document.createElement("div");
-            shop_row.id = "shop-row-" + i;
-            shop_row.className = "shop-row";
-            shop_shelves.appendChild(shop_row);
+            // Iterate through items inside shop
+            for (let i = 0; i < shop.length; i++) {
 
-            let shop_img_div = document.createElement("div");
-            shop_img_div.id = "shop-img-div-" + i;
-            shop_img_div.className = "shop-img-div";
-            shop_row.appendChild(shop_img_div);
+                let shop_row = document.createElement("div");
+                shop_row.id = "shop-row-" + i;
+                shop_row.className = "shop-row";
+                shop_shelves.appendChild(shop_row);
 
-            let shop_img = document.createElement("img");
-            shop_img.src = "assets/images/store/" + shop[i].filename + ".png";
-            shop_img.id = "shop-img-div-img-" + i;
-            shop_img.className = "shop-img-div-img";
-            shop_img_div.appendChild(shop_img);
+                let shop_img_div = document.createElement("div");
+                shop_img_div.id = "shop-img-div-" + i;
+                shop_img_div.className = "shop-img-div";
+                shop_row.appendChild(shop_img_div);
 
-            let shop_info = document.createElement("div");
-            shop_info.id = "shop-info-" + i;
-            shop_info.className = "shop-info";
-            shop_row.appendChild(shop_info);
+                let shop_img = document.createElement("img");
+                shop_img.src = "assets/images/store/" + shop[i].filename + ".png";
+                shop_img.id = "shop-img-div-img-" + i;
+                shop_img.className = "shop-img-div-img";
+                shop_img_div.appendChild(shop_img);
 
-            let shop_row_sct_1 = document.createElement("div");
-            shop_row_sct_1.id = "shop-row-sct-1-" + i;
-            shop_row_sct_1.className = "shop-row-sct";
-            shop_info.appendChild(shop_row_sct_1);
+                let shop_info = document.createElement("div");
+                shop_info.id = "shop-info-" + i;
+                shop_info.className = "shop-info";
+                shop_row.appendChild(shop_info);
 
-            let shop_price_container = document.createElement("div");
-            shop_price_container.id = "shop-price-container-" + i;
-            shop_price_container.className = "shop-price-container";
-            shop_row_sct_1.appendChild(shop_price_container);
+                let shop_row_sct_1 = document.createElement("div");
+                shop_row_sct_1.id = "shop-row-sct-1-" + i;
+                shop_row_sct_1.className = "shop-row-sct";
+                shop_info.appendChild(shop_row_sct_1);
 
-            let shop_price_title = document.createElement("div");
-            shop_price_title.id = "shop-price-title-" + i;
-            shop_price_title.className = "shop-price-title";
-            shop_price_container.appendChild(shop_price_title);
-            shop_price_title.innerHTML = "Price:";
+                let shop_price_container = document.createElement("div");
+                shop_price_container.id = "shop-price-container-" + i;
+                shop_price_container.className = "shop-price-container";
+                shop_row_sct_1.appendChild(shop_price_container);
 
-            let shop_price_value = document.createElement("div");
-            shop_price_value.id = "shop-price-value-" + i;
-            shop_price_value.className = "shop-price-value";
-            shop_price_container.appendChild(shop_price_value);
-            shop_price_value.innerHTML = "$200";
+                let shop_price_title = document.createElement("div");
+                shop_price_title.id = "shop-price-title-" + i;
+                shop_price_title.className = "shop-price-title";
+                shop_price_container.appendChild(shop_price_title);
+                shop_price_title.innerHTML = "Price:";
 
-            let shop_row_sct_2 = document.createElement("div");
-            shop_row_sct_2.id = "shop-row-sct-2-" + i;
-            shop_row_sct_2.className = "shop-row-sct";
-            shop_info.appendChild(shop_row_sct_2);
+                let shop_price_value = document.createElement("div");
+                shop_price_value.id = "shop-price-value-" + i;
+                shop_price_value.className = "shop-price-value";
+                shop_price_container.appendChild(shop_price_value);
+                shop_price_value.innerHTML = "$200";
 
-            let shop_catalog_container = document.createElement("div");
-            shop_catalog_container.id = "shop-catalog-container-" + i;
-            shop_catalog_container.className = "shop-catalog-container";
-            shop_row_sct_2.appendChild(shop_catalog_container);
+                let shop_row_sct_2 = document.createElement("div");
+                shop_row_sct_2.id = "shop-row-sct-2-" + i;
+                shop_row_sct_2.className = "shop-row-sct";
+                shop_info.appendChild(shop_row_sct_2);
 
-            let shop_catalog_button = document.createElement("div");
-            shop_catalog_button.id = "shop-catalog-button-" + i;
-            shop_catalog_button.className = "shop-catalog-button";
-            shop_catalog_container.appendChild(shop_catalog_button);
-            shop_catalog_button.innerHTML = "<i class='fas fa-book'></i>";
+                let shop_catalog_container = document.createElement("div");
+                shop_catalog_container.id = "shop-catalog-container-" + i;
+                shop_catalog_container.className = "shop-catalog-container";
+                shop_row_sct_2.appendChild(shop_catalog_container);
 
-            let shop_buy_container = document.createElement("div");
-            shop_buy_container.id = "shop-buy-container-" + i;
-            shop_buy_container.className = "shop-buy-container";
-            shop_row_sct_2.appendChild(shop_buy_container);
+                let shop_catalog_button = document.createElement("div");
+                shop_catalog_button.id = "shop-catalog-button-" + i;
+                shop_catalog_button.className = "shop-catalog-button";
+                shop_catalog_container.appendChild(shop_catalog_button);
+                shop_catalog_button.innerHTML = "<i class='fas fa-book'></i>";
 
-            let shop_buy_button = document.createElement("div");
-            shop_buy_button.id = "shop-buy-button-" + i;
-            shop_buy_button.className = "shop-buy-button action_btn";
-            shop_buy_container.appendChild(shop_buy_button);
-            shop_buy_button.innerHTML = "Buy";
+                let shop_buy_container = document.createElement("div");
+                shop_buy_container.id = "shop-buy-container-" + i;
+                shop_buy_container.className = "shop-buy-container";
+                shop_row_sct_2.appendChild(shop_buy_container);
 
-            shop_buy_button.addEventListener("click", function() {
+                let shop_buy_button = document.createElement("div");
+                shop_buy_button.id = "shop-buy-button-" + i;
+                shop_buy_button.className = "shop-buy-button action_btn";
+                shop_buy_container.appendChild(shop_buy_button);
+                shop_buy_button.innerHTML = "Buy";
 
-                buyItem(shop[i].content, 9, shop[i].price);
+                shop_buy_button.addEventListener("click", function() {
 
-            });
+                    if ((summary.totalcoins - shop[i].price) >= 0) {
 
-        }
+                        buyItem(shop[i].content, 9, shop[i].price);
 
+                    } else {
+
+                        let warning = document.getElementById("warning-container");
+                        warning.innerHTML = "";
+                        warning.style.display = "flex";
+
+                        let warning_box = document.createElement("div");
+                        warning_box.id = "warning-overlay-warning-box";
+                        warning_box.className = "warning-box";
+                        warning.appendChild(warning_box);
+
+                        let warning_title = document.createElement("div");
+                        warning_title.id = "warning-overlay-warning-title";
+                        warning_title.className = "warning-title";
+                        warning_box.appendChild(warning_title);
+                        warning_title.innerHTML = "Warning!";
+
+                        let warning_content = document.createElement("div");
+                        warning_content.id = "warning-overlay-warning-content";
+                        warning_content.className = "warning-content";
+                        warning_box.appendChild(warning_content);
+
+                        let warning_message = document.createElement("div");
+                        warning_message.id = "warning-overlay-warning-message";
+                        warning_message.className = "warning-message";
+                        warning_content.appendChild(warning_message);
+                        warning_message.innerHTML = "You do not have enough money!";
+
+                        let warning_action = document.createElement("div");
+                        warning_action.id = "warning-overlay-warning-action";
+                        warning_action.className = "warning-action";
+                        warning_content.appendChild(warning_action);
+
+                        let warning_action_container = document.createElement("div");
+                        warning_action_container.id = "warning-overlay-warning-action-container";
+                        warning_action_container.className = "warning-action-container";
+                        warning_action.appendChild(warning_action_container);
+
+                        let warning_action_cancel = document.createElement("div");
+                        warning_action_cancel.id = "warning-overlay-warning-action-cancel";
+                        warning_action_cancel.className = "warning-action-cancel";
+                        warning_action_container.appendChild(warning_action_cancel);
+
+                        let warning_action_cancel_button = document.createElement("div");
+                        warning_action_cancel_button.id = "warning-overlay-warning-action-cancel-button";
+                        warning_action_cancel_button.className = "warning-action-button";
+                        warning_action_cancel.appendChild(warning_action_cancel_button);
+                        warning_action_cancel_button.innerHTML = "Cancel";
+
+                        let warning_action_proceed = document.createElement("div");
+                        warning_action_proceed.id = "warning-overlay-warning-action-proceed";
+                        warning_action_proceed.className = "warning-action-proceed";
+                        warning_action_container.appendChild(warning_action_proceed);
+
+                        let warning_action_proceed_button = document.createElement("div");
+                        warning_action_proceed_button.id = "warning-overlay-warning-action-proceed-button";
+                        warning_action_proceed_button.className = "warning-action-button";
+                        warning_action_proceed.appendChild(warning_action_proceed_button);
+                        warning_action_proceed_button.innerHTML = "Game Modes";
+
+                        warning_action_cancel_button.addEventListener("click", function() {
+                            warning.style.display = "none";
+                        });
+
+                        warning_action_proceed_button.addEventListener("click", function() {
+
+                            displaySpecificPage("gamemodes-container");
+                            loadGameModes();
+
+                        });
+                    }
+
+                });
+
+            }
+
+        });
     });
 
 }
