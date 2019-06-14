@@ -2076,6 +2076,17 @@ function loadGameModes() {
 
             let modes_array = ["Quick Game", "Campaign", "Playoffs"];
 
+            let ready_team = true;
+
+            for (let i = 0; i < team.players.length; i++) {
+
+                if (team.players[i] == "") {
+                    ready_team = false;
+                    break;
+                }
+
+            }
+
             for (let i = 0; i < modes_array.length; i++) {
 
                 let row = document.createElement("div");
@@ -2088,88 +2099,16 @@ function loadGameModes() {
 
                     row.addEventListener("click", function() {
 
-                        let ready_team = true;
-
-                        for (let i = 0; i < team.players.length; i++) {
-
-                            if (team.players[i] == "") {
-                                ready_team = false;
-                                break;
-                            }
-
-                        }
-
                         if (ready_team) {
-                            initializePlay();
+
+                            initializePlay("Quick Game");
+
                         } else {
-                            console.log("Not ready");
-                            let warning = document.getElementById("warning-container");
-                            warning.innerHTML = "";
-                            warning.style.display = "flex";
 
-                            let warning_box = document.createElement("div");
-                            warning_box.id = "warning-overlay-warning-box";
-                            warning_box.className = "warning-box";
-                            warning.appendChild(warning_box);
-
-                            let warning_title = document.createElement("div");
-                            warning_title.id = "warning-overlay-warning-title";
-                            warning_title.className = "warning-title";
-                            warning_box.appendChild(warning_title);
-                            warning_title.innerHTML = "Warning!";
-
-                            let warning_content = document.createElement("div");
-                            warning_content.id = "warning-overlay-warning-content";
-                            warning_content.className = "warning-content";
-                            warning_box.appendChild(warning_content);
-
-                            let warning_message = document.createElement("div");
-                            warning_message.id = "warning-overlay-warning-message";
-                            warning_message.className = "warning-message";
-                            warning_content.appendChild(warning_message);
-                            warning_message.innerHTML = "Your team must contain 10 players in total.";
-
-                            let warning_action = document.createElement("div");
-                            warning_action.id = "warning-overlay-warning-action";
-                            warning_action.className = "warning-action";
-                            warning_content.appendChild(warning_action);
-
-                            let warning_action_container = document.createElement("div");
-                            warning_action_container.id = "warning-overlay-warning-action-container";
-                            warning_action_container.className = "warning-action-container";
-                            warning_action.appendChild(warning_action_container);
-
-                            let warning_action_cancel = document.createElement("div");
-                            warning_action_cancel.id = "warning-overlay-warning-action-cancel";
-                            warning_action_cancel.className = "warning-action-cancel";
-                            warning_action_container.appendChild(warning_action_cancel);
-
-                            let warning_action_cancel_button = document.createElement("div");
-                            warning_action_cancel_button.id = "warning-overlay-warning-action-cancel-button";
-                            warning_action_cancel_button.className = "warning-action-button";
-                            warning_action_cancel.appendChild(warning_action_cancel_button);
-                            warning_action_cancel_button.innerHTML = "Cancel";
-
-                            let warning_action_proceed = document.createElement("div");
-                            warning_action_proceed.id = "warning-overlay-warning-action-proceed";
-                            warning_action_proceed.className = "warning-action-proceed";
-                            warning_action_container.appendChild(warning_action_proceed);
-
-                            let warning_action_proceed_button = document.createElement("div");
-                            warning_action_proceed_button.id = "warning-overlay-warning-action-proceed-button";
-                            warning_action_proceed_button.className = "warning-action-button";
-                            warning_action_proceed.appendChild(warning_action_proceed_button);
-                            warning_action_proceed_button.innerHTML = "Team";
-
-                            warning_action_cancel_button.addEventListener("click", function() {
-                                warning.style.display = "none";
-                            });
-
-                            warning_action_proceed_button.addEventListener("click", function() {
-
-                                displaySpecificPage("team-container");
-
-                            });
+                            let msg = "Your team must contain 10 players in total.";
+                            let button_label = "Team";
+                            let landing_page = "team-container";
+                            displayWarning(msg, button_label, landing_page);
 
                         }
 
@@ -2181,7 +2120,18 @@ function loadGameModes() {
 
                     row.addEventListener("click", function() {
 
-                        initializePlayoffsTeamSelection();
+                        if (ready_team) {
+
+                            initializePlayoffsTeamSelection();
+
+                        } else {
+
+                            let msg = "Your team must contain 10 players in total.";
+                            let button_label = "Team";
+                            let landing_page = "team-container";
+                            displayWarning(msg, button_label, landing_page);
+
+                        }
 
                     });
 
@@ -2193,6 +2143,77 @@ function loadGameModes() {
         });
     });
 
+}
+
+function displayWarning(msg, button_label, landing_page) {
+
+    let warning = document.getElementById("warning-container");
+    warning.innerHTML = "";
+    warning.style.display = "flex";
+
+    let warning_box = document.createElement("div");
+    warning_box.id = "warning-overlay-warning-box";
+    warning_box.className = "warning-box";
+    warning.appendChild(warning_box);
+
+    let warning_title = document.createElement("div");
+    warning_title.id = "warning-overlay-warning-title";
+    warning_title.className = "warning-title";
+    warning_box.appendChild(warning_title);
+    warning_title.innerHTML = "Warning!";
+
+    let warning_content = document.createElement("div");
+    warning_content.id = "warning-overlay-warning-content";
+    warning_content.className = "warning-content";
+    warning_box.appendChild(warning_content);
+
+    let warning_message = document.createElement("div");
+    warning_message.id = "warning-overlay-warning-message";
+    warning_message.className = "warning-message";
+    warning_content.appendChild(warning_message);
+    warning_message.innerHTML = msg;
+
+    let warning_action = document.createElement("div");
+    warning_action.id = "warning-overlay-warning-action";
+    warning_action.className = "warning-action";
+    warning_content.appendChild(warning_action);
+
+    let warning_action_container = document.createElement("div");
+    warning_action_container.id = "warning-overlay-warning-action-container";
+    warning_action_container.className = "warning-action-container";
+    warning_action.appendChild(warning_action_container);
+
+    let warning_action_cancel = document.createElement("div");
+    warning_action_cancel.id = "warning-overlay-warning-action-cancel";
+    warning_action_cancel.className = "warning-action-cancel";
+    warning_action_container.appendChild(warning_action_cancel);
+
+    let warning_action_cancel_button = document.createElement("div");
+    warning_action_cancel_button.id = "warning-overlay-warning-action-cancel-button";
+    warning_action_cancel_button.className = "warning-action-button";
+    warning_action_cancel.appendChild(warning_action_cancel_button);
+    warning_action_cancel_button.innerHTML = "Cancel";
+
+    let warning_action_proceed = document.createElement("div");
+    warning_action_proceed.id = "warning-overlay-warning-action-proceed";
+    warning_action_proceed.className = "warning-action-proceed";
+    warning_action_container.appendChild(warning_action_proceed);
+
+    let warning_action_proceed_button = document.createElement("div");
+    warning_action_proceed_button.id = "warning-overlay-warning-action-proceed-button";
+    warning_action_proceed_button.className = "warning-action-button";
+    warning_action_proceed.appendChild(warning_action_proceed_button);
+    warning_action_proceed_button.innerHTML = button_label;
+
+    warning_action_cancel_button.addEventListener("click", function() {
+        warning.style.display = "none";
+    });
+
+    warning_action_proceed_button.addEventListener("click", function() {
+
+        displaySpecificPage(landing_page);
+
+    });
 }
 
 function initializePlayoffsTeamSelection() {
@@ -2268,7 +2289,7 @@ function initializePlayoffsTeamSelection() {
         playoffs_play.addEventListener("click", function() {
 
             displaySpecificPage("gamemodes-playoffs-team-homepage");
-            initializePlayoffsHomepage();
+            initializePlayoffsHomepage(playoffs_teams_json[i]);
 
         });
 
@@ -2278,7 +2299,9 @@ function initializePlayoffsTeamSelection() {
 
 }
 
-function initializePlayoffsHomepage() {
+function initializePlayoffsHomepage(playoffs_obj) {
+
+    console.log(playoffs_obj);
 
     let container = document.getElementById("gamemodes-playoffs-team-homepage-content");
 
@@ -2325,9 +2348,53 @@ function initializePlayoffsHomepage() {
     playoffs_score_cpu_div.appendChild(playoffs_score_cpu_value);
     playoffs_score_cpu_value.innerHTML = "0";
 
+    let playoffs_games_section = document.createElement("div");
+    playoffs_games_section.id = "playoffs-homepage-games-section";
+    container.appendChild(playoffs_games_section);
+
+    for (let x = 0; x < 7; x++) {
+
+        let playoffs_games_div = document.createElement("div");
+        playoffs_games_div.id = "playoffs-homepage-games-div-" + x;
+        playoffs_games_div.className = "playoffs-homepage-games-div";
+        playoffs_games_section.appendChild(playoffs_games_div);
+
+    }
+
+    let playoffs_play_section = document.createElement("div");
+    playoffs_play_section.id = "playoffs-homepage-play-section";
+    container.appendChild(playoffs_play_section);
+
+    let playoffs_play_div = document.createElement("div");
+    playoffs_play_div.id = "playoffs-homepage-play-div";
+    playoffs_play_section.appendChild(playoffs_play_div);
+
+    let playoffs_play_button = document.createElement("div");
+    playoffs_play_button.id = "playoffs-homepage-play-button";
+    playoffs_play_button.className = "action_btn";
+    playoffs_play_div.appendChild(playoffs_play_button);
+    playoffs_play_button.innerHTML = "Play Next Game";
+
+    playoffs_play_button.addEventListener("click", function() {
+
+        initializePlay("Playoffs");
+
+    });
+
+    let playoffs_stats_json = {
+        "id": "0001",
+        "opponentTeamID": playoffs_obj.id,
+        "usrScore": 0,
+        "cpuScore": 0,
+        "boxscore": [],
+    }
+
+    removeRecord("playoffs", "0001");
+    addRecord("playoffs", playoffs_stats_json);
+
 }
 
-function initializePlay() {
+function initializePlay(gamemode) {
 
     displaySpecificPage("play-container");
 
@@ -2384,7 +2451,7 @@ function initializePlay() {
         }
     }
 
-    initializePlayStats();
+    initializePlayStats(gamemode);
 
 }
 
@@ -2405,7 +2472,7 @@ function updateNavigation(view) {
 
 }
 
-function initializePlayStats() {
+function initializePlayStats(gamemode) {
 
     // Fetch user related data
     fetchRecord("userdata", "0001", function(summary) {
@@ -2416,270 +2483,292 @@ function initializePlayStats() {
         // Fetch team related data based on team ID
         fetchRecord("teams", team_id, function(team) {
 
-            let play_stats_json = {
-                "id": "0001",
-                "possession": "",
-                "possessionNumber": 1,
-                "time": 2880,
-                "possessionDuration": 0,
-                "gameover": 0,
-                "overtime": 0,
-                "score": {
-                    "usr": [0, 0, 0, 0, 0, 0, 0, 0],
-                    "cpu": [0, 0, 0, 0, 0, 0, 0, 0]
-                },
-                "team": {
-                    "usr": {
-                        "autosub": 1,
-                        "roster": [],
-                        "timeouts": 7,
-                        "substitutions": {
-                            "pg": 0,
-                            "sg": 0,
-                            "sf": 0,
-                            "pf": 0,
-                            "c": 0
-                        }
+            fetchRecord("playoffs", "0001", function(playoffs) {
+
+                let playoffs_teamID = playoffs.opponentTeamID;
+
+                let play_stats_json = {
+                    "id": "0001",
+                    "possession": "",
+                    "possessionNumber": 1,
+                    "time": 2880,
+                    "possessionDuration": 0,
+                    "gameover": 0,
+                    "overtime": 0,
+                    "score": {
+                        "usr": [0, 0, 0, 0, 0, 0, 0, 0],
+                        "cpu": [0, 0, 0, 0, 0, 0, 0, 0]
                     },
-                    "cpu": {
-                        "autosub": 1,
-                        "roster": [],
-                        "timeouts": 7,
-                        "substitutions": {
-                            "pg": 0,
-                            "sg": 0,
-                            "sf": 0,
-                            "pf": 0,
-                            "c": 0
-                        }
-                    },
-                },
-                "FTshooter": "",
-                "view": "boxscore",
-                "boxscoreView": "usr",
-                "playbyplay": [],
-                "gameTracker": {
-                    "timesTied": {
-                        "count": 0,
-                        "lastTied": 0
-                    },
-                    "leadChanges": {
-                        "count": 0,
-                        "lastLead": "tie"
-                    },
-                    "biggestLead": {
-                        "usr": 0,
-                        "cpu": 0
-                    },
-                    "longestRun": {
+                    "team": {
                         "usr": {
-                            "maxRun": 0,
-                            "currentRun": 0,
-                            "lastScore": 0
+                            "autosub": 1,
+                            "roster": [],
+                            "timeouts": 7,
+                            "substitutions": {
+                                "pg": 0,
+                                "sg": 0,
+                                "sf": 0,
+                                "pf": 0,
+                                "c": 0
+                            }
                         },
                         "cpu": {
-                            "maxRun": 0,
-                            "currentRun": 0,
-                            "lastScore": 0
+                            "autosub": 1,
+                            "roster": [],
+                            "timeouts": 7,
+                            "substitutions": {
+                                "pg": 0,
+                                "sg": 0,
+                                "sf": 0,
+                                "pf": 0,
+                                "c": 0
+                            }
+                        },
+                    },
+                    "FTshooter": "",
+                    "view": "boxscore",
+                    "boxscoreView": "usr",
+                    "playbyplay": [],
+                    "gameTracker": {
+                        "timesTied": {
+                            "count": 0,
+                            "lastTied": 0
+                        },
+                        "leadChanges": {
+                            "count": 0,
+                            "lastLead": "tie"
+                        },
+                        "biggestLead": {
+                            "usr": 0,
+                            "cpu": 0
+                        },
+                        "longestRun": {
+                            "usr": {
+                                "maxRun": 0,
+                                "currentRun": 0,
+                                "lastScore": 0
+                            },
+                            "cpu": {
+                                "maxRun": 0,
+                                "currentRun": 0,
+                                "lastScore": 0
+                            }
                         }
                     }
+                };
+
+                // Initialize stats navigation
+                let nav_container = document.getElementById("play-stats-navigation-container");
+                nav_container.innerHTML = "";
+
+                let stats_nav_array = ["play-by-play", "boxscore", "game stats"];
+
+                for (let i = 0; i < stats_nav_array.length; i++) {
+
+                    let nav_itm = document.createElement("div");
+                    nav_itm.id = "play-stats-navigation-itm-" + (i + 1);
+                    nav_itm.className = "play-stats-navigation-itm";
+                    nav_container.appendChild(nav_itm);
+                    nav_itm.innerHTML = capitalize(stats_nav_array[i]);
+
+                    nav_itm.addEventListener("click", function() {
+
+                        console.log(stats_nav_array[i]);
+                        if (stats_nav_array[i] == "boxscore") {
+
+                            document.getElementById("play-stats-boxscore-container").style.zIndex = 2;
+                            document.getElementById("play-stats-play-by-play-container").style.zIndex = 1;
+                            document.getElementById("play-stats-game-stats-container").style.zIndex = 1;
+                            play_stats_json.view = "boxscore";
+                            updateNavigation("boxscore");
+
+                        } else if (stats_nav_array[i] == "play-by-play") {
+
+                            document.getElementById("play-stats-play-by-play-container").style.zIndex = 2;
+                            document.getElementById("play-stats-boxscore-container").style.zIndex = 1;
+                            document.getElementById("play-stats-game-stats-container").style.zIndex = 1;
+                            play_stats_json.view = "play-by-play";
+                            updateNavigation("play-by-play");
+
+                        } else if (stats_nav_array[i] == "game stats") {
+
+                            document.getElementById("play-stats-game-stats-container").style.zIndex = 2;
+                            document.getElementById("play-stats-boxscore-container").style.zIndex = 1;
+                            document.getElementById("play-stats-play-by-play-container").style.zIndex = 1;
+                            play_stats_json.view = "game stats";
+                            updateNavigation("game stats");
+
+                        }
+
+                    });
                 }
-            };
 
-            // Initialize stats navigation
-            let nav_container = document.getElementById("play-stats-navigation-container");
-            nav_container.innerHTML = "";
+                updateNavigation("boxscore");
 
-            let stats_nav_array = ["play-by-play", "boxscore", "game stats"];
+                // Initialize scoreboard
+                let agents = ["usr", "cpu"];
 
-            for (let i = 0; i < stats_nav_array.length; i++) {
+                for (let i = 0; i < agents.length; i++) {
 
-                let nav_itm = document.createElement("div");
-                nav_itm.id = "play-stats-navigation-itm-" + (i + 1);
-                nav_itm.className = "play-stats-navigation-itm";
-                nav_container.appendChild(nav_itm);
-                nav_itm.innerHTML = capitalize(stats_nav_array[i]);
+                    let scoreboard = document.getElementById("play-scoreboard-" + agents[i]);
+                    scoreboard.innerHTML = "";
 
-                nav_itm.addEventListener("click", function() {
+                    let scoreboard_title = document.createElement("div");
+                    scoreboard_title.id = "play-scoreboard-" + agents[i] + "-title";
+                    scoreboard_title.className = "play-scoreboard-title";
+                    scoreboard.appendChild(scoreboard_title);
+                    scoreboard_title.innerHTML = agents[i].toUpperCase();
 
-                    console.log(stats_nav_array[i]);
-                    if (stats_nav_array[i] == "boxscore") {
+                    let scoreboard_score = document.createElement("div");
+                    scoreboard_score.id = "play-scoreboard-" + agents[i] + "-score";
+                    scoreboard_score.className = "play-scoreboard-score";
+                    scoreboard.appendChild(scoreboard_score);
+                    scoreboard_score.innerHTML = "0";
 
-                        document.getElementById("play-stats-boxscore-container").style.zIndex = 2;
-                        document.getElementById("play-stats-play-by-play-container").style.zIndex = 1;
-                        document.getElementById("play-stats-game-stats-container").style.zIndex = 1;
-                        play_stats_json.view = "boxscore";
-                        updateNavigation("boxscore");
+                    let scoreboard_timeouts = document.createElement("div");
+                    scoreboard_timeouts.id = "play-scoreboard-" + agents[i] + "-timeouts";
+                    scoreboard_timeouts.className = "play-scoreboard-timeouts";
+                    scoreboard.appendChild(scoreboard_timeouts);
 
-                    } else if (stats_nav_array[i] == "play-by-play") {
+                    for (let j = 0; j < 7; j++) {
 
-                        document.getElementById("play-stats-play-by-play-container").style.zIndex = 2;
-                        document.getElementById("play-stats-boxscore-container").style.zIndex = 1;
-                        document.getElementById("play-stats-game-stats-container").style.zIndex = 1;
-                        play_stats_json.view = "play-by-play";
-                        updateNavigation("play-by-play");
+                        let scoreboard_timeouts_sct = document.createElement("div");
+                        scoreboard_timeouts_sct.id = "play-scoreboard-" + agents[i] + "-timeouts-sct-" + (j + 1);
+                        scoreboard_timeouts_sct.className = "play-scoreboard-timeouts-sct";
+                        scoreboard_timeouts.appendChild(scoreboard_timeouts_sct);
 
-                    } else if (stats_nav_array[i] == "game stats") {
+                        let scoreboard_timeouts_light = document.createElement("div");
+                        scoreboard_timeouts_light.id = "play-scoreboard-" + agents[i] + "-timeouts-light-" + (j + 1);
+                        scoreboard_timeouts_light.className = "play-scoreboard-timeouts-light";
+                        scoreboard_timeouts_sct.appendChild(scoreboard_timeouts_light);
+                        scoreboard_timeouts_light.style.background = "#E1C773";
 
-                        document.getElementById("play-stats-game-stats-container").style.zIndex = 2;
-                        document.getElementById("play-stats-boxscore-container").style.zIndex = 1;
-                        document.getElementById("play-stats-play-by-play-container").style.zIndex = 1;
-                        play_stats_json.view = "game stats";
-                        updateNavigation("game stats");
+                    }
+                }
+
+                let time_container = document.getElementById("play-scoreboard-time-period");
+                time_container.innerHTML = "";
+
+                let time = document.createElement("div");
+                time.id = "play-scoreboard-time";
+                time_container.appendChild(time);
+                time.innerHTML = "12:00";
+
+                let period = document.createElement("div");
+                period.id = "play-scoreboard-period";
+                time_container.appendChild(period);
+                period.innerHTML = "Period 1";
+
+                let players_to_exclude_from_random = [];
+
+                // Initialize user team
+                for (let i = 0; i < team.players.length; i++) {
+
+                    let card = team.players[i];
+                    players_to_exclude_from_random.push(card.id);
+
+                    card.gamestats = {};
+                    card.gamestats.pos = (i + 1);
+                    card.gamestats.ratings = JSON.parse(JSON.stringify(card.ratings));
+                    card.gamestats.stats = initializePlayerIngameStats();
+                    card.gamestats.agent = "usr";
+
+                    if (i < 5) {
+
+                        card.gamestats.active = 1;
+                        let player_image = document.getElementById("play-usr-oncourt-player-image-" + (i + 1));
+                        player_image.innerHTML = "";
+                        let img = document.createElement("img");
+                        img.src = "assets/images/thumbs/" + card.image + "_" + card.id + ".png";
+                        player_image.appendChild(img);
+
+                        let stamina_fill = document.getElementById("play-usr-oncourt-player-stamina-fill-" + (i + 1));
+                        stamina_fill.style.width = card.gamestats.ratings.stamina + "%";
+                        stamina_fill.style.background = getRatingColor(Math.round(card.gamestats.ratings.stamina));
+
+                    } else {
+
+                        card.gamestats.active = 0;
 
                     }
 
-                });
-            }
-
-            updateNavigation("boxscore");
-
-            // Initialize scoreboard
-            let agents = ["usr", "cpu"];
-
-            for (let i = 0; i < agents.length; i++) {
-
-                let scoreboard = document.getElementById("play-scoreboard-" + agents[i]);
-                scoreboard.innerHTML = "";
-
-                let scoreboard_title = document.createElement("div");
-                scoreboard_title.id = "play-scoreboard-" + agents[i] + "-title";
-                scoreboard_title.className = "play-scoreboard-title";
-                scoreboard.appendChild(scoreboard_title);
-                scoreboard_title.innerHTML = agents[i].toUpperCase();
-
-                let scoreboard_score = document.createElement("div");
-                scoreboard_score.id = "play-scoreboard-" + agents[i] + "-score";
-                scoreboard_score.className = "play-scoreboard-score";
-                scoreboard.appendChild(scoreboard_score);
-                scoreboard_score.innerHTML = "0";
-
-                let scoreboard_timeouts = document.createElement("div");
-                scoreboard_timeouts.id = "play-scoreboard-" + agents[i] + "-timeouts";
-                scoreboard_timeouts.className = "play-scoreboard-timeouts";
-                scoreboard.appendChild(scoreboard_timeouts);
-
-                for (let j = 0; j < 7; j++) {
-
-                    let scoreboard_timeouts_sct = document.createElement("div");
-                    scoreboard_timeouts_sct.id = "play-scoreboard-" + agents[i] + "-timeouts-sct-" + (j + 1);
-                    scoreboard_timeouts_sct.className = "play-scoreboard-timeouts-sct";
-                    scoreboard_timeouts.appendChild(scoreboard_timeouts_sct);
-
-                    let scoreboard_timeouts_light = document.createElement("div");
-                    scoreboard_timeouts_light.id = "play-scoreboard-" + agents[i] + "-timeouts-light-" + (j + 1);
-                    scoreboard_timeouts_light.className = "play-scoreboard-timeouts-light";
-                    scoreboard_timeouts_sct.appendChild(scoreboard_timeouts_light);
-                    scoreboard_timeouts_light.style.background = "#E1C773";
-
-                }
-            }
-
-            let time_container = document.getElementById("play-scoreboard-time-period");
-            time_container.innerHTML = "";
-
-            let time = document.createElement("div");
-            time.id = "play-scoreboard-time";
-            time_container.appendChild(time);
-            time.innerHTML = "12:00";
-
-            let period = document.createElement("div");
-            period.id = "play-scoreboard-period";
-            time_container.appendChild(period);
-            period.innerHTML = "Period 1";
-
-            let players_to_exclude_from_random = [];
-
-            // Initialize user team
-            for (let i = 0; i < team.players.length; i++) {
-
-                let card = team.players[i];
-                players_to_exclude_from_random.push(card.id);
-
-                card.gamestats = {};
-                card.gamestats.pos = (i + 1);
-                card.gamestats.ratings = JSON.parse(JSON.stringify(card.ratings));
-                card.gamestats.stats = initializePlayerIngameStats();
-                card.gamestats.agent = "usr";
-
-                if (i < 5) {
-
-                    card.gamestats.active = 1;
-                    let player_image = document.getElementById("play-usr-oncourt-player-image-" + (i + 1));
-                    player_image.innerHTML = "";
-                    let img = document.createElement("img");
-                    img.src = "assets/images/thumbs/" + card.image + "_" + card.id + ".png";
-                    player_image.appendChild(img);
-
-                    let stamina_fill = document.getElementById("play-usr-oncourt-player-stamina-fill-" + (i + 1));
-                    stamina_fill.style.width = card.gamestats.ratings.stamina + "%";
-                    stamina_fill.style.background = getRatingColor(Math.round(card.gamestats.ratings.stamina));
-
-                } else {
-
-                    card.gamestats.active = 0;
+                    play_stats_json.team.usr.roster.push(card);
 
                 }
 
-                play_stats_json.team.usr.roster.push(card);
+                let team_cpu = [];
+                if (gamemode == "Quick Game") {
 
-            }
+                    // Initialize CPU team
+                    team_cpu = generateRandomTeam(
+                        subsetCardPool(players_json, {
+                            "position": null,
+                            "conference": null,
+                            "unlockedlevel": null,
+                            "exclude": players_to_exclude_from_random
+                        })
+                    );
 
-            // Initialize CPU team
-            let team_cpu = generateRandomTeam(
-                subsetCardPool(players_json, {
-                    "position": null,
-                    "conference": null,
-                    "unlockedlevel": null,
-                    "exclude": players_to_exclude_from_random
-                })
-            );
+                } else if (gamemode == "Playoffs") {
+                    let roster = playoffs_teams_json[parseInt(playoffs_teamID) - 1].roster;
+                    console.log(roster);
+                    for (let i = 0; i < roster.length; i++) {
 
-            // TODO: Not needed in the future, will empty once game is over
-            play_stats_json.team.cpu.roster = [];
+                        team_cpu.push(players_json[parseInt(roster[i]) - 1]);
 
-            for (let i = 0; i < team_cpu.length; i++) {
-
-                card = team_cpu[i];
-
-                card.gamestats = {};
-                card.gamestats.pos = (i + 1);
-                card.gamestats.ratings = JSON.parse(JSON.stringify(card.ratings));
-                card.gamestats.stats = initializePlayerIngameStats();
-                card.gamestats.agent = "cpu";
-
-                if (i < 5) {
-
-                    card.gamestats.active = 1;
-                    let player_image = document.getElementById("play-cpu-oncourt-player-image-" + (i + 1));
-                    player_image.innerHTML = "";
-                    let img = document.createElement("img");
-                    img.src = "assets/images/thumbs/" + card.image + "_" + card.id + ".png";
-                    player_image.appendChild(img);
-
-                    let stamina_fill = document.getElementById("play-cpu-oncourt-player-stamina-fill-" + (i + 1));
-                    stamina_fill.style.width = card.gamestats.ratings.stamina + "%";
-                    stamina_fill.style.background = getRatingColor(Math.round(card.gamestats.ratings.stamina));
-
-                } else {
-
-                    card.gamestats.active = 0;
+                    }
 
                 }
 
-                play_stats_json.team.cpu.roster.push(card);
+                console.log(gamemode);
+                console.log(team_cpu);
+
+                // TODO: Not needed in the future, will empty once game is over
+                play_stats_json.team.cpu.roster = [];
+
+                for (let i = 0; i < team_cpu.length; i++) {
+
+                    card = team_cpu[i];
+
+                    card.gamestats = {};
+                    card.gamestats.pos = (i + 1);
+                    card.gamestats.ratings = JSON.parse(JSON.stringify(card.ratings));
+                    card.gamestats.stats = initializePlayerIngameStats();
+                    card.gamestats.agent = "cpu";
+
+                    if (i < 5) {
+
+                        card.gamestats.active = 1;
+                        let player_image = document.getElementById("play-cpu-oncourt-player-image-" + (i + 1));
+                        player_image.innerHTML = "";
+                        let img = document.createElement("img");
+                        img.src = "assets/images/thumbs/" + card.image + "_" + card.id + ".png";
+                        player_image.appendChild(img);
+
+                        let stamina_fill = document.getElementById("play-cpu-oncourt-player-stamina-fill-" + (i + 1));
+                        stamina_fill.style.width = card.gamestats.ratings.stamina + "%";
+                        stamina_fill.style.background = getRatingColor(Math.round(card.gamestats.ratings.stamina));
+
+                    } else {
+
+                        card.gamestats.active = 0;
+
+                    }
+
+                    play_stats_json.team.cpu.roster.push(card);
 
 
-            }
+                }
 
-            removeRecord("play", "0001");
-            addRecord("play", play_stats_json);
+                removeRecord("play", "0001");
+                addRecord("play", play_stats_json);
 
-            // Initialize boxscore
-            initializeBoxscore("usr");
-            initializePlayByPlay();
-            initializeGameStats();
+                // Initialize boxscore
+                initializeBoxscore("usr");
+                initializePlayByPlay();
+                initializeGameStats();
 
+            });
         });
 
     });

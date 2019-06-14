@@ -1632,7 +1632,7 @@ input#collection-search-input-box {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 20%;
+    height: 15%;
     background: pink;
 }
 .playoffs-homepage-score-div {
@@ -1656,7 +1656,54 @@ input#collection-search-input-box {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 20%;
+    height: 25%;
+}
+.playoffs-homepage-score-value {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 75%;
+    font-family: 'Ozone';
+    font-size: 400%;
+}
+#playoffs-homepage-games-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 15%;
+    background: pink;
+}
+.playoffs-homepage-games-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 14%;
+    height: 100%;
+    background: pink;
+}
+#playoffs-homepage-play-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 10%;
+}
+#playoffs-homepage-play-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 90%;
+}
+#playoffs-homepage-play-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: lightgreen;
+    width: 80%;
+    height: 100%;
 }
 /* PLAY */
 #play-content {

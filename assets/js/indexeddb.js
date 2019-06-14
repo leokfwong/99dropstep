@@ -27,7 +27,10 @@ request.onupgradeneeded = function(event) {
   });
   let play = db.createObjectStore("play", {
     keyPath: "id"
-  })
+  });
+  let playoffs = db.createObjectStore("playoffs", {
+    keyPath: "id"
+  });
 
   for (let i in shop_json) {
     shop.add(shop_json[i]);
