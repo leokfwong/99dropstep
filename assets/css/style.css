@@ -1580,9 +1580,83 @@ input#collection-search-input-box {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     width: 100%;
     height: 20%;
     background-size: cover;
+    color: white;
+}
+.gamemodes-playoffs-team-selection-row-sct-1 {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 90%;
+    height: 40%;
+}
+.gamemodes-playoffs-team-selection-row-sct-1-team-rating {
+    font-size: 150%;
+    padding: 7px;
+    border: solid 2px white;
+}
+.gamemodes-playoffs-team-selection-row-sct-1-team-title {
+    padding-left: 5px;
+}
+.gamemodes-playoffs-team-selection-row-sct-2 {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 90%;
+    height: 40%;
+}
+.gamemodes-playoffs-team-selection-row-sct-2-playoffs-stats {
+    width: 60px;
+    height: 25px;
+    background: lightgrey;
+}
+.gamemodes-playoffs-team-selection-row-sct-2-playoffs-play {
+    width: 60px;
+    height: 25px;
+    margin-left: 10px;
+    background: lightgreen;
+}
+/* PLAYOFFS HOMEPAGE */
+#gamemodes-playoffs-team-homepage-content {
+    display: block;
+    width: 100%;
+    height: 92%;
+    background: white;
+    font-family: 'Raleway', sansserif;
+}
+#playoffs-homepage-score-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 20%;
+    background: pink;
+}
+.playoffs-homepage-score-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 45%;
+    height: 90%;
+    background: beige;
+}
+#playoffs-homepage-score-mid-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10%;
+    height: 90%;
+}
+.playoffs-homepage-score-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 20%;
 }
 /* PLAY */
 #play-content {
