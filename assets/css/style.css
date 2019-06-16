@@ -762,7 +762,7 @@ input#collection-search-input-box {
     align-items: center;
     flex-direction: column;
     width: 100%;
-    height: 20%;
+    height: 21%;
     background: #2A2723;
 }
 #team-summary-content {
@@ -849,6 +849,9 @@ input#collection-search-input-box {
     width: 20%;
     height: 50%;
     color: #E1C773;
+}
+#team-randimize-team-button {
+    background: #E1C773;
 }
 #team-starters, #team-bench {
     height: 60%;

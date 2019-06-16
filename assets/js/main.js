@@ -373,8 +373,66 @@ function loadTeams() {
 
                 }
             }
+
+            // Fetch row 2 of team summary section and reset content
+            let team_summary_row2 = document.getElementById("team-summary-row-2");
+            team_summary_row2.innerHTML = "";
+
+            let randomize_team_div = document.createElement("div");
+            randomize_team_div.id = "team-randimize-team-container";
+            team_summary_row2.appendChild(randomize_team_div);
+
+            let randomize_team_button = document.createElement("div");
+            randomize_team_button.id = "team-randimize-team-button";
+            randomize_team_button.className = "action_btn";
+            randomize_team_div.appendChild(randomize_team_button);
+            randomize_team_button.innerHTML = "Random";
+
+            randomize_team_button.addEventListener("click", function() {
+
+                team_usr = generateRandomTeam(
+                    subsetCardPool(players_json, {
+                        "position": null,
+                        "conference": null,
+                        "unlockedlevel": null,
+                        "exclude": null
+                    })
+                );
+
+                loadUserRandomTeam(team_usr);
+
+            });
+
         });
     });
+}
+
+function loadUserRandomTeam(team_usr) {
+
+    // Fetch user related data
+    fetchRecord("userdata", "0001", function(summary) {
+
+        // Fetch current team ID (1-5)
+        let team_id = summary.team.toString();
+
+        // Fetch team related data based on team ID
+        fetchRecord("teams", team_id, function(team) {
+
+            for (let i = 0; i < team_usr.length; i++) {
+
+                team.players[i] = team_usr[i];
+
+            }
+
+            removeRecord("teams", team.id);
+            addRecord("teams", team);
+
+            loadTeams();
+
+        });
+
+    });
+
 }
 
 /* Function displays the home page once user clicks on "PLAY"
