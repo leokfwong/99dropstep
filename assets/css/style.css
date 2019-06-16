@@ -2514,6 +2514,103 @@ input#collection-search-input-box {
     width: 70%;
     height: 100%;
 }
+/* PLAY END GAME REWARDS */
+#play-end-game-rewards-overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: fixed;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .92);
+    z-index: 2;
+    color: white;
+    font-family: 'Raleway', sansserif;
+}
+.play-end-game-rewards-sct {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+#play-end-game-rewards-sct-1 {
+    height: 80%;
+}
+#play-end-game-rewards-sct-2 {
+    height: 10%;
+}
+#play-end-game-rewards-outcome-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 25%;
+}
+#play-end-game-rewards-winlose-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 60%;
+    font-size: 450%;
+    font-weight: bold;
+    color: #22B573;
+}
+#play-end-game-rewards-title-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 20%;
+}
+#play-end-game-rewards-score-div {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    height: 20%;
+}
+#play-end-game-rewards-table-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 75%;
+}
+#play-end-game-rewards-list-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 90%;
+    height: 90%;
+    border-top: solid 2px lightgrey;
+    border-bottom: solid 2px lightgrey;
+}
+#play-end-game-rewards-total-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 90%;
+    height: 10%;
+}
+#play-end-game-rewards-button-div {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 90%;
+    height: 100%;
+}
+#play-end-game-rewards-button {
+    background: #22B573;
+}
 /* WARNING */
 #warning-container {
     position: fixed;

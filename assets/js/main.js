@@ -3460,6 +3460,9 @@ function simulateNextPossession() {
         } else {
 
             console.log("Game Over");
+
+            displayEndGameRewards();
+
             let action_btn = document.getElementById("play-action-next-possession-btn");
             action_btn.innerHTML = "Quit";
             action_btn.style.background = "#d24d57"; //RED
@@ -3469,6 +3472,73 @@ function simulateNextPossession() {
             });
 
         }
+
+    });
+
+}
+
+function displayEndGameRewards() {
+
+    let container = document.getElementById("play-container");
+
+    let end_game_rewards_overlay = document.createElement("div");
+    end_game_rewards_overlay.id = "play-end-game-rewards-overlay";
+    container.appendChild(end_game_rewards_overlay);
+
+    let end_game_rewards_sct_1 = document.createElement("div");
+    end_game_rewards_sct_1.id = "play-end-game-rewards-sct-1";
+    end_game_rewards_sct_1.className = "play-end-game-rewards-sct";
+    end_game_rewards_overlay.appendChild(end_game_rewards_sct_1);
+
+    let end_game_rewards_outcome_div = document.createElement("div");
+    end_game_rewards_outcome_div.id = "play-end-game-rewards-outcome-div";
+    end_game_rewards_sct_1.appendChild(end_game_rewards_outcome_div);
+
+    let end_game_rewards_winlose_div = document.createElement("div");
+    end_game_rewards_winlose_div.id = "play-end-game-rewards-winlose-div";
+    end_game_rewards_outcome_div.appendChild(end_game_rewards_winlose_div);
+    end_game_rewards_winlose_div.innerHTML = "WIN";
+
+    let end_game_rewards_title_div = document.createElement("div");
+    end_game_rewards_title_div.id = "play-end-game-rewards-title-div";
+    end_game_rewards_outcome_div.appendChild(end_game_rewards_title_div);
+    end_game_rewards_title_div.innerHTML = "Final Score";
+
+    let end_game_rewards_score_div = document.createElement("div");
+    end_game_rewards_score_div.id = "play-end-game-rewards-score-div";
+    end_game_rewards_outcome_div.appendChild(end_game_rewards_score_div);
+    end_game_rewards_score_div.innerHTML = "109 - 103";
+
+    let end_game_rewards_table_div = document.createElement("div");
+    end_game_rewards_table_div.id = "play-end-game-rewards-table-div";
+    end_game_rewards_sct_1.appendChild(end_game_rewards_table_div);
+
+    let end_game_rewards_list_div = document.createElement("div");
+    end_game_rewards_list_div.id = "play-end-game-rewards-list-div";
+    end_game_rewards_table_div.appendChild(end_game_rewards_list_div);
+
+    let end_game_rewards_total_div = document.createElement("div");
+    end_game_rewards_total_div.id = "play-end-game-rewards-total-div";
+    end_game_rewards_table_div.appendChild(end_game_rewards_total_div);
+
+    let end_game_rewards_sct_2 = document.createElement("div");
+    end_game_rewards_sct_2.id = "play-end-game-rewards-sct-2";
+    end_game_rewards_sct_2.className = "play-end-game-rewards-sct";
+    end_game_rewards_overlay.appendChild(end_game_rewards_sct_2);
+
+    let end_game_rewards_button_div = document.createElement("div");
+    end_game_rewards_button_div.id = "play-end-game-rewards-button-div";
+    end_game_rewards_sct_2.appendChild(end_game_rewards_button_div);
+
+    let end_game_rewards_button = document.createElement("div");
+    end_game_rewards_button.id = "play-end-game-rewards-button";
+    end_game_rewards_button.className = "action_btn";
+    end_game_rewards_button_div.appendChild(end_game_rewards_button);
+    end_game_rewards_button.innerHTML = "Collect";
+
+    end_game_rewards_button.addEventListener("click", function() {
+
+        end_game_rewards_overlay.style.display = "none";
 
     });
 
