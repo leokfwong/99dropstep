@@ -2530,7 +2530,7 @@ input#collection-search-input-box {
 }
 /* PLAY END GAME REWARDS */
 #play-end-game-rewards-overlay {
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     flex-direction: column;

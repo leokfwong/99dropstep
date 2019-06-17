@@ -2380,6 +2380,7 @@ function initializePlayoffsHomepage(playoffs_obj) {
     console.log(playoffs_obj);
 
     let container = document.getElementById("gamemodes-playoffs-team-homepage-content");
+    container.innerHTML = "";
 
     let playoffs_score_section = document.createElement("div");
     playoffs_score_section.id = "playoffs-homepage-score-section";
@@ -2473,6 +2474,8 @@ function initializePlayoffsHomepage(playoffs_obj) {
 function initializePlay(gamemode) {
 
     displaySpecificPage("play-container");
+
+    document.getElementById("play-end-game-rewards-overlay").style.display = "none";
 
     let agents = ["usr", "cpu"];
 
@@ -3555,11 +3558,11 @@ function simulateNextPossession() {
 
 function displayEndGameRewards() {
 
-    let container = document.getElementById("play-container");
+    console.log("Displaying rewards");
 
-    let end_game_rewards_overlay = document.createElement("div");
-    end_game_rewards_overlay.id = "play-end-game-rewards-overlay";
-    container.appendChild(end_game_rewards_overlay);
+    let end_game_rewards_overlay = document.getElementById("play-end-game-rewards-overlay");
+    end_game_rewards_overlay.innerHTML = "";
+    end_game_rewards_overlay.style.display = "flex";
 
     let end_game_rewards_sct_1 = document.createElement("div");
     end_game_rewards_sct_1.id = "play-end-game-rewards-sct-1";
