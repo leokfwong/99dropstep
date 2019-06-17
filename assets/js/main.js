@@ -35,6 +35,7 @@ window.onload = function() {
 
             displaySpecificPage("team-container");
             document.getElementById("team-overlay").style.display = "none";
+            loadTeams();
 
         });
 
@@ -105,301 +106,318 @@ function loadTeams() {
         // Fetch team related data based on team ID
         fetchRecord("teams", team_id, function(team) {
 
-            // Fetch team selection navigation bar div and reset content
-            let nav = document.getElementById("team-selection-navigation");
-            nav.innerHTML = "";
+            // Fetch all cards in collection
+            fetchTable("collection", function(collection) {
 
-            // For each team selection (1-5)
-            for (let y = 0; y < 5; y++) {
+                // Fetch team selection navigation bar div and reset content
+                let nav = document.getElementById("team-selection-navigation");
+                nav.innerHTML = "";
 
-                // Create box div for team selection tab
-                let box = document.createElement("div");
-                box.id = "team-selection-nav-box-" + (y + 1);
-                box.className = "team-selection-nav-box";
-                nav.appendChild(box);
-                box.innerHTML = "Team " + (y + 1);
+                // For each team selection (1-5)
+                for (let y = 0; y < 5; y++) {
 
-                // If team selection tab is the active one, attach active class
-                if (y == (team_id - 1)) {
-                    box.className += " team-selection-nav-box-active";
-                } else {
-                    box.className += " team-selection-nav-box-inactive";
-                }
+                    // Create box div for team selection tab
+                    let box = document.createElement("div");
+                    box.id = "team-selection-nav-box-" + (y + 1);
+                    box.className = "team-selection-nav-box";
+                    nav.appendChild(box);
+                    box.innerHTML = "Team " + (y + 1);
 
-                // Add event listener to team selection tab
-                box.addEventListener("click", function() {
+                    // If team selection tab is the active one, attach active class
+                    if (y == (team_id - 1)) {
+                        box.className += " team-selection-nav-box-active";
+                    } else {
+                        box.className += " team-selection-nav-box-inactive";
+                    }
 
-                    // Fetch user related data
-                    fetchRecord("userdata", "0001", function(summary) {
+                    // Add event listener to team selection tab
+                    box.addEventListener("click", function() {
 
-                        // Update team ID
-                        summary.team = (y + 1);
+                        // Fetch user related data
+                        fetchRecord("userdata", "0001", function(summary) {
 
-                        // Update user related data
-                        removeRecord("userdata", "0001");
-                        addRecord("userdata", summary);
+                            // Update team ID
+                            summary.team = (y + 1);
 
-                        // Reload team date and page
-                        loadTeams();
+                            // Update user related data
+                            removeRecord("userdata", "0001");
+                            addRecord("userdata", summary);
+
+                            // Reload team date and page
+                            loadTeams();
+
+                        });
 
                     });
 
-                });
-
-            }
-
-            // Fetch row 1 of team summary section and reset content
-            let team_summary_row1 = document.getElementById("team-summary-row-1");
-            team_summary_row1.innerHTML = "";
-
-            // Create team rating container within row 1
-            let team_rating_container = document.createElement("div");
-            team_rating_container.id = "team-summary-rating-container";
-            team_rating_container.className = "div-fadein";
-            team_summary_row1.appendChild(team_rating_container);
-
-            // Create box within rating container
-            let team_rating_box = document.createElement("div");
-            team_rating_box.id = "team-summary-rating-box";
-            team_rating_box.className = "team-rating-box";
-            team_rating_container.appendChild(team_rating_box);
-            team_rating_box.innerHTML = "NA";
-
-            // Create team rating breakdown container within row 1
-            let team_rating_breakdown = document.createElement("div");
-            team_rating_breakdown.id = "team-summary-rating-breakdown";
-            team_rating_breakdown.className = "div-fadein";
-            team_summary_row1.appendChild(team_rating_breakdown);
-
-            // Initialize categories array
-            let sct_array = ["OFF", "DEF", "PHYS"];
-
-            // Iterate through each category
-            for (let k = 0; k < 3; k++) {
-
-                // Create section row for each category (3 rows)
-                let sct = document.createElement("div");
-                sct.id = "team-summary-rating-breakdown-sct-" + (k + 1);
-                sct.className = "team-summary-rating-breakdown-sct";
-                team_rating_breakdown.appendChild(sct);
-
-                // Create div for title (OFF, DEF, PHYS)
-                let title = document.createElement("div");
-                title.id = "team-summary-rating-breakdown-title-" + (k + 1);
-                title.className = "team-summary-rating-breakdown-title";
-                sct.appendChild(title);
-                title.innerHTML = sct_array[k];
-
-                // Create div for rating bar (outer)
-                let bar = document.createElement("div");
-                bar.id = "team-summary-rating-breakdown-bar-" + (k + 1);
-                bar.className = "team-summary-rating-breakdown-bar";
-                sct.appendChild(bar);
-
-                // Create div for rating bar fill (inner)
-                let fill = document.createElement("div");
-                fill.id = "team-summary-rating-breakdown-fill-" + (k + 1);
-                fill.className = "team-summary-rating-breakdown-fill";
-                bar.appendChild(fill);
-
-                // Create div for rating value
-                let value = document.createElement("div");
-                value.id = "team-summary-rating-breakdown-value-" + (k + 1);
-                value.className = "team-summary-rating-breakdown-value";
-                sct.appendChild(value);
-                value.innerHTML = "NA";
-
-            }
-
-            // Initialize empty array
-            let team_rating_array = [];
-
-            // Iterate through each player on selected team
-            for (let i = 0; i < team.players.length; i++) {
-
-                // Fetch player id
-                let card = team.players[i];
-
-                // Create div for row containing player info
-                let row = document.createElement("div")
-                row.id = "team-row-" + i;
-                row.className = "team-row div-fadein";
-
-                // Create div for container inside of row
-                let container = document.createElement("div");
-                container.id = "team-row-container-" + i;
-                container.className = "team-row-container";
-                row.appendChild(container);
-
-                // Create div for position
-                let position = document.createElement("div");
-                position.id = "team-row-position-" + i;
-                position.className = "team-position";
-                container.appendChild(position);
-                position.innerHTML = position_array[i % 5];
-
-                // Create div for image
-                let image = document.createElement("div");
-                image.id = "team-row-image-" + i;
-                image.className = "team-image";
-                container.appendChild(image);
-
-                // Create div for description
-                let description = document.createElement("div");
-                description.id = "team-row-description-" + i;
-                description.className = "team-description";
-                container.appendChild(description);
-
-                // Create div for description box
-                let description_box = document.createElement("div");
-                description_box.id = "team-description-box-" + i;
-                description_box.className = "team-description-box";
-                description.appendChild(description_box);
-
-                // Create div for description row 1
-                let descr_row_1 = document.createElement("div");
-                descr_row_1.id = "team-description-row-1";
-                descr_row_1.className = "team-description-row";
-                description_box.appendChild(descr_row_1);
-
-                // Create div for description row 2
-                let descr_row_2 = document.createElement("div");
-                descr_row_2.id = "team-description-row-2";
-                descr_row_2.className = "team-description-row";
-                description_box.appendChild(descr_row_2);
-
-                // Create div for description row 3
-                let descr_row_3 = document.createElement("div");
-                descr_row_3.id = "team-description-row-3";
-                descr_row_3.className = "team-description-row";
-                description_box.appendChild(descr_row_3);
-
-                // Create div for rating
-                let rating = document.createElement("div");
-                rating.id = "team-row-rating-" + i;
-                rating.className = "team-rating";
-                container.appendChild(rating);
-
-                // Create div for rating box
-                let rating_box = document.createElement("div");
-                rating_box.id = "team-rating-box-" + i;
-                rating_box.className = "team-rating-box";
-                rating.appendChild(rating_box);
-
-                // Append to right section based on starter vs bench
-                if (i < 5) {
-                    starters.appendChild(row);
-                } else {
-                    bench.appendChild(row);
                 }
 
-                // If player is missing
-                if (card == "") {
+                // Fetch row 1 of team summary section and reset content
+                let team_summary_row1 = document.getElementById("team-summary-row-1");
+                team_summary_row1.innerHTML = "";
 
-                    // Create div for "ADD PLAYER" overlay
-                    let add_player = document.createElement("div");
-                    add_player.id = "team-row-add-player-" + i;
-                    add_player.className = "team-add-player";
-                    row.appendChild(add_player);
-                    add_player.innerHTML = "ADD PLAYER";
+                // Create team rating container within row 1
+                let team_rating_container = document.createElement("div");
+                team_rating_container.id = "team-summary-rating-container";
+                team_rating_container.className = "div-fadein";
+                team_summary_row1.appendChild(team_rating_container);
 
-                    add_player.addEventListener("click", function() {
+                // Create box within rating container
+                let team_rating_box = document.createElement("div");
+                team_rating_box.id = "team-summary-rating-box";
+                team_rating_box.className = "team-rating-box";
+                team_rating_container.appendChild(team_rating_box);
+                team_rating_box.innerHTML = "NA";
 
-                        displaySpecificPage("collection-container");
-                        loadCollection();
+                // Create team rating breakdown container within row 1
+                let team_rating_breakdown = document.createElement("div");
+                team_rating_breakdown.id = "team-summary-rating-breakdown";
+                team_rating_breakdown.className = "div-fadein";
+                team_summary_row1.appendChild(team_rating_breakdown);
+
+                // Initialize categories array
+                let sct_array = ["OFF", "DEF", "PHYS"];
+
+                // Iterate through each category
+                for (let k = 0; k < 3; k++) {
+
+                    // Create section row for each category (3 rows)
+                    let sct = document.createElement("div");
+                    sct.id = "team-summary-rating-breakdown-sct-" + (k + 1);
+                    sct.className = "team-summary-rating-breakdown-sct";
+                    team_rating_breakdown.appendChild(sct);
+
+                    // Create div for title (OFF, DEF, PHYS)
+                    let title = document.createElement("div");
+                    title.id = "team-summary-rating-breakdown-title-" + (k + 1);
+                    title.className = "team-summary-rating-breakdown-title";
+                    sct.appendChild(title);
+                    title.innerHTML = sct_array[k];
+
+                    // Create div for rating bar (outer)
+                    let bar = document.createElement("div");
+                    bar.id = "team-summary-rating-breakdown-bar-" + (k + 1);
+                    bar.className = "team-summary-rating-breakdown-bar";
+                    sct.appendChild(bar);
+
+                    // Create div for rating bar fill (inner)
+                    let fill = document.createElement("div");
+                    fill.id = "team-summary-rating-breakdown-fill-" + (k + 1);
+                    fill.className = "team-summary-rating-breakdown-fill";
+                    bar.appendChild(fill);
+
+                    // Create div for rating value
+                    let value = document.createElement("div");
+                    value.id = "team-summary-rating-breakdown-value-" + (k + 1);
+                    value.className = "team-summary-rating-breakdown-value";
+                    sct.appendChild(value);
+                    value.innerHTML = "NA";
+
+                }
+
+                // Initialize empty array
+                let team_rating_array = [];
+
+                // Iterate through each player on selected team
+                for (let i = 0; i < team.players.length; i++) {
+
+                    // Fetch player id
+                    let card = team.players[i];
+
+                    // Create div for row containing player info
+                    let row = document.createElement("div")
+                    row.id = "team-row-" + i;
+                    row.className = "team-row div-fadein";
+
+                    // Create div for container inside of row
+                    let container = document.createElement("div");
+                    container.id = "team-row-container-" + i;
+                    container.className = "team-row-container";
+                    row.appendChild(container);
+
+                    // Create div for position
+                    let position = document.createElement("div");
+                    position.id = "team-row-position-" + i;
+                    position.className = "team-position";
+                    container.appendChild(position);
+                    position.innerHTML = position_array[i % 5];
+
+                    // Create div for image
+                    let image = document.createElement("div");
+                    image.id = "team-row-image-" + i;
+                    image.className = "team-image";
+                    container.appendChild(image);
+
+                    // Create div for description
+                    let description = document.createElement("div");
+                    description.id = "team-row-description-" + i;
+                    description.className = "team-description";
+                    container.appendChild(description);
+
+                    // Create div for description box
+                    let description_box = document.createElement("div");
+                    description_box.id = "team-description-box-" + i;
+                    description_box.className = "team-description-box";
+                    description.appendChild(description_box);
+
+                    // Create div for description row 1
+                    let descr_row_1 = document.createElement("div");
+                    descr_row_1.id = "team-description-row-1";
+                    descr_row_1.className = "team-description-row";
+                    description_box.appendChild(descr_row_1);
+
+                    // Create div for description row 2
+                    let descr_row_2 = document.createElement("div");
+                    descr_row_2.id = "team-description-row-2";
+                    descr_row_2.className = "team-description-row";
+                    description_box.appendChild(descr_row_2);
+
+                    // Create div for description row 3
+                    let descr_row_3 = document.createElement("div");
+                    descr_row_3.id = "team-description-row-3";
+                    descr_row_3.className = "team-description-row";
+                    description_box.appendChild(descr_row_3);
+
+                    // Create div for rating
+                    let rating = document.createElement("div");
+                    rating.id = "team-row-rating-" + i;
+                    rating.className = "team-rating";
+                    container.appendChild(rating);
+
+                    // Create div for rating box
+                    let rating_box = document.createElement("div");
+                    rating_box.id = "team-rating-box-" + i;
+                    rating_box.className = "team-rating-box";
+                    rating.appendChild(rating_box);
+
+                    // Append to right section based on starter vs bench
+                    if (i < 5) {
+                        starters.appendChild(row);
+                    } else {
+                        bench.appendChild(row);
+                    }
+
+                    // If player is missing
+                    if (card == "") {
+
+                        // Create div for "ADD PLAYER" overlay
+                        let add_player = document.createElement("div");
+                        add_player.id = "team-row-add-player-" + i;
+                        add_player.className = "team-add-player";
+                        row.appendChild(add_player);
+                        add_player.innerHTML = "ADD PLAYER";
+
+                        add_player.addEventListener("click", function() {
+
+                            displaySpecificPage("collection-container");
+                            loadCollection();
+
+                        });
+
+                    } else {
+
+                        // Create div for player image
+                        let img = document.createElement("img");
+                        img.id = "team-row-image-img-" + i;
+                        img.src = "assets/images/thumbs/" + card.image + "_" + card.id + ".png";
+                        image.appendChild(img);
+
+                        image.style.background = card.color2;
+
+                        // Update description background colors
+                        description.style.background = card.color2;
+                        description.style.color = card.color3;
+
+                        // Update player info
+                        descr_row_1.innerHTML = card.first + " " + card.last;
+                        descr_row_2.innerHTML = card.position;
+                        descr_row_3.innerHTML = card.team;
+
+                        // If player name too long (>15 characters), reduce font size
+                        if ((card.first.length + card.last.length) > 15) {
+                            descr_row_1.style.fontSize = "81%";
+                        }
+
+                        // If team name too long (>15 characters), reduce font size
+                        if (card.team.length > 15) {
+                            descr_row_3.style.fontSize = "81%";
+                        }
+
+                        // Fetch player rating object
+                        let rating_obj = calculateRatings(card);
+                        // Update player rating and corresponding color
+                        rating_box.innerHTML = Math.round(rating_obj.overall);
+                        rating_box.style.background = getRatingColor(Math.round(rating_obj.overall));
+                        rating.style.background = card.color2;
+
+                        // Add rating object to array (for team overall calculations)
+                        team_rating_array.push(rating_obj);
+                        // Calculate mean and update rating
+                        let overall = calculateTeamRating(team_rating_array, "overall");
+                        team_rating_box.innerHTML = Math.round(overall);
+                        team_rating_box.style.background = getRatingColor(overall);
+
+                        // Calculate team offense and update values
+                        let offense = calculateTeamRating(team_rating_array, "offense");
+                        document.getElementById("team-summary-rating-breakdown-value-1").innerHTML = Math.round(offense);
+                        document.getElementById("team-summary-rating-breakdown-fill-1").style.width = Math.round(offense) + "%";
+                        document.getElementById("team-summary-rating-breakdown-fill-1").style.background = getRatingColor(offense);
+
+                        // Calculate team defense and update values
+                        let defense = calculateTeamRating(team_rating_array, "defense");
+                        document.getElementById("team-summary-rating-breakdown-value-2").innerHTML = Math.round(defense);
+                        document.getElementById("team-summary-rating-breakdown-fill-2").style.width = Math.round(defense) + "%";
+                        document.getElementById("team-summary-rating-breakdown-fill-2").style.background = getRatingColor(defense);
+
+                        // Calculate team physical and update values
+                        let physical = calculateTeamRating(team_rating_array, "physical");
+                        document.getElementById("team-summary-rating-breakdown-value-3").innerHTML = Math.round(physical);
+                        document.getElementById("team-summary-rating-breakdown-fill-3").style.width = Math.round(physical) + "%";
+                        document.getElementById("team-summary-rating-breakdown-fill-3").style.background = getRatingColor(physical);
+
+                    }
+                }
+
+                // Fetch row 2 of team summary section and reset content
+                let team_summary_row2 = document.getElementById("team-summary-row-2");
+                team_summary_row2.innerHTML = "";
+
+                let randomize_team_div = document.createElement("div");
+                randomize_team_div.id = "team-randimize-team-container";
+                team_summary_row2.appendChild(randomize_team_div);
+
+                let randomize_team_button = document.createElement("div");
+                randomize_team_button.id = "team-randomize-team-button";
+                randomize_team_button.className = "action_btn";
+                randomize_team_div.appendChild(randomize_team_button);
+                randomize_team_button.innerHTML = "Random";
+
+                console.log(collection.length);
+                if (collection.length > 30) {
+
+                    randomize_team_button.addEventListener("click", function() {
+
+                        team_usr = generateRandomTeam(
+                            subsetCardPool(collection, {
+                                "position": null,
+                                "conference": null,
+                                "unlockedlevel": null,
+                                "exclude": null
+                            })
+                        );
+
+                        loadUserRandomTeam(team_usr);
 
                     });
 
                 } else {
 
-                    // Create div for player image
-                    let img = document.createElement("img");
-                    img.id = "team-row-image-img-" + i;
-                    img.src = "assets/images/thumbs/" + card.image + "_" + card.id + ".png";
-                    image.appendChild(img);
-
-                    image.style.background = card.color2;
-
-                    // Update description background colors
-                    description.style.background = card.color2;
-                    description.style.color = card.color3;
-
-                    // Update player info
-                    descr_row_1.innerHTML = card.first + " " + card.last;
-                    descr_row_2.innerHTML = card.position;
-                    descr_row_3.innerHTML = card.team;
-
-                    // If player name too long (>15 characters), reduce font size
-                    if ((card.first.length + card.last.length) > 15) {
-                        descr_row_1.style.fontSize = "81%";
-                    }
-
-                    // If team name too long (>15 characters), reduce font size
-                    if (card.team.length > 15) {
-                        descr_row_3.style.fontSize = "81%";
-                    }
-
-                    // Fetch player rating object
-                    let rating_obj = calculateRatings(card);
-                    // Update player rating and corresponding color
-                    rating_box.innerHTML = Math.round(rating_obj.overall);
-                    rating_box.style.background = getRatingColor(Math.round(rating_obj.overall));
-                    rating.style.background = card.color2;
-
-                    // Add rating object to array (for team overall calculations)
-                    team_rating_array.push(rating_obj);
-                    // Calculate mean and update rating
-                    let overall = calculateTeamRating(team_rating_array, "overall");
-                    team_rating_box.innerHTML = Math.round(overall);
-                    team_rating_box.style.background = getRatingColor(overall);
-
-                    // Calculate team offense and update values
-                    let offense = calculateTeamRating(team_rating_array, "offense");
-                    document.getElementById("team-summary-rating-breakdown-value-1").innerHTML = Math.round(offense);
-                    document.getElementById("team-summary-rating-breakdown-fill-1").style.width = Math.round(offense) + "%";
-                    document.getElementById("team-summary-rating-breakdown-fill-1").style.background = getRatingColor(offense);
-
-                    // Calculate team defense and update values
-                    let defense = calculateTeamRating(team_rating_array, "defense");
-                    document.getElementById("team-summary-rating-breakdown-value-2").innerHTML = Math.round(defense);
-                    document.getElementById("team-summary-rating-breakdown-fill-2").style.width = Math.round(defense) + "%";
-                    document.getElementById("team-summary-rating-breakdown-fill-2").style.background = getRatingColor(defense);
-
-                    // Calculate team physical and update values
-                    let physical = calculateTeamRating(team_rating_array, "physical");
-                    document.getElementById("team-summary-rating-breakdown-value-3").innerHTML = Math.round(physical);
-                    document.getElementById("team-summary-rating-breakdown-fill-3").style.width = Math.round(physical) + "%";
-                    document.getElementById("team-summary-rating-breakdown-fill-3").style.background = getRatingColor(physical);
+                    let overlay = document.createElement("div");
+                    overlay.id = "team-randomize-team-button-locked";
+                    randomize_team_button.appendChild(overlay);
+                    overlay.innerHTML = "<i class='fas fa-lock'></i>";
 
                 }
-            }
-
-            // Fetch row 2 of team summary section and reset content
-            let team_summary_row2 = document.getElementById("team-summary-row-2");
-            team_summary_row2.innerHTML = "";
-
-            let randomize_team_div = document.createElement("div");
-            randomize_team_div.id = "team-randimize-team-container";
-            team_summary_row2.appendChild(randomize_team_div);
-
-            let randomize_team_button = document.createElement("div");
-            randomize_team_button.id = "team-randimize-team-button";
-            randomize_team_button.className = "action_btn";
-            randomize_team_div.appendChild(randomize_team_button);
-            randomize_team_button.innerHTML = "Random";
-
-            randomize_team_button.addEventListener("click", function() {
-
-                team_usr = generateRandomTeam(
-                    subsetCardPool(players_json, {
-                        "position": null,
-                        "conference": null,
-                        "unlockedlevel": null,
-                        "exclude": null
-                    })
-                );
-
-                loadUserRandomTeam(team_usr);
 
             });
 
@@ -4448,26 +4466,29 @@ function generateRandomTeam(subset = null) {
             "position": position_array[i],
             "conference": null,
             "unlockedlevel": null,
-            "exclude": null
+            "exclude": to_exclude
         });
 
         let random_1 = pool_sub[randomIntFromInterval(0, pool_sub.length - 1)];
-        pool_sub = removePlayerFromPool(pool_sub, random_1);
+        pool_sub = subsetCardPool(pool_sub, {
+            "position": null,
+            "conference": null,
+            "unlockedlevel": null,
+            "exclude": [random_1.id]
+        });
 
         let random_2 = pool_sub[randomIntFromInterval(0, pool_sub.length - 1)];
-        pool_sub = removePlayerFromPool(pool_sub, random_2);
+        pool_sub = subsetCardPool(pool_sub, {
+            "position": null,
+            "conference": null,
+            "unlockedlevel": null,
+            "exclude": [random_2.id]
+        });
 
         to_exclude.push(random_1.id);
         to_exclude.push(random_2.id);
 
         console.log(to_exclude);
-
-        pool_sub = subsetCardPool(pool_sub, {
-            "position": null,
-            "conference": null,
-            "unlockedlevel": null,
-            "exclude": to_exclude
-        })
 
         if (calculateRatings(random_1).overall > calculateRatings(random_2).overall) {
 

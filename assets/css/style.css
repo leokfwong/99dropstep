@@ -850,8 +850,19 @@ input#collection-search-input-box {
     height: 50%;
     color: #E1C773;
 }
-#team-randimize-team-button {
+#team-randomize-team-button {
     background: #E1C773;
+    position: relative;
+}
+#team-randomize-team-button-locked {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .92);
+    color: #E1C773;
 }
 #team-starters, #team-bench {
     height: 60%;
