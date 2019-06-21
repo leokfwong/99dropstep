@@ -3540,7 +3540,7 @@ function simulateNextPossession() {
 
             console.log("Game Over");
 
-            displayEndGameRewards();
+            displayEndGameRewards(play);
 
             let action_btn = document.getElementById("play-action-next-possession-btn");
             action_btn.innerHTML = "Quit";
@@ -3556,9 +3556,19 @@ function simulateNextPossession() {
 
 }
 
-function displayEndGameRewards() {
+function displayEndGameRewards(play) {
 
     console.log("Displaying rewards");
+
+    let outcome;
+    let outcome_color;
+    if (fetchScore(play, "usr") > fetchScore(play, "cpu")) {
+        outcome = "Win";
+        outcome_color = "#22B573";
+    } else {
+        outcome = "Loss";
+        outcome_color = "#d24d57";
+    }
 
     let end_game_rewards_overlay = document.getElementById("play-end-game-rewards-overlay");
     end_game_rewards_overlay.innerHTML = "";
@@ -3576,7 +3586,8 @@ function displayEndGameRewards() {
     let end_game_rewards_winlose_div = document.createElement("div");
     end_game_rewards_winlose_div.id = "play-end-game-rewards-winlose-div";
     end_game_rewards_outcome_div.appendChild(end_game_rewards_winlose_div);
-    end_game_rewards_winlose_div.innerHTML = "WIN";
+    end_game_rewards_winlose_div.innerHTML = outcome;
+    end_game_rewards_winlose_div.style.color = outcome_color;
 
     let end_game_rewards_title_div = document.createElement("div");
     end_game_rewards_title_div.id = "play-end-game-rewards-title-div";
@@ -3586,7 +3597,7 @@ function displayEndGameRewards() {
     let end_game_rewards_score_div = document.createElement("div");
     end_game_rewards_score_div.id = "play-end-game-rewards-score-div";
     end_game_rewards_outcome_div.appendChild(end_game_rewards_score_div);
-    end_game_rewards_score_div.innerHTML = "109 - 103";
+    end_game_rewards_score_div.innerHTML = fetchScore(play, "usr") + " - " + fetchScore(play, "cpu");
 
     let end_game_rewards_table_div = document.createElement("div");
     end_game_rewards_table_div.id = "play-end-game-rewards-table-div";
@@ -3595,6 +3606,53 @@ function displayEndGameRewards() {
     let end_game_rewards_list_div = document.createElement("div");
     end_game_rewards_list_div.id = "play-end-game-rewards-list-div";
     end_game_rewards_table_div.appendChild(end_game_rewards_list_div);
+
+    let rewards_list = [{
+        "id": "01",
+        "label": "Total points",
+        "multiplier": "1"
+    }, {
+        "id": "02",
+        "label": "Total rebounds",
+        "multiplier": "2"
+    }, {
+        "id": "03",
+        "label": "Total assists",
+        "multiplier": "2"
+    }, {
+        "id": "04",
+        "label": "Total steals",
+        "multiplier": "3"
+    }, {
+        "id": "05",
+        "label": "Total blocks",
+        "multiplier": "3"
+    }, {
+        "id": "06",
+        "label": "Overall team grade",
+        "multiplier": "3"
+    }];
+
+    for (let i = 0; i < rewards_list.length; i++) {
+
+        let rewards_row = document.createElement("div");
+        rewards_row.id = "play-end-game-rewards-list-row-" + (i+1);
+        rewards_row.className = "play-end-game-rewards-list-row";
+        end_game_rewards_list_div.appendChild(rewards_row);
+
+        let label = document.createElement("div");
+        label.id = "play-end-game-rewards-list-row-label-" + (i+1);
+        label.className = "play-end-game-rewards-list-row-label";
+        rewards_row.appendChild(label);
+        label.innerHTML = rewards_list[i].label + "(" + ")";
+
+        let value = document.createElement("div");
+        value.id = "play-end-game-rewards-list-row-value-" + (i+1);
+        value.className = "play-end-game-rewards-list-row-value";
+        rewards_row.appendChild(value);
+        value.innerHTML = "0";
+
+    }
 
     let end_game_rewards_total_div = document.createElement("div");
     end_game_rewards_total_div.id = "play-end-game-rewards-total-div";
