@@ -2636,6 +2636,29 @@ input#collection-search-input-box {
     width: 90%;
     height: 10%;
 }
+#play-end-game-rewards-total-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 10%;
+}
+#play-end-game-rewards-total-row-label {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 70%;
+    height: 100%;
+    font-size: 125%;
+}
+#play-end-game-rewards-total-row-value {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 30%;
+    height: 100%;
+    font-size: 125%;
+}
 #play-end-game-rewards-button-div {
     display: flex;
     justify-content: flex-end;

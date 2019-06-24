@@ -3610,53 +3610,82 @@ function displayEndGameRewards(play) {
     let rewards_list = [{
         "id": "01",
         "label": "Total points",
+        "stat": "pts",
         "multiplier": "1"
     }, {
         "id": "02",
         "label": "Total rebounds",
+        "stat": "reb",
         "multiplier": "2"
     }, {
         "id": "03",
         "label": "Total assists",
+        "stat": "ast",
         "multiplier": "2"
     }, {
         "id": "04",
         "label": "Total steals",
+        "stat": "stl",
         "multiplier": "3"
     }, {
         "id": "05",
         "label": "Total blocks",
+        "stat": "blk",
         "multiplier": "3"
     }, {
         "id": "06",
         "label": "Overall team grade",
+        "stat": "tg",
         "multiplier": "3"
     }];
+
+    let total_earned = 0;
 
     for (let i = 0; i < rewards_list.length; i++) {
 
         let rewards_row = document.createElement("div");
-        rewards_row.id = "play-end-game-rewards-list-row-" + (i+1);
+        rewards_row.id = "play-end-game-rewards-list-row-" + (i + 1);
         rewards_row.className = "play-end-game-rewards-list-row";
         end_game_rewards_list_div.appendChild(rewards_row);
 
         let label = document.createElement("div");
-        label.id = "play-end-game-rewards-list-row-label-" + (i+1);
+        label.id = "play-end-game-rewards-list-row-label-" + (i + 1);
         label.className = "play-end-game-rewards-list-row-label";
         rewards_row.appendChild(label);
-        label.innerHTML = rewards_list[i].label + "(" + ")";
+        if (rewards_list[i].id == "06") {
+            label.innerHTML = rewards_list[i].label + " (" + fetchTeammateGrade(fetchTeamCategoryTotals(play, "usr", rewards_list[i].stat) / 10) + ")";
+        } else {
+            label.innerHTML = rewards_list[i].label + " (" + fetchTeamCategoryTotals(play, "usr", rewards_list[i].stat) + ")";
+        }
 
         let value = document.createElement("div");
-        value.id = "play-end-game-rewards-list-row-value-" + (i+1);
+        value.id = "play-end-game-rewards-list-row-value-" + (i + 1);
         value.className = "play-end-game-rewards-list-row-value";
         rewards_row.appendChild(value);
-        value.innerHTML = "0";
+        let earning = Math.round(fetchTeamCategoryTotals(play, "usr", rewards_list[i].stat)) * rewards_list[i].multiplier
+        value.innerHTML = earning;
+
+        total_earned += earning;
 
     }
 
     let end_game_rewards_total_div = document.createElement("div");
     end_game_rewards_total_div.id = "play-end-game-rewards-total-div";
     end_game_rewards_table_div.appendChild(end_game_rewards_total_div);
+
+    let rewards_total_row = document.createElement("div");
+    rewards_total_row.id = "play-end-game-rewards-total-row";
+    end_game_rewards_total_div.appendChild(rewards_total_row);
+
+    let label_total = document.createElement("div");
+    label_total.id = "play-end-game-rewards-total-row-label";
+    rewards_total_row.appendChild(label_total);
+    label_total.innerHTML = "Total";
+
+    let value_total = document.createElement("div");
+    value_total.id = "play-end-game-rewards-total-row-value";
+    rewards_total_row.appendChild(value_total);
+    value_total.innerHTML = total_earned;
 
     let end_game_rewards_sct_2 = document.createElement("div");
     end_game_rewards_sct_2.id = "play-end-game-rewards-sct-2";
@@ -3678,6 +3707,20 @@ function displayEndGameRewards(play) {
         end_game_rewards_overlay.style.display = "none";
 
     });
+
+}
+
+function fetchTeamCategoryTotals(play, agent, category) {
+
+    let total = 0;
+
+    for (let i = 0; i < 10; i++) {
+
+        total += play.team[agent].roster[i].gamestats.stats[category];
+
+    }
+
+    return (total);
 
 }
 
@@ -4784,7 +4827,15 @@ function initializeBoxscore(agent) {
     toggle_box.appendChild(toggle_usr);
     toggle_usr.innerHTML = "USR";
     toggle_usr.addEventListener("click", function() {
+
         initializeBoxscore("usr");
+        fetchRecord("play", "0001", function(play) {
+            play.boxscoreView = "usr";
+            console.log("Switching boxscore view to usr");
+            removeRecord("play", "0001");
+            addRecord("play", play);
+        });
+
     });
 
     let toggle_cpu = document.createElement("div");
@@ -4793,7 +4844,15 @@ function initializeBoxscore(agent) {
     toggle_box.appendChild(toggle_cpu);
     toggle_cpu.innerHTML = "CPU";
     toggle_cpu.addEventListener("click", function() {
+
         initializeBoxscore("cpu");
+        fetchRecord("play", "0001", function(play) {
+            play.boxscoreView = "cpu";
+            console.log("Switching boxscore view to cpu");
+            removeRecord("play", "0001");
+            addRecord("play", play);
+        });
+
     });
 
     if (agent == "usr") {
