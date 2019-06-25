@@ -2432,16 +2432,33 @@ function initializePlayoffsHomepage(playoffs_obj) {
     playoffs_score_cpu_div.appendChild(playoffs_score_cpu_value);
     playoffs_score_cpu_value.innerHTML = "0";
 
-    let playoffs_games_section = document.createElement("div");
-    playoffs_games_section.id = "playoffs-homepage-games-section";
-    container.appendChild(playoffs_games_section);
+    let playoffs_games_section_1 = document.createElement("div");
+    playoffs_games_section_1.id = "playoffs-homepage-games-section-1";
+    playoffs_games_section_1.className = "playoffs-homepage-games-section";
+    container.appendChild(playoffs_games_section_1);
 
-    for (let x = 0; x < 7; x++) {
+    for (let x = 1; x <= 4; x++) {
 
         let playoffs_games_div = document.createElement("div");
         playoffs_games_div.id = "playoffs-homepage-games-div-" + x;
         playoffs_games_div.className = "playoffs-homepage-games-div";
-        playoffs_games_section.appendChild(playoffs_games_div);
+        playoffs_games_section_1.appendChild(playoffs_games_div);
+        playoffs_games_div.innerHTML = "Game " + x;
+
+    }
+
+    let playoffs_games_section_2 = document.createElement("div");
+    playoffs_games_section_2.id = "playoffs-homepage-games-section-2";
+    playoffs_games_section_2.className = "playoffs-homepage-games-section";
+    container.appendChild(playoffs_games_section_2);
+
+    for (let x = 5; x <= 7; x++) {
+
+        let playoffs_games_div = document.createElement("div");
+        playoffs_games_div.id = "playoffs-homepage-games-div-" + x;
+        playoffs_games_div.className = "playoffs-homepage-games-div";
+        playoffs_games_section_2.appendChild(playoffs_games_div);
+        playoffs_games_div.innerHTML = "Game " + x;
 
     }
 
