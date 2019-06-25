@@ -1297,6 +1297,13 @@ function loadCollection() {
                     row.appendChild(stats);
                     stats.style.background = collection[i].color2;
 
+                    let level = document.createElement("div");
+                    level.id = "collection-level-" + id;
+                    level.className = "collection-level";
+                    stats.appendChild(level);
+                    level.innerHTML = "Level " + collection[i].level;
+                    level.style.color = collection[i].color3;
+
                     let rating = document.createElement("div");
                     rating.id = "collection-rating-" + id;
                     rating.className = "collection-rating";

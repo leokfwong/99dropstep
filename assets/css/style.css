@@ -638,9 +638,9 @@ input#collection-search-input-box {
 .collection-rating {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     width: 100%;
-    height: 70%;
+    height: 56%;
     font-weight: bold;
     font-size: 172%;
 }
@@ -652,12 +652,21 @@ input#collection-search-input-box {
     padding: 5px;
     border-radius: 5px;
 }
+.collection-level {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 81%;
+    font-weight: bold;
+    width: 100%;
+    height: 22%;
+}
 .collection-count {
     display: flex;
     justify-content: center;
     align-items: flex-start;
     width: 100%;
-    height: 30%;
+    height: 22%;
 }
 .collection-count-box {
     display: flex;
