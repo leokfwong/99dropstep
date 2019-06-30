@@ -2437,28 +2437,51 @@ function initializePlayoffsHomepage(playoffs_obj) {
     playoffs_games_section_1.className = "playoffs-homepage-games-section";
     container.appendChild(playoffs_games_section_1);
 
-    for (let x = 1; x <= 4; x++) {
-
-        let playoffs_games_div = document.createElement("div");
-        playoffs_games_div.id = "playoffs-homepage-games-div-" + x;
-        playoffs_games_div.className = "playoffs-homepage-games-div";
-        playoffs_games_section_1.appendChild(playoffs_games_div);
-        playoffs_games_div.innerHTML = "Game " + x;
-
-    }
-
     let playoffs_games_section_2 = document.createElement("div");
     playoffs_games_section_2.id = "playoffs-homepage-games-section-2";
     playoffs_games_section_2.className = "playoffs-homepage-games-section";
     container.appendChild(playoffs_games_section_2);
 
-    for (let x = 5; x <= 7; x++) {
+    for (let x = 1; x <= 7; x++) {
 
         let playoffs_games_div = document.createElement("div");
         playoffs_games_div.id = "playoffs-homepage-games-div-" + x;
         playoffs_games_div.className = "playoffs-homepage-games-div";
-        playoffs_games_section_2.appendChild(playoffs_games_div);
-        playoffs_games_div.innerHTML = "Game " + x;
+        if (x <= 4) {
+            playoffs_games_section_1.appendChild(playoffs_games_div);
+        } else {
+            playoffs_games_section_2.appendChild(playoffs_games_div);
+        }
+
+
+        let game_box = document.createElement("div");
+        game_box.id = "playoffs-homepage-games-div-game-box-" + x;
+        game_box.className = "playoffs-homepage-games-div-game-box";
+        playoffs_games_div.appendChild(game_box);
+        game_box.innerHTML = "Game " + x;
+
+        let game_outcome = document.createElement("div");
+        game_outcome.id = "playoffs-homepage-games-div-game-outcome-" + x;
+        game_outcome.className = "playoffs-homepage-games-div-game-outcome";
+        playoffs_games_div.appendChild(game_outcome);
+        game_outcome.innerHTML = "TBD";
+
+        let game_score = document.createElement("div");
+        game_score.id = "playoffs-homepage-games-div-game-score-" + x;
+        game_score.className = "playoffs-homepage-games-div-game-score";
+        playoffs_games_div.appendChild(game_score);
+        game_score.innerHTML = "0 - 0";
+
+        let game_boxscore = document.createElement("div");
+        game_boxscore.id = "playoffs-homepage-games-div-game-boxscore-" + x;
+        game_boxscore.className = "playoffs-homepage-games-div-game-boxscore";
+        playoffs_games_div.appendChild(game_boxscore);
+
+        let game_boxscore_button = document.createElement("div");
+        game_boxscore_button.id = "playoffs-homepage-games-div-game-boxscore-button-" + x;
+        game_boxscore_button.className = "playoffs-homepage-games-div-game-boxscore-button";
+        game_boxscore.appendChild(game_boxscore_button);
+        game_boxscore_button.innerHTML = "Boxscore";
 
     }
 
@@ -2487,7 +2510,28 @@ function initializePlayoffsHomepage(playoffs_obj) {
         "opponentTeamID": playoffs_obj.id,
         "usrScore": 0,
         "cpuScore": 0,
-        "boxscore": [],
+        "stats": [{
+            "game": 1,
+            "play": null
+        }, {
+            "game": 2,
+            "play": null
+        }, {
+            "game": 3,
+            "play": null
+        }, {
+            "game": 4,
+            "play": null
+        }, {
+            "game": 5,
+            "play": null
+        }, {
+            "game": 6,
+            "play": null
+        }, {
+            "game": 7,
+            "play": null
+        }]
     }
 
     removeRecord("playoffs", "0001");
@@ -2497,11 +2541,41 @@ function initializePlayoffsHomepage(playoffs_obj) {
 
 function loadPlayoffsHomepage(playoffs) {
 
+    let games_played = 0;
+    for (let i = 0; i < playoffs.stats.length; i++) {
+        if (playoffs.stats[i].play != null) {
+            games_played++;
+        }
+    }
+
     let usr_score = document.getElementById("playoffs-homepage-score-usr-value");
     usr_score.innerHTML = playoffs.usrScore;
 
     let cpu_score = document.getElementById("playoffs-homepage-score-cpu-value");
     cpu_score.innerHTML = playoffs.cpuScore;
+
+    for (let j = 1; j <= games_played; j++) {
+
+        let score_usr = fetchScore(playoffs.stats[j - 1].play, "usr");
+        let score_cpu = fetchScore(playoffs.stats[j - 1].play, "cpu");
+        let outcome;
+        let outcome_color;
+        if (score_usr > score_cpu) {
+            outcome = "W";
+            outcome_color = "#22B573"
+        } else {
+            outcome = "L";
+            outcome_color = "#d24d57";
+        }
+
+        let game_outcome = document.getElementById("playoffs-homepage-games-div-game-outcome-" + j);
+        game_outcome.innerHTML = outcome;
+        game_outcome.style.color = outcome_color;
+
+        let game_score = document.getElementById("playoffs-homepage-games-div-game-score-" + j);
+        game_score.innerHTML = score_usr + " - " + score_cpu;
+
+    }
 
 }
 
@@ -3431,6 +3505,19 @@ function updateRatingsAfterStamina(play) {
 
 }
 
+function setPlayTime(time) {
+
+    fetchRecord("play", "0001", function(play) {
+
+        play.time = time;
+
+        removeRecord("play", "0001");
+        addRecord("play", play);
+
+    });
+
+}
+
 function simulateNextPossession() {
 
     fetchRecord("play", "0001", function(play) {
@@ -3601,11 +3688,24 @@ function simulateNextPossession() {
 
                         }
 
+                        let game = 1;
+                        for (let i = 0; i < playoffs.stats.length; i++) {
+                            if (playoffs.stats[i].play != null) {
+                                game++;
+                            }
+                        }
+                        playoffs.stats[game - 1].play = play;
+
                         removeRecord("playoffs", "0001");
                         addRecord("playoffs", playoffs);
 
                         displaySpecificPage("gamemodes-playoffs-team-homepage");
                         loadPlayoffsHomepage(playoffs);
+
+                        if (playoffs.usrScore == 4 | playoffs.cpuScore == 4) {
+                            console.log("END PLAYOFFS");
+                            removeRecord("playoffs", "0001");
+                        }
 
                     });
 

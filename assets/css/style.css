@@ -1701,11 +1701,53 @@ input#collection-search-input-box {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     width: 25%;
     height: 100%;
     outline: solid 1px white;
     background: rgba(0, 0, 0, .81);
     color: white;
+}
+.playoffs-homepage-games-div-game-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 25%;
+    font-size: 81%;
+    background: rgba(0, 0, 0, .9);
+}
+.playoffs-homepage-games-div-game-outcome {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    width: 100%;
+    height: 25%;
+}
+.playoffs-homepage-games-div-game-score {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 25%;
+}
+.playoffs-homepage-games-div-game-boxscore {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 25%;
+    font-size: 81%;
+}
+.playoffs-homepage-games-div-game-boxscore-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 80%;
+    border-radius: 2px;
+    background: #E1C773;
+    color: #2A2723;
 }
 #playoffs-homepage-play-section {
     display: flex;
