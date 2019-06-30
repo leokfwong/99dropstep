@@ -2495,6 +2495,16 @@ function initializePlayoffsHomepage(playoffs_obj) {
 
 }
 
+function loadPlayoffsHomepage(playoffs) {
+
+    let usr_score = document.getElementById("playoffs-homepage-score-usr-value");
+    usr_score.innerHTML = playoffs.usrScore;
+
+    let cpu_score = document.getElementById("playoffs-homepage-score-cpu-value");
+    cpu_score.innerHTML = playoffs.cpuScore;
+
+}
+
 function initializePlay(gamemode) {
 
     displaySpecificPage("play-container");
@@ -2592,6 +2602,7 @@ function initializePlayStats(gamemode) {
 
                 let play_stats_json = {
                     "id": "0001",
+                    "gamemode": gamemode,
                     "possession": "",
                     "possessionNumber": 1,
                     "time": 2880,
@@ -3571,7 +3582,37 @@ function simulateNextPossession() {
             action_btn.style.background = "#d24d57"; //RED
 
             action_btn.addEventListener("click", function() {
-                displaySpecificPage("gamemodes-container");
+
+                if (play.gamemode == "Quick Game") {
+
+                    displaySpecificPage("gamemodes-container");
+
+                } else if (play.gamemode == "Playoffs") {
+
+                    fetchRecord("playoffs", "0001", function(playoffs) {
+
+                        if (fetchScore(play, "usr") > fetchScore(play, "cpu")) {
+
+                            playoffs.usrScore++;
+
+                        } else {
+
+                            playoffs.cpuScore++;
+
+                        }
+
+                        removeRecord("playoffs", "0001");
+                        addRecord("playoffs", playoffs);
+
+                        displaySpecificPage("gamemodes-playoffs-team-homepage");
+                        loadPlayoffsHomepage(playoffs);
+
+                    });
+
+                } else {
+                    console("Something happened...");
+                }
+
             });
 
         }
