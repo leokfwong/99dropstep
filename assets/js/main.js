@@ -2575,6 +2575,9 @@ function loadPlayoffsHomepage(playoffs) {
         let game_score = document.getElementById("playoffs-homepage-games-div-game-score-" + j);
         game_score.innerHTML = score_usr + " - " + score_cpu;
 
+        let game_boxscore_button = document.getElementById("playoffs-homepage-games-div-game-boxscore-button-" + j);
+        game_boxscore_button.style.background = "#E1C773";
+
     }
 
 }

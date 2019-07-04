@@ -1746,7 +1746,7 @@ input#collection-search-input-box {
     width: 80%;
     height: 80%;
     border-radius: 2px;
-    background: #E1C773;
+    background: lightgrey;
     color: #2A2723;
 }
 #playoffs-homepage-play-section {
