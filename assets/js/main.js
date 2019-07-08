@@ -2505,6 +2505,14 @@ function initializePlayoffsHomepage(playoffs_obj) {
 
     });
 
+    let playoffs_stats_section = document.createElement("div");
+    playoffs_stats_section.id = "playoffs-homepage-stats-section";
+    container.appendChild(playoffs_stats_section);
+
+    let playoffs_stats_div = document.createElement("div");
+    playoffs_stats_div.id = "playoffs-homepage-stats-div";
+    playoffs_stats_section.appendChild(playoffs_stats_div);
+
     let playoffs_stats_json = {
         "id": "0001",
         "opponentTeamID": playoffs_obj.id,
@@ -3381,10 +3389,6 @@ function makeSubstitutions(play) {
 
                         console.log(player_2.first + " " + player_2.last + " subs in for " + player_1.first + " " + player_1.last);
 
-
-                        let sub_light = document.getElementById("play-" + agents[i] + "-oncourt-player-sub-light-" + (j + 1));
-                        sub_light.style.background = "#2A2723";
-
                     } else {
                         player_1.gamestats.active = 1;
                         player_2.gamestats.active = 0;
@@ -3393,10 +3397,10 @@ function makeSubstitutions(play) {
                         player_out = player_2;
 
                         console.log(player_1.first + " " + player_1.last + " subs in for " + player_2.first + " " + player_2.last);
-
-                        let sub_light = document.getElementById("play-" + agents[i] + "-oncourt-player-sub-light-" + (j + 1));
-                        sub_light.style.background = "#2A2723";
                     }
+
+                    let sub_light = document.getElementById("play-" + agents[i] + "-oncourt-player-sub-light-" + (j + 1));
+                    sub_light.style.background = "#2A2723";
 
                     let event = {
                         "time": play.time - play.possessionDuration,
