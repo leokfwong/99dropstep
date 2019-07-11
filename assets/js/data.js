@@ -17769,6 +17769,306 @@ const players_json = [{
     "color2": "#233375",
     "color3": "#ffffff",
     "image": "trier_allonzo_newyork_knicks"
+}, {
+    "id": "0294",
+    "type": "player",
+    "first": "Andrew",
+    "last": "Bynum",
+    "height": "7-0",
+    "weight": "285",
+    "number": 17,
+    "country": "United States",
+    "team": "Los Angeles Lakers",
+    "conference": "Western Conference",
+    "season": "2008-2009",
+    "salary": 3,
+    "unlockedlevel": 71,
+    "tier": 2,
+    "rarity": "Common",
+    "level": 1,
+    "count": 1,
+    "ratings": {
+        "inside": {
+            "value": 77,
+            "tendency": 65
+        },
+        "dunk": {
+            "value": 82,
+            "tendency": 21
+        },
+        "midrange": {
+            "value": 66,
+            "tendency": 14
+        },
+        "outside": {
+            "value": 67,
+            "tendency": 0
+        },
+        "drawfoul": 64,
+        "freethrow": 71,
+        "interior": 80,
+        "perimeter": 71,
+        "offensiverebound": 74,
+        "defensiverebound": 75,
+        "speed": 70,
+        "vertical": 80,
+        "strength": 85,
+        "hands": 80,
+        "stamina": 91,
+        "hustle": 75,
+        "passing": 59,
+        "steal": 47,
+        "block": 67,
+        "offensiveconsistency": 75,
+        "defensiveconsistency": 77
+    },
+    "position": "C",
+    "fgaintensity": 1,
+    "fgaaverage": 10,
+    "color1": "#F9DC62",
+    "color2": "#E5AC2E",
+    "color3": "#463A55",
+    "image": "bynum_andrew_losangeles_lakers"
+}, {
+    "id": "0295",
+    "type": "player",
+    "first": "Derek",
+    "last": "Fisher",
+    "height": "6-1",
+    "weight": "200",
+    "number": 2,
+    "country": "United States",
+    "team": "Los Angeles Lakers",
+    "conference": "Western Conference",
+    "season": "2008-2009",
+    "salary": 5,
+    "unlockedlevel": 52,
+    "tier": 3,
+    "rarity": "Common",
+    "level": 1,
+    "count": 1,
+    "ratings": {
+        "inside": {
+            "value": 68,
+            "tendency": 21
+        },
+        "dunk": {
+            "value": 65,
+            "tendency": 0
+        },
+        "midrange": {
+            "value": 77,
+            "tendency": 35
+        },
+        "outside": {
+            "value": 72,
+            "tendency": 44
+        },
+        "drawfoul": 53,
+        "freethrow": 85,
+        "interior": 71,
+        "perimeter": 74,
+        "offensiverebound": 60,
+        "defensiverebound": 63,
+        "speed": 78,
+        "vertical": 74,
+        "strength": 83,
+        "hands": 82,
+        "stamina": 91,
+        "hustle": 78,
+        "passing": 66,
+        "steal": 60,
+        "block": 42,
+        "offensiveconsistency": 80,
+        "defensiveconsistency": 72
+    },
+    "position": "PG",
+    "fgaintensity": 1,
+    "fgaaverage": 8,
+    "color1": "#534D7C",
+    "color2": "#291942",
+    "color3": "#FCC13D",
+    "image": "fisher_derek_losangeles_lakers"
+}, {
+    "id": "0296",
+    "type": "player",
+    "first": "Lamar",
+    "last": "Odom",
+    "height": "6-10",
+    "weight": "220",
+    "number": 7,
+    "country": "United States",
+    "team": "Los Angeles Lakers",
+    "conference": "Western Conference",
+    "season": "2008-2009",
+    "salary": 14,
+    "unlockedlevel": 62,
+    "tier": 2,
+    "rarity": "Common",
+    "level": 1,
+    "count": 1,
+    "ratings": {
+        "inside": {
+            "value": 73,
+            "tendency": 61
+        },
+        "dunk": {
+            "value": 72,
+            "tendency": 6
+        },
+        "midrange": {
+            "value": 69,
+            "tendency": 18
+        },
+        "outside": {
+            "value": 68,
+            "tendency": 15
+        },
+        "drawfoul": 60,
+        "freethrow": 62,
+        "interior": 77,
+        "perimeter": 76,
+        "offensiverebound": 72,
+        "defensiverebound": 78,
+        "speed": 79,
+        "vertical": 77,
+        "strength": 85,
+        "hands": 89,
+        "stamina": 91,
+        "hustle": 80,
+        "passing": 64,
+        "steal": 57,
+        "block": 60,
+        "offensiveconsistency": 81,
+        "defensiveconsistency": 76
+    },
+    "position": "PF",
+    "fgaintensity": 1,
+    "fgaaverage": 9,
+    "color1": "#F9C85D",
+    "color2": "#EEAC0F",
+    "color3": "#524270",
+    "image": "odom_lamar_losangeles_lakers"
+}, {
+    "id": "0297",
+    "type": "player",
+    "first": "Pau",
+    "last": "Gasol",
+    "height": "7-0",
+    "weight": "250",
+    "number": 16,
+    "country": "Spain",
+    "team": "Los Angeles Lakers",
+    "conference": "Western Conference",
+    "season": "2008-2009",
+    "salary": 15,
+    "unlockedlevel": 69,
+    "tier": 1,
+    "rarity": "Common",
+    "level": 1,
+    "count": 1,
+    "ratings": {
+        "inside": {
+            "value": 81,
+            "tendency": 60
+        },
+        "dunk": {
+            "value": 86,
+            "tendency": 12
+        },
+        "midrange": {
+            "value": 68,
+            "tendency": 28
+        },
+        "outside": {
+            "value": 67,
+            "tendency": 0
+        },
+        "drawfoul": 68,
+        "freethrow": 78,
+        "interior": 81,
+        "perimeter": 72,
+        "offensiverebound": 77,
+        "defensiverebound": 80,
+        "speed": 77,
+        "vertical": 78,
+        "strength": 84,
+        "hands": 87,
+        "stamina": 95,
+        "hustle": 81,
+        "passing": 67,
+        "steal": 50,
+        "block": 55,
+        "offensiveconsistency": 84,
+        "defensiveconsistency": 80
+    },
+    "position": "C/PF",
+    "fgaintensity": 1,
+    "fgaaverage": 13,
+    "color1": "#573CAA",
+    "color2": "#2F1D60",
+    "color3": "#F7AA5C",
+    "image": "gasol_pau_losangeles_lakers"
+}, {
+    "id": "0298",
+    "type": "player",
+    "first": "Trevor",
+    "last": "Ariza",
+    "height": "6-8",
+    "weight": "215",
+    "number": 3,
+    "country": "United States",
+    "team": "Los Angeles Lakers",
+    "conference": "Western Conference",
+    "season": "2008-2009",
+    "salary": 3,
+    "unlockedlevel": 49,
+    "tier": 3,
+    "rarity": "Common",
+    "level": 1,
+    "count": 1,
+    "ratings": {
+        "inside": {
+            "value": 70,
+            "tendency": 36
+        },
+        "dunk": {
+            "value": 80,
+            "tendency": 12
+        },
+        "midrange": {
+            "value": 70,
+            "tendency": 20
+        },
+        "outside": {
+            "value": 70,
+            "tendency": 32
+        },
+        "drawfoul": 55,
+        "freethrow": 71,
+        "interior": 78,
+        "perimeter": 79,
+        "offensiverebound": 66,
+        "defensiverebound": 67,
+        "speed": 75,
+        "vertical": 81,
+        "strength": 77,
+        "hands": 80,
+        "stamina": 88,
+        "hustle": 82,
+        "passing": 61,
+        "steal": 69,
+        "block": 45,
+        "offensiveconsistency": 71,
+        "defensiveconsistency": 78
+    },
+    "position": "SF",
+    "fgaintensity": 0,
+    "fgaaverage": 7,
+    "color1": "#F9DB5D",
+    "color2": "#EDB015",
+    "color3": "#4D2E63",
+    "image": "ariza_trevor_losangeles_lakers"
 }];
 
 const coaches_json = [{
