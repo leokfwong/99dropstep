@@ -548,9 +548,10 @@ function loadTeams() {
 
                                 fill.style.width = (team.players[i].ratings.minutes / 48 * 100) + "%";
 
-                                minutes_remaining.innerHTML = "Minutes remaining: " + (240 - sumTeamTotalMinutes(team.players));
+                                let new_remaining = (240 - sumTeamTotalMinutes(team.players));
+                                minutes_remaining.innerHTML = "Minutes remaining: " + new_remaining;
 
-                                if (remaining != 0) {
+                                if (new_remaining != 0) {
                                     rotation_team_warning.style.display = "flex";
                                 } else {
                                     rotation_team_warning.style.display = "none";
@@ -574,9 +575,10 @@ function loadTeams() {
 
                                 fill.style.width = (team.players[i].ratings.minutes / 48 * 100) + "%";
 
-                                minutes_remaining.innerHTML = "Minutes remaining: " + (240 - sumTeamTotalMinutes(team.players));
+                                let new_remaining = (240 - sumTeamTotalMinutes(team.players));
+                                minutes_remaining.innerHTML = "Minutes remaining: " + new_remaining;
 
-                                if (remaining != 0) {
+                                if (new_remaining != 0) {
                                     rotation_team_warning.style.display = "flex";
                                 } else {
                                     rotation_team_warning.style.display = "none";
