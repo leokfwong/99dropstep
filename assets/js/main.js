@@ -90,9 +90,6 @@ function loadTeams() {
     // Get the divs for starters and bench, these won't change
     let starters = document.getElementById("team-starters");
     let bench = document.getElementById("team-bench");
-    // Reset the content of the above divs to empty
-    starters.innerHTML = "";
-    bench.innerHTML = "";
 
     // Initialize array listing out positions
     let position_array = ["PG", "SG", "SF", "PF", "C"];
@@ -108,6 +105,10 @@ function loadTeams() {
 
             // Fetch all cards in collection
             fetchTable("collection", function(collection) {
+
+                // Reset the content of the above divs to empty
+                starters.innerHTML = "";
+                bench.innerHTML = "";
 
                 // Fetch team selection navigation bar div and reset content
                 let nav = document.getElementById("team-selection-navigation");
@@ -419,10 +420,212 @@ function loadTeams() {
 
                 }
 
+                let rotation_team_div = document.createElement("div");
+                rotation_team_div.id = "team-rotation-team-container";
+                team_summary_row2.appendChild(rotation_team_div);
+
+                let rotation_team_button = document.createElement("div");
+                rotation_team_button.id = "team-rotation-team-button";
+                rotation_team_button.className = "action_btn";
+                rotation_team_div.appendChild(rotation_team_button);
+                rotation_team_button.innerHTML = "Rotation";
+
+                let rotation_team_warning = document.createElement("div");
+                rotation_team_warning.id = "team-rotation-team-warning";
+                rotation_team_warning.className = "warning-icon";
+                rotation_team_button.appendChild(rotation_team_warning);
+                rotation_team_warning.innerHTML = "!";
+
+                if ((240 - sumTeamTotalMinutes(team.players)) != 0) {
+                    rotation_team_warning.style.display = "flex";
+                } else {
+                    rotation_team_warning.style.display = "none";
+                }
+
+                rotation_team_button.addEventListener("click", function() {
+
+                    let overlay = document.getElementById("team-overlay");
+                    overlay.style.display = "flex";
+                    overlay.innerHTML = "";
+
+                    let rotation_menu_container = document.createElement("div");
+                    rotation_menu_container.id = "team-rotation-menu-container";
+                    overlay.appendChild(rotation_menu_container);
+
+                    let rotation_top_container = document.createElement("div");
+                    rotation_top_container.id = "team-rotation-top-container";
+                    rotation_menu_container.appendChild(rotation_top_container);
+
+                    let minutes_remaining = document.createElement("div");
+                    minutes_remaining.id = "team-rotation-top-minutes-remaining";
+                    rotation_top_container.appendChild(minutes_remaining);
+                    minutes_remaining.innerHTML = "Minutes remaining: " + (240 - sumTeamTotalMinutes(team.players));
+
+                    let rotation_minutes_container = document.createElement("div");
+                    rotation_minutes_container.id = "team-rotation-minutes-container";
+                    rotation_menu_container.appendChild(rotation_minutes_container);
+
+                    for (let i = 0; i < team.players.length; i++) {
+
+                        // Fetch player id
+                        let player = team.players[i];
+
+                        let row = document.createElement("div");
+                        row.id = "rotation-minutes-row-" + (i + 1);
+                        row.className = "rotation-minutes-row";
+                        rotation_minutes_container.appendChild(row);
+
+                        let position = document.createElement("div");
+                        position.id = "rotation-minutes-position-" + (i + 1);
+                        position.className = "rotation-minutes-position";
+                        row.appendChild(position);
+                        position.innerHTML = position_array[i % 5];
+
+                        let name = document.createElement("div");
+                        name.id = "rotation-minutes-name-" + (i + 1);
+                        name.className = "rotation-minutes-name";
+                        row.appendChild(name);
+                        name.style.background = player.color2;
+                        name.style.color = player.color3;
+
+                        let name_value = document.createElement("div");
+                        name_value.id = "rotation-minutes-name-value-" + (i + 1);
+                        name_value.className = "rotation-minutes-name-value";
+                        name.appendChild(name_value);
+                        name_value.innerHTML = player.first[0] + ". " + player.last;
+
+                        let overall = document.createElement("div");
+                        overall.id = "rotation-minutes-overall-" + (i + 1);
+                        overall.className = "rotation-minutes-overall team-rating-box";
+                        row.appendChild(overall);
+                        overall.innerHTML = Math.round(calculateRatings(player).overall);
+                        overall.style.color = getRatingColor(Math.round(calculateRatings(player).overall));
+
+                        let minutes = document.createElement("div");
+                        minutes.id = "rotation-minutes-minutes-" + (i + 1);
+                        minutes.className = "rotation-minutes-minutes";
+                        row.appendChild(minutes);
+
+                        let minus = document.createElement("div");
+                        minus.id = "rotation-minutes-minus-" + (i + 1);
+                        minus.className = "rotation-minutes-minus";
+                        minutes.appendChild(minus);
+                        minus.innerHTML = "-";
+                        minus.style.color = "#d24d57";
+
+                        let bar = document.createElement("div");
+                        bar.id = "rotation-minutes-bar-" + (i + 1);
+                        bar.className = "rotation-minutes-bar";
+                        minutes.appendChild(bar);
+
+                        let fill = document.createElement("div");
+                        fill.id = "rotation-minutes-fill-" + (i + 1);
+                        fill.className = "rotation-minutes-fill";
+                        bar.appendChild(fill);
+                        fill.style.width = (player.ratings.minutes / 48 * 100) + "%";
+
+                        let plus = document.createElement("div");
+                        plus.id = "rotation-minutes-plus-" + (i + 1);
+                        plus.className = "rotation-minutes-plus";
+                        minutes.appendChild(plus);
+                        plus.innerHTML = "+";
+                        plus.style.color = "#22B573";
+
+                        let value = document.createElement("div");
+                        value.id = "rotation-minutes-value-" + (i + 1);
+                        value.className = "rotation-minutes-value";
+                        minutes.appendChild(value);
+                        value.innerHTML = player.ratings.minutes;
+
+                        minus.addEventListener("click", function() {
+                            let remaining = (240 - sumTeamTotalMinutes(team.players));
+
+                            if (remaining < 240) {
+
+                                team.players[i].ratings.minutes--;
+
+                                value.innerHTML = team.players[i].ratings.minutes;
+
+                                fill.style.width = (team.players[i].ratings.minutes / 48 * 100) + "%";
+
+                                minutes_remaining.innerHTML = "Minutes remaining: " + (240 - sumTeamTotalMinutes(team.players));
+
+                                if (remaining != 0) {
+                                    rotation_team_warning.style.display = "flex";
+                                } else {
+                                    rotation_team_warning.style.display = "none";
+                                }
+
+                                removeRecord("teams", team.id);
+                                addRecord("teams", team);
+                            }
+
+                        });
+
+                        plus.addEventListener("click", function() {
+
+                            let remaining = (240 - sumTeamTotalMinutes(team.players));
+
+                            if (remaining > 0) {
+
+                                team.players[i].ratings.minutes++;
+
+                                value.innerHTML = team.players[i].ratings.minutes;
+
+                                fill.style.width = (team.players[i].ratings.minutes / 48 * 100) + "%";
+
+                                minutes_remaining.innerHTML = "Minutes remaining: " + (240 - sumTeamTotalMinutes(team.players));
+
+                                if (remaining != 0) {
+                                    rotation_team_warning.style.display = "flex";
+                                } else {
+                                    rotation_team_warning.style.display = "none";
+                                }
+
+                                removeRecord("teams", team.id);
+                                addRecord("teams", team);
+                            }
+
+                        });
+
+                    }
+
+                    let rotation_bottom_container = document.createElement("div");
+                    rotation_bottom_container.id = "team-rotation-bottom-container";
+                    rotation_menu_container.appendChild(rotation_bottom_container);
+
+                    let rotation_done = document.createElement("div");
+                    rotation_done.id = "team-rotation-bottom-rotation-done";
+                    rotation_done.className = "action_btn";
+                    rotation_bottom_container.appendChild(rotation_done);
+                    rotation_done.innerHTML = "Done";
+
+                    rotation_done.addEventListener("click", function() {
+
+                        document.getElementById("team-overlay").style.display = "none";
+
+                    });
+
+                });
+
             });
 
         });
     });
+}
+
+function sumTeamTotalMinutes(team) {
+
+    let total = 0;
+
+    for (let i = 0; i < team.length; i++) {
+
+        total += team[i].ratings.minutes;
+
+    }
+
+    return (total);
+
 }
 
 function loadUserRandomTeam(team_usr) {
@@ -1945,6 +2148,9 @@ function loadCardDetails(id) {
 
                                             console.log(card);
                                             team.players[players_index] = card;
+
+                                            // Set player's minutes to 0... TOFIX
+                                            team.players[players_index].ratings.minutes = 0;
 
                                             removeRecord("teams", team.id);
                                             addRecord("teams", team);
@@ -4768,10 +4974,18 @@ function generateRandomTeam(subset = null) {
 
         if (calculateRatings(random_1).overall > calculateRatings(random_2).overall) {
 
+            // Initialize players minutes...
+            random_1.ratings.minutes = 30;
+            random_2.ratings.minutes = 18;
+
             starters.push(random_1);
             bench.push(random_2);
 
         } else {
+
+            // Initialize players minutes...
+            random_1.ratings.minutes = 18;
+            random_2.ratings.minutes = 30;
 
             starters.push(random_2);
             bench.push(random_1);
