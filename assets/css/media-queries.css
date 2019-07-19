@@ -83,6 +83,11 @@
     height: 300px;
   }
 
+  /* IN-GAME MENU */
+  #play-overlay-container {
+    width: 400px;
+  }
+
 }
 
 @media (min-height: 500px) and (max-height: 700px) and (min-width: 800px) {
