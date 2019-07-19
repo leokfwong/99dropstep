@@ -2677,14 +2677,6 @@ input#collection-search-input-box {
     height: 15%;
     background: #2A2723;
 }
-#play-overlay-content-substitutions-header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 5%;
-    background: grey;
-}
 .play-overlay-content-substitutions-row {
     display: flex;
     justify-content: center;
@@ -2692,44 +2684,29 @@ input#collection-search-input-box {
     width: 100%;
     height: 20%;
 }
-.play-overlay-content-substitutions-row-active, .play-overlay-content-substitutions-row-bench {
+#play-overlay-content-substitutions-starters, #play-overlay-content-substitutions-bench {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 45%;
-    height: 100%;
-    background: pink;
+    flex-direction: column;
+    width: 100%;
+    height: 40%;
 }
-.play-overlay-content-substitutions-row-sub {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 10%;
-    height: 100%;
-    background: #2A2723;
-}
-.play-overlay-content-substitutions-row-sub-btn {
+#play-overlay-content-substitutions-starters-header, #play-overlay-content-substitutions-bench-header {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 100%;
-    color: #E1C773;
-    font-weight: bold;
+    height: 10%;
+    background: #808080;
+    color: white;
 }
-.play-overlay-content-substitutions-row-active-img-box, .play-overlay-content-substitutions-row-bench-img-box {
+.play-overlay-content-substitutions-starters-player, .play-overlay-content-substitutions-bench-player{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
-}
-.play-overlay-content-substitutions-row-active-img-box img, .play-overlay-content-substitutions-row-bench-img-box img{
-    height: 100%;
-    width: auto;
-}
-.play-overlay-content-substitutions-row-active-info, .play-overlay-content-substitutions-row-bench-info {
-    width: 70%;
-    height: 100%;
+    width: 100%;
+    height: 18%;
 }
 /* PLAY END GAME REWARDS */
 #play-end-game-rewards-overlay {

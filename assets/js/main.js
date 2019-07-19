@@ -3322,87 +3322,41 @@ function displaySubstitutionsMenu() {
 
         let roster = play.team.usr.roster;
 
-        let header = document.createElement("div");
-        header.id = "play-overlay-content-substitutions-header";
-        overlay_content.appendChild(header);
+        let starters = document.createElement("div");
+        starters.id = "play-overlay-content-substitutions-starters";
+        overlay_content.appendChild(starters);
+
+        let starters_header = document.createElement("div");
+        starters_header.id = "play-overlay-content-substitutions-starters-header";
+        starters.appendChild(starters_header);
+        starters_header.innerHTML = "STARTERS";
 
         for (let i = 0; i < 5; i++) {
 
-            let player_1 = roster[i];
-            let player_2 = roster[i + 5];
+            let row = document.createElement("div");
+            row.id = "play-overlay-content-substitutions-starters-player-" + (i + 1);
+            row.className = "play-overlay-content-substitutions-starters-player";
+            starters.appendChild(row);
+            row.innerHTML = roster[i].last;
 
-            let active_player, bench_player;
+        }
 
-            if (player_1.gamestats.active == 1) {
-                active_player = player_1;
-                bench_player = player_2;
-            } else {
-                active_player = player_2;
-                bench_player = player_1;
-            }
+        let bench = document.createElement("div");
+        bench.id = "play-overlay-content-substitutions-bench";
+        overlay_content.appendChild(bench);
+
+        let bench_header = document.createElement("div");
+        bench_header.id = "play-overlay-content-substitutions-bench-header";
+        bench.appendChild(bench_header);
+        bench_header.innerHTML = "BENCH";
+
+        for (let i = 5; i < roster.length; i++) {
 
             let row = document.createElement("div");
-            row.id = "play-overlay-content-substitutions-row-" + (i + 1);
-            row.className = "play-overlay-content-substitutions-row";
-            overlay_content.appendChild(row);
-
-            let active = document.createElement("div");
-            active.id = "play-overlay-content-substitutions-row-active-" + (i + 1);
-            active.className = "play-overlay-content-substitutions-row-active";
-            row.appendChild(active);
-
-            let active_img_box = document.createElement("div");
-            active_img_box.id = "play-overlay-content-substitutions-row-active-img-box-" + (i + 1);
-            active_img_box.className = "play-overlay-content-substitutions-row-active-img-box";
-            active.appendChild(active_img_box);
-
-            let active_img = document.createElement("img");
-            active_img.src = "assets/images/thumbs/" + active_player.image + "_" + active_player.id + ".png";
-            active_img.id = "play-overlay-content-substitutions-row-active-img-box-img-" + (i + 1);
-            active_img.className = "play-overlay-content-substitutions-row-active-img-box-img";
-            active_img_box.appendChild(active_img);
-
-            let active_info = document.createElement("div");
-            active_info.id = "play-overlay-content-substitutions-row-active-info-" + (i + 1);
-            active_info.className = "play-overlay-content-substitutions-row-active-info";
-            active.appendChild(active_info);
-            active_info.style.background = active_player.color1;
-
-            let sub = document.createElement("div");
-            sub.id = "play-overlay-content-substitutions-row-sub-" + (i + 1);
-            sub.className = "play-overlay-content-substitutions-row-sub";
-            row.appendChild(sub);
-
-            let sub_btn = document.createElement("div");
-            sub_btn.id = "play-overlay-content-substitutions-row-sub-btn-" + (i + 1);
-            sub_btn.className = "play-overlay-content-substitutions-row-sub-btn";
-            sub.appendChild(sub_btn);
-            sub_btn.innerHTML = ">";
-            sub_btn.addEventListener("click", function() {
-                toggleSubstitution(i, "usr");
-            });
-
-            let bench = document.createElement("div");
-            bench.id = "play-overlay-content-substitutions-row-bench-" + (i + 1);
-            bench.className = "play-overlay-content-substitutions-row-bench";
-            row.appendChild(bench);
-
-            let bench_info = document.createElement("div");
-            bench_info.id = "play-overlay-content-substitutions-row-bench-info-" + (i + 1);
-            bench_info.className = "play-overlay-content-substitutions-row-bench-info";
-            bench.appendChild(bench_info);
-            bench_info.style.background = bench_player.color1;
-
-            let bench_img_box = document.createElement("div");
-            bench_img_box.id = "play-overlay-content-substitutions-row-bench-img-box-" + (i + 1);
-            bench_img_box.className = "play-overlay-content-substitutions-row-bench-img-box";
-            bench.appendChild(bench_img_box);
-
-            let bench_img = document.createElement("img");
-            bench_img.src = "assets/images/thumbs/" + bench_player.image + "_" + bench_player.id + ".png";
-            bench_img.id = "play-overlay-content-substitutions-row-bench-img-box-img-" + (i + 1);
-            bench_img.className = "play-overlay-content-substitutions-row-bench-img-box-img";
-            bench_img_box.appendChild(bench_img);
+            row.id = "play-overlay-content-substitutions-bench-player-" + (i + 1);
+            row.className = "play-overlay-content-substitutions-bench-player";
+            bench.appendChild(row);
+            row.innerHTML = roster[i].last;
 
         }
 
