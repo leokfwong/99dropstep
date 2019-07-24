@@ -3375,6 +3375,9 @@ function displaySubstitutionsMenu() {
             fill.className = "play-overlay-content-substitutions-player-fill";
             stamina.appendChild(fill);
 
+            fill.style.height = roster[i].ratings.stamina + "%";
+            fill.style.background = getRatingColor(Math.round(roster[i].ratings.stamina));
+
             let info = document.createElement("div");
             info.id = "play-overlay-content-substitutions-" + type + "-player-info-" + (i + 1);
             info.className = "play-overlay-content-substitutions-player-info";
