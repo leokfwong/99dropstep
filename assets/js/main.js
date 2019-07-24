@@ -3330,7 +3330,7 @@ function displaySubstitutionsMenu() {
         let starters_header = document.createElement("div");
         starters_header.id = "play-overlay-content-substitutions-starters-header";
         starters.appendChild(starters_header);
-        starters_header.innerHTML = "STARTERS";
+        starters_header.innerHTML = "ON COURT";
 
         let bench = document.createElement("div");
         bench.id = "play-overlay-content-substitutions-bench";
@@ -3349,43 +3349,61 @@ function displaySubstitutionsMenu() {
                 type = "starters";
                 row = document.createElement("div");
                 row.id = "play-overlay-content-substitutions-" + type + "-player-" + (i + 1);
-                row.className = "play-overlay-content-substitutions-" + type + "-player";
+                row.className = "play-overlay-content-substitutions-player";
                 starters.appendChild(row);
             } else {
                 type = "bench";
                 row = document.createElement("div");
                 row.id = "play-overlay-content-substitutions-" + type + "-player-" + (i + 1);
-                row.className = "play-overlay-content-substitutions-" + type + "-player";
+                row.className = "play-overlay-content-substitutions-player";
                 bench.appendChild(row);
             }
 
             let spot = document.createElement("div");
             spot.id = "play-overlay-content-substitutions-" + type + "-player-spot-" + (i + 1);
-            spot.className = "play-overlay-content-substitutions-" + type + "-player-spot";
+            spot.className = "play-overlay-content-substitutions-player-spot";
             row.appendChild(spot);
             spot.innerHTML = position_array[i];
 
             let stamina = document.createElement("div");
             stamina.id = "play-overlay-content-substitutions-" + type + "-player-stamina-" + (i + 1);
-            stamina.className = "play-overlay-content-substitutions-" + type + "-player-stamina";
+            stamina.className = "play-overlay-content-substitutions-player-stamina";
             row.appendChild(stamina);
+
+            let fill = document.createElement("div");
+            fill.id = "play-overlay-content-substitutions-" + type + "-player-fill-" + (i + 1);
+            fill.className = "play-overlay-content-substitutions-player-fill";
+            stamina.appendChild(fill);
 
             let info = document.createElement("div");
             info.id = "play-overlay-content-substitutions-" + type + "-player-info-" + (i + 1);
-            info.className = "play-overlay-content-substitutions-" + type + "-player-info";
+            info.className = "play-overlay-content-substitutions-player-info";
             row.appendChild(info);
 
             let name = document.createElement("div");
             name.id = "play-overlay-content-substitutions-" + type + "-player-name-" + (i + 1);
-            name.className = "play-overlay-content-substitutions-" + type + "-player-name";
+            name.className = "play-overlay-content-substitutions-player-name";
             info.appendChild(name);
             name.innerHTML = roster[i].first[0] + ". " + roster[i].last;
 
             let position = document.createElement("div");
             position.id = "play-overlay-content-substitutions-" + type + "-player-position-" + (i + 1);
-            position.className = "play-overlay-content-substitutions-" + type + "-player-position";
+            position.className = "play-overlay-content-substitutions-player-position";
             info.appendChild(position);
-            position.innerHTML = roster[i].position;
+            position.innerHTML = roster[i].position.replace(/\//, " | ");
+
+            let rating = document.createElement("div");
+            rating.id = "play-overlay-content-substitutions-" + type + "-player-rating-" + (i + 1);
+            rating.className = "play-overlay-content-substitutions-player-rating";
+            row.appendChild(rating);
+
+            let rating_box = document.createElement("div");
+            rating_box.id = "play-overlay-content-substitutions-" + type + "-player-rating-box-" + (i + 1);
+            rating_box.className = "play-overlay-content-substitutions-player-rating-box";
+            rating.appendChild(rating_box);
+
+            rating_box.innerHTML = Math.round(calculateRatings(roster[i]).overall);
+            rating_box.style.background = getRatingColor(Math.round(calculateRatings(roster[i]).overall));
 
         }
 
