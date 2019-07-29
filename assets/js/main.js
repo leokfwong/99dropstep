@@ -2912,11 +2912,26 @@ function initializePlayStats(gamemode) {
                             "roster": [],
                             "timeouts": 7,
                             "substitutions": {
-                                "pg": 0,
-                                "sg": 0,
-                                "sf": 0,
-                                "pf": 0,
-                                "c": 0
+                                "pg": {
+                                    "sub": 0,
+                                    "in_id": 0
+                                },
+                                "sg": {
+                                    "sub": 0,
+                                    "in_id": 0
+                                },
+                                "sf": {
+                                    "sub": 0,
+                                    "in_id": 0
+                                },
+                                "pf": {
+                                    "sub": 0,
+                                    "in_id": 0
+                                },
+                                "c": {
+                                    "sub": 0,
+                                    "in_id": 0
+                                }
                             }
                         },
                         "cpu": {
@@ -2924,11 +2939,26 @@ function initializePlayStats(gamemode) {
                             "roster": [],
                             "timeouts": 7,
                             "substitutions": {
-                                "pg": 0,
-                                "sg": 0,
-                                "sf": 0,
-                                "pf": 0,
-                                "c": 0
+                                "pg": {
+                                    "sub": 0,
+                                    "in_id": 0
+                                },
+                                "sg": {
+                                    "sub": 0,
+                                    "in_id": 0
+                                },
+                                "sf": {
+                                    "sub": 0,
+                                    "in_id": 0
+                                },
+                                "pf": {
+                                    "sub": 0,
+                                    "in_id": 0
+                                },
+                                "c":  {
+                                    "sub": 0,
+                                    "in_id": 0
+                                }
                             }
                         },
                     },
@@ -3076,6 +3106,7 @@ function initializePlayStats(gamemode) {
 
                     card.gamestats = {};
                     card.gamestats.pos = (i + 1);
+                    card.gamestats.slot = (i + 1);
                     card.gamestats.ratings = JSON.parse(JSON.stringify(card.ratings));
                     card.gamestats.stats = initializePlayerIngameStats();
                     card.gamestats.agent = "usr";
@@ -3139,6 +3170,7 @@ function initializePlayStats(gamemode) {
 
                     card.gamestats = {};
                     card.gamestats.pos = (i + 1);
+                    card.gamestats.slot = (i + 1);
                     card.gamestats.ratings = JSON.parse(JSON.stringify(card.ratings));
                     card.gamestats.stats = initializePlayerIngameStats();
                     card.gamestats.agent = "cpu";
@@ -3424,6 +3456,15 @@ function displaySubstitutionsMenu() {
                             let row_highlight = document.getElementById("play-overlay-content-substitutions-bench-player-highlight-" + (j + 1));
                             row_highlight.style.display = "flex";
 
+                            let data = {
+                                "in_id": roster[j].id,
+                                "in_slot": roster[j].gamestats.slot,
+                                "out_id": roster[i].id,
+                                "out_slot": roster[i].gamestats.slot
+                            }
+
+                            selectPlayerToSubIn(play, "usr", data);
+
                         }
 
                     }
@@ -3434,6 +3475,14 @@ function displaySubstitutionsMenu() {
         }
 
     });
+
+}
+
+function selectPlayerToSubIn(play, agent, data) {
+
+    let position_array = ["pg", "sg", "sf", "pf", "c"];
+
+    play.team[agent].substitutions[position_array[data.out_slot]] ;
 
 }
 
