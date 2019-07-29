@@ -2914,23 +2914,23 @@ function initializePlayStats(gamemode) {
                             "substitutions": {
                                 "pg": {
                                     "sub": 0,
-                                    "in_id": 0
+                                    "data": 0
                                 },
                                 "sg": {
                                     "sub": 0,
-                                    "in_id": 0
+                                    "data": 0
                                 },
                                 "sf": {
                                     "sub": 0,
-                                    "in_id": 0
+                                    "data": 0
                                 },
                                 "pf": {
                                     "sub": 0,
-                                    "in_id": 0
+                                    "data": 0
                                 },
                                 "c": {
                                     "sub": 0,
-                                    "in_id": 0
+                                    "data": 0
                                 }
                             }
                         },
@@ -2941,23 +2941,23 @@ function initializePlayStats(gamemode) {
                             "substitutions": {
                                 "pg": {
                                     "sub": 0,
-                                    "in_id": 0
+                                    "data": 0
                                 },
                                 "sg": {
                                     "sub": 0,
-                                    "in_id": 0
+                                    "data": 0
                                 },
                                 "sf": {
                                     "sub": 0,
-                                    "in_id": 0
+                                    "data": 0
                                 },
                                 "pf": {
                                     "sub": 0,
-                                    "in_id": 0
+                                    "data": 0
                                 },
-                                "c":  {
+                                "c": {
                                     "sub": 0,
-                                    "in_id": 0
+                                    "data": 0
                                 }
                             }
                         },
@@ -3390,7 +3390,7 @@ function displaySubstitutionsMenu() {
                 row.className = "play-overlay-content-substitutions-player";
                 bench.appendChild(row);
 
-            let row_highlight = document.createElement("div");
+                let row_highlight = document.createElement("div");
                 row_highlight.id = "play-overlay-content-substitutions-" + type + "-player-highlight-" + (i + 1);
                 row_highlight.className = "play-overlay-content-substitutions-player-highlight";
                 row.appendChild(row_highlight);
@@ -3446,7 +3446,14 @@ function displaySubstitutionsMenu() {
             rating_box.style.background = getRatingColor(Math.round(calculateRatings(roster[i]).overall));
 
             if (i < 5) {
+
                 row.addEventListener("click", function() {
+
+                    // Remove all highlights outlines
+                    let row_highlights = document.getElementsByClassName("play-overlay-content-substitutions-player-highlight");
+                    for (let i = 0; i < row_highlights.length; i++) {
+                        row_highlights[i].style.display = "none";
+                    }
 
                     for (let j = 5; j < roster.length; j++) {
 
@@ -3463,7 +3470,11 @@ function displaySubstitutionsMenu() {
                                 "out_slot": roster[i].gamestats.slot
                             }
 
-                            selectPlayerToSubIn(play, "usr", data);
+                            row_highlight.addEventListener("click", function() {
+
+                                selectPlayerToSubIn("usr", data);
+
+                            });
 
                         }
 
@@ -3478,11 +3489,85 @@ function displaySubstitutionsMenu() {
 
 }
 
-function selectPlayerToSubIn(play, agent, data) {
+function selectPlayerToSubIn(agent, data) {
 
-    let position_array = ["pg", "sg", "sf", "pf", "c"];
+    fetchRecord("play", "0001", function(play) {
 
-    play.team[agent].substitutions[position_array[data.out_slot]] ;
+        let position_array = ["pg", "sg", "sf", "pf", "c"];
+        let sub_colors = ["#d64541", "#fcb941", "#4daf7c", "#2c3e50", "#736598"];
+
+        // Check to see if the player selected to sub in is already supposed to sub in for
+        // another position. If so, then cancel previous sub.
+
+        for (let x = 0; x < 5; x++) {
+
+            let substitution = play.team[agent].substitutions[position_array[x]];
+
+            if (substitution.data.in_id == data.in_id) {
+
+                let out_player_slot = document.getElementById("play-overlay-content-substitutions-starters-player-spot-" + substitution.data.out_slot);
+
+                out_player_slot.style.background = "none";
+
+                let in_player_slot = document.getElementById("play-overlay-content-substitutions-bench-player-spot-" + play.team[agent].substitutions[position_array[(data.out_slot - 1)]].data.in_slot);
+
+                if (in_player_slot != undefined) {
+                    in_player_slot.style.background = "none";
+                }
+
+                console.log("Player subbing in was already selected!");
+                substitution.sub = 0;
+                substitution.data = 0;
+
+            } else if (substitution.data.out_id == data.out_id) {
+
+                let in_player_slot = document.getElementById("play-overlay-content-substitutions-bench-player-spot-" + play.team[agent].substitutions[position_array[(data.out_slot - 1)]].data.in_slot);
+
+                in_player_slot.style.background = "none";
+
+                console.log("Player subbing out was already selected!");
+                substitution.sub = 0;
+                substitution.data = 0;
+
+            } else {
+                console.log("New substitution");
+                let out_player_slot = document.getElementById("play-overlay-content-substitutions-starters-player-spot-" + (x + 1));
+
+                out_player_slot.style.background = "none";
+            }
+
+        }
+
+        play.team[agent].substitutions[position_array[data.out_slot - 1]].sub = 1;
+        play.team[agent].substitutions[position_array[data.out_slot - 1]].data = data;
+
+        let row_highlights = document.getElementsByClassName("play-overlay-content-substitutions-player-highlight");
+
+        for (let i = 0; i < row_highlights.length; i++) {
+            row_highlights[i].style.display = "none";
+        }
+
+        // Update the colors matching
+        for (let x = 0; x < 5; x++) {
+
+            let substitution = play.team[agent].substitutions[position_array[x]];
+
+            let out_player_slot = document.getElementById("play-overlay-content-substitutions-starters-player-spot-" + substitution.data.out_slot);
+
+            let in_player_slot = document.getElementById("play-overlay-content-substitutions-bench-player-spot-" + substitution.data.in_slot);
+
+            if (substitution.sub == 1) {
+
+                out_player_slot.style.background = sub_colors[(substitution.data.out_slot - 1)];
+                in_player_slot.style.background = sub_colors[(substitution.data.out_slot - 1)];
+
+            }
+        }
+
+        removeRecord("play", "0001");
+        addRecord("play", play);
+
+    });
 
 }
 

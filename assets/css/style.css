@@ -2722,6 +2722,8 @@ input#collection-search-input-box {
     outline: 3px solid lightgreen;
     outline-offset: -3px;
     z-index: 1;
+    background: lightgreen;
+    opacity: .2;
 }
 .play-overlay-content-substitutions-player-spot {
     display: flex;
