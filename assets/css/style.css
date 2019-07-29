@@ -2701,7 +2701,7 @@ input#collection-search-input-box {
     background: #808080;
     color: white;
 }
-.play-overlay-content-substitutions-player{
+.play-overlay-content-substitutions-player {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -2710,6 +2710,18 @@ input#collection-search-input-box {
     border-bottom: solid 1px black;
     background: #2A2723;
     color: white;
+    position: relative;
+}
+.play-overlay-content-substitutions-player-highlight {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    outline: 3px solid lightgreen;
+    outline-offset: -3px;
+    z-index: 1;
 }
 .play-overlay-content-substitutions-player-spot {
     display: flex;
