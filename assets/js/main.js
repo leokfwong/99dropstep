@@ -3420,8 +3420,8 @@ function displaySubstitutionsMenu() {
             fill.className = "play-overlay-content-substitutions-player-fill";
             stamina.appendChild(fill);
 
-            fill.style.height = player.ratings.stamina + "%";
-            fill.style.background = getRatingColor(Math.round(player.ratings.stamina));
+            fill.style.height = player.gamestats.ratings.stamina + "%";
+            fill.style.background = getRatingColor(Math.round(player.gamestats.ratings.stamina));
 
             let info = document.createElement("div");
             info.id = "play-overlay-content-substitutions-" + type + "-player-info-" + (i + 1);
@@ -3849,7 +3849,7 @@ function makeSubstitutions(play) {
 
     //play = resetSubstitutions(play);
 
-    return (play);
+    return(play);
 
 }
 
@@ -3863,6 +3863,8 @@ function displayStartingLineup(play) {
             let player = play.team[agents[i]].roster[j];
 
             if (player.gamestats.slot < 6) {
+
+                console.log("Displaying " + player.first + " " + player.last + "(Stamina: " + player.gamestats.ratings.stamina + "; Slot:" + player.gamestats.slot + ")");
 
                 let player_image = document.getElementById("play-" + agents[i] + "-oncourt-player-image-" + player.gamestats.slot);
                 player_image.innerHTML = "";
@@ -5103,15 +5105,7 @@ function updateStaminaBar(play) {
 
             if (player.gamestats.active == 1) {
 
-                let pos;
-
-                if (player.gamestats.pos <= 5) {
-                    pos = player.gamestats.pos;
-                } else {
-                    pos = player.gamestats.pos - 5;
-                }
-
-                let fill = document.getElementById("play-" + agents[i] + "-oncourt-player-stamina-fill-" + pos);
+                let fill = document.getElementById("play-" + agents[i] + "-oncourt-player-stamina-fill-" + player.gamestats.slot);
                 fill.style.width = player.gamestats.ratings.stamina + "%";
                 fill.style.background = getRatingColor(player.gamestats.ratings.stamina);
 
