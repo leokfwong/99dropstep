@@ -3377,6 +3377,14 @@ function displaySubstitutionsMenu() {
 
             let type, row;
 
+            let player;
+
+            for (let x = 0; x < roster.length; x++) {
+                if (roster[x].gamestats.slot == (i + 1)) {
+                    player = roster[x];
+                }
+            }
+
             if (i < 5) {
                 type = "starters";
                 row = document.createElement("div");
@@ -3412,8 +3420,8 @@ function displaySubstitutionsMenu() {
             fill.className = "play-overlay-content-substitutions-player-fill";
             stamina.appendChild(fill);
 
-            fill.style.height = roster[i].ratings.stamina + "%";
-            fill.style.background = getRatingColor(Math.round(roster[i].ratings.stamina));
+            fill.style.height = player.ratings.stamina + "%";
+            fill.style.background = getRatingColor(Math.round(player.ratings.stamina));
 
             let info = document.createElement("div");
             info.id = "play-overlay-content-substitutions-" + type + "-player-info-" + (i + 1);
@@ -3424,13 +3432,13 @@ function displaySubstitutionsMenu() {
             name.id = "play-overlay-content-substitutions-" + type + "-player-name-" + (i + 1);
             name.className = "play-overlay-content-substitutions-player-name";
             info.appendChild(name);
-            name.innerHTML = roster[i].first[0] + ". " + roster[i].last;
+            name.innerHTML = player.first[0] + ". " + player.last;
 
             let position = document.createElement("div");
             position.id = "play-overlay-content-substitutions-" + type + "-player-position-" + (i + 1);
             position.className = "play-overlay-content-substitutions-player-position";
             info.appendChild(position);
-            position.innerHTML = roster[i].position.replace(/\//, " | ");
+            position.innerHTML = player.position.replace(/\//, " | ");
 
             let rating = document.createElement("div");
             rating.id = "play-overlay-content-substitutions-" + type + "-player-rating-" + (i + 1);
@@ -3442,8 +3450,8 @@ function displaySubstitutionsMenu() {
             rating_box.className = "play-overlay-content-substitutions-player-rating-box";
             rating.appendChild(rating_box);
 
-            rating_box.innerHTML = Math.round(calculateRatings(roster[i]).overall);
-            rating_box.style.background = getRatingColor(Math.round(calculateRatings(roster[i]).overall));
+            rating_box.innerHTML = Math.round(calculateRatings(player).overall);
+            rating_box.style.background = getRatingColor(Math.round(calculateRatings(player).overall));
 
             if (i < 5) {
 
@@ -3484,6 +3492,26 @@ function displaySubstitutionsMenu() {
             }
 
         }
+
+        let sub_colors = ["#d64541", "#fcb941", "#4daf7c", "#2c3e50", "#736598"];
+
+        // Update colors
+        for (let x = 0; x < 5; x++) {
+
+            let substitution = play.team["usr"].substitutions[position_array[x].toLowerCase()];
+
+            let out_player_slot = document.getElementById("play-overlay-content-substitutions-starters-player-spot-" + substitution.data.out_slot);
+
+            let in_player_slot = document.getElementById("play-overlay-content-substitutions-bench-player-spot-" + substitution.data.in_slot);
+
+            if (substitution.sub == 1) {
+
+                out_player_slot.style.background = sub_colors[(substitution.data.out_slot - 1)];
+                in_player_slot.style.background = sub_colors[(substitution.data.out_slot - 1)];
+
+            }
+        }
+
 
     });
 
@@ -3730,43 +3758,40 @@ function makeSubstitutions(play) {
     let position_array = ["pg", "sg", "sf", "pf", "c"];
 
     for (let i = 0; i < agents.length; i++) {
-        for (let j = 0; j < position_array.length; j++) {
+        for (let j = 0; j < 5; j++) {
 
-            let player_1 = play.team[agents[i]].roster[j];
-            let player_2 = play.team[agents[i]].roster[j + 5];
+            let substitutions = play.team[agents[i]].substitutions[position_array[j]];
 
-            let bench_player;
+            if (substitutions.sub == 1) {
 
-            if (player_1.gamestats.active == 1) {
-                bench_player = player_2;
-            } else {
-                bench_player = player_1;
-            }
+                let player_in, player_out;
 
-            if (play.team[agents[i]].substitutions[position_array[j]] == 1 & bench_player.gamestats.stats.pf < 6) {
+                for (let x = 0; x < play.team[agents[i]].roster.length; x++) {
 
-                if (player_1.id != play.FTshooter & player_2.id != play.FTshooter) {
+                    if (play.team[agents[i]].roster[x].id == substitutions.data.in_id) {
 
-                    let player_in, player_out;
+                        player_in = play.team[agents[i]].roster[x];
 
-                    if (player_1.gamestats.active == 1) {
-                        player_1.gamestats.active = 0;
-                        player_2.gamestats.active = 1;
+                    } else if (play.team[agents[i]].roster[x].id == substitutions.data.out_id) {
 
-                        player_in = player_2;
-                        player_out = player_1;
-
-                        console.log(player_2.first + " " + player_2.last + " subs in for " + player_1.first + " " + player_1.last);
+                        player_out = play.team[agents[i]].roster[x];
 
                     } else {
-                        player_1.gamestats.active = 1;
-                        player_2.gamestats.active = 0;
 
-                        player_in = player_1;
-                        player_out = player_2;
+                        continue;
 
-                        console.log(player_1.first + " " + player_1.last + " subs in for " + player_2.first + " " + player_2.last);
                     }
+
+                }
+
+                console.log(player_in.last, player_out.last);
+
+                if (player_out.id != play.FTshooter) {
+
+                    player_in.gamestats.active = 1;
+                    player_out.gamestats.active = 0;
+
+                    console.log(player_in.first + " " + player_in.last + " subs in for " + player_out.first + " " + player_out.last);
 
                     let sub_light = document.getElementById("play-" + agents[i] + "-oncourt-player-sub-light-" + (j + 1));
                     sub_light.style.background = "#2A2723";
@@ -3779,10 +3804,18 @@ function makeSubstitutions(play) {
                         "make": 0
                     };
                     play.playbyplay.push(event);
+
+                    let tmp = player_in.gamestats.slot;
+                    player_in.gamestats.slot = player_out.gamestats.slot;
+                    player_out.gamestats.slot = tmp;
+
                 }
             }
         }
     }
+
+    removeRecord("play", "0001");
+    addRecord("play", play);
 
     displayStartingLineup(play);
 
@@ -3831,7 +3864,12 @@ function resetSubstitutions(play) {
     for (let i = 0; i < agents.length; i++) {
         for (let j = 0; j < 5; j++) {
 
-            play.team[agents[i]].substitutions[position_array[j]] = 0;
+            let substitution = {
+                "sub": 0,
+                "data": 0
+            };
+
+            play.team[agents[i]].substitutions[position_array[j]] = substitution;
 
         }
     }
