@@ -405,7 +405,7 @@ function loadTeams() {
                                 "unlockedlevel": null,
                                 "exclude": null
                             })
-                        );
+                            );
 
                         loadUserRandomTeam(team_usr);
 
@@ -610,10 +610,10 @@ function loadTeams() {
 
                 });
 
-            });
+});
 
-        });
-    });
+});
+});
 }
 
 function sumTeamTotalMinutes(team) {
@@ -1050,10 +1050,10 @@ function loadShop() {
 
                 });
 
-            }
+}
 
-        });
-    });
+});
+});
 
 }
 
@@ -1582,7 +1582,7 @@ function loadCollection() {
 
         });
 
-    });
+});
 }
 
 function subsetCollection(collection) {
@@ -2168,185 +2168,185 @@ function loadCardDetails(id) {
 
                                 });
 
-                            }
+}
 
-                        }
+}
 
-                    });
+});
 
-                });
+});
 
-            });
+});
 
-            /* SECTION 1 - CARD UPGRADE */
+/* SECTION 1 - CARD UPGRADE */
 
-            let section_1 = document.getElementById("card-stats-content-1");
-            section_1.style.background = card.color1;
+let section_1 = document.getElementById("card-stats-content-1");
+section_1.style.background = card.color1;
 
-            let upgrade_container = document.createElement("div");
-            upgrade_container.id = "card-stats-upgrade-container";
-            section_1.appendChild(upgrade_container);
+let upgrade_container = document.createElement("div");
+upgrade_container.id = "card-stats-upgrade-container";
+section_1.appendChild(upgrade_container);
 
-            let progress = document.createElement("div");
-            progress.id = "card-stats-ugprade-progress";
-            upgrade_container.appendChild(progress);
+let progress = document.createElement("div");
+progress.id = "card-stats-ugprade-progress";
+upgrade_container.appendChild(progress);
 
-            ["cards-collected", "minutes-played"].forEach(function(itm) {
+["cards-collected", "minutes-played"].forEach(function(itm) {
 
-                let box = document.createElement("div");
-                box.id = "card-stats-upgrade-" + itm + "-box";
-                box.className = "card-stats-box";
-                progress.appendChild(box);
+    let box = document.createElement("div");
+    box.id = "card-stats-upgrade-" + itm + "-box";
+    box.className = "card-stats-box";
+    progress.appendChild(box);
 
-                let title = document.createElement("div");
-                title.id = "card-stats-upgrade-" + itm + "-box-title";
-                title.className = "card-stats-box-title";
-                box.appendChild(title);
-                title.innerHTML = itm;
+    let title = document.createElement("div");
+    title.id = "card-stats-upgrade-" + itm + "-box-title";
+    title.className = "card-stats-box-title";
+    box.appendChild(title);
+    title.innerHTML = itm;
 
-                let bar = document.createElement("div");
-                bar.id = "card-stats-upgrade-" + itm + "-box-bar";
-                bar.className = "card-stats-box-text";
-                box.appendChild(bar);
+    let bar = document.createElement("div");
+    bar.id = "card-stats-upgrade-" + itm + "-box-bar";
+    bar.className = "card-stats-box-text";
+    box.appendChild(bar);
 
-                let fill = document.createElement("div");
-                fill.id = "card-stats-upgrade-" + itm + "-box-fill";
-                fill.className = "card-stats-box-upgrade-fill";
-                bar.appendChild(fill);
+    let fill = document.createElement("div");
+    fill.id = "card-stats-upgrade-" + itm + "-box-fill";
+    fill.className = "card-stats-box-upgrade-fill";
+    bar.appendChild(fill);
 
-                let text = document.createElement("div");
-                text.id = "card-stats-upgrade-" + itm + "-box-text";
-                text.className = "card-stats-box-upgrade-text";
-                bar.appendChild(text);
-                text.innerHTML = "1/20";
+    let text = document.createElement("div");
+    text.id = "card-stats-upgrade-" + itm + "-box-text";
+    text.className = "card-stats-box-upgrade-text";
+    bar.appendChild(text);
+    text.innerHTML = "1/20";
 
-                if (itm == "cards-collected") {
+    if (itm == "cards-collected") {
 
-                    title.innerHTML = "Cards Collected";
-                    text.innerHTML = card.count + "/20";
-                    fill.style.width = (card.count / 20 * 100) + "%";
+        title.innerHTML = "Cards Collected";
+        text.innerHTML = card.count + "/20";
+        fill.style.width = (card.count / 20 * 100) + "%";
 
-                } else if (itm == "minutes-played") {
+    } else if (itm == "minutes-played") {
 
-                    title.innerHTML = "Minutes Played";
-                    text.innerHTML = card.stats.min + "/50";
-                    fill.style.width = (card.stats.min / 50 * 100) + "%";
+        title.innerHTML = "Minutes Played";
+        text.innerHTML = card.stats.min + "/50";
+        fill.style.width = (card.stats.min / 50 * 100) + "%";
 
-                }
+    }
 
-            });
+});
 
-            let upgrade_btn = document.createElement("div");
-            upgrade_btn.id = "card-stats-card-upgrade-button";
-            upgrade_btn.className = "action_btn";
-            upgrade_container.appendChild(upgrade_btn);
-            upgrade_btn.innerHTML = "UPGRADE";
+let upgrade_btn = document.createElement("div");
+upgrade_btn.id = "card-stats-card-upgrade-button";
+upgrade_btn.className = "action_btn";
+upgrade_container.appendChild(upgrade_btn);
+upgrade_btn.innerHTML = "UPGRADE";
 
-            /* SECTION 2 - CARD STATS */
+/* SECTION 2 - CARD STATS */
 
-            let section_2 = document.getElementById("card-stats-content-2");
-            section_2.style.background = card.color1;
+let section_2 = document.getElementById("card-stats-content-2");
+section_2.style.background = card.color1;
 
-            let stats_container = document.createElement("div");
-            stats_container.id = "card-stats-stats-container";
-            section_2.appendChild(stats_container);
+let stats_container = document.createElement("div");
+stats_container.id = "card-stats-stats-container";
+section_2.appendChild(stats_container);
 
-            let stats_box = document.createElement("div");
-            stats_box.id = "card-stats-stats-box";
-            stats_container.appendChild(stats_box);
+let stats_box = document.createElement("div");
+stats_box.id = "card-stats-stats-box";
+stats_container.appendChild(stats_box);
 
-            let stats_nav = document.createElement("div");
-            stats_nav.id = "card-stats-stats-nav";
-            stats_box.appendChild(stats_nav);
+let stats_nav = document.createElement("div");
+stats_nav.id = "card-stats-stats-nav";
+stats_box.appendChild(stats_nav);
 
-            let nav_options = ["offense", "defense", "physical"];
+let nav_options = ["offense", "defense", "physical"];
 
-            let stats_nav_left = document.createElement("div");
-            stats_nav_left.id = "card-stats-stats-nav-left";
-            stats_nav.appendChild(stats_nav_left);
-            stats_nav_left.innerHTML = "<<";
+let stats_nav_left = document.createElement("div");
+stats_nav_left.id = "card-stats-stats-nav-left";
+stats_nav.appendChild(stats_nav_left);
+stats_nav_left.innerHTML = "<<";
 
-            let stats_nav_middle = document.createElement("div");
-            stats_nav_middle.id = "card-stats-stats-nav-middle";
-            stats_nav.appendChild(stats_nav_middle);
-            stats_nav_middle.innerHTML = "Offense";
+let stats_nav_middle = document.createElement("div");
+stats_nav_middle.id = "card-stats-stats-nav-middle";
+stats_nav.appendChild(stats_nav_middle);
+stats_nav_middle.innerHTML = "Offense";
 
-            let stats_nav_right = document.createElement("div");
-            stats_nav_right.id = "card-stats-stats-nav-right";
-            stats_nav.appendChild(stats_nav_right);
-            stats_nav_right.innerHTML = ">>";
+let stats_nav_right = document.createElement("div");
+stats_nav_right.id = "card-stats-stats-nav-right";
+stats_nav.appendChild(stats_nav_right);
+stats_nav_right.innerHTML = ">>";
 
-            stats_nav_left.addEventListener("click", function() {
-                let current_cat = stats_nav_middle.innerHTML.toLowerCase();
-                let current_idx = nav_options.indexOf(current_cat);
-                let cat = navigateArray(nav_options, current_idx, -1);
-                stats_nav_middle.innerHTML = capitalize(cat);
-                displayCardStats(cat);
-            });
+stats_nav_left.addEventListener("click", function() {
+    let current_cat = stats_nav_middle.innerHTML.toLowerCase();
+    let current_idx = nav_options.indexOf(current_cat);
+    let cat = navigateArray(nav_options, current_idx, -1);
+    stats_nav_middle.innerHTML = capitalize(cat);
+    displayCardStats(cat);
+});
 
-            stats_nav_right.addEventListener("click", function() {
-                let current_cat = stats_nav_middle.innerHTML.toLowerCase();
-                let current_idx = nav_options.indexOf(current_cat);
-                let cat = navigateArray(nav_options, current_idx, 1);
-                stats_nav_middle.innerHTML = capitalize(cat);
-                displayCardStats(cat);
-            });
+stats_nav_right.addEventListener("click", function() {
+    let current_cat = stats_nav_middle.innerHTML.toLowerCase();
+    let current_idx = nav_options.indexOf(current_cat);
+    let cat = navigateArray(nav_options, current_idx, 1);
+    stats_nav_middle.innerHTML = capitalize(cat);
+    displayCardStats(cat);
+});
 
-            let stats_content = document.createElement("div");
-            stats_content.id = "card-stats-stats-content";
-            stats_box.appendChild(stats_content);
+let stats_content = document.createElement("div");
+stats_content.id = "card-stats-stats-content";
+stats_box.appendChild(stats_content);
 
-            function displayCardStats(cat) {
+function displayCardStats(cat) {
 
-                let stats_json;
+    let stats_json;
 
-                if (cat == "offense") {
-                    stats_json = off_stats_json;
-                } else if (cat == "defense") {
-                    stats_json = def_stats_json;
-                } else if (cat == "physical") {
-                    stats_json = phys_stats_json;
-                } else {
-                    console.log("Missing argument");
-                }
+    if (cat == "offense") {
+        stats_json = off_stats_json;
+    } else if (cat == "defense") {
+        stats_json = def_stats_json;
+    } else if (cat == "physical") {
+        stats_json = phys_stats_json;
+    } else {
+        console.log("Missing argument");
+    }
 
-                stats_content.innerHTML = "";
+    stats_content.innerHTML = "";
 
-                for (let i = 0; i < stats_json.length; i++) {
+    for (let i = 0; i < stats_json.length; i++) {
 
-                    let row = document.createElement("div");
-                    row.id = "card-stats-stats-content-row-" + i;
-                    row.className = "card-stats-stats-content-row";
-                    stats_content.appendChild(row);
+        let row = document.createElement("div");
+        row.id = "card-stats-stats-content-row-" + i;
+        row.className = "card-stats-stats-content-row";
+        stats_content.appendChild(row);
 
-                    let row_title = document.createElement("div");
-                    row_title.id = "card-stats-stats-content-row-title-" + i;
-                    row_title.className = "card-stats-stats-content-row-title";
-                    row.appendChild(row_title);
-                    row_title.innerHTML = stats_json[i].title;
+        let row_title = document.createElement("div");
+        row_title.id = "card-stats-stats-content-row-title-" + i;
+        row_title.className = "card-stats-stats-content-row-title";
+        row.appendChild(row_title);
+        row_title.innerHTML = stats_json[i].title;
 
-                    let row_rating = document.createElement("div");
-                    row_rating.id = "card-stats-stats-content-row-rating-" + i;
-                    row_rating.className = "card-stats-stats-content-row-rating";
-                    row.appendChild(row_rating);
+        let row_rating = document.createElement("div");
+        row_rating.id = "card-stats-stats-content-row-rating-" + i;
+        row_rating.className = "card-stats-stats-content-row-rating";
+        row.appendChild(row_rating);
 
-                    let row_rating_box = document.createElement("div");
-                    row_rating_box.id = "card-stats-stats-content-row-rating-box" + i;
-                    row_rating_box.className = "card-stats-stats-content-row-rating-box";
-                    row_rating.appendChild(row_rating_box);
-                    row_rating_box.innerHTML = getAttributeRating(card, stats_json[i].attribute);
-                    row_rating_box.style.background = getRatingColor(getAttributeRating(card, stats_json[i].attribute));
+        let row_rating_box = document.createElement("div");
+        row_rating_box.id = "card-stats-stats-content-row-rating-box" + i;
+        row_rating_box.className = "card-stats-stats-content-row-rating-box";
+        row_rating.appendChild(row_rating_box);
+        row_rating_box.innerHTML = getAttributeRating(card, stats_json[i].attribute);
+        row_rating_box.style.background = getRatingColor(getAttributeRating(card, stats_json[i].attribute));
 
-                }
-            }
+    }
+}
 
-            displayCardStats("offense");
+displayCardStats("offense");
 
-            /* SECTION 3 - CARD USAGE */
+/* SECTION 3 - CARD USAGE */
 
-        }
+}
 
-    });
+});
 
 }
 
@@ -3145,7 +3145,7 @@ function initializePlayStats(gamemode) {
                             "unlockedlevel": null,
                             "exclude": players_to_exclude_from_random
                         })
-                    );
+                        );
 
                 } else if (gamemode == "Playoffs") {
                     let roster = playoffs_teams_json[parseInt(playoffs_teamID) - 1].roster;
@@ -3208,55 +3208,55 @@ function initializePlayStats(gamemode) {
                 initializeGameStats();
 
             });
-        });
+});
 
-    });
+});
 
-    let action_container = document.getElementById("play-action-container");
-    action_container.innerHTML = "";
+let action_container = document.getElementById("play-action-container");
+action_container.innerHTML = "";
 
-    let gameplan = document.createElement("div");
-    gameplan.id = "play-action-gameplan";
-    gameplan.className = "play-action-sct";
-    action_container.appendChild(gameplan);
+let gameplan = document.createElement("div");
+gameplan.id = "play-action-gameplan";
+gameplan.className = "play-action-sct";
+action_container.appendChild(gameplan);
 
-    let gameplan_btn = document.createElement("div");
-    gameplan_btn.id = "play-action-gameplan-btn";
-    gameplan_btn.className = "play-action-sct-btn";
-    gameplan.appendChild(gameplan_btn);
-    gameplan_btn.innerHTML = "Gameplan";
+let gameplan_btn = document.createElement("div");
+gameplan_btn.id = "play-action-gameplan-btn";
+gameplan_btn.className = "play-action-sct-btn";
+gameplan.appendChild(gameplan_btn);
+gameplan_btn.innerHTML = "Gameplan";
 
-    gameplan_btn.addEventListener("click", function() {
+gameplan_btn.addEventListener("click", function() {
 
-        displayGameplanMenu();
+    displayGameplanMenu();
 
-    });
+});
 
-    let next_possession = document.createElement("div");
-    next_possession.id = "play-action-next-possession";
-    next_possession.className = "play-action-sct";
-    action_container.appendChild(next_possession);
+let next_possession = document.createElement("div");
+next_possession.id = "play-action-next-possession";
+next_possession.className = "play-action-sct";
+action_container.appendChild(next_possession);
 
-    let next_possession_btn = document.createElement("div");
-    next_possession_btn.id = "play-action-next-possession-btn";
-    next_possession_btn.className = "play-action-sct-btn";
-    next_possession.appendChild(next_possession_btn);
-    next_possession_btn.innerHTML = "Play";
+let next_possession_btn = document.createElement("div");
+next_possession_btn.id = "play-action-next-possession-btn";
+next_possession_btn.className = "play-action-sct-btn";
+next_possession.appendChild(next_possession_btn);
+next_possession_btn.innerHTML = "Play";
 
-    next_possession_btn.addEventListener("click", function() {
+next_possession_btn.addEventListener("click", function() {
 
+    simulateNextPossession();
+
+});
+
+document.onkeydown = function(evt) {
+    evt = evt || window.event;
+    if (evt.keyCode == 78) {
         simulateNextPossession();
-
-    });
-
-    document.onkeydown = function(evt) {
-        evt = evt || window.event;
-        if (evt.keyCode == 78) {
-            simulateNextPossession();
-        } else if (evt.keyCode == 84) {
-            callTimeout("usr");
-        }
-    };
+    } else if (evt.keyCode == 84) {
+        callTimeout("usr");
+    }
+};
 
 }
 
@@ -3551,7 +3551,9 @@ function selectPlayerToSubIn(agent, data) {
 
                 let out_player_slot = document.getElementById("play-overlay-content-substitutions-starters-player-spot-" + substitution.data.out_slot);
 
-                out_player_slot.style.background = "none";
+                if (out_player_slot != undefined) {
+                    out_player_slot.style.background = "none";
+                }
 
                 let in_player_slot = document.getElementById("play-overlay-content-substitutions-bench-player-spot-" + play.team[agent].substitutions[position_array[(data.out_slot - 1)]].data.in_slot);
 
@@ -3577,7 +3579,9 @@ function selectPlayerToSubIn(agent, data) {
                 console.log("New substitution");
                 let out_player_slot = document.getElementById("play-overlay-content-substitutions-starters-player-spot-" + (x + 1));
 
-                out_player_slot.style.background = "none";
+                if (out_player_slot != undefined) {
+                    out_player_slot.style.background = "none";
+                }
             }
 
         }
@@ -3588,7 +3592,9 @@ function selectPlayerToSubIn(agent, data) {
         let row_highlights = document.getElementsByClassName("play-overlay-content-substitutions-player-highlight");
 
         for (let i = 0; i < row_highlights.length; i++) {
-            row_highlights[i].style.display = "none";
+            if (row_highlights[i] != undefined) {
+                row_highlights[i].style.display = "none";
+            }
         }
 
         // Update the colors matching
@@ -3602,8 +3608,12 @@ function selectPlayerToSubIn(agent, data) {
 
             if (substitution.sub == 1) {
 
-                out_player_slot.style.background = sub_colors[(substitution.data.out_slot - 1)];
-                in_player_slot.style.background = sub_colors[(substitution.data.out_slot - 1)];
+                if (out_player_slot != undefined) {
+                    out_player_slot.style.background = sub_colors[(substitution.data.out_slot - 1)];
+                }
+                if (in_player_slot != undefined) {
+                    in_player_slot.style.background = sub_colors[(substitution.data.out_slot - 1)];
+                }
 
             }
         }
@@ -3748,18 +3758,15 @@ function subAllStarters(play) {
     let agents = ["usr", "cpu"];
 
     for (let i = 0; i < agents.length; i++) {
+
+        let roster = play.team[agents[i]].roster;
+
         for (let j = 0; j < 5; j++) {
 
-            if (play.team[agents[i]].roster[j].gamestats.active == 0) {
-
-                play = selectSubstitution(play, j, agents[i]);
-
-            } else {
-
-                play.team[agents[i]].substitutions[j] = 0;
-                let sub_light = document.getElementById("play-" + agents[i] + "-oncourt-player-sub-light-" + (j + 1));
-                sub_light.style.background = "none";
-            }
+            roster[j].gamestats.active = 1;
+            roster[j].gamestats.slot = roster[j].gamestats.pos;
+            roster[j + 5].gamestats.active = 0;
+            roster[j + 5].gamestats.slot = roster[j + 5].gamestats.pos;
 
         }
     }
@@ -3788,13 +3795,11 @@ function makeSubstitutions(play) {
 
                         player_in = play.team[agents[i]].roster[x];
 
-                    } else if (play.team[agents[i]].roster[x].id == substitutions.data.out_id) {
+                    }
+
+                    if (play.team[agents[i]].roster[x].id == substitutions.data.out_id) {
 
                         player_out = play.team[agents[i]].roster[x];
-
-                    } else {
-
-                        continue;
 
                     }
 
@@ -3825,6 +3830,13 @@ function makeSubstitutions(play) {
                     player_in.gamestats.slot = player_out.gamestats.slot;
                     player_out.gamestats.slot = tmp;
 
+                    let substitution = {
+                        "sub": 0,
+                        "data": 0
+                    };
+
+                    play.team[agents[i]].substitutions[position_array[j]] = substitution;
+
                 }
             }
         }
@@ -3835,7 +3847,7 @@ function makeSubstitutions(play) {
 
     displayStartingLineup(play);
 
-    play = resetSubstitutions(play);
+    //play = resetSubstitutions(play);
 
     return (play);
 
@@ -3988,12 +4000,13 @@ function simulateNextPossession() {
             if (play.time == 1440) {
                 play = increaseAllStamina(play, 10);
                 play = subAllStarters(play);
-                play = makeSubstitutions(play);
+                displayStartingLineup(play);
+
             }
 
             // Check if 7m remaining, sub in starters
             if ((play.time < 420 & play.time + seconds >= 420)) {
-                play = subAllStarters(play);
+                //play = subAllStarters(play);
                 // Turn off autosub
                 play = updateAutoSub(play, "usr", 0);
                 play = updateAutoSub(play, "cpu", 0);
@@ -4770,9 +4783,9 @@ function updateBoxscorePercentages(play) {
     let player = play.team[play.possession].roster[play.shooter.gamestats.pos - 1];
 
     let percent_types = [
-        ["fgm", "fga", "fgp"],
-        ["3pm", "3pa", "3pp"],
-        ["ftm", "fta", "ftp"]
+    ["fgm", "fga", "fgp"],
+    ["3pm", "3pa", "3pp"],
+    ["ftm", "fta", "ftp"]
     ];
 
     for (let i = 0; i < percent_types.length; i++) {
@@ -5949,9 +5962,9 @@ function initializeGameTrackerBox() {
     let initial_teams = ["", "USR", "CPU"];
 
     let initial_quarters = [
-        ["Q1", "Q2", "Q3", "Q4"],
-        [0, 0, 0, 0],
-        [0, 0, 0, 0]
+    ["Q1", "Q2", "Q3", "Q4"],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0]
     ];
 
     let initial_totals = ["TOT", 0, 0];
