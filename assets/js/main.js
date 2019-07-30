@@ -2908,7 +2908,7 @@ function initializePlayStats(gamemode) {
                     },
                     "team": {
                         "usr": {
-                            "autosub": 1,
+                            "autosub": 0,
                             "roster": [],
                             "timeouts": 7,
                             "substitutions": {
@@ -2935,7 +2935,7 @@ function initializePlayStats(gamemode) {
                             }
                         },
                         "cpu": {
-                            "autosub": 1,
+                            "autosub": 0,
                             "roster": [],
                             "timeouts": 7,
                             "substitutions": {
