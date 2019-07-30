@@ -3457,36 +3457,52 @@ function displaySubstitutionsMenu() {
 
                 row.addEventListener("click", function() {
 
-                    // Remove all highlights outlines
-                    let row_highlights = document.getElementsByClassName("play-overlay-content-substitutions-player-highlight");
-                    for (let i = 0; i < row_highlights.length; i++) {
-                        row_highlights[i].style.display = "none";
-                    }
+                    fetchRecord("play", "0001", function(play) {
 
-                    for (let j = 5; j < roster.length; j++) {
+                        let roster = play.team["usr"].roster;
 
-                        if (roster[j].position.indexOf(position_array[i]) > -1) {
-
-                            console.log(roster[j].last);
-                            let row_highlight = document.getElementById("play-overlay-content-substitutions-bench-player-highlight-" + (j + 1));
-                            row_highlight.style.display = "flex";
-
-                            let data = {
-                                "in_id": roster[j].id,
-                                "in_slot": roster[j].gamestats.slot,
-                                "out_id": roster[i].id,
-                                "out_slot": roster[i].gamestats.slot
+                        let player_out;
+                        for (let x = 0; x < roster.length; x++) {
+                            if (roster[x].gamestats.slot == i + 1) {
+                                player_out = roster[x];
                             }
+                        }
 
-                            row_highlight.addEventListener("click", function() {
+                        // Remove all highlights outlines
+                        let row_highlights = document.getElementsByClassName("play-overlay-content-substitutions-player-highlight");
+                        for (let i = 0; i < row_highlights.length; i++) {
+                            row_highlights[i].style.display = "none";
+                        }
 
-                                selectPlayerToSubIn("usr", data);
+                        for (let j = 0; j < roster.length; j++) {
 
-                            });
+                            if (roster[j].gamestats.slot > 5) {
+
+                                if (roster[j].position.indexOf(position_array[i]) > -1) {
+
+                                    console.log(roster[j].last);
+                                    let row_highlight = document.getElementById("play-overlay-content-substitutions-bench-player-highlight-" + roster[j].gamestats.slot);
+                                    row_highlight.style.display = "flex";
+
+                                    let data = {
+                                        "in_id": roster[j].id,
+                                        "in_slot": roster[j].gamestats.slot,
+                                        "out_id": player_out.id,
+                                        "out_slot": player_out.gamestats.slot
+                                    }
+
+                                    row_highlight.addEventListener("click", function() {
+
+                                        selectPlayerToSubIn("usr", data);
+
+                                    });
+
+                                }
+                            }
 
                         }
 
-                    }
+                    });
 
                 });
             }
@@ -3565,7 +3581,7 @@ function selectPlayerToSubIn(agent, data) {
             }
 
         }
-
+        console.log(data);
         play.team[agent].substitutions[position_array[data.out_slot - 1]].sub = 1;
         play.team[agent].substitutions[position_array[data.out_slot - 1]].data = data;
 
@@ -3830,28 +3846,23 @@ function displayStartingLineup(play) {
     let agents = ["usr", "cpu"];
 
     for (let i = 0; i < agents.length; i++) {
-        for (let j = 0; j < 5; j++) {
+        for (let j = 0; j < play.team[agents[i]].roster.length; j++) {
 
-            let player_1 = play.team[agents[i]].roster[j];
-            let player_2 = play.team[agents[i]].roster[j + 5];
+            let player = play.team[agents[i]].roster[j];
 
-            let active_player;
+            if (player.gamestats.slot < 6) {
 
-            if (player_1.gamestats.active == 1) {
-                active_player = player_1;
-            } else {
-                active_player = player_2;
+                let player_image = document.getElementById("play-" + agents[i] + "-oncourt-player-image-" + player.gamestats.slot);
+                player_image.innerHTML = "";
+                let img = document.createElement("img");
+                img.src = "assets/images/thumbs/" + player.image + "_" + player.id + ".png";
+                player_image.appendChild(img);
+
+                let stamina_fill = document.getElementById("play-" + agents[i] + "-oncourt-player-stamina-fill-" + player.gamestats.slot);
+                stamina_fill.style.width = player.gamestats.ratings.stamina + "%";
+                stamina_fill.style.background = getRatingColor(Math.round(player.gamestats.ratings.stamina));
+
             }
-
-            let player_image = document.getElementById("play-" + agents[i] + "-oncourt-player-image-" + (j + 1));
-            player_image.innerHTML = "";
-            let img = document.createElement("img");
-            img.src = "assets/images/thumbs/" + active_player.image + "_" + active_player.id + ".png";
-            player_image.appendChild(img);
-
-            let stamina_fill = document.getElementById("play-" + agents[i] + "-oncourt-player-stamina-fill-" + (j + 1));
-            stamina_fill.style.width = active_player.gamestats.ratings.stamina + "%";
-            stamina_fill.style.background = getRatingColor(Math.round(active_player.gamestats.ratings.stamina));
         }
     }
 }
@@ -4996,12 +5007,7 @@ function fetchStarters(play, agent) {
 
         if (player.gamestats.active == 1) {
 
-            if (player.gamestats.pos > 5) {
-                starters.splice((player.gamestats.pos - 6), 1, player);
-            } else {
-                starters.splice((player.gamestats.pos - 1), 1, player);
-            }
-
+            starters.splice((player.gamestats.slot - 1), 1, player);
         }
 
     }
