@@ -3355,7 +3355,31 @@ function displaySubstitutionsMenu() {
     message.appendChild(message_content);
     message_content.innerHTML = "Select player from \"On Court\" section to substitute out.";
 
+    let autosub = document.createElement("div");
+    autosub.id = "play-overlay-content-substitutions-autosub";
+    overlay_content.appendChild(autosub);
+
+    let autosub_content = document.createElement("div");
+    autosub_content.id = "play-overlay-content-substitutions-autosub-content";
+    autosub.appendChild(autosub_content);
+
+    let autosub_title = document.createElement("div");
+    autosub_title.id = "play-overlay-content-substitutions-autosub-title";
+    autosub_content.appendChild(autosub_title);
+    autosub_title.innerHTML = "Auto-subsitution:";
+
+    let autosub_status = document.createElement("div");
+    autosub_status.id = "play-overlay-content-substitutions-autosub-status";
+    autosub_content.appendChild(autosub_status);
+    autosub_status.innerHTML = "ON";
+
     fetchRecord("play", "0001", function(play) {
+
+        if (play.team.usr.autosub == 0) {
+            autosub_status.innerHTML = "OFF";
+        } else {
+            autosub_status = "ON";
+        }
 
         let position_array = ["PG", "SG", "SF", "PF", "C", "6", "7", "8", "9", "10"];
         let roster = play.team.usr.roster;
@@ -3539,25 +3563,6 @@ function displaySubstitutionsMenu() {
 
 
     });
-
-
-    let autosub = document.createElement("div");
-    autosub.id = "play-overlay-content-substitutions-autosub";
-    overlay_content.appendChild(autosub);
-
-    let autosub_content = document.createElement("div");
-    autosub_content.id = "play-overlay-content-substitutions-autosub-content";
-    autosub.appendChild(autosub_content);
-
-    let autosub_title = document.createElement("div");
-    autosub_title.id = "play-overlay-content-substitutions-autosub-title";
-    autosub_content.appendChild(autosub_title);
-    autosub_title.innerHTML = "Auto-subsitution:";
-
-    let autosub_status = document.createElement("div");
-    autosub_status.id = "play-overlay-content-substitutions-autosub-status";
-    autosub_content.appendChild(autosub_status);
-    autosub_status.innerHTML = "ON";
 
 }
 
