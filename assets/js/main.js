@@ -3349,6 +3349,7 @@ function displaySubstitutionsMenu() {
     let message = document.createElement("div");
     message.id = "play-overlay-content-substitutions-message";
     overlay_content.appendChild(message);
+    message.innerHTML = "Select player from \"On Court\" section to substitute out.";
 
     fetchRecord("play", "0001", function(play) {
 
@@ -3457,6 +3458,8 @@ function displaySubstitutionsMenu() {
 
                 row.addEventListener("click", function() {
 
+                    message.innerHTML = "Select player from \"Bench\" section to substitute in."
+
                     fetchRecord("play", "0001", function(play) {
 
                         let roster = play.team["usr"].roster;
@@ -3492,6 +3495,8 @@ function displaySubstitutionsMenu() {
                                     }
 
                                     row_highlight.addEventListener("click", function() {
+
+                                        message.innerHTML = "Select player from \"On Court\" section to substitute out.";
 
                                         selectPlayerToSubIn("usr", data);
 
