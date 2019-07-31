@@ -461,6 +461,15 @@ function loadTeams() {
                     rotation_top_container.appendChild(minutes_remaining);
                     minutes_remaining.innerHTML = "Minutes remaining: " + (240 - sumTeamTotalMinutes(team.players));
 
+                    let auto_assign = document.createElement("div");
+                    auto_assign.id = "team-rotation-top-auto-assign";
+                    rotation_top_container.appendChild(auto_assign);
+
+                    let auto_assign_button = document.createElement("div");
+                    auto_assign_button.id = "team-rotation-top-auto-assign-button";
+                    auto_assign.appendChild(auto_assign_button);
+                    auto_assign_button.innerHTML = "Auto-assign";
+
                     let rotation_minutes_container = document.createElement("div");
                     rotation_minutes_container.id = "team-rotation-minutes-container";
                     rotation_menu_container.appendChild(rotation_minutes_container);
