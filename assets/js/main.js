@@ -484,7 +484,7 @@ function loadTeams() {
                             let starter_boost = 0;
 
                             if (i < 5) {
-                                starter_boost = 42000;
+                                starter_boost = 49000;
                             }
 
                             let score = Math.round((Math.pow(rating, 3) * .6) + (Math.pow(stamina, 2) * .4) + starter_boost);
