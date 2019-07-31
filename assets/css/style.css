@@ -2687,6 +2687,14 @@ input#collection-search-input-box {
     color: white;
     font-size: 81%;
 }
+#play-overlay-content-substitutions-message-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    height: 100%;
+    text-align: center;
+}
 .play-overlay-content-substitutions-row {
     display: flex;
     justify-content: center;
