@@ -470,6 +470,56 @@ function loadTeams() {
                     auto_assign.appendChild(auto_assign_button);
                     auto_assign_button.innerHTML = "Auto-assign";
 
+                    auto_assign_button.addEventListener("click", function() {
+
+                        let players_score = [];
+                        let total_score = 0;
+
+                        for (let i = 0; i < team.players.length; i++) {
+
+                            let player = team.players[i];
+
+                            let rating = Math.round(calculateRatings(player).overall);
+                            let stamina = player.ratings.stamina;
+                            let starter_boost = 0;
+
+                            if (i < 5) {
+                                starter_boost = 42000;
+                            }
+
+                            let score = Math.round((Math.pow(rating, 3) * .6) + (Math.pow(stamina, 2) * .4) + starter_boost);
+
+                            players_score.push(score);
+                            total_score += score;
+
+                        }
+
+                        let minutes_remaining = 240;
+
+                        for (let j = 0; j < players_score.length; j++) {
+
+                            team.players[j].ratings.playingtime = Math.round((players_score[j] / total_score) * 240);
+
+                            minutes_remaining -= team.players[j].ratings.playingtime;
+
+                            if (j == players_score.length - 1) {
+
+                                team.players[j].ratings.playingtime += minutes_remaining;
+
+                            }
+
+                            document.getElementById("rotation-minutes-fill-" + (j + 1)).style.width = (team.players[j].ratings.playingtime / 48 * 100) + "%";
+                            document.getElementById("rotation-minutes-value-" + (j + 1)).innerHTML = team.players[j].ratings.playingtime;
+
+                        }
+
+                        document.getElementById("team-rotation-top-minutes-remaining").innerHTML = "Minutes remaining: " + 0;
+
+                        removeRecord("teams", team.id);
+                        addRecord("teams", team);
+
+                    });
+
                     let rotation_minutes_container = document.createElement("div");
                     rotation_minutes_container.id = "team-rotation-minutes-container";
                     rotation_menu_container.appendChild(rotation_minutes_container);
