@@ -2669,12 +2669,20 @@ input#collection-search-input-box {
     height: 12.5%;
     border-bottom: solid 1px lightgrey;
 }
+#play-overlay-content-substitutions-autosub {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 6%;
+    background: #2A2723;
+}
 #play-overlay-content-substitutions-message {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 15%;
+    height: 10%;
     background: #2A2723;
     color: white;
     font-size: 81%;
@@ -2692,7 +2700,7 @@ input#collection-search-input-box {
     align-items: center;
     flex-direction: column;
     width: 100%;
-    height: 40%;
+    height: 42%;
 }
 #play-overlay-content-substitutions-starters-header, #play-overlay-content-substitutions-bench-header {
     display: flex;

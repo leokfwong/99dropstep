@@ -3346,6 +3346,10 @@ function displaySubstitutionsMenu() {
     overlay_content.id = "play-overlay-content";
     overlay_container.appendChild(overlay_content);
 
+    let autosub = document.createElement("div");
+    autosub.id = "play-overlay-content-substitutions-autosub";
+    overlay_content.appendChild(autosub);
+
     let message = document.createElement("div");
     message.id = "play-overlay-content-substitutions-message";
     overlay_content.appendChild(message);
