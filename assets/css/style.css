@@ -2671,11 +2671,35 @@ input#collection-search-input-box {
 }
 #play-overlay-content-substitutions-autosub {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     width: 100%;
     height: 6%;
+    order: 4;
+    font-size: 90%;
     background: #2A2723;
+    color: white;
+}
+#play-overlay-content-substitutions-autosub-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    height: 100%;
+}
+#play-overlay-content-substitutions-autosub-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    height: 90%;
+}
+#play-overlay-content-substitutions-autosub-status {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    height: 90%;
 }
 #play-overlay-content-substitutions-message {
     display: flex;

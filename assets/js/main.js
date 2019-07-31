@@ -3346,10 +3346,6 @@ function displaySubstitutionsMenu() {
     overlay_content.id = "play-overlay-content";
     overlay_container.appendChild(overlay_content);
 
-    let autosub = document.createElement("div");
-    autosub.id = "play-overlay-content-substitutions-autosub";
-    overlay_content.appendChild(autosub);
-
     let message = document.createElement("div");
     message.id = "play-overlay-content-substitutions-message";
     overlay_content.appendChild(message);
@@ -3543,6 +3539,25 @@ function displaySubstitutionsMenu() {
 
 
     });
+
+
+    let autosub = document.createElement("div");
+    autosub.id = "play-overlay-content-substitutions-autosub";
+    overlay_content.appendChild(autosub);
+
+    let autosub_content = document.createElement("div");
+    autosub_content.id = "play-overlay-content-substitutions-autosub-content";
+    autosub.appendChild(autosub_content);
+
+    let autosub_title = document.createElement("div");
+    autosub_title.id = "play-overlay-content-substitutions-autosub-title";
+    autosub_content.appendChild(autosub_title);
+    autosub_title.innerHTML = "Auto-subsitution:";
+
+    let autosub_status = document.createElement("div");
+    autosub_status.id = "play-overlay-content-substitutions-autosub-status";
+    autosub_content.appendChild(autosub_status);
+    autosub_status.innerHTML = "ON";
 
 }
 
