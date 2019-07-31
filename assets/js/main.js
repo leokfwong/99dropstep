@@ -531,7 +531,7 @@ function loadTeams() {
                         fill.id = "rotation-minutes-fill-" + (i + 1);
                         fill.className = "rotation-minutes-fill";
                         bar.appendChild(fill);
-                        fill.style.width = (player.ratings.minutes / 48 * 100) + "%";
+                        fill.style.width = (player.ratings.playingtime / 48 * 100) + "%";
 
                         let plus = document.createElement("div");
                         plus.id = "rotation-minutes-plus-" + (i + 1);
@@ -544,18 +544,18 @@ function loadTeams() {
                         value.id = "rotation-minutes-value-" + (i + 1);
                         value.className = "rotation-minutes-value";
                         minutes.appendChild(value);
-                        value.innerHTML = player.ratings.minutes;
+                        value.innerHTML = player.ratings.playingtime;
 
                         minus.addEventListener("click", function() {
                             let remaining = (240 - sumTeamTotalMinutes(team.players));
 
                             if (remaining < 240) {
 
-                                team.players[i].ratings.minutes--;
+                                team.players[i].ratings.playingtime--;
 
-                                value.innerHTML = team.players[i].ratings.minutes;
+                                value.innerHTML = team.players[i].ratings.playingtime;
 
-                                fill.style.width = (team.players[i].ratings.minutes / 48 * 100) + "%";
+                                fill.style.width = (team.players[i].ratings.playingtime / 48 * 100) + "%";
 
                                 let new_remaining = (240 - sumTeamTotalMinutes(team.players));
                                 minutes_remaining.innerHTML = "Minutes remaining: " + new_remaining;
@@ -578,11 +578,11 @@ function loadTeams() {
 
                             if (remaining > 0) {
 
-                                team.players[i].ratings.minutes++;
+                                team.players[i].ratings.playingtime++;
 
-                                value.innerHTML = team.players[i].ratings.minutes;
+                                value.innerHTML = team.players[i].ratings.playingtime;
 
-                                fill.style.width = (team.players[i].ratings.minutes / 48 * 100) + "%";
+                                fill.style.width = (team.players[i].ratings.playingtime / 48 * 100) + "%";
 
                                 let new_remaining = (240 - sumTeamTotalMinutes(team.players));
                                 minutes_remaining.innerHTML = "Minutes remaining: " + new_remaining;
@@ -631,7 +631,7 @@ function sumTeamTotalMinutes(team) {
 
     for (let i = 0; i < team.length; i++) {
 
-        total += team[i].ratings.minutes;
+        total += team[i].ratings.playingtime;
 
     }
 
@@ -2161,7 +2161,7 @@ function loadCardDetails(id) {
                                             team.players[players_index] = card;
 
                                             // Set player's minutes to 0... TOFIX
-                                            team.players[players_index].ratings.minutes = 0;
+                                            team.players[players_index].ratings.playingtime = 0;
 
                                             removeRecord("teams", team.id);
                                             addRecord("teams", team);
@@ -5231,8 +5231,8 @@ function generateRandomTeam(subset = null) {
         if (calculateRatings(random_1).overall > calculateRatings(random_2).overall) {
 
             // Initialize players minutes...
-            random_1.ratings.minutes = 30;
-            random_2.ratings.minutes = 18;
+            random_1.ratings.playingtime = 30;
+            random_2.ratings.playingtime = 18;
 
             starters.push(random_1);
             bench.push(random_2);
@@ -5240,8 +5240,8 @@ function generateRandomTeam(subset = null) {
         } else {
 
             // Initialize players minutes...
-            random_1.ratings.minutes = 18;
-            random_2.ratings.minutes = 30;
+            random_1.ratings.playingtime = 18;
+            random_2.ratings.playingtime = 30;
 
             starters.push(random_2);
             bench.push(random_1);
