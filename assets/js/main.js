@@ -3681,7 +3681,9 @@ function selectPlayerToSubIn(play, agent, data) {
 
             let in_player_slot = document.getElementById("play-overlay-content-substitutions-bench-player-spot-" + play.team[agent].substitutions[position_array[(data.out_slot - 1)]].data.in_slot);
 
-            in_player_slot.style.background = "none";
+            if (in_player_slot != undefined) {
+                in_player_slot.style.background = "none";
+            }
 
             console.log("Player subbing out was already selected at " + position_array[x].toUpperCase());
             substitution.sub = 0;
@@ -4142,7 +4144,7 @@ function simulateNextPossession() {
                 play.gameover = 1;
             }
 
-            // Check if halftime or 7m left, boost stamina and sub in starters
+            // Check if halftime, boost stamina and sub in starters
             if (play.time == 1440) {
                 play = increaseAllStamina(play, 10);
                 play = subAllStarters(play);
@@ -4176,17 +4178,8 @@ function simulateNextPossession() {
                         }
 
                         // Autosub
-                        if (player.gamestats.ratings.stamina < 75) {
-                            if (agents[i] == "usr") {
-                                if (play.team[agents[i]].autosub == 1) {
-                                    play = selectSubstitution(play, player.gamestats.pos - 1, "usr");
-                                }
-                            } else {
-                                if (play.team[agents[i]].autosub == 1) {
-                                    play = selectSubstitution(play, player.gamestats.pos - 1, "cpu");
-                                }
-                            }
-                        }
+                        console.log("Checking for substitutions!");
+                        play = autoSubstitution(play);
 
                     } else {
 
@@ -4301,6 +4294,113 @@ function simulateNextPossession() {
         }
 
     });
+
+}
+
+function autoSubstitution(play) {
+
+    let agents = ["usr", "cpu"];
+    let position_array = ["pg", "sg", "sf", "pf", "c"];
+
+    for (let i = 0; i < agents.length; i++) {
+
+        let roster = play.team[agents[i]].roster;
+
+        for (let j = 0; j < roster.length; j++) {
+
+            let out_player = roster[j];
+
+            if (out_player.gamestats.active == 1) {
+
+                let quarter = fetchQuarter(play);
+                let total_PT = out_player.ratings.playingtime * 60;
+                let expected_quarter_PT = (total_PT / 4) * quarter;
+                let current_PT = out_player.gamestats.stats.min;
+
+                if (current_PT >= expected_quarter_PT) {
+
+                    console.log(out_player.first + " " + out_player.last + " is supposed to sub out! (Total expected PT: " + total_PT + "; Expected quarter PT: " + expected_quarter_PT + "; Current PT: " + current_PT + ")")
+
+                    let pending_sub = false;
+                    // Check to see if player is already awaiting substitution
+                    for (let k = 0; k < play.team[agents[i]].substitutions.length; k++) {
+
+                        let substitution = play.team[agents[i]].substitutions[k];
+
+                        if (substitution.sub == 1) {
+
+                            if (substitution.data.out_id == player.id) {
+                                pending_sub = true;
+                            }
+
+                        }
+
+                    }
+
+                    // Find potential bench players who fit the position
+                    if (pending_sub == false) {
+
+                        let potential_in_players = [];
+                        let position = position_array[out_player.gamestats.slot - 1].toUpperCase();
+
+                        for (let l = 0; l < roster.length; l++) {
+
+                            let in_player = roster[l];
+
+                            if (in_player.gamestats.active == 0) {
+
+                                if (in_player.position.indexOf(position) > -1) {
+
+                                    potential_in_players.push(in_player);
+
+                                }
+
+                            }
+
+                        }
+
+                        let winner;
+                        let max_remaining_pt = 0;
+
+                        // Pick bench player will most time remaining to play
+                        for (let m = 0; m < potential_in_players.length; m++) {
+
+                            let in_player = potential_in_players[m];
+                            let remaining_pt = (in_player.ratings.playingtime * 60) - in_player.gamestats.stats.min;
+
+                            if (remaining_pt > max_remaining_pt) {
+
+                                winner = in_player;
+                                max_remaining_pt = remaining_pt;
+
+                            }
+
+                        }
+
+                        if (winner != undefined) {
+
+                            let data = {
+                                "in_id": winner.id,
+                                "in_slot": winner.gamestats.slot,
+                                "out_id": out_player.id,
+                                "out_slot": out_player.gamestats.slot
+                            }
+
+                            play = selectPlayerToSubIn(play, agents[i], data);
+                        }
+
+                    }
+
+
+                }
+
+            }
+
+        }
+
+    }
+
+    return (play)
 
 }
 
