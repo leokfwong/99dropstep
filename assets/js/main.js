@@ -513,6 +513,12 @@ function loadTeams() {
 
                         }
 
+                        if ((240 - sumTeamTotalMinutes(team.players)) != 0) {
+                            document.getElementById("team-rotation-team-warning").style.display = "flex";
+                        } else {
+                            document.getElementById("team-rotation-team-warning").style.display = "none";
+                        }
+
                         document.getElementById("team-rotation-top-minutes-remaining").innerHTML = "Minutes remaining: " + 0;
 
                         removeRecord("teams", team.id);
