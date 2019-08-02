@@ -3301,6 +3301,8 @@ function initializePlayStats(gamemode) {
 
                 }
 
+                play_stats_json.team.cpu.roster = autoAssignTeamPlayingTime(play_stats_json.team.cpu.roster)
+
                 removeRecord("play", "0001");
                 addRecord("play", play_stats_json);
 
