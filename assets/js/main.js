@@ -472,54 +472,7 @@ function loadTeams() {
 
                     auto_assign_button.addEventListener("click", function() {
 
-                        let players_score = [];
-                        let total_score = 0;
-
-                        for (let i = 0; i < team.players.length; i++) {
-
-                            let player = team.players[i];
-
-                            let rating = Math.round(calculateRatings(player).overall);
-                            let stamina = player.ratings.stamina;
-                            let starter_boost = 0;
-
-                            if (i < 5) {
-                                starter_boost = 49000;
-                            }
-
-                            let score = Math.round((Math.pow(rating, 3) * .6) + (Math.pow(stamina, 2) * .4) + starter_boost);
-
-                            players_score.push(score);
-                            total_score += score;
-
-                        }
-
-                        let minutes_remaining = 240;
-
-                        for (let j = 0; j < players_score.length; j++) {
-
-                            team.players[j].ratings.playingtime = Math.round((players_score[j] / total_score) * 240);
-
-                            minutes_remaining -= team.players[j].ratings.playingtime;
-
-                            if (j == players_score.length - 1) {
-
-                                team.players[j].ratings.playingtime += minutes_remaining;
-
-                            }
-
-                            document.getElementById("rotation-minutes-fill-" + (j + 1)).style.width = (team.players[j].ratings.playingtime / 48 * 100) + "%";
-                            document.getElementById("rotation-minutes-value-" + (j + 1)).innerHTML = team.players[j].ratings.playingtime;
-
-                        }
-
-                        if ((240 - sumTeamTotalMinutes(team.players)) != 0) {
-                            document.getElementById("team-rotation-team-warning").style.display = "flex";
-                        } else {
-                            document.getElementById("team-rotation-team-warning").style.display = "none";
-                        }
-
-                        document.getElementById("team-rotation-top-minutes-remaining").innerHTML = "Minutes remaining: " + 0;
+                        team.players = autoAssignTeamPlayingTime(team.players);
 
                         removeRecord("teams", team.id);
                         addRecord("teams", team);
@@ -679,6 +632,90 @@ function loadTeams() {
 
 });
 });
+}
+
+function autoAssignTeamPlayingTime(team) {
+
+    // Initialize array containing each player's score in order 0-10
+    let players_score = [];
+    let total_score = 0;
+
+    // Iterate through team
+    for (let i = 0; i < team.length; i++) {
+
+        // Get player
+        let player = team[i];
+
+        // Fetch player's overall rating and stamina, initialize boost value for starters
+        let rating = Math.round(calculateRatings(player).overall);
+        let stamina = player.ratings.stamina;
+        let starter_boost = 0;
+
+        // If starter, give a boost to score
+        if (i < 5) {
+            starter_boost = 49000;
+        }
+
+        // Calculate score based on formula
+        let score = Math.round((Math.pow(rating, 3) * .6) + (Math.pow(stamina, 2) * .4) + starter_boost);
+
+        // Push score to score array, add up score to total
+        players_score.push(score);
+        total_score += score;
+
+    }
+
+    // Initialize remaining minutes
+    let minutes_remaining = 240;
+
+    // Iterate through score array
+    for (let j = 0; j < players_score.length; j++) {
+
+        // Caculate player's playingtime based on score relative to teammates
+        team[j].ratings.playingtime = Math.round((players_score[j] / total_score) * 240);
+
+        // Substract playintime from remaining minutes
+        minutes_remaining -= team[j].ratings.playingtime;
+
+        // If last player, add remaining minutes
+        // TODO: Find a better solution, this is a temporary lazy fix
+        if (j == players_score.length - 1) {
+
+            team[j].ratings.playingtime += minutes_remaining;
+
+        }
+
+        // Try to get fill and value elements
+        let rotation_fill = document.getElementById("rotation-minutes-fill-" + (j + 1));
+        let rotation_value = document.getElementById("rotation-minutes-value-" + (j + 1));
+
+        // If available, update values
+        if (rotation_fill != undefined) {
+            rotation_fill.style.width = (team[j].ratings.playingtime / 48 * 100) + "%";
+        }
+
+        if (rotation_value != undefined) {
+            rotation_value.innerHTML = team[j].ratings.playingtime;
+        }
+
+    }
+
+    let rotation_warning = document.getElementById("team-rotation-team-warning");
+    if (rotation_warning != undefined) {
+        if ((240 - sumTeamTotalMinutes(team)) != 0) {
+            rotation_warning.style.display = "flex";
+        } else {
+            rotation_warning.style.display = "none";
+        }
+    }
+
+    let minutes_remaining_div = document.getElementById("team-rotation-top-minutes-remaining");
+    if (minutes_remaining_div != undefined) {
+        minutes_remaining_div.innerHTML = "Minutes remaining: " + 0;
+    }
+
+    return(team);
+
 }
 
 function sumTeamTotalMinutes(team) {
@@ -4178,7 +4215,7 @@ function simulateNextPossession() {
                         }
 
                         // Autosub
-                        console.log("Checking for substitutions!");
+                        //console.log("Checking for substitutions!");
                         play = autoSubstitution(play);
 
                     } else {
@@ -4417,7 +4454,7 @@ function updateSubstitutionLights(play) {
         for (let j = 0; j < 5; j++) {
 
             let substitution = play.team[agents[i]].substitutions[position_array[j]];
-            console.log(substitution.sub);
+            //console.log(substitution.sub);
 
             if (substitution.sub == 1) {
 
@@ -5482,6 +5519,12 @@ function generateRandomTeam(subset = null) {
     }
 
     let team = starters.concat(bench);
+
+    console.log(team);
+
+    team = autoAssignTeamPlayingTime(team);
+
+    console.log(team);
 
     return (team);
 
@@ -6594,7 +6637,7 @@ function fetchQuarter(play) {
         quarter = play.overtime + 4;
     }
 
-    console.log(time, play.possessionDuration, quarter);
+    // console.log(time, play.possessionDuration, quarter);
 
     return (quarter);
 
