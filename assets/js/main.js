@@ -3564,6 +3564,8 @@ function displaySubstitutionsMenu() {
             info.id = "play-overlay-content-substitutions-" + type + "-player-info-" + (i + 1);
             info.className = "play-overlay-content-substitutions-player-info";
             row.appendChild(info);
+            info.style.background = player.color1;
+            info.style.color = player.color3;
 
             let name = document.createElement("div");
             name.id = "play-overlay-content-substitutions-" + type + "-player-name-" + (i + 1);
