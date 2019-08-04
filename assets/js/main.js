@@ -3664,8 +3664,6 @@ function displaySubstitutionsMenu() {
 
         }
 
-        let sub_colors = ["#d64541", "#fcb941", "#4daf7c", "#2c3e50", "#736598"];
-
         // Update colors
         for (let x = 0; x < 5; x++) {
 
@@ -3691,7 +3689,6 @@ function displaySubstitutionsMenu() {
 function selectPlayerToSubIn(play, agent, data) {
 
     let position_array = ["pg", "sg", "sf", "pf", "c"];
-    let sub_colors = ["#d64541", "#fcb941", "#4daf7c", "#2c3e50", "#736598"];
 
     // Check to see if the player selected to sub in is already supposed to sub in for
     // another position. If so, then cancel previous sub.

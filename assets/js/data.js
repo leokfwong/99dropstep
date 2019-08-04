@@ -173,6 +173,8 @@ const phys_stats_json = [{
 
 const scoring_array = ["inside", "dunk", "midrange", "outside"];
 
+const sub_colors = ["#d64541", "#fcb941", "#4daf7c", "#2c82c9", "#736598"];
+
 let boxscore_stats_array = ["min", "pts", "reb", "ast", "stl", "blk", "ba", "fgm", "fga", "fgp", "3pm", "3pa", "3pp", "ftm", "fta", "ftp", "oreb", "dreb", "tov", "pf", "pm", "tg"];
 
 let time_distribution_default = [{"seconds":1,"probability":1},{"seconds":2,"probability":1},{"seconds":3,"probability":1},{"seconds":4,"probability":1},{"seconds":5,"probability":1},{"seconds":6,"probability":2},{"seconds":7,"probability":2},{"seconds":8,"probability":2},{"seconds":9,"probability":2},{"seconds":10,"probability":2},{"seconds":11,"probability":4},{"seconds":12,"probability":5},{"seconds":13,"probability":6},{"seconds":14,"probability":7},{"seconds":15,"probability":9},{"seconds":16,"probability":10},{"seconds":17,"probability":9},{"seconds":18,"probability":8},{"seconds":19,"probability":7},{"seconds":20,"probability":6},{"seconds":21,"probability":5},{"seconds":22,"probability":4},{"seconds":23,"probability":3},{"seconds":24,"probability":2}];
