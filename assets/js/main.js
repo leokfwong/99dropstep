@@ -5680,13 +5680,19 @@ function updatePlayByPlay(play) {
         row.className = "play-stats-play-by-play-row div-fadein";
         quarter_content.appendChild(row);
 
+        let background_color;
+
+        if (event.team == "usr") {
+            background_color = "white";
+        } else {
+            background_color = "#ecf0f1";
+        }
+
+        row.style.background = background_color;
+
         let container = document.createElement("div");
         container.className = "play-stats-play-by-play-row-container";
         row.appendChild(container);
-
-        if (event.make == 1) {
-            row.style.fontWeight = "bold";
-        }
 
         let time_itm = document.createElement("div");
         time_itm.className = "play-stats-play-by-play-row-time";
@@ -5707,6 +5713,11 @@ function updatePlayByPlay(play) {
         score_itm.className = "play-stats-play-by-play-row-score";
         container.appendChild(score_itm);
         score_itm.innerHTML = event.score;
+
+        if (event.make == 1) {
+            row.style.fontWeight = "bold";
+            play_itm.style.color = "#22B573";
+        }
 
     }
 
