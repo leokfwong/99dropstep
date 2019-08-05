@@ -2240,6 +2240,7 @@ input#collection-search-input-box {
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    flex-wrap: wrap;
     width: 64%;
 }
 .play-stats-play-by-play-row-score {
