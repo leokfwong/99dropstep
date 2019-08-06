@@ -5142,8 +5142,9 @@ function simulateShootingFoul(play) {
 
         if (play.team[fetchOtherAgent(play.possession)].roster[play.defender.gamestats.pos - 1].gamestats.stats.pf > 5) {
 
-            play = selectSubstitution(play, (play.defender.gamestats.pos - 1), fetchOtherAgent(play.possession));
-            play = makeSubstitutions(play);
+            // TODO: Implement automatic substitution of players with 6 fouls
+            //play = selectSubstitution(play, (play.defender.gamestats.pos - 1), fetchOtherAgent(play.possession));
+            //play = makeSubstitutions(play);
 
         }
 
