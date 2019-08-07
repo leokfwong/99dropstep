@@ -18071,6 +18071,66 @@ const players_json = [{
     "color2": "#EDB015",
     "color3": "#4D2E63",
     "image": "ariza_trevor_losangeles_lakers"
+}, {
+    "id": "0299",
+    "type": "player",
+    "first": "Jordan",
+    "last": "Farmar",
+    "height": "6-2",
+    "weight": "180",
+    "number": 5,
+    "country": "United States",
+    "team": "Los Angeles Lakers",
+    "conference": "Western Conference",
+    "season": "2008-2009",
+    "salary": 1,
+    "unlockedlevel": 12,
+    "tier": 3,
+    "rarity": "Common",
+    "level": 1,
+    "count": 1,
+    "ratings": {
+        "inside": {
+            "value": 69,
+            "tendency": 37
+        },
+        "dunk": {
+            "value": 77,
+            "tendency": 3
+        },
+        "midrange": {
+            "value": 69,
+            "tendency": 25
+        },
+        "outside": {
+            "value": 71,
+            "tendency": 35
+        },
+        "drawfoul": 52,
+        "freethrow": 58,
+        "interior": 72,
+        "perimeter": 75,
+        "offensiverebound": 60,
+        "defensiverebound": 62,
+        "speed": 79,
+        "vertical": 80,
+        "strength": 75,
+        "hands": 77,
+        "stamina": 85,
+        "hustle": 80,
+        "passing": 63,
+        "steal": 55,
+        "block": 43,
+        "offensiveconsistency": 73,
+        "defensiveconsistency": 70
+    },
+    "position": "PG",
+    "fgaintensity": 0,
+    "fgaaverage": 6,
+    "color1": "#6253A5",
+    "color2": "#463468",
+    "color3": "#F2E9E4",
+    "image": "farmar_jordan_losangeles_lakers"
 }];
 
 const coaches_json = [{
