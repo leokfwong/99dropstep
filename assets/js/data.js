@@ -185,6 +185,12 @@ let playoffs_teams_json = [{
     "season": "2018-2019",
     "roster": ["0288", "0289", "0290", "0292", "0291", "0125", "0293", "0185", "0063", "0126"],
     "image": "new_york_knicks_2018-2019_banner"
+}, {
+    "id": "0002",
+    "name": "Los Angeles Lakers",
+    "season": "2008-2009",
+    "roster": ["0295", "0189", "0298", "0297", "0294", "0299", "0037", "0151", "0296", "0148"],
+    "image": "losangeles_lakers_2008-2009_banner"
 }]
 
 const players_json = [{
