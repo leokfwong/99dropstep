@@ -3567,7 +3567,7 @@ function displaySubstitutionsMenu() {
             info.style.background = player.color1;
             info.style.color = player.color3;
 
-            if (player.gamestats.stats.pf > 0) {
+            if (player.gamestats.stats.pf > 5 & player.gamestats.slot > 5) {
 
                 let fouled_out = document.createElement("div");
                 fouled_out.id = "play-overlay-content-substitutions-" + type + "-player-fouled-out-" + (i + 1);
@@ -3631,7 +3631,7 @@ function displaySubstitutionsMenu() {
 
                             if (roster[j].gamestats.slot > 5) {
 
-                                if (roster[j].position.indexOf(position_array[i]) > -1) {
+                                if (roster[j].position.indexOf(position_array[i]) > -1 & roster[j].gamestats.stats.pf < 6) {
 
                                     console.log(roster[j].last);
                                     let row_highlight = document.getElementById("play-overlay-content-substitutions-bench-player-highlight-" + roster[j].gamestats.slot);
