@@ -3567,6 +3567,16 @@ function displaySubstitutionsMenu() {
             info.style.background = player.color1;
             info.style.color = player.color3;
 
+            if (player.gamestats.stats.pf > 0) {
+
+                let fouled_out = document.createElement("div");
+                fouled_out.id = "play-overlay-content-substitutions-" + type + "-player-fouled-out-" + (i + 1);
+                fouled_out.className = "play-overlay-content-substitutions-player-fouled-out";
+                info.appendChild(fouled_out);
+                fouled_out.innerHTML = "FOULED OUT";
+
+            }
+
             let name = document.createElement("div");
             name.id = "play-overlay-content-substitutions-" + type + "-player-name-" + (i + 1);
             name.className = "play-overlay-content-substitutions-player-name";

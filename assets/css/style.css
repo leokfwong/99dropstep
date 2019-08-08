@@ -2818,6 +2818,19 @@ input#collection-search-input-box {
     align-items: center;
     width: 70%;
     height: 100%;
+    position: relative;
+}
+.play-overlay-content-substitutions-player-fouled-out {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .9);
+    color: #d24d57;
+    font-size: 111%;
+    font-weight: bold;
 }
 .play-overlay-content-substitutions-player-name {
     padding: 5%;
