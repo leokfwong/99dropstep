@@ -549,12 +549,12 @@ input#collection-search-input-box {
     width: 70%;
     height: 100%;
     position: absolute;
-    background: lightgreen;
+    background: #22B573;
     left: 0;
 }
 #collection-progress-bar-text {
     position: absolute;
-    color: black;
+    color: white;
 }
 #collection-cards {
     display: block;
