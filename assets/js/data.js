@@ -18137,6 +18137,66 @@ const players_json = [{
     "color2": "#463468",
     "color3": "#F2E9E4",
     "image": "farmar_jordan_losangeles_lakers"
+}, {
+    "id": "0300",
+    "type": "player",
+    "first": "Luke",
+    "last": "Walton",
+    "height": "6-8",
+    "weight": "235",
+    "number": 4,
+    "country": "United States",
+    "team": "Los Angeles Lakers",
+    "conference": "Western Conference",
+    "season": "2008-2009",
+    "salary": 4,
+    "unlockedlevel": 8,
+    "tier": 3,
+    "rarity": "Common",
+    "level": 1,
+    "count": 1,
+    "ratings": {
+        "inside": {
+            "value": 69,
+            "tendency": 45
+        },
+        "dunk": {
+            "value": 75,
+            "tendency": 2
+        },
+        "midrange": {
+            "value": 69,
+            "tendency": 34
+        },
+        "outside": {
+            "value": 67,
+            "tendency": 19
+        },
+        "drawfoul": 51,
+        "freethrow": 72,
+        "interior": 77,
+        "perimeter": 78,
+        "offensiverebound": 63,
+        "defensiverebound": 63,
+        "speed": 77,
+        "vertical": 80,
+        "strength": 80,
+        "hands": 74,
+        "stamina": 85,
+        "hustle": 81,
+        "passing": 64,
+        "steal": 48,
+        "block": 43,
+        "offensiveconsistency": 70,
+        "defensiveconsistency": 72
+    },
+    "position": "SF",
+    "fgaintensity": 0,
+    "fgaaverage": 5,
+    "color1": "#7B5EAA",
+    "color2": "#2E1644",
+    "color3": "#F0BC51",
+    "image": "walton_luke_losangeles_lakers"
 }];
 
 const coaches_json = [{
