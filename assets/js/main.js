@@ -1209,7 +1209,9 @@ function loadShop() {
 
                                 let image_src = document.createElement("img");
                                 image_src.src = "assets/images/cards/" + "walton_luke_losangeles_lakers_0300_card" + ".png";
+                                image_src.src = "assets/images/cards/" + players_json[tmp[tmp.length - 1] - 1].image + "_" + players_json[tmp[tmp.length - 1] - 1].id + "_card.png";
                                 image.appendChild(image_src);
+                                tmp.pop();
 
                                 let action = document.createElement("div");
                                 action.id = "shop-open-action";
