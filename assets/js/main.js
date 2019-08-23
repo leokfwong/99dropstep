@@ -1230,6 +1230,7 @@ function loadShop() {
 
                                         let image_src = document.createElement("img");
                                         image_src.src = "assets/images/cards/" + player.image + "_" + player.id + "_card.png";
+                                        image_src.className = "div-fadein";
                                         image.appendChild(image_src);
 
                                         tmp.pop();
