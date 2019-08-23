@@ -1868,6 +1868,43 @@ input#collection-search-input-box {
     background: lightgreen;
     color: white;
 }
+#shop-open-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 90%;
+    height: 70%;
+}
+#shop-open-image-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    height: 80%;
+}
+#shop-open-image-div img {
+    height: 80%;
+}
+#shop-open-action {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 20%;
+}
+#shop-open-action-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    height: 50%;
+    border: solid 2px white;
+    border-radius: 2%;
+    font-weight: bold;
+    background: #22B573;
+    color: white;
+}
 /* GAMEMODES */
 #gamemodes-content {
     display: block;

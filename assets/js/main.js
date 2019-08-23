@@ -1166,6 +1166,86 @@ function loadShop() {
                         confirmation_action_proceed.appendChild(confirmation_action_proceed_button);
                         confirmation_action_proceed_button.innerHTML = "Buy";
 
+                        confirmation_action_proceed_button.addEventListener("click", function() {
+
+                            overlay.innerHTML = "";
+
+                            let container = document.createElement("div");
+                            container.id = "shop-open-container";
+                            container.className = "div-fadein";
+                            overlay.appendChild(container);
+
+                            let image = document.createElement("div");
+                            image.id = "shop-open-image-div";
+                            container.appendChild(image);
+
+                            let image_src = document.createElement("img");
+                            image_src.src = "assets/images/store/" + shop[i].filename + ".png";
+                            image.appendChild(image_src);
+
+                            let action = document.createElement("div");
+                            action.id = "shop-open-action";
+                            container.appendChild(action);
+
+                            let action_button = document.createElement("div");
+                            action_button.id = "shop-open-action-button";
+                            action.appendChild(action_button);
+                            action_button.innerHTML = "Open";
+
+                            let tmp = [111, 222, 55, 66, 77, 22, 23, 234, 96];
+
+                            action_button.addEventListener("click", function() {
+
+                                overlay.innerHTML = "";
+
+                                let container = document.createElement("div");
+                                container.id = "shop-open-container";
+                                container.className = "div-fadein";
+                                overlay.appendChild(container);
+
+                                let image = document.createElement("div");
+                                image.id = "shop-open-image-div";
+                                container.appendChild(image);
+
+                                let image_src = document.createElement("img");
+                                image_src.src = "assets/images/cards/" + "walton_luke_losangeles_lakers_0300_card" + ".png";
+                                image.appendChild(image_src);
+
+                                let action = document.createElement("div");
+                                action.id = "shop-open-action";
+                                container.appendChild(action);
+
+                                let action_button = document.createElement("div");
+                                action_button.id = "shop-open-action-button";
+                                action.appendChild(action_button);
+                                action_button.innerHTML = "Next";
+
+                                action_button.addEventListener("click", function() {
+
+                                    if (tmp.length > 0) {
+
+                                        image.innerHTML = "";
+
+                                        let player = players_json[tmp[tmp.length - 1] - 1];
+
+                                        let image_src = document.createElement("img");
+                                        image_src.src = "assets/images/cards/" + player.image + "_" + player.id + "_card.png";
+                                        image.appendChild(image_src);
+
+                                        tmp.pop();
+
+                                    } else {
+
+                                        action_button.innerHTML = "Done";
+
+                                    }
+
+                                });
+
+                            });
+
+                        });
+
 
                     } else {
 
