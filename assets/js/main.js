@@ -1168,6 +1168,15 @@ function loadShop() {
 
                         confirmation_action_proceed_button.addEventListener("click", function() {
 
+                            let tmp = [];
+
+                            for (let x = 0; x < 9; x++) {
+
+                                let player_id = shop[i].content[randomIntFromInterval(0, shop[i].content.length - 1)];
+                                tmp.push(player_id);
+
+                            }
+
                             overlay.innerHTML = "";
 
                             let container = document.createElement("div");
@@ -1192,7 +1201,7 @@ function loadShop() {
                             action.appendChild(action_button);
                             action_button.innerHTML = "Open";
 
-                            let tmp = [111, 222, 55, 66, 77, 22, 23, 234, 96];
+                            //let tmp = [111, 222, 55, 66, 77, 22, 23, 234, 96];
 
                             action_button.addEventListener("click", function() {
 
@@ -1237,9 +1246,11 @@ function loadShop() {
 
                                         tmp.pop();
 
-                                    } else {
+                                        if (tmp.length == 0) {
 
-                                        action_button.innerHTML = "Done";
+                                            action_button.innerHTML = "Summary";
+
+                                        }
 
                                     }
 
@@ -1248,7 +1259,6 @@ function loadShop() {
                             });
 
                         });
-
 
                     } else {
 
