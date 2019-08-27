@@ -1192,6 +1192,11 @@ function loadShop() {
                             image_src.src = "assets/images/store/" + shop[i].filename + ".png";
                             image.appendChild(image_src);
 
+                            let card_out_of = document.createElement("div");
+                            card_out_of.id = "shop-open-card-out-of";
+                            container.appendChild(card_out_of);
+                            card_out_of.innerHTML = "Contains 9 cards";
+
                             let action = document.createElement("div");
                             action.id = "shop-open-action";
                             container.appendChild(action);
@@ -1220,6 +1225,12 @@ function loadShop() {
                                 image_src.src = "assets/images/cards/" + "walton_luke_losangeles_lakers_0300_card" + ".png";
                                 image_src.src = "assets/images/cards/" + players_json[tmp[tmp.length - 1] - 1].image + "_" + players_json[tmp[tmp.length - 1] - 1].id + "_card.png";
                                 image.appendChild(image_src);
+
+                                let card_out_of = document.createElement("div");
+                                card_out_of.id = "shop-open-card-out-of";
+                                container.appendChild(card_out_of);
+                                card_out_of.innerHTML = "Card " + (10 - tmp.length) + " out of 9";
+
                                 tmp.pop();
 
                                 let action = document.createElement("div");
@@ -1243,6 +1254,8 @@ function loadShop() {
                                         image_src.src = "assets/images/cards/" + player.image + "_" + player.id + "_card.png";
                                         image_src.className = "div-fadein";
                                         image.appendChild(image_src);
+
+                                        card_out_of.innerHTML = "Card " + (10 - tmp.length) + " out of 9";
 
                                         tmp.pop();
 

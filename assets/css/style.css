@@ -1881,10 +1881,14 @@ input#collection-search-input-box {
     justify-content: center;
     align-items: center;
     width: 90%;
-    height: 80%;
+    height: 75%;
 }
 #shop-open-image-div img {
     height: 80%;
+}
+#shop-open-card-out-of {
+    height: 5%;
+    color: white;
 }
 #shop-open-action {
     display: flex;
