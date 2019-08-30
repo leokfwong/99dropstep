@@ -1874,17 +1874,38 @@ input#collection-search-input-box {
     align-items: center;
     flex-direction: column;
     width: 90%;
-    height: 70%;
+    height: 80%;
 }
 #shop-open-image-div {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 90%;
-    height: 75%;
+    height: 70%;
 }
 #shop-open-image-div img {
-    height: 80%;
+    height: 90%;
+}
+#shop-open-collected {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    height: 10%;
+}
+#shop-open-collected-box {
+    width: 70%;
+    height: 50%;
+    border: solid 2px white;
+    border-radius: 2px;
+    position: relative;
+}
+#shop-open-collected-fill {
+    position: absolute;
+    width: 70%;
+    height: 100%;
+    background: lightgrey;
+    border-radius: 1px;
 }
 #shop-open-card-out-of {
     height: 5%;
@@ -1895,7 +1916,7 @@ input#collection-search-input-box {
     justify-content: center;
     align-items: center;
     width: 50%;
-    height: 20%;
+    height: 15%;
 }
 #shop-open-action-button {
     display: flex;

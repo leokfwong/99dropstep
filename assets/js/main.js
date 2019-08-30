@@ -1217,19 +1217,38 @@ function loadShop() {
                                 container.className = "div-fadein";
                                 overlay.appendChild(container);
 
-                                let image = document.createElement("div");
-                                image.id = "shop-open-image-div";
-                                container.appendChild(image);
-
-                                let image_src = document.createElement("img");
-                                image_src.src = "assets/images/cards/" + "walton_luke_losangeles_lakers_0300_card" + ".png";
-                                image_src.src = "assets/images/cards/" + players_json[tmp[tmp.length - 1] - 1].image + "_" + players_json[tmp[tmp.length - 1] - 1].id + "_card.png";
-                                image.appendChild(image_src);
-
                                 let card_out_of = document.createElement("div");
                                 card_out_of.id = "shop-open-card-out-of";
                                 container.appendChild(card_out_of);
                                 card_out_of.innerHTML = "Card " + (10 - tmp.length) + " out of 9";
+
+                                let image = document.createElement("div");
+                                image.id = "shop-open-image-div";
+                                container.appendChild(image);
+
+                                let player = players_json[tmp[tmp.length - 1] - 1];
+
+                                let image_src = document.createElement("img");
+                                image_src.src = "assets/images/cards/" + "walton_luke_losangeles_lakers_0300_card" + ".png";
+                                image_src.src = "assets/images/cards/" + player.image + "_" + player.id + "_card.png";
+                                image.appendChild(image_src);
+
+                                let collected = document.createElement("div");
+                                collected.id = "shop-open-collected";
+                                container.appendChild(collected);
+
+                                let box = document.createElement("div");
+                                box.id = "shop-open-collected-box";
+                                collected.appendChild(box);
+
+                                let fill = document.createElement("div");
+                                fill.id = "shop-open-collected-fill";
+                                box.appendChild(fill);
+                                let cnt = player.count / 20 * 100;
+                                if (cnt > 100) {
+                                    cnt = 100
+                                };
+                                fill.style.width = cnt + "%";
 
                                 tmp.pop();
 
