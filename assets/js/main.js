@@ -1169,10 +1169,12 @@ function loadShop() {
                         confirmation_action_proceed_button.addEventListener("click", function() {
 
                             let tmp = [];
+                            let pool = shop[i].content;
 
                             for (let x = 0; x < 9; x++) {
 
-                                let player_id = shop[i].content[randomIntFromInterval(0, shop[i].content.length - 1)];
+                                let player_id = pool[randomIntFromInterval(0, shop[i].content.length - 1)];
+                                pool.splice(pool.indexOf(player_id), 1);
                                 tmp.push(player_id);
 
                             }
@@ -1206,9 +1208,40 @@ function loadShop() {
                             action.appendChild(action_button);
                             action_button.innerHTML = "Open";
 
-                            //let tmp = [111, 222, 55, 66, 77, 22, 23, 234, 96];
+                            let card_flow = [];
+
+                            // Update collection
+                            for (let x = 0; x < tmp.length; x++) {
+
+                                fetchRecord("collection", tmp[x], function(card) {
+
+                                    let new_card;
+
+                                    if (card != undefined) {
+                                        console.log(card.first + " " + card.last + " (" + card.id + ") " + "already exists.");
+                                        console.log("Count: " + card.count);
+                                        card.count++;
+                                        card_flow.push(card);
+                                        console.log("Count: " + card.count);
+                                        removeRecord("collection", card.id);
+                                        addRecord("collection", card);
+                                    } else {
+                                        console.log("New! " + card.first + " " + card.last + " (" + card.id + ") " + "does not already exist.");
+                                        new_card = new Player(card);
+                                        new_card.count = 1;
+                                        new_card = initializeCardStats(new_card);
+                                        card_flow.push(new_card);
+                                        addRecord("collection", new_card);
+                                    }
+
+                                });
+                            }
 
                             action_button.addEventListener("click", function() {
+
+                                console.log(card_flow);
+
+                                let player = card_flow[card_flow.length - 1];
 
                                 overlay.innerHTML = "";
 
@@ -1225,8 +1258,6 @@ function loadShop() {
                                 let image = document.createElement("div");
                                 image.id = "shop-open-image-div";
                                 container.appendChild(image);
-
-                                let player = players_json[tmp[tmp.length - 1] - 1];
 
                                 let image_src = document.createElement("img");
                                 image_src.src = "assets/images/cards/" + "walton_luke_losangeles_lakers_0300_card" + ".png";
@@ -1250,7 +1281,7 @@ function loadShop() {
                                 };
                                 fill.style.width = cnt + "%";
 
-                                tmp.pop();
+                                card_flow.pop();
 
                                 let action = document.createElement("div");
                                 action.id = "shop-open-action";
@@ -1263,22 +1294,28 @@ function loadShop() {
 
                                 action_button.addEventListener("click", function() {
 
-                                    if (tmp.length > 0) {
+                                    if (card_flow.length > 0) {
 
                                         image.innerHTML = "";
 
-                                        let player = players_json[tmp[tmp.length - 1] - 1];
+                                        let player = card_flow[card_flow.length - 1];
 
                                         let image_src = document.createElement("img");
                                         image_src.src = "assets/images/cards/" + player.image + "_" + player.id + "_card.png";
                                         image_src.className = "div-fadein";
                                         image.appendChild(image_src);
 
-                                        card_out_of.innerHTML = "Card " + (10 - tmp.length) + " out of 9";
+                                        let cnt = player.count / 20 * 100;
+                                        if (cnt > 100) {
+                                            cnt = 100
+                                        };
+                                        fill.style.width = cnt + "%";
 
-                                        tmp.pop();
+                                        card_out_of.innerHTML = "Card " + (10 - card_flow.length) + " out of 9";
 
-                                        if (tmp.length == 0) {
+                                        card_flow.pop();
+
+                                        if (card_flow.length == 0) {
 
                                             action_button.innerHTML = "Summary";
 
@@ -1287,6 +1324,7 @@ function loadShop() {
                                     }
 
                                 });
+
 
                             });
 
