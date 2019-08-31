@@ -724,7 +724,9 @@ function sumTeamTotalMinutes(team) {
 
     for (let i = 0; i < team.length; i++) {
 
-        total += team[i].ratings.playingtime;
+        if (team[i] != undefined & team[i] != "") {
+            total += team[i].ratings.playingtime;
+        }
 
     }
 
@@ -1169,11 +1171,15 @@ function loadShop() {
                         confirmation_action_proceed_button.addEventListener("click", function() {
 
                             let tmp = [];
-                            let pool = shop[i].content;
+                            let pool = new Array();
+
+                            for (let p = 0; p < shop[i].content.length; p++) {
+                                pool.push(shop[i].content[p]);
+                            }
 
                             for (let x = 0; x < 9; x++) {
 
-                                let player_id = pool[randomIntFromInterval(0, shop[i].content.length - 1)];
+                                let player_id = pool[randomIntFromInterval(0, pool.length - 1)];
                                 pool.splice(pool.indexOf(player_id), 1);
                                 tmp.push(player_id);
 
@@ -1213,6 +1219,7 @@ function loadShop() {
                             // Update collection
                             for (let x = 0; x < tmp.length; x++) {
 
+                                console.log(tmp[x]);
                                 fetchRecord("collection", tmp[x], function(card) {
 
                                     let new_card;
@@ -1318,6 +1325,10 @@ function loadShop() {
                                         if (card_flow.length == 0) {
 
                                             action_button.innerHTML = "Summary";
+
+                                            action_button.addEventListener("click", function() {
+                                                overlay.style.display = "none";
+                                            });
 
                                         }
 
