@@ -1233,6 +1233,9 @@ function loadShop() {
                                         removeRecord("collection", card.id);
                                         addRecord("collection", card);
                                     } else {
+
+                                        card = players_json[tmp[x] - 1];
+
                                         console.log("New! " + card.first + " " + card.last + " (" + card.id + ") " + "does not already exist.");
                                         new_card = new Player(card);
                                         new_card.count = 1;
