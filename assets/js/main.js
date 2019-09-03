@@ -5128,23 +5128,35 @@ function simulateShotSuccess(play) {
         console.log(play.shooter.first + " " + play.shooter.last + " " + made_shot_array[play.madeFG] + " " + play.shotType + " over " + play.defender.first + " " + play.defender.last + " (Success Rate: " + play.successRate + ")");
 
         let assist_event;
+        let assister;
         if (play.passer != "" & play.madeFG == 1) {
-            assist_event = "<br/>" + play.passer.first + " " + play.passer.last + " assists [" + play.team[play.possession].roster[play.passer.gamestats.pos - 1].gamestats.stats["ast"] + " AST]";
+            assist_event = " assists [" + play.team[play.possession].roster[play.passer.gamestats.pos - 1].gamestats.stats["ast"] + " AST]";
+            assister = play.passer;
         } else {
             assist_event = "";
+            assister = "";
         }
 
         let block_event;
+        let blocker;
         if (play.blocked == 1 & play.madeFG == 0) {
-            block_event = "<br/>" + play.blocker.first + " " + play.blocker.last + " blocks shot [" + play.blocker.gamestats.stats["blk"] + " BLK]";
+            block_event = "blocks shot [" + play.blocker.gamestats.stats["blk"] + " BLK]";
+            blocker = play.blocker;
         } else {
             block_event = "";
+            blocker = "";
         }
 
         let event = {
             "time": play.time - play.possessionDuration,
             "team": play.possession,
-            "play": play.shooter.first + " " + play.shooter.last + " " + made_shot_array[play.madeFG] + " " + play.shotType + " [" + play.shooter.gamestats.stats.pts + " PTS] " + assist_event + block_event,
+            "event": "field goal attempt",
+            "shooter": play.shooter,
+            "assister": assister,
+            "blocker": blocker,
+            "play": made_shot_array[play.madeFG] + " " + play.shotType + " [" + play.shooter.gamestats.stats.pts + " PTS] <br>",
+            "play_assist": assist_event,
+            "play_blcok": block_event,
             "score": fetchScore(play, "usr") + " - " + fetchScore(play, "cpu"),
             "make": play.madeFG
         };
@@ -5427,7 +5439,9 @@ function simulateShootingFoul(play) {
         let event = {
             "time": play.time - play.possessionDuration,
             "team": play.possession,
-            "play": play.defender.first + " " + play.defender.last + " foul: shooting" + " [" + play.team[fetchOtherAgent(play.possession)].roster[play.defender.gamestats.pos - 1].gamestats.stats.pf + " PF]",
+            "event": "shooting foul",
+            "fouler": play.defender,
+            "play": " foul: shooting" + " [" + play.team[fetchOtherAgent(play.possession)].roster[play.defender.gamestats.pos - 1].gamestats.stats.pf + " PF]",
             "score": fetchScore(play, "usr") + " - " + fetchScore(play, "cpu"),
             "make": 0
         };
@@ -5476,7 +5490,9 @@ function simulateFreeThrow(play) {
         let event = {
             "time": play.time - play.possessionDuration,
             "team": play.possession,
-            "play": play.shooter.first + " " + play.shooter.last + " " + made_shot_array[play.madeFT] + " free throw " + (i + 1) + " of " + play.numberOfFT + " [" + play.team[play.possession].roster[play.shooter.gamestats.pos - 1].gamestats.stats.pts + " PTS]",
+            "event": "free throw attempt",
+            "shooter": play.shooter,
+            "play": made_shot_array[play.madeFT] + " free throw " + (i + 1) + " of " + play.numberOfFT + " [" + play.team[play.possession].roster[play.shooter.gamestats.pos - 1].gamestats.stats.pts + " PTS]",
             "score": fetchScore(play, "usr") + " - " + fetchScore(play, "cpu"),
             "make": play.madeFT
         };
@@ -5674,7 +5690,10 @@ function simulateTipOff(play) {
     let pbp_event = {}
     pbp_event.time = play.time;
     pbp_event.team = play.possession;
-    pbp_event.play = win_player.last + " wins jump ball against " + lose_player.last;
+    pbp_event.event = "jumpball";
+    pbp_event.winner = win_player;
+    pbp_event.loser = lose_player;
+    pbp_event.play = "wins jump ball against";
     pbp_event.score = fetchScore(play, "usr") + " - " + fetchScore(play, "cpu");
     play.playbyplay.push(pbp_event);
 
@@ -5984,7 +6003,100 @@ function updatePlayByPlay(play) {
         let play_itm = document.createElement("div");
         play_itm.className = "play-stats-play-by-play-row-play";
         container.appendChild(play_itm);
-        play_itm.innerHTML = event.play;
+
+        if (event.event == "jumpball") {
+
+            let winner = document.createElement("span");
+            winner.className = "play-stats-play-by-play-row-outcome-jumpball-winner play-by-play-player-name";
+            play_itm.appendChild(winner);
+            winner.innerHTML = event.winner.first + " " + event.winner.last;
+            winner.style.background = event.winner.color1;
+            winner.style.color = event.winner.color3;
+            winner.style.border = "solid 1px " + event.winner.color3;
+
+            let play = document.createElement("span");
+            play.className = "play-stats-play-by-play-row-outcome-jumpball-play";
+            play_itm.appendChild(play);
+            play.innerHTML = " " + event.play + " ";
+
+            let loser = document.createElement("span");
+            loser.className = "play-stats-play-by-play-row-outcome-jumpball-loser play-by-play-player-name";
+            play_itm.appendChild(loser);
+            loser.innerHTML = event.loser.first + " " + event.loser.last;
+            loser.style.background = event.loser.color1;
+            loser.style.color = event.loser.color3;
+            loser.style.border = "solid 1px " + event.loser.color3;
+
+        } else if (event.event == "field goal attempt") {
+
+            let shooter = document.createElement("span");
+            shooter.className = "play-stats-play-by-play-row-outcome-fieldgoalattempt-shooter play-by-play-player-name";
+            play_itm.appendChild(shooter);
+            shooter.innerHTML = event.shooter.first + " " + event.shooter.last;
+            shooter.style.background = event.shooter.color1;
+            shooter.style.color = event.shooter.color3;
+            shooter.style.border = "solid 1px " + event.shooter.color3;
+
+            let play = document.createElement("span");
+            play.className = "play-stats-play-by-play-row-outcome-fieldgoalattempt-play";
+            play_itm.appendChild(play);
+            play.innerHTML = " " + event.play;
+
+            if (event.play_assist != "") {
+
+                let assister = document.createElement("span");
+                assister.className = "play-stats-play-by-play-row-outcome-fieldgoalattempt-assister";
+                /* assister.className = "play-stats-play-by-play-row-outcome-fieldgoalattempt-assister play-by-play-player-name"; */
+                play_itm.appendChild(assister);
+                assister.innerHTML = event.assister.first + " " + event.assister.last;
+                /*
+                assister.style.background = event.assister.color1;
+                assister.style.color = event.assister.color3;
+                assister.style.border = "solid 1px " + event.assister.color3;
+                */
+
+                let play_assist = document.createElement("span");
+                play_assist.className = "play-stats-play-by-play-row-outcome-fieldgoalattempt-play-assist";
+                play_itm.appendChild(play_assist);
+                play_assist.innerHTML = " " + event.play_assist;
+
+            }
+
+        } else if (event.event == "shooting foul") {
+
+            let fouler = document.createElement("span");
+            fouler.className = "play-stats-play-by-play-row-outcome-fieldgoalattempt-fouler play-by-play-player-name";
+            play_itm.appendChild(fouler);
+            console.log(event.fouler);
+            fouler.innerHTML = event.fouler.first + " " + event.fouler.last;
+            fouler.style.background = event.fouler.color1;
+            fouler.style.color = event.fouler.color3;
+            fouler.style.border = "solid 1px " + event.fouler.color3;
+
+            let play = document.createElement("span");
+            play.className = "play-stats-play-by-play-row-outcome-shootingfoul-play";
+            play_itm.appendChild(play);
+            play.innerHTML = " " + event.play;
+
+        } else if (event.event == "free throw attempt") {
+
+            let shooter = document.createElement("span");
+            shooter.className = "play-stats-play-by-play-row-outcome-shootingfoul-shooter play-by-play-player-name";
+            play_itm.appendChild(shooter);
+            console.log(event.shooter);
+            shooter.innerHTML = event.shooter.first + " " + event.shooter.last;
+            shooter.style.background = event.shooter.color1;
+            shooter.style.color = event.shooter.color3;
+            shooter.style.border = "solid 1px " + event.shooter.color3;
+
+            let play = document.createElement("span");
+            play.className = "play-stats-play-by-play-row-outcome-shootingfoul-play";
+            play_itm.appendChild(play);
+            play.innerHTML = " " + event.play;
+
+        } else {
+            play_itm.innerHTML = event.play;
+        }
 
         let score_itm = document.createElement("div");
         score_itm.className = "play-stats-play-by-play-row-score";

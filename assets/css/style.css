@@ -2426,11 +2426,14 @@ input#collection-search-input-box {
     width: 9%;
 }
 .play-stats-play-by-play-row-play {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-wrap: wrap;
+    display: inline-block;
     width: 64%;
+    line-height: 22px;
+}
+.play-by-play-player-name {
+    padding: 2px;
+    border-radius: 3px;
+    font-weight: bold;
 }
 .play-stats-play-by-play-row-score {
     display: flex;
