@@ -5599,7 +5599,9 @@ function simulateRebound(play) {
     let event = {
         "time": play.time - play.possessionDuration,
         "team": play.possession,
-        "play": rebounder.first + " " + rebounder.last + " " + rebound_type + " rebound" + " [" + play.rebounder.gamestats.stats.reb + " REB]",
+        "event": "rebound",
+        "rebounder": rebounder,
+        "play": " " + rebound_type + " rebound" + " [" + play.rebounder.gamestats.stats.reb + " REB]",
         "score": fetchScore(play, "usr") + " - " + fetchScore(play, "cpu"),
         "make": 0
     };
@@ -6115,6 +6117,22 @@ function updatePlayByPlay(play) {
             player_out.style.background = event.player_out.color1;
             player_out.style.color = event.player_out.color3;
             player_out.style.border = "solid 1px " + event.player_out.color3;
+
+        } else if (event.event == "rebound") {
+
+            let rebounder = document.createElement("span");
+            rebounder.className = "play-stats-play-by-play-row-outcome-shootingfoul-rebounder play-by-play-player-name";
+            play_itm.appendChild(rebounder);
+            rebounder.innerHTML = event.rebounder.first[0] + ". " + event.rebounder.last;
+            rebounder.style.background = event.rebounder.color1;
+            rebounder.style.color = event.rebounder.color3;
+            rebounder.style.border = "solid 1px " + event.rebounder.color3;
+
+            let play = document.createElement("span");
+            play.className = "play-stats-play-by-play-row-outcome-rebound-play";
+            play_itm.appendChild(play);
+            play.innerHTML = event.play;
+
 
         } else {
             play_itm.innerHTML = event.play;
