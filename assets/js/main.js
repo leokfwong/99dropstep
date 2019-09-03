@@ -4280,7 +4280,10 @@ function makeSubstitutions(play) {
                     let event = {
                         "time": play.time - play.possessionDuration,
                         "team": play.possession,
-                        "play": player_in.first + " " + player_in.last + " enters game for " + player_out.first + " " + player_out.last,
+                        "event": "substitution",
+                        "player_in": player_in,
+                        "player_out": player_out,
+                        "play": " enters game for ",
                         "score": fetchScore(play, "usr") + " - " + fetchScore(play, "cpu"),
                         "make": 0
                     };
@@ -6083,7 +6086,6 @@ function updatePlayByPlay(play) {
             let shooter = document.createElement("span");
             shooter.className = "play-stats-play-by-play-row-outcome-shootingfoul-shooter play-by-play-player-name";
             play_itm.appendChild(shooter);
-            console.log(event.shooter);
             shooter.innerHTML = event.shooter.first + " " + event.shooter.last;
             shooter.style.background = event.shooter.color1;
             shooter.style.color = event.shooter.color3;
@@ -6093,6 +6095,29 @@ function updatePlayByPlay(play) {
             play.className = "play-stats-play-by-play-row-outcome-shootingfoul-play";
             play_itm.appendChild(play);
             play.innerHTML = " " + event.play;
+
+        } else if (event.event == "substitution") {
+
+            let player_in = document.createElement("span");
+            player_in.className = "play-stats-play-by-play-row-outcome-shootingfoul-player-in play-by-play-player-name";
+            play_itm.appendChild(player_in);
+            player_in.innerHTML = event.player_in.first + " " + event.player_in.last;
+            player_in.style.background = event.player_in.color1;
+            player_in.style.color = event.player_in.color3;
+            player_in.style.border = "solid 1px " + event.player_in.color3;
+
+            let play = document.createElement("span");
+            play.className = "play-stats-play-by-play-row-outcome-substitution-play";
+            play_itm.appendChild(play);
+            play.innerHTML = event.play;
+
+            let player_out = document.createElement("span");
+            player_out.className = "play-stats-play-by-play-row-outcome-shootingfoul-player-out play-by-play-player-name";
+            play_itm.appendChild(player_out);
+            player_out.innerHTML = event.player_out.first + " " + event.player_out.last;
+            player_out.style.background = event.player_out.color1;
+            player_out.style.color = event.player_out.color3;
+            player_out.style.border = "solid 1px " + event.player_out.color3;
 
         } else {
             play_itm.innerHTML = event.play;
