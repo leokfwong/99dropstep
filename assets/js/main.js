@@ -6012,7 +6012,7 @@ function updatePlayByPlay(play) {
             let winner = document.createElement("span");
             winner.className = "play-stats-play-by-play-row-outcome-jumpball-winner play-by-play-player-name";
             play_itm.appendChild(winner);
-            winner.innerHTML = event.winner.first + " " + event.winner.last;
+            winner.innerHTML = event.winner.first[0] + ". " + event.winner.last;
             winner.style.background = event.winner.color1;
             winner.style.color = event.winner.color3;
             winner.style.border = "solid 1px " + event.winner.color3;
@@ -6025,7 +6025,7 @@ function updatePlayByPlay(play) {
             let loser = document.createElement("span");
             loser.className = "play-stats-play-by-play-row-outcome-jumpball-loser play-by-play-player-name";
             play_itm.appendChild(loser);
-            loser.innerHTML = event.loser.first + " " + event.loser.last;
+            loser.innerHTML = event.loser.first[0] + ". " + event.loser.last;
             loser.style.background = event.loser.color1;
             loser.style.color = event.loser.color3;
             loser.style.border = "solid 1px " + event.loser.color3;
@@ -6035,7 +6035,7 @@ function updatePlayByPlay(play) {
             let shooter = document.createElement("span");
             shooter.className = "play-stats-play-by-play-row-outcome-fieldgoalattempt-shooter play-by-play-player-name";
             play_itm.appendChild(shooter);
-            shooter.innerHTML = event.shooter.first + " " + event.shooter.last;
+            shooter.innerHTML = event.shooter.first[0] + ". " + event.shooter.last;
             shooter.style.background = event.shooter.color1;
             shooter.style.color = event.shooter.color3;
             shooter.style.border = "solid 1px " + event.shooter.color3;
@@ -6048,15 +6048,12 @@ function updatePlayByPlay(play) {
             if (event.play_assist != "") {
 
                 let assister = document.createElement("span");
-                assister.className = "play-stats-play-by-play-row-outcome-fieldgoalattempt-assister";
-                /* assister.className = "play-stats-play-by-play-row-outcome-fieldgoalattempt-assister play-by-play-player-name"; */
+                assister.className = "play-stats-play-by-play-row-outcome-fieldgoalattempt-assister play-by-play-player-name";
                 play_itm.appendChild(assister);
-                assister.innerHTML = event.assister.first + " " + event.assister.last;
-                /*
+                assister.innerHTML = event.assister.first[0] + ". " + event.assister.last;
                 assister.style.background = event.assister.color1;
                 assister.style.color = event.assister.color3;
                 assister.style.border = "solid 1px " + event.assister.color3;
-                */
 
                 let play_assist = document.createElement("span");
                 play_assist.className = "play-stats-play-by-play-row-outcome-fieldgoalattempt-play-assist";
@@ -6071,7 +6068,7 @@ function updatePlayByPlay(play) {
             fouler.className = "play-stats-play-by-play-row-outcome-fieldgoalattempt-fouler play-by-play-player-name";
             play_itm.appendChild(fouler);
             console.log(event.fouler);
-            fouler.innerHTML = event.fouler.first + " " + event.fouler.last;
+            fouler.innerHTML = event.fouler.first[0] + ". " + event.fouler.last;
             fouler.style.background = event.fouler.color1;
             fouler.style.color = event.fouler.color3;
             fouler.style.border = "solid 1px " + event.fouler.color3;
@@ -6086,7 +6083,7 @@ function updatePlayByPlay(play) {
             let shooter = document.createElement("span");
             shooter.className = "play-stats-play-by-play-row-outcome-shootingfoul-shooter play-by-play-player-name";
             play_itm.appendChild(shooter);
-            shooter.innerHTML = event.shooter.first + " " + event.shooter.last;
+            shooter.innerHTML = event.shooter.first[0] + ". " + event.shooter.last;
             shooter.style.background = event.shooter.color1;
             shooter.style.color = event.shooter.color3;
             shooter.style.border = "solid 1px " + event.shooter.color3;
@@ -6101,7 +6098,7 @@ function updatePlayByPlay(play) {
             let player_in = document.createElement("span");
             player_in.className = "play-stats-play-by-play-row-outcome-shootingfoul-player-in play-by-play-player-name";
             play_itm.appendChild(player_in);
-            player_in.innerHTML = event.player_in.first + " " + event.player_in.last;
+            player_in.innerHTML = event.player_in.first[0] + ". " + event.player_in.last;
             player_in.style.background = event.player_in.color1;
             player_in.style.color = event.player_in.color3;
             player_in.style.border = "solid 1px " + event.player_in.color3;
@@ -6114,7 +6111,7 @@ function updatePlayByPlay(play) {
             let player_out = document.createElement("span");
             player_out.className = "play-stats-play-by-play-row-outcome-shootingfoul-player-out play-by-play-player-name";
             play_itm.appendChild(player_out);
-            player_out.innerHTML = event.player_out.first + " " + event.player_out.last;
+            player_out.innerHTML = event.player_out.first[0] + ". " + event.player_out.last;
             player_out.style.background = event.player_out.color1;
             player_out.style.color = event.player_out.color3;
             player_out.style.border = "solid 1px " + event.player_out.color3;
