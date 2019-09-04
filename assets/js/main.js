@@ -1291,6 +1291,11 @@ function loadShop() {
                                 };
                                 fill.style.width = cnt + "%";
 
+                                let count = document.createElement("div");
+                                count.id = "shop-open-collected-count";
+                                box.appendChild(count);
+                                count.innerHTML = player.count + " / 20";
+
                                 card_flow.pop();
 
                                 let action = document.createElement("div");
@@ -1320,6 +1325,8 @@ function loadShop() {
                                             cnt = 100
                                         };
                                         fill.style.width = cnt + "%";
+
+                                        count.innerHTML = player.count + " / 20";
 
                                         card_out_of.innerHTML = "Card " + (10 - card_flow.length) + " out of 9";
 

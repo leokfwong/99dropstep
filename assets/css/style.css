@@ -1899,13 +1899,22 @@ input#collection-search-input-box {
     border: solid 2px white;
     border-radius: 2px;
     position: relative;
+    background: white;
 }
 #shop-open-collected-fill {
     position: absolute;
     width: 70%;
     height: 100%;
-    background: lightgrey;
+    background: grey;
     border-radius: 1px;
+}
+#shop-open-collected-count {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    color: #2A2723;
 }
 #shop-open-card-out-of {
     height: 5%;
