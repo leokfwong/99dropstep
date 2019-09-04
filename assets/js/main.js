@@ -5224,7 +5224,11 @@ function simulateSteal(play) {
         let event = {
             "time": play.time - play.possessionDuration,
             "team": play.possession,
-            "play": play.shooter.first + " " + play.shooter.last + " turnover: lost ball [" + play.team[play.possession].roster[play.shooter.gamestats.pos - 1].gamestats.stats["tov"] + " TOV] <br/>" + play.defender.first + " " + play.defender.last + " steals ball [" + play.team[fetchOtherAgent(play.possession)].roster[play.defender.gamestats.pos - 1].gamestats.stats["stl"] + " STL]",
+            "event": "turnover steal",
+            "loser": play.shooter,
+            "winner": play.defender,
+            "play_loser": " turnover: lost ball [" + play.team[play.possession].roster[play.shooter.gamestats.pos - 1].gamestats.stats["tov"] + " TOV] <br/>",
+            "play_winner": " steals ball [" + play.team[fetchOtherAgent(play.possession)].roster[play.defender.gamestats.pos - 1].gamestats.stats["stl"] + " STL]",
             "score": fetchScore(play, "usr") + " - " + fetchScore(play, "cpu"),
             "make": 0
         };
@@ -6133,6 +6137,34 @@ function updatePlayByPlay(play) {
             play_itm.appendChild(play);
             play.innerHTML = event.play;
 
+
+        } else if (event.event == "turnover steal") {
+
+            let winner = document.createElement("span");
+            winner.className = "play-stats-play-by-play-row-outcome-turnover-steal-winner play-by-play-player-name";
+            play_itm.appendChild(winner);
+            winner.innerHTML = event.winner.first[0] + ". " + event.winner.last;
+            winner.style.background = event.winner.color1;
+            winner.style.color = event.winner.color3;
+            winner.style.border = "solid 1px " + event.winner.color3;
+
+            let play_loser = document.createElement("span");
+            play_loser.className = "play-stats-play-by-play-row-outcome-turnover-steal-loser-play";
+            play_itm.appendChild(play_loser);
+            play_loser.innerHTML = " " + event.play_loser;
+
+            let loser = document.createElement("span");
+            loser.className = "play-stats-play-by-play-row-outcome-turnover-steal-loser play-by-play-player-name";
+            play_itm.appendChild(loser);
+            loser.innerHTML = event.loser.first[0] + ". " + event.loser.last;
+            loser.style.background = event.loser.color1;
+            loser.style.color = event.loser.color3;
+            loser.style.border = "solid 1px " + event.loser.color3;
+
+            let play_winner = document.createElement("span");
+            play_winner.className = "play-stats-play-by-play-row-outcome-turnover-steal-winner-play";
+            play_itm.appendChild(play_winner);
+            play_winner.innerHTML = " " + event.play_winner;
 
         } else {
             play_itm.innerHTML = event.play;
