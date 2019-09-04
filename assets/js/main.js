@@ -6140,19 +6140,6 @@ function updatePlayByPlay(play) {
 
         } else if (event.event == "turnover steal") {
 
-            let winner = document.createElement("span");
-            winner.className = "play-stats-play-by-play-row-outcome-turnover-steal-winner play-by-play-player-name";
-            play_itm.appendChild(winner);
-            winner.innerHTML = event.winner.first[0] + ". " + event.winner.last;
-            winner.style.background = event.winner.color1;
-            winner.style.color = event.winner.color3;
-            winner.style.border = "solid 1px " + event.winner.color3;
-
-            let play_loser = document.createElement("span");
-            play_loser.className = "play-stats-play-by-play-row-outcome-turnover-steal-loser-play";
-            play_itm.appendChild(play_loser);
-            play_loser.innerHTML = " " + event.play_loser;
-
             let loser = document.createElement("span");
             loser.className = "play-stats-play-by-play-row-outcome-turnover-steal-loser play-by-play-player-name";
             play_itm.appendChild(loser);
@@ -6160,6 +6147,19 @@ function updatePlayByPlay(play) {
             loser.style.background = event.loser.color1;
             loser.style.color = event.loser.color3;
             loser.style.border = "solid 1px " + event.loser.color3;
+
+            let play_loser = document.createElement("span");
+            play_loser.className = "play-stats-play-by-play-row-outcome-turnover-steal-loser-play";
+            play_itm.appendChild(play_loser);
+            play_loser.innerHTML = " " + event.play_loser;
+
+            let winner = document.createElement("span");
+            winner.className = "play-stats-play-by-play-row-outcome-turnover-steal-winner play-by-play-player-name";
+            play_itm.appendChild(winner);
+            winner.innerHTML = event.winner.first[0] + ". " + event.winner.last;
+            winner.style.background = event.winner.color1;
+            winner.style.color = event.winner.color3;
+            winner.style.border = "solid 1px " + event.winner.color3;
 
             let play_winner = document.createElement("span");
             play_winner.className = "play-stats-play-by-play-row-outcome-turnover-steal-winner-play";
