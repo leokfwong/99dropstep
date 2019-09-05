@@ -2445,8 +2445,9 @@ input#collection-search-input-box {
 }
 .play-stats-play-by-play-row-play-details {
     display: none;
-    padding-top: 3%;
+    margin-top: 3%;
     width: 100%;
+    border-top: solid 1px lightgrey;
 }
 .play-by-play-player-name {
     padding: 2px;
@@ -2459,6 +2460,7 @@ input#collection-search-input-box {
     align-items: center;
     flex-direction: column;
     width: 100%;
+    margin-top: 2%;
 }
 .play-stats-play-by-play-row-outcome-fieldgoalattempt-details-title {
     display: flex;

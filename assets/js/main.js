@@ -6273,7 +6273,13 @@ function updatePlayByPlay(play) {
         toggle_itm.innerHTML = "<i class='fas fa-caret-square-down'></i>";
 
         toggle_itm.addEventListener("click", function() {
-            details.style.display = "flex";
+
+            if (details.style.display == "none") {
+                details.style.display = "flex";
+            } else {
+                details.style.display = "none";
+            }
+
         });
 
         let score_itm = document.createElement("div");
