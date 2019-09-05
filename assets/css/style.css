@@ -2432,7 +2432,7 @@ input#collection-search-input-box {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    width: 9%;
+    width: 11%;
 }
 .play-stats-play-by-play-row-play-contain {
     width: 64%;
@@ -2490,19 +2490,11 @@ input#collection-search-input-box {
     flex-direction: column;
     width: 25%;
 }
-.play-stats-play-by-play-row-toggle {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-    color: #2A2723;
-    width: 5%;
-}
 .play-stats-play-by-play-row-score {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 12%;
+    width: 15%;
 }
 /* BOXSCORE */
 #play-stats-boxscore-container {

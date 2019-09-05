@@ -6267,12 +6267,7 @@ function updatePlayByPlay(play) {
             play_itm.innerHTML = event.play;
         }
 
-        let toggle_itm = document.createElement("div");
-        toggle_itm.className = "play-stats-play-by-play-row-toggle";
-        container.appendChild(toggle_itm);
-        toggle_itm.innerHTML = "<i class='fas fa-caret-square-down'></i>";
-
-        toggle_itm.addEventListener("click", function() {
+        row.addEventListener("click", function() {
 
             if (details.style.display == "none") {
                 details.style.display = "flex";
