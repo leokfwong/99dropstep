@@ -6269,10 +6269,10 @@ function updatePlayByPlay(play) {
 
         row.addEventListener("click", function() {
 
-            if (details.style.display == "none") {
-                details.style.display = "flex";
-            } else {
+            if (details.style.display == "flex") {
                 details.style.display = "none";
+            } else {
+                details.style.display = "flex";
             }
 
         });
