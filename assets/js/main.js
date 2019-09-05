@@ -5408,12 +5408,15 @@ function adjustForOffensiveConsistency(play) {
 
     console.log("Offensive off_consistency: " + off_consistency + "; FG-Tracker: " + fgtracker + "; Bonus: " + bonus);
     console.log("Success rate before off. consistency: " + play.successRate + "; Success rate after off. consistency: " + (play.successRate * bonus));
-    play.shooter.successRate.push({
-        "type": "offensive consistency",
-        "value": play.successRate
-    });
 
     play.successRate *= bonus;
+
+    if (bonus > 1) {
+        play.shooter.successRate.push({
+            "type": "offensive consistency",
+            "value": play.successRate
+        });
+    }
 
     return (play);
 
@@ -6125,7 +6128,41 @@ function updatePlayByPlay(play) {
 
             }
 
-            details.innerHTML = "Success rate:";
+            details_box = document.createElement("div");
+            details_box.className = "play-stats-play-by-play-row-outcome-fieldgoalattempt-details-box"
+            details.appendChild(details_box);
+
+            details_title = document.createElement("div");
+            details_title.className = "play-stats-play-by-play-row-outcome-fieldgoalattempt-details-title"
+            details_box.appendChild(details_title);
+            details_title.innerHTML = "Success Rate:";
+
+            details_content = document.createElement("div");
+            details_content.className = "play-stats-play-by-play-row-outcome-fieldgoalattempt-details-content"
+            details_box.appendChild(details_content);
+
+            details_content_left = document.createElement("div");
+            details_content_left.className = "play-stats-play-by-play-row-outcome-fieldgoalattempt-details-content-left"
+            details_content.appendChild(details_content_left);
+
+            details_content_right = document.createElement("div");
+            details_content_right.className = "play-stats-play-by-play-row-outcome-fieldgoalattempt-details-content-right"
+            details_content.appendChild(details_content_right);
+
+            for (let h = 0; h < event.shooter.successRate.length; h++) {
+
+                details_category = document.createElement("div");
+                details_category.className = "play-stats-play-by-play-row-outcome-fieldgoalattempt-details-content-category"
+                details_content_left.appendChild(details_category);
+                details_category.innerHTML = event.shooter.successRate[h].type;
+
+                details_success = document.createElement("div");
+                details_success.className = "play-stats-play-by-play-row-outcome-fieldgoalattempt-details-content-success"
+                details_content_right.appendChild(details_success);
+                details_success.innerHTML = Math.round(event.shooter.successRate[h].value * 1000) / 10 + " %";
+
+            }
+
             console.log("BOB", event.shooter.successRate);
 
         } else if (event.event == "shooting foul") {

@@ -2446,11 +2446,47 @@ input#collection-search-input-box {
 .play-stats-play-by-play-row-play-details {
     display: none;
     padding-top: 3%;
+    width: 100%;
 }
 .play-by-play-player-name {
     padding: 2px;
     border-radius: 3px;
     font-weight: bold;
+}
+.play-stats-play-by-play-row-outcome-fieldgoalattempt-details-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+.play-stats-play-by-play-row-outcome-fieldgoalattempt-details-title {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-weight: bold;
+    width: 100%;
+}
+.play-stats-play-by-play-row-outcome-fieldgoalattempt-details-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    font-weight: normal;
+}
+.play-stats-play-by-play-row-outcome-fieldgoalattempt-details-content-left {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 75%;
+}
+.play-stats-play-by-play-row-outcome-fieldgoalattempt-details-content-right {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    flex-direction: column;
+    width: 25%;
 }
 .play-stats-play-by-play-row-toggle {
     display: flex;
