@@ -2426,7 +2426,7 @@ input#collection-search-input-box {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    width: 12%;
+    width: 10%;
 }
 .play-stats-play-by-play-row-team {
     display: flex;
@@ -2434,21 +2434,37 @@ input#collection-search-input-box {
     align-items: center;
     width: 9%;
 }
+.play-stats-play-by-play-row-play-contain {
+    width: 64%;
+    display: flex;
+    flex-direction: column;
+}
 .play-stats-play-by-play-row-play {
     display: inline-block;
-    width: 64%;
     line-height: 22px;
+}
+.play-stats-play-by-play-row-play-details {
+    display: none;
+    padding-top: 3%;
 }
 .play-by-play-player-name {
     padding: 2px;
     border-radius: 3px;
     font-weight: bold;
 }
+.play-stats-play-by-play-row-toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: #2A2723;
+    width: 5%;
+}
 .play-stats-play-by-play-row-score {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 15%;
+    width: 12%;
 }
 /* BOXSCORE */
 #play-stats-boxscore-container {

@@ -2743,15 +2743,32 @@ function loadGameModes() {
             let modes_array = ["Quick Game", "Campaign", "Playoffs"];
 
             let ready_team = true;
+            let total_minutes = 0;
+            let warning_message = "";
 
+            // Check if all players are filled
             for (let i = 0; i < team.players.length; i++) {
 
                 if (team.players[i] == "") {
                     ready_team = false;
+                    warning_message = "Your team must contain 10 players in total.";
                     break;
                 }
 
+                total_minutes += team.players[i].ratings.playingtime;
+
             }
+
+            // Check if all minutes assigned
+            if (total_minutes != 240) {
+
+                ready_team = false;
+                if (warning_message == "") {
+                    warning_message = "Please assign all 240 minutes to the players on your team.";
+                }
+
+            }
+
 
             for (let i = 0; i < modes_array.length; i++) {
 
@@ -2771,7 +2788,7 @@ function loadGameModes() {
 
                         } else {
 
-                            let msg = "Your team must contain 10 players in total.";
+                            let msg = warning_message;
                             let button_label = "Team";
                             let landing_page = "team-container";
                             displayWarning(msg, button_label, landing_page);
@@ -6016,9 +6033,17 @@ function updatePlayByPlay(play) {
         container.appendChild(team_itm);
         team_itm.innerHTML = event.team;
 
+        let play_contain = document.createElement("div");
+        play_contain.className = "play-stats-play-by-play-row-play-contain";
+        container.appendChild(play_contain);
+
         let play_itm = document.createElement("div");
         play_itm.className = "play-stats-play-by-play-row-play";
-        container.appendChild(play_itm);
+        play_contain.appendChild(play_itm);
+
+        let details = document.createElement("div");
+        details.className = "play-stats-play-by-play-row-play-details";
+        play_contain.appendChild(details);
 
         if (event.event == "jumpball") {
 
@@ -6074,6 +6099,8 @@ function updatePlayByPlay(play) {
                 play_assist.innerHTML = " " + event.play_assist;
 
             }
+
+            details.innerHTML = "Success rate:";
 
         } else if (event.event == "shooting foul") {
 
@@ -6176,6 +6203,15 @@ function updatePlayByPlay(play) {
         } else {
             play_itm.innerHTML = event.play;
         }
+
+        let toggle_itm = document.createElement("div");
+        toggle_itm.className = "play-stats-play-by-play-row-toggle";
+        container.appendChild(toggle_itm);
+        toggle_itm.innerHTML = "<i class='fas fa-caret-square-down'></i>";
+
+        toggle_itm.addEventListener("click", function() {
+            details.style.display = "flex";
+        });
 
         let score_itm = document.createElement("div");
         score_itm.className = "play-stats-play-by-play-row-score";
