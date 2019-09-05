@@ -5071,7 +5071,12 @@ function simulateShotSuccess(play) {
 
     // TODO
     play.successRate = odds;
+    play.shooter.successRate = [];
     console.log("Success rate (Raw): " + play.successRate);
+    play.shooter.successRate.push({
+        "type": "raw",
+        "value": play.successRate
+    });
 
     play = simulateSteal(play);
 
@@ -5092,6 +5097,10 @@ function simulateShotSuccess(play) {
             let PENALTY = 0.42;
             play.successRate *= PENALTY;
             console.log("Success rate after: " + play.successRate);
+            play.shooter.successRate.push({
+                "type": "shooting foul",
+                "value": play.successRate
+            });
 
         } else {
             play.FTshooter = "";
@@ -5313,6 +5322,10 @@ function simulateAssist(play) {
         console.log(play.passer.first + " " + play.passer.last + " passes to " + play.shooter.first + " " + play.shooter.last);
         console.log("Success rate before pass: " + play.successRate + "; Success rate after pass: " + (play.successRate + play.assistBoost));
         play.successRate += play.assistBoost;
+        play.shooter.successRate.push({
+            "type": "pass accuracy",
+            "value": play.successRate
+        });
 
     } else {
 
@@ -5346,6 +5359,10 @@ function simulateBlock(play) {
         console.log("BLOCKED");
         console.log(play.defender.first + " " + play.defender.last + " blocks " + play.shooter.first + " " + play.shooter.last);
         console.log("Success rate before block attempt: " + play.successRate + "; Success rate after block: 0");
+        play.shooter.successRate.push({
+            "type": "blocked shot",
+            "value": 0
+        });
 
         play.successRate = 0;
         play.team[fetchOtherAgent(play.possession)].roster[play.defender.gamestats.pos - 1].gamestats.stats["blk"] += 1;
@@ -5359,6 +5376,10 @@ function simulateBlock(play) {
 
         console.log("Success rate before block attempt: " + play.successRate + "; Success rate after block attempt: " + (play.successRate - ((Math.max(1, (blk_rating - BLOCK_BASELINE)) / 1000) * 3)));
         play.successRate -= ((Math.max(1, (blk_rating - BLOCK_BASELINE)) / 1000) * 3);
+        play.shooter.successRate.push({
+            "type": "shot contest",
+            "value": play.successRate
+        });
         play.blocker = "";
         play.blocked = 0;
 
@@ -5387,6 +5408,10 @@ function adjustForOffensiveConsistency(play) {
 
     console.log("Offensive off_consistency: " + off_consistency + "; FG-Tracker: " + fgtracker + "; Bonus: " + bonus);
     console.log("Success rate before off. consistency: " + play.successRate + "; Success rate after off. consistency: " + (play.successRate * bonus));
+    play.shooter.successRate.push({
+        "type": "offensive consistency",
+        "value": play.successRate
+    });
 
     play.successRate *= bonus;
 
@@ -6101,6 +6126,7 @@ function updatePlayByPlay(play) {
             }
 
             details.innerHTML = "Success rate:";
+            console.log("BOB", event.shooter.successRate);
 
         } else if (event.event == "shooting foul") {
 
