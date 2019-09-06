@@ -5173,6 +5173,11 @@ function simulateShotSuccess(play) {
             assister = "";
         }
 
+        // If a pass was made, remember who made the pass to the shooter
+        if (play.passer != "") {
+            play.shooter.passer = play.passer;
+        }
+
         let block_event;
         let blocker;
         if (play.blocked == 1 & play.madeFG == 0) {
@@ -6151,10 +6156,17 @@ function updatePlayByPlay(play) {
 
             for (let h = 0; h < event.shooter.successRate.length; h++) {
 
+                let additional = "";
+                if (event.shooter.successRate[h].type == "pass accuracy") {
+
+                console.log(event.shooter);
+                    additional = " (" + event.shooter.passer.first[0] + ". " + event.shooter.passer.last + ")";
+                }
+
                 details_category = document.createElement("div");
                 details_category.className = "play-stats-play-by-play-row-outcome-fieldgoalattempt-details-content-category"
                 details_content_left.appendChild(details_category);
-                details_category.innerHTML = event.shooter.successRate[h].type;
+                details_category.innerHTML = event.shooter.successRate[h].type + additional;
 
                 details_success = document.createElement("div");
                 details_success.className = "play-stats-play-by-play-row-outcome-fieldgoalattempt-details-content-success"
