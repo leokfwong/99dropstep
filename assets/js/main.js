@@ -4461,7 +4461,7 @@ function simulateNextPossession() {
             play = updateRatingsAfterStamina(play);
 
             // Update time
-            let seconds = simulateTimePossession();
+            let seconds = simulateTimePossession(play);
             // Check if end of quarter, adjust seconds
             let end_of_quarter_times = [2160, 1440, 720, 0];
             for (let i = 0; i < end_of_quarter_times.length; i++) {
@@ -5789,13 +5789,26 @@ function updateStaminaBar(play) {
 
 }
 
-function simulateTimePossession() {
+function simulateTimePossession(play) {
 
     let time_array = [];
 
-    for (let i = 0; i < time_distribution_default.length; i++) {
+    let time_distribution;
 
-        let obj = time_distribution_default[i];
+    if (play.reboundType == "defensive") {
+        time_distribution = time_distribution_default;
+        console.log("Time Distribution: Defensive");
+    } else if (play.reboundType == "offensive") {
+        time_distribution = time_distribution_oreb;
+        console.log("Time Distribution: Offensive");
+    } else {
+        time_distribution = time_distribution_default;
+        console.log("Time Distribution: Default");
+    }
+
+    for (let i = 0; i < time_distribution.length; i++) {
+
+        let obj = time_distribution[i];
 
         for (let j = 0; j < obj.probability; j++) {
 
