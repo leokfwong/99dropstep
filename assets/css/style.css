@@ -3065,7 +3065,6 @@ input#collection-search-input-box {
     align-items: center;
     width: 70%;
     height: 100%;
-    position: relative;
 }
 .play-overlay-content-substitutions-player-fouled-out {
     display: flex;
@@ -3080,10 +3079,10 @@ input#collection-search-input-box {
     font-weight: bold;
 }
 .play-overlay-content-substitutions-player-name {
-    padding: 5%;
+    padding: 5px;
 }
 .play-overlay-content-substitutions-player-position {
-    padding: 5%;
+    padding: 5px;
     font-size: 81%;
 }
 .play-overlay-content-substitutions-player-rating {
