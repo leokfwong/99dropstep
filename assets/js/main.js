@@ -5197,7 +5197,7 @@ function simulateShotSuccess(play) {
             "blocker": blocker,
             "play": made_shot_array[play.madeFG] + " " + play.shotType + " [" + play.shooter.gamestats.stats.pts + " PTS] <br>",
             "play_assist": assist_event,
-            "play_blcok": block_event,
+            "play_block": block_event,
             "score": fetchScore(play, "usr") + " - " + fetchScore(play, "cpu"),
             "make": play.madeFG
         };
@@ -6143,6 +6143,23 @@ function updatePlayByPlay(play) {
                 play_assist.className = "play-stats-play-by-play-row-outcome-fieldgoalattempt-play-assist";
                 play_itm.appendChild(play_assist);
                 play_assist.innerHTML = " " + event.play_assist;
+
+            }
+
+            if (event.play_block != "") {
+
+                let blocker = document.createElement("span");
+                blocker.className = "play-stats-play-by-play-row-outcome-fieldgoalattempt-blocker play-by-play-player-name";
+                play_itm.appendChild(blocker);
+                blocker.innerHTML = event.blocker.first[0] + ". " + event.blocker.last;
+                blocker.style.background = event.blocker.color1;
+                blocker.style.color = event.blocker.color3;
+                blocker.style.border = "solid 1px " + event.blocker.color3;
+
+                let play_block = document.createElement("span");
+                play_block.className = "play-stats-play-by-play-row-outcome-fieldgoalattempt-play-block";
+                play_itm.appendChild(play_block);
+                play_block.innerHTML = " " + event.play_block;
 
             }
 
