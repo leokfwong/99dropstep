@@ -3283,8 +3283,6 @@ function initializePlayStats(gamemode) {
 
             fetchRecord("playoffs", "0001", function(playoffs) {
 
-                let playoffs_teamID = playoffs.opponentTeamID;
-
                 let play_stats_json = {
                     "id": "0001",
                     "gamemode": gamemode,
@@ -3540,6 +3538,8 @@ function initializePlayStats(gamemode) {
                     );
 
                 } else if (gamemode == "Playoffs") {
+
+                    let playoffs_teamID = playoffs.opponentTeamID;
                     let roster = playoffs_teams_json[parseInt(playoffs_teamID) - 1].roster;
                     console.log(roster);
                     for (let i = 0; i < roster.length; i++) {
