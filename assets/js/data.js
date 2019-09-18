@@ -18402,7 +18402,7 @@ const players_json = [{
     "color1": "#FC4F4F",
     "color2": "#931212",
     "color3": "#FBF3EC",
-    "image": "walton_luke_losangeles_lakers"
+    "image": "valentine_denzel_chicago_bulls"
 }];
 
 const coaches_json = [{
