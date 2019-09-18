@@ -18343,6 +18343,66 @@ const players_json = [{
     "color2": "#2E1644",
     "color3": "#F0BC51",
     "image": "walton_luke_losangeles_lakers"
+}, {
+    "id": "0301",
+    "type": "player",
+    "first": "Denzel",
+    "last": "Valentine",
+    "height": "6-6",
+    "weight": "210",
+    "number": 45,
+    "country": "United States",
+    "team": "Chicago Bulls",
+    "conference": "Eastern Conference",
+    "season": "2017-2018",
+    "salary": 2,
+    "unlockedlevel": 5,
+    "tier": 3,
+    "rarity": "Common",
+    "level": 1,
+    "count": 1,
+    "ratings": {
+        "inside": {
+            "value": 70,
+            "tendency": 24
+        },
+        "dunk": {
+            "value": 75,
+            "tendency": 0
+        },
+        "midrange": {
+            "value": 72,
+            "tendency": 25
+        },
+        "outside": {
+            "value": 77,
+            "tendency": 51
+        },
+        "drawfoul": 50,
+        "freethrow": 75,
+        "interior": 70,
+        "perimeter": 76,
+        "offensiverebound": 62,
+        "defensiverebound": 73,
+        "speed": 76,
+        "vertical": 79,
+        "strength": 75,
+        "hands": 76,
+        "stamina": 90,
+        "hustle": 80,
+        "passing": 66,
+        "steal": 53,
+        "block": 42,
+        "offensiveconsistency": 72,
+        "defensiveconsistency": 70
+    },
+    "position": "SF",
+    "fgaintensity": 1,
+    "fgaaverage": 10,
+    "color1": "#FC4F4F",
+    "color2": "#931212",
+    "color3": "#FBF3EC",
+    "image": "walton_luke_losangeles_lakers"
 }];
 
 const coaches_json = [{
