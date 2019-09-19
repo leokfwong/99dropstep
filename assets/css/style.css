@@ -2323,6 +2323,17 @@ input#collection-search-input-box {
     background: #2A2723;
     color: #E1C773;
 }
+#play-action-timeout-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: justify;
+    width: 80%;
+    height: 70%;
+    border: solid 1px #E1C773;
+    background: #E1C773;
+    color: #2A2723;
+}
 .play-oncourt-player {
     display: flex;
     justify-content: flex-end;

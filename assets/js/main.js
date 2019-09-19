@@ -3626,6 +3626,23 @@ function initializePlayStats(gamemode) {
 
     });
 
+    let timeout = document.createElement("div");
+    timeout.id = "play-action-timeout";
+    timeout.className = "play-action-sct";
+    action_container.appendChild(timeout);
+
+    let timeout_btn = document.createElement("div");
+    timeout_btn.id = "play-action-timeout-btn";
+    timeout_btn.className = "play-action-sct-btn";
+    timeout.appendChild(timeout_btn);
+    timeout_btn.innerHTML = "Timeout";
+
+    timeout_btn.addEventListener("click", function() {
+
+        callTimeout("usr");
+
+    });
+
     let next_possession = document.createElement("div");
     next_possession.id = "play-action-next-possession";
     next_possession.className = "play-action-sct";
