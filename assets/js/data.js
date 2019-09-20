@@ -5130,8 +5130,8 @@ const players_json = [{
         "passing": 71,
         "steal": 68,
         "block": 54,
-        "color1": "#624eb7",
-        "color2": "#472792",
+        "color1": "#7A7AC1",
+        "color2": "#382082",
         "color3": "#ffffff",
         "offensiveconsistency": 85,
         "defensiveconsistency": 85
@@ -5141,7 +5141,7 @@ const players_json = [{
     "fgaaverage": 20,
     "color1": "#624eb7",
     "color2": "#472792",
-    "color3": "#ffffff",
+    "color3": "#54D4F7",
     "image": "malone_karl_utah_jazz"
 }, {
     "id": "0081",
