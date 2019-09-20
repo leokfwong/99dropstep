@@ -5107,6 +5107,8 @@ function simulateShotSuccess(play) {
 
         play = adjustForOffensiveConsistency(play);
 
+        play = adjustForTeamImpact(play);
+
         if (play.fouled == 1) {
 
             console.log("FOUL!");
@@ -5442,6 +5444,59 @@ function adjustForOffensiveConsistency(play) {
 
     return (play);
 
+}
+
+function adjustForTeamImpact(play) {
+
+    let offensive_overall = 0;
+
+    if (play.successRate > 0) {
+
+        let off_oncourt = fetchStarters(play, play.possession);
+
+        for (let i = 0; i < off_oncourt.length; i++) {
+
+            offensive_overall += calculateRatings(off_oncourt[i])["offense"];
+            console.log(calculateRatings(off_oncourt[i]));
+
+        }
+    }
+
+    offensive_overall /= 10000;
+    console.log(offensive_overall);
+
+    play.successRate += offensive_overall;
+
+    play.shooter.successRate.push({
+        "type": "team offensive impact",
+        "value": play.successRate
+    })
+
+    let defensive_overall = 0;
+
+    if (play.successRate > 0) {
+
+        let def_oncourt = fetchStarters(play, fetchOtherAgent(play.possession));
+
+        for (let i = 0; i < def_oncourt.length; i++) {
+
+            defensive_overall += calculateRatings(def_oncourt[i])["defense"];
+            console.log(calculateRatings(def_oncourt[i]));
+
+        }
+    }
+
+    defensive_overall /= 15000;
+    console.log(defensive_overall);
+
+    play.successRate -= defensive_overall;
+
+    play.shooter.successRate.push({
+        "type": "opponent defensive impact",
+        "value": play.successRate
+    })
+
+    return (play);
 }
 
 function updateOnCourtPlusMinus(play, pts) {
@@ -6206,7 +6261,7 @@ function updatePlayByPlay(play) {
                 let additional = "";
                 if (event.shooter.successRate[h].type == "pass accuracy") {
 
-                console.log(event.shooter);
+                    console.log(event.shooter);
                     additional = " (" + event.shooter.passer.first[0] + ". " + event.shooter.passer.last + ")";
                 }
 
