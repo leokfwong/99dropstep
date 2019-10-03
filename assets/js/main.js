@@ -6279,6 +6279,10 @@ function updatePlayByPlay(play) {
 
             console.log("BOB", event.shooter.successRate);
 
+            let shooting_chart = document.createElement("div");
+            shooting_chart.className = "play-stats-play-by-play-row-play-shooting-chart";
+            details.appendChild(shooting_chart);
+
         } else if (event.event == "shooting foul") {
 
             let fouler = document.createElement("span");

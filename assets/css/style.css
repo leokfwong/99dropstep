@@ -2459,6 +2459,9 @@ input#collection-search-input-box {
     margin-top: 3%;
     width: 100%;
     border-top: solid 1px lightgrey;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 .play-by-play-player-name {
     padding: 2px;
@@ -2500,6 +2503,11 @@ input#collection-search-input-box {
     align-items: flex-end;
     flex-direction: column;
     width: 25%;
+}
+.play-stats-play-by-play-row-play-shooting-chart {
+    width: 200px;
+    height: 150px;
+    background: pink;
 }
 .play-stats-play-by-play-row-score {
     display: flex;
