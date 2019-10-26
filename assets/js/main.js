@@ -3468,7 +3468,7 @@ function initializePlayStats(gamemode) {
                         scoreboard_timeouts_light.id = "play-scoreboard-" + agents[i] + "-timeouts-light-" + (j + 1);
                         scoreboard_timeouts_light.className = "play-scoreboard-timeouts-light";
                         scoreboard_timeouts_sct.appendChild(scoreboard_timeouts_light);
-                        scoreboard_timeouts_light.style.background = "#E1C773";
+                        scoreboard_timeouts_light.style.background = "lightgrey";
 
                     }
                 }
@@ -4169,9 +4169,9 @@ function callTimeout(agent) {
         for (let i = 1; i <= 7; i++) {
             let light = document.getElementById("play-scoreboard-" + agent + "-timeouts-light-" + i);
             if (i <= play.team[agent].timeouts) {
-                light.style.background = "#E1C773";
+                light.style.background = "lightgrey";
             } else {
-                light.style.background = "#2A2723";
+                light.style.background = "white";
             }
         }
 
@@ -6132,7 +6132,7 @@ function updatePlayByPlay(play) {
         if (event.team == "usr") {
             background_color = "white";
         } else {
-            background_color = "#ecf0f1";
+            background_color = "#F0F0F0";
         }
 
         row.style.background = background_color;

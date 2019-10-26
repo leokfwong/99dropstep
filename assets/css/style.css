@@ -2174,7 +2174,7 @@ input#collection-search-input-box {
     height: 8%;
     font-size: 91%;
     font-weight: bold;
-    background: #2A2723;
+    background: lightgrey;
 }
 .play-stats-navigation-itm {
     display: flex;
@@ -2184,12 +2184,12 @@ input#collection-search-input-box {
     height: 100%;
 }
 .play-stats-navigation-itm-active {
-    background: #E1C773;
-    color: #2A2723;
+    background: #2A2723;
+    color: lightgrey;
 }
 .play-stats-navigation-itm-inactive {
-    background: #2A2723;
-    color: #E1C773;
+    background: lightgrey;
+    color: #2A2723;
 }
 #play-scoreboard-container {
     display: flex;
@@ -2204,7 +2204,9 @@ input#collection-search-input-box {
     align-items: center;
     width: 100%;
     height: 100%;
-    background: black;
+    background: white;
+    border-bottom: solid 2px #2A2723;
+    box-sizing: border-box;
 }
 .play-scoreboard-section {
     display: flex;
@@ -2220,7 +2222,7 @@ input#collection-search-input-box {
     align-items: center;
     width: 100%;
     height: 25%;
-    color: white;
+    color: grey;
     font-weight: bold;
     font-size: 81%;
 }
@@ -2230,10 +2232,10 @@ input#collection-search-input-box {
     align-items: center;
     width: 100%;
     height: 50%;
-    color: white;
-    font-size: 300%;
+    color: grey;
+    font-size: 200%;
     font-weight: bold;
-    font-family: "Ozone";
+    font-family: "Raleway";
 }
 .play-scoreboard-timeouts {
     display: flex;
@@ -2255,7 +2257,7 @@ input#collection-search-input-box {
     align-items: center;
     width: 70%;
     height: 40%;
-    border: solid 1px #E1C773;
+    border: solid 1px grey;
 }
 #play-scoreboard-time {
     display: flex;
@@ -2273,7 +2275,7 @@ input#collection-search-input-box {
     align-items: center;
     width: 100%;
     height: 35%;
-    color: white;
+    color: grey;
 }
 #play-stats-content {
     display: flex;
@@ -2291,7 +2293,7 @@ input#collection-search-input-box {
     align-items: center;
     width: 100%;
     height: 10%;
-    background: #2A2723;
+    background: lightgrey;
 }
 .play-action-sct {
     display: flex;
@@ -2309,8 +2311,8 @@ input#collection-search-input-box {
     text-align: justify;
     width: 80%;
     height: 70%;
-    border: solid 1px white;
-    background: lightgreen;
+    background: #2A2723;
+    color: lightgrey;
 }
 #play-action-gameplan-btn {
     display: flex;
@@ -2319,9 +2321,8 @@ input#collection-search-input-box {
     text-align: justify;
     width: 80%;
     height: 70%;
-    border: solid 1px #E1C773;
     background: #2A2723;
-    color: #E1C773;
+    color: lightgrey;
 }
 #play-action-timeout-btn {
     display: flex;
@@ -2330,9 +2331,8 @@ input#collection-search-input-box {
     text-align: justify;
     width: 80%;
     height: 70%;
-    border: solid 1px #E1C773;
-    background: #E1C773;
-    color: #2A2723;
+    background: #2A2723;
+    color: lightgrey;
 }
 .play-oncourt-player {
     display: flex;
@@ -2407,10 +2407,10 @@ input#collection-search-input-box {
     align-items: center;
     padding: 3%;
     background: #2A2723;
-    color: #E1C773;
+    color: lightgrey;
     width: 94%;
-    border-top: solid 1px #E1C773;
-    border-bottom: : solid 1px #E1C773;
+    border-top: solid 1px lightgrey;
+    border-bottom: solid 1px lightgrey;
 }
 .play-stats-play-by-play-quarter-content {
     display: flex;
@@ -2533,6 +2533,9 @@ input#collection-search-input-box {
     align-items: center;
     width: 100%;
     height: 10%;
+    background: lightgrey;
+    border-bottom: solid 1px #2A2723;
+    box-sizing: border-box;
 }
 #play-stats-toggle-box {
     display: flex;
@@ -2550,12 +2553,16 @@ input#collection-search-input-box {
     height: 100%;
 }
 .play-stats-toggle-box-agent-active {
-    background: #E1C773;
-    color: #2A2723;
+    background: #2A2723;
+    color: lightgrey;
 }
 .play-stats-toggle-box-agent-inactive {
-    background: #2A2723;
-    color: #E1C773;
+    background: lightgrey;
+    color: #2A2723;
+    box-sizing: border-box;
+    border: solid 1px #2A2723;
+    border-top: 0px;
+    border-bottom: 0px;
 }
 #play-stats-boxscore-header {
     display: flex;
@@ -2564,7 +2571,7 @@ input#collection-search-input-box {
     width: 100%;
     height: 10%;
     background: #2A2723;
-    color: #E1C773;
+    color: lightgrey;
 }
 #play-stats-boxscore-left-header {
     width: 30%;
@@ -2579,7 +2586,7 @@ input#collection-search-input-box {
     font-weight: bold;
     font-size: 81%;
     background: #2A2723;
-    color: #E1C773;
+    color: lightgrey;
     height: 100%;
     position: relative;
     overflow-x: scroll;
@@ -2650,7 +2657,7 @@ input#collection-search-input-box {
 }
 #play-stats-boxscore-left-totals-stats-title {
     background: #2A2723;
-    color: #E1C773;
+    color: lightgrey;
 }
 #play-stats-boxscore-right {
     display: flex;
@@ -2692,7 +2699,7 @@ input#collection-search-input-box {
 }
 .play-stats-boxscore-header {
     background: #2A2723;
-    color: #E1C773;
+    color: lightgrey;
     font-size: 75%;
 }
 /* GAME STATS */
