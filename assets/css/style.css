@@ -2641,6 +2641,9 @@ input#collection-search-input-box {
 .play-stats-boxscore-left-name:nth-child(even) {
     background: #F0F0F0;
 }
+#play-stats-boxscore-left-name-header {
+    height: 2em;
+}
 .play-stats-boxscore-left-name-first {
     display: flex;
     justify-content: flex-start;
@@ -2681,6 +2684,9 @@ input#collection-search-input-box {
 }
 .play-stats-boxscore-right-stats-row:nth-child(even) {
     background: #F0F0F0;
+}
+#play-stats-boxscore-right-stats-row-header {
+    height: 2em;
 }
 .play-stats-boxscore-right-stats-row {
     display: flex;
