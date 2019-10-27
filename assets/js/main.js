@@ -6127,15 +6127,18 @@ function updatePlayByPlay(play) {
         row.className = "play-stats-play-by-play-row div-fadein";
         quarter_content.appendChild(row);
 
-        let background_color;
+        let background_color, font_color;
 
         if (event.team == "usr") {
-            background_color = "white";
+            background_color = "#2A2723";
+            font_color = "lightgrey"
         } else {
-            background_color = "#F0F0F0";
+            background_color = "#2A2723";
+            font_color = "lightgrey"
         }
 
         row.style.background = background_color;
+        row.style.color = font_color;
 
         let container = document.createElement("div");
         container.className = "play-stats-play-by-play-row-container";
