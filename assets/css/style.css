@@ -2405,12 +2405,14 @@ input#collection-search-input-box {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    padding: 3%;
-    background: #2A2723;
-    color: lightgrey;
-    width: 94%;
-    border-top: solid 1px lightgrey;
-    border-bottom: solid 1px lightgrey;
+    padding: 2%;
+    background: lightgrey;
+    color: #2A2723;
+    width: 96%;
+    border-top: solid 1px #2A2723;
+    border-bottom: solid 1px #2A2723;
+    font-size: 81%;
+    font-weight: bold;
 }
 .play-stats-play-by-play-quarter-content {
     display: flex;
