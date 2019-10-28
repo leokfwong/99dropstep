@@ -5831,7 +5831,7 @@ function simulateTipOff(play) {
     pbp_event.event = "jumpball";
     pbp_event.winner = win_player;
     pbp_event.loser = lose_player;
-    pbp_event.play = "wins jump ball against";
+    pbp_event.play = "wins jump ball against <br>";
     pbp_event.score = fetchScore(play, "usr") + " - " + fetchScore(play, "cpu");
     play.playbyplay.push(pbp_event);
 
