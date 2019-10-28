@@ -2293,7 +2293,9 @@ input#collection-search-input-box {
     align-items: center;
     width: 100%;
     height: 10%;
-    background: lightgrey;
+    background: white;
+    border-top: solid 2px #2A2723;
+    box-sizing: border-box;
 }
 .play-action-sct {
     display: flex;
