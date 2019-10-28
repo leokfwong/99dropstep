@@ -2180,7 +2180,7 @@ input#collection-search-input-box {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 33%;
+    width: 33.33%;
     height: 100%;
 }
 .play-stats-navigation-itm-active {
@@ -2735,9 +2735,9 @@ input#collection-search-input-box {
     justify-content: flex-start;
     align-items: center;
     width: 100%;
-    height: 8%;
-    background: #2A2723;
-    color: #E1C773;
+    height: 5%;
+    background: lightgrey;
+    color: #2A2723;
 }
 .play-stats-game-stats-game-title {
     font-size: 81%;
@@ -2750,7 +2750,7 @@ input#collection-search-input-box {
     align-items: center;
     flex-direction: column;
     width: 100%;
-    height: 92%;
+    height: 95%;
 }
 /* GAME TRACKER CHART */
 #play-stats-game-stats-game-tracker-chart-container {
