@@ -3663,6 +3663,12 @@ function initializePlayStats(gamemode) {
 
         simulateNextPossession();
 
+        next_possession_btn.style.pointerEvents = "none";
+        setTimeout(function() {
+            next_possession_btn.style.pointerEvents = "auto";
+        }, 420);
+
+
     });
 
     document.onkeydown = function(evt) {
@@ -4050,7 +4056,7 @@ function selectPlayerToSubIn(play, agent, data) {
             substitution.data = 0;
 
         } else {
-            console.log("No conflict at " + position_array[x].toUpperCase());
+            //console.log("No conflict at " + position_array[x].toUpperCase());
             let out_player_slot = document.getElementById("play-overlay-content-substitutions-starters-player-spot-" + (x + 1));
 
             if (out_player_slot != undefined) {
@@ -4059,11 +4065,11 @@ function selectPlayerToSubIn(play, agent, data) {
         }
 
     }
-    console.log(data);
+    //console.log(data);
 
     play.team[agent].substitutions[position_array[data.out_slot - 1]].sub = 1;
     play.team[agent].substitutions[position_array[data.out_slot - 1]].data = data;
-    console.log(play.team[agent].substitutions);
+    //console.log(play.team[agent].substitutions);
 
     let row_highlights = document.getElementsByClassName("play-overlay-content-substitutions-player-highlight");
 
@@ -4260,6 +4266,7 @@ function subAllStarters(play) {
 
                     // If the player who is supposed to start is already in the starting line-up, do nothing
                     let data = {
+                        "type": "one2one",
                         "in_id": in_player.id,
                         "in_slot": in_player.gamestats.slot,
                         "out_id": out_player.id,
@@ -4293,7 +4300,7 @@ function makeSubstitutions(play) {
 
             if (substitutions.sub == 1) {
 
-                let player_in, player_out;
+                let player_in, player_out, player_trans;
 
                 for (let x = 0; x < play.team[agents[i]].roster.length; x++) {
 
@@ -4307,6 +4314,12 @@ function makeSubstitutions(play) {
 
                         player_out = play.team[agents[i]].roster[x];
 
+                    }
+
+                    if (substitutions.data.type == "3way") {
+                        if (play.team[agents[i]].roster[x].id == substitutions.data.trans_id) {
+                            player_trans = play.team[agents[i]].roster[x];
+                        }
                     }
 
                 }
@@ -4334,10 +4347,17 @@ function makeSubstitutions(play) {
                         "make": 0
                     };
                     play.playbyplay.push(event);
-
-                    let tmp = player_in.gamestats.slot;
-                    player_in.gamestats.slot = player_out.gamestats.slot;
-                    player_out.gamestats.slot = tmp;
+                    console.log(substitutions.data);
+                    if (substitutions.data.type == "one2one") {
+                        let tmp = player_in.gamestats.slot;
+                        player_in.gamestats.slot = player_out.gamestats.slot;
+                        player_out.gamestats.slot = tmp;
+                    } else {
+                        let tmp = player_trans.gamestats.slot;
+                        player_trans.gamestats.slot = player_out.gamestats.slot;
+                        player_out.gamestats.slot = player_in.gamestats.slot;
+                        player_in.gamestats.slot = tmp;
+                    }
 
                     let substitution = {
                         "sub": 0,
@@ -4695,7 +4715,7 @@ function autoSubstitution(play) {
 
                         if (substitution.sub == 1) {
 
-                            if (substitution.data.out_id == player.id) {
+                            if (substitution.data.out_id == out_player.id) {
                                 pending_sub = true;
                             }
 
@@ -4725,17 +4745,47 @@ function autoSubstitution(play) {
 
                         }
 
+                        let transition_sub = false;
+                        let transition_data = [];
+
                         if (potential_in_players.length == 0) {
+
+                            // Check if there are active players who can switch positions
                             for (let s = 0; s < roster.length; s++) {
                                 let active_player_same_pos = roster[s];
-                                if (active_player_same_pos.gamestats.active == 1) {
-                                    let substitution = play.team[agents[i]].substitutions[position_array[active_player_same_pos.gamestats.slot -1]];
-                                    if (substitution.sub == 0) {
-                                        if (active_player_same_pos.position.indexOf(position) > -1) {
-                                            console.log(active_player_same_pos.first + " " + active_player_same_pos.last + " could be switched to " + position + "!");
+                                if (active_player_same_pos.id != out_player.id) {
+                                    if (active_player_same_pos.gamestats.active == 1) {
+                                        let substitution = play.team[agents[i]].substitutions[position_array[active_player_same_pos.gamestats.slot - 1]];
+                                        if (substitution.sub == 0) {
+                                            if (active_player_same_pos.position.indexOf(position) > -1) {
+                                                console.log(active_player_same_pos.first + " " + active_player_same_pos.last + " could be switched to " + position + "!");
+                                                let trans_obj = {};
+                                                trans_obj.position = (position_array[active_player_same_pos.gamestats.slot - 1]);
+                                                trans_obj.id = (active_player_same_pos.id);
+                                                transition_data.push(trans_obj);
+                                            }
                                         }
                                     }
                                 }
+                            }
+
+                            // Check again now to see if there is a possible transition substitution
+                            if (transition_data.length != 0) {
+                                for (let t = 0; t < transition_data.length; t++) {
+                                    for (let l = 0; l < roster.length; l++) {
+                                        let in_player = roster[l];
+                                        if (in_player.gamestats.active == 0) {
+                                            if (in_player.position.indexOf(transition_data[t].position.toUpperCase()) > -1) {
+                                                potential_in_players.push(in_player);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            console.log(potential_in_players);
+                            // If we were able to find bench players who could sub in
+                            if (potential_in_players.length > 0) {
+                                transition_sub = true;
                             }
                         }
 
@@ -4759,11 +4809,39 @@ function autoSubstitution(play) {
 
                         if (winner != undefined) {
 
-                            let data = {
-                                "in_id": winner.id,
-                                "in_slot": winner.gamestats.slot,
-                                "out_id": out_player.id,
-                                "out_slot": out_player.gamestats.slot
+                            // TODO: Optimize...
+                            let trans_id, trans_slot;
+                            for (let q = 0; q < transition_data.length; q++) {
+                                if (winner.position.indexOf(transition_data[q].position.toUpperCase()) > -1) {
+                                    trans_slot = position_array.indexOf(transition_data[q].position) + 1;
+                                    trans_id = transition_data[q].id;
+                                    break;
+                                }
+                            }
+
+                            if (transition_sub) {
+
+                                data = {
+                                    "type": "3way",
+                                    "in_id": winner.id,
+                                    "in_slot": winner.gamestats.slot,
+                                    "trans_id": trans_id,
+                                    "trans_slot": trans_slot,
+                                    "out_id": out_player.id,
+                                    "out_slot": out_player.gamestats.slot
+                                };
+
+                                console.log("3WAYYYYYYYYYYYYY");
+                                console.log(data);
+
+                            } else {
+                                data = {
+                                    "type": "one2one",
+                                    "in_id": winner.id,
+                                    "in_slot": winner.gamestats.slot,
+                                    "out_id": out_player.id,
+                                    "out_slot": out_player.gamestats.slot
+                                };
                             }
 
                             play = selectPlayerToSubIn(play, agents[i], data);
