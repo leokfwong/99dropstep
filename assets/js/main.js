@@ -1,6 +1,11 @@
 // Every time page loads, it lands on the Play screen
 window.onload = function() {
 
+    // Prevent accidental refresh
+    window.addEventListener("beforeunload", function(event) {
+        event.returnValue = "Are you sure you want to reload page?";
+    });
+
     // Get main play div
     let main_play = document.getElementById("main-play");
     main_play.addEventListener("click", function() {
