@@ -4725,6 +4725,20 @@ function autoSubstitution(play) {
 
                         }
 
+                        if (potential_in_players.length == 0) {
+                            for (let s = 0; s < roster.length; s++) {
+                                let active_player_same_pos = roster[s];
+                                if (active_player_same_pos.gamestats.active == 1) {
+                                    let substitution = play.team[agents[i]].substitutions[position_array[active_player_same_pos.gamestats.slot -1]];
+                                    if (substitution.sub == 0) {
+                                        if (active_player_same_pos.position.indexOf(position) > -1) {
+                                            console.log(active_player_same_pos.first + " " + active_player_same_pos.last + " could be switched to " + position + "!");
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
                         let winner;
                         let max_remaining_pt = 0;
 
@@ -5462,13 +5476,11 @@ function adjustForTeamImpact(play) {
         for (let i = 0; i < off_oncourt.length; i++) {
 
             offensive_overall += calculateRatings(off_oncourt[i])["offense"];
-            console.log(calculateRatings(off_oncourt[i]));
 
         }
     }
 
     offensive_overall /= 10000;
-    console.log(offensive_overall);
 
     play.successRate += offensive_overall;
 
@@ -5486,13 +5498,11 @@ function adjustForTeamImpact(play) {
         for (let i = 0; i < def_oncourt.length; i++) {
 
             defensive_overall += calculateRatings(def_oncourt[i])["defense"];
-            console.log(calculateRatings(def_oncourt[i]));
 
         }
     }
 
     defensive_overall /= 15000;
-    console.log(defensive_overall);
 
     play.successRate -= defensive_overall;
 
@@ -6285,8 +6295,6 @@ function updatePlayByPlay(play) {
 
             }
 
-            console.log("BOB", event.shooter.successRate);
-
             let shooting_chart = document.createElement("div");
             shooting_chart.className = "play-stats-play-by-play-row-play-shooting-chart";
             details.appendChild(shooting_chart);
@@ -6296,7 +6304,6 @@ function updatePlayByPlay(play) {
             let fouler = document.createElement("span");
             fouler.className = "play-stats-play-by-play-row-outcome-fieldgoalattempt-fouler play-by-play-player-name";
             play_itm.appendChild(fouler);
-            console.log(event.fouler);
             fouler.innerHTML = event.fouler.first[0] + ". " + event.fouler.last;
             fouler.style.background = event.fouler.color1;
             fouler.style.color = event.fouler.color3;
