@@ -24,11 +24,12 @@ function calculateRatings(player) {
         // Iterate through every category and add up the rating and weight values
         stats_array.forEach(function(cat) {
             if ((scoring_array.indexOf(cat.attribute) > -1)) {
-                obj.rating += (player.ratings[cat.attribute].value * cat.weight);
+                obj.rating += (player.ratings[cat.attribute].value * cat.weight * player.ratings[cat.attribute].tendency / 100);
+                obj.weight += (cat.weight * player.ratings[cat.attribute].tendency / 100);
             } else {
                 obj.rating += (player.ratings[cat.attribute] * cat.weight);
+                obj.weight += cat.weight;
             }
-            obj.weight += cat.weight;
         });
 
         // Return object containing the sum of ratings and weights

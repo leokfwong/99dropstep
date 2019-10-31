@@ -1665,6 +1665,7 @@ function loadCollection() {
                 return 0;
 
             });
+            console.log(collection)
 
             // If descending, then reverse sorting
             if (summary.order == "descending") {

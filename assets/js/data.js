@@ -18403,6 +18403,126 @@ const players_json = [{
     "color2": "#931212",
     "color3": "#FBF3EC",
     "image": "valentine_denzel_chicago_bulls"
+}, {
+    "id": "0302",
+    "type": "player",
+    "first": "Lauri",
+    "last": "Markkanen",
+    "height": "7-0",
+    "weight": "240",
+    "number": 24,
+    "country": "Finland",
+    "team": "Chicago Bulls",
+    "conference": "Eastern Conference",
+    "season": "2018-2019",
+    "salary": 5,
+    "unlockedlevel": 48,
+    "tier": 2,
+    "rarity": "Common",
+    "level": 1,
+    "count": 1,
+    "ratings": {
+        "inside": {
+            "value": 74,
+            "tendency": 36
+        },
+        "dunk": {
+            "value": 80,
+            "tendency": 4
+        },
+        "midrange": {
+            "value": 71,
+            "tendency": 18
+        },
+        "outside": {
+            "value": 81,
+            "tendency": 42
+        },
+        "drawfoul": 62,
+        "freethrow": 87,
+        "interior": 68,
+        "perimeter": 65,
+        "offensiverebound": 66,
+        "defensiverebound": 84,
+        "speed": 69,
+        "vertical": 66,
+        "strength": 70,
+        "hands": 77,
+        "stamina": 93,
+        "hustle": 67,
+        "passing": 59,
+        "steal": 52,
+        "block": 49,
+        "offensiveconsistency": 77,
+        "defensiveconsistency": 70
+    },
+    "position": "PF",
+    "fgaintensity": 1,
+    "fgaaverage": 15,
+    "color1": "#111314",
+    "color2": "#3A4044",
+    "color3": "#94BFE3",
+    "image": "markkanen_lauri_chicago_bulls"
+}, {
+    "id": "0303",
+    "type": "player",
+    "first": "Shaquille",
+    "last": "O'Neal",
+    "height": "7-1",
+    "weight": "325",
+    "number": 32,
+    "country": "United States",
+    "team": "Miami Heat",
+    "conference": "Eastern Conference",
+    "season": "2005-2006",
+    "salary": 20,
+    "unlockedlevel": 88,
+    "tier": 1,
+    "rarity": "Common",
+    "level": 1,
+    "count": 1,
+    "ratings": {
+        "inside": {
+            "value": 81,
+            "tendency": 68
+        },
+        "dunk": {
+            "value": 91,
+            "tendency": 27
+        },
+        "midrange": {
+            "value": 65,
+            "tendency": 5
+        },
+        "outside": {
+            "value": 67,
+            "tendency": 0
+        },
+        "drawfoul": 78,
+        "freethrow": 47,
+        "interior": 84,
+        "perimeter": 73,
+        "offensiverebound": 75,
+        "defensiverebound": 80,
+        "speed": 73,
+        "vertical": 75,
+        "strength": 90,
+        "hands": 84,
+        "stamina": 92,
+        "hustle": 82,
+        "passing": 61,
+        "steal": 47,
+        "block": 67,
+        "offensiveconsistency": 85,
+        "defensiveconsistency": 82
+    },
+    "position": "C",
+    "fgaintensity": 2,
+    "fgaaverage": 14,
+    "color1": "#E24F2D",
+    "color2": "#910C0C",
+    "color3": "#F1E9EB",
+    "image": "oneal_shaquille_miami_heat"
 }];
 
 const coaches_json = [{
