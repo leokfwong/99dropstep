@@ -3666,7 +3666,7 @@ function initializePlayStats(gamemode) {
         next_possession_btn.style.pointerEvents = "none";
         setTimeout(function() {
             next_possession_btn.style.pointerEvents = "auto";
-        }, 420);
+        }, 222);
 
 
     });
