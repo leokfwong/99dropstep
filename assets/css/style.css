@@ -2148,6 +2148,13 @@ input#collection-search-input-box {
     width: 80%;
     height: 100%;
 }
+#playoffs-homepage-stats-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 44%;
+}
 /* PLAY */
 #play-content {
     display: block;
@@ -2538,7 +2545,7 @@ input#collection-search-input-box {
     background: white;
     z-index: 2;
 }
-#play-stats-toggle-container {
+#play-stats-toggle-container, #play-playoffs-stats-toggle-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -2548,7 +2555,7 @@ input#collection-search-input-box {
     border-bottom: solid 1px #2A2723;
     box-sizing: border-box;
 }
-#play-stats-toggle-box {
+#play-stats-toggle-box, #play-playoffs-stats-toggle-box {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -2575,7 +2582,7 @@ input#collection-search-input-box {
     border-top: 0px;
     border-bottom: 0px;
 }
-#play-stats-boxscore-header {
+#play-stats-boxscore-header, #play-playoffs-stats-boxscore-header {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -2584,10 +2591,10 @@ input#collection-search-input-box {
     background: #2A2723;
     color: lightgrey;
 }
-#play-stats-boxscore-left-header {
+#play-stats-boxscore-left-header, #play-playoffs-stats-boxscore-left-header {
     width: 30%;
 }
-#play-stats-boxscore-right-header {
+#play-stats-boxscore-right-header, #play-playoffs-stats-boxscore-right-header {
     width: 70%;
 }
 .play-stats-boxscore-header-sct {
@@ -2602,7 +2609,7 @@ input#collection-search-input-box {
     position: relative;
     overflow-x: scroll;
 }
-#play-stats-boxscore-right-header-scroll {
+#play-stats-boxscore-right-header-scroll, #play-playoffs-stats-boxscore-right-header-scroll {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -2616,7 +2623,7 @@ input#collection-search-input-box {
     width: 40px;
     height: 100%;
 }
-#play-stats-boxscore-content {
+#play-stats-boxscore-content, #play-playoffs-stats-boxscore-content {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -2626,7 +2633,7 @@ input#collection-search-input-box {
     position: relative;
     overflow-y: auto;
 }
-#play-stats-boxscore-left {
+#play-stats-boxscore-left, #play-playoffs-stats-boxscore-left {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -2652,7 +2659,7 @@ input#collection-search-input-box {
 .play-stats-boxscore-left-name:nth-child(even) {
     background: #F0F0F0;
 }
-#play-stats-boxscore-left-name-header {
+#play-stats-boxscore-left-name-header, #play-playoffs-stats-boxscore-left-name-header {
     height: 2em;
 }
 .play-stats-boxscore-left-name-first {
@@ -2669,11 +2676,11 @@ input#collection-search-input-box {
     width: 90%;
     height: 40%;
 }
-#play-stats-boxscore-left-totals-stats-title {
+#play-stats-boxscore-left-totals-stats-title, #play-playoffs-stats-boxscore-left-totals-stats-title {
     background: #2A2723;
     color: lightgrey;
 }
-#play-stats-boxscore-right {
+#play-stats-boxscore-right, #play-playoffs-stats-boxscore-right {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -2683,7 +2690,7 @@ input#collection-search-input-box {
     top: 0;
     right: 0;
 }
-#play-stats-boxscore-right-stats {
+#play-stats-boxscore-right-stats, #play-playoffs-stats-boxscore-right-stats {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -2696,7 +2703,7 @@ input#collection-search-input-box {
 .play-stats-boxscore-right-stats-row:nth-child(even) {
     background: #F0F0F0;
 }
-#play-stats-boxscore-right-stats-row-header {
+#play-stats-boxscore-right-stats-row-header, #play-playoffs-stats-boxscore-right-stats-row-header {
     height: 2em;
 }
 .play-stats-boxscore-right-stats-row {
