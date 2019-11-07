@@ -2812,6 +2812,11 @@ function loadGameModes() {
                         if (ready_team) {
 
                             initializePlayoffsTeamSelection();
+                            fetchRecord("playoffs", "0001", function(playoffs) {
+                                if (playoffs != undefined) {
+
+                                }
+                            });
 
                         } else {
 
@@ -4922,9 +4927,21 @@ function simulateNextPossession() {
                         loadPlayoffsHomepage(playoffs);
                         updatePlayoffsBoxScore(playoffs);
 
-                        if (playoffs.usrScore == 4 | playoffs.cpuScore == 4) {
+                        if (playoffs.usrScore == 1 | playoffs.cpuScore == 1) {
                             console.log("END PLAYOFFS");
-                            removeRecord("playoffs", "0001");
+                            let playoffs_homepage = document.getElementById("playoffs-homepage-play-div");
+                            playoffs_homepage.innerHTML = "";
+                            let button = document.createElement("div");
+                            button.id = "playoffs-homepage-play-button";
+                            button.className = "action_btn";
+                            playoffs_homepage.appendChild(button);
+                            button.innerHTML = "Quit";
+                            button.style.background = "#d24d57";
+                            button.addEventListener("click", function() {
+                                document.getElementById("gamemodes-playoffs-team-homepage").style.display = "none";
+                                removeRecord("playoffs", "0001");
+                                initializePlayoffsTeamSelection();
+                            });
                         }
 
                     });
