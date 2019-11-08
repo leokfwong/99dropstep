@@ -4927,7 +4927,7 @@ function simulateNextPossession() {
                         loadPlayoffsHomepage(playoffs);
                         updatePlayoffsBoxScore(playoffs);
 
-                        if (playoffs.usrScore == 1 | playoffs.cpuScore == 1) {
+                        if (playoffs.usrScore == 4 | playoffs.cpuScore == 4) {
                             console.log("END PLAYOFFS");
                             let playoffs_homepage = document.getElementById("playoffs-homepage-play-div");
                             playoffs_homepage.innerHTML = "";
