@@ -296,6 +296,27 @@ function loadTeams() {
                     rating_box.className = "team-rating-box";
                     rating.appendChild(rating_box);
 
+                    let option = document.createElement("div");
+                    option.id = "team-row-option-" + i;
+                    option.className = "team-row-option";
+                    row.appendChild(option);
+
+                    let replace_btn = document.createElement("div");
+                    replace_btn.id = "team-row-option-replace-" + i;
+                    replace_btn.className = "team-row-option-replace";
+                    option.appendChild(replace_btn);
+                    replace_btn.innerHTML = "Replace";
+
+                    replace_btn.addEventListener("click", function() {
+                        displaySpecificPage("collection-container");
+                    });
+
+                    let details_btn = document.createElement("div");
+                    details_btn.id = "team-row-option-details-" + i;
+                    details_btn.className = "team-row-option-details";
+                    option.appendChild(details_btn);
+                    details_btn.innerHTML = "Details";
+
                     // Append to right section based on starter vs bench
                     if (i < 5) {
                         starters.appendChild(row);
@@ -380,6 +401,17 @@ function loadTeams() {
                         document.getElementById("team-summary-rating-breakdown-value-3").innerHTML = Math.round(physical);
                         document.getElementById("team-summary-rating-breakdown-fill-3").style.width = Math.round(physical) + "%";
                         document.getElementById("team-summary-rating-breakdown-fill-3").style.background = getRatingColor(physical);
+
+                        row.addEventListener("click", function() {
+
+                            let all_options = document.getElementsByClassName("team-row-option");
+                            for (let i=0; i<all_options.length; i++) {
+                                all_options[i].style.display = "none";
+                            }
+
+                            let option = document.getElementById("team-row-option-" + i);
+                            option.style.display = "flex";
+                        });
 
                     }
                 }
