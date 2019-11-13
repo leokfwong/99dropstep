@@ -79,9 +79,13 @@ function getRatingColor(value) {
         color = "#26A65B";
     } else if (value < 90 & value >= 80) {
         color = "#87D37C";
-    } else if (value < 80 & value >= 70) {
+    } else if (value < 80 & value >= 75) {
+        color = "#C4E538";
+    } else if (value < 75 & value >= 70) {
         color = "#F4D03F";
-    } else if (value < 70 & value >= 60) {
+    } else if (value < 70 & value >= 65) {
+        color = "#FFB61E";
+    } else if (value < 65 & value >= 60) {
         color = "#EB9532";
     } else if (value < 60 & value >= 50) {
         color = "#EF4836";

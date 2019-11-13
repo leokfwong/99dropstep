@@ -405,7 +405,7 @@ function loadTeams() {
                         row.addEventListener("click", function() {
 
                             let all_options = document.getElementsByClassName("team-row-option");
-                            for (let i=0; i<all_options.length; i++) {
+                            for (let i = 0; i < all_options.length; i++) {
                                 all_options[i].style.display = "none";
                             }
 
@@ -481,187 +481,206 @@ function loadTeams() {
 
                 rotation_team_button.addEventListener("click", function() {
 
-                    let overlay = document.getElementById("team-overlay");
-                    overlay.style.display = "flex";
-                    overlay.innerHTML = "";
-
-                    let rotation_menu_container = document.createElement("div");
-                    rotation_menu_container.id = "team-rotation-menu-container";
-                    overlay.appendChild(rotation_menu_container);
-
-                    let rotation_top_container = document.createElement("div");
-                    rotation_top_container.id = "team-rotation-top-container";
-                    rotation_menu_container.appendChild(rotation_top_container);
-
-                    let minutes_remaining = document.createElement("div");
-                    minutes_remaining.id = "team-rotation-top-minutes-remaining";
-                    rotation_top_container.appendChild(minutes_remaining);
-                    minutes_remaining.innerHTML = "Minutes remaining: " + (240 - sumTeamTotalMinutes(team.players));
-
-                    let auto_assign = document.createElement("div");
-                    auto_assign.id = "team-rotation-top-auto-assign";
-                    rotation_top_container.appendChild(auto_assign);
-
-                    let auto_assign_button = document.createElement("div");
-                    auto_assign_button.id = "team-rotation-top-auto-assign-button";
-                    auto_assign.appendChild(auto_assign_button);
-                    auto_assign_button.innerHTML = "Auto-assign";
-
-                    auto_assign_button.addEventListener("click", function() {
-
-                        team.players = autoAssignTeamPlayingTime(team.players);
-
-                        removeRecord("teams", team.id);
-                        addRecord("teams", team);
-
-                    });
-
-                    let rotation_minutes_container = document.createElement("div");
-                    rotation_minutes_container.id = "team-rotation-minutes-container";
-                    rotation_menu_container.appendChild(rotation_minutes_container);
-
+                    // Check if all players are filled
+                    ready_team = true;
                     for (let i = 0; i < team.players.length; i++) {
-
-                        // Fetch player id
-                        let player = team.players[i];
-
-                        let row = document.createElement("div");
-                        row.id = "rotation-minutes-row-" + (i + 1);
-                        row.className = "rotation-minutes-row";
-                        rotation_minutes_container.appendChild(row);
-
-                        let position = document.createElement("div");
-                        position.id = "rotation-minutes-position-" + (i + 1);
-                        position.className = "rotation-minutes-position";
-                        row.appendChild(position);
-                        position.innerHTML = position_array[i % 5];
-
-                        let name = document.createElement("div");
-                        name.id = "rotation-minutes-name-" + (i + 1);
-                        name.className = "rotation-minutes-name";
-                        row.appendChild(name);
-                        name.style.background = player.color2;
-                        name.style.color = player.color3;
-
-                        let name_value = document.createElement("div");
-                        name_value.id = "rotation-minutes-name-value-" + (i + 1);
-                        name_value.className = "rotation-minutes-name-value";
-                        name.appendChild(name_value);
-                        name_value.innerHTML = player.first[0] + ". " + player.last;
-
-                        let overall = document.createElement("div");
-                        overall.id = "rotation-minutes-overall-" + (i + 1);
-                        overall.className = "rotation-minutes-overall team-rating-box";
-                        row.appendChild(overall);
-                        overall.innerHTML = Math.round(calculateRatings(player).overall);
-                        overall.style.color = getRatingColor(Math.round(calculateRatings(player).overall));
-
-                        let minutes = document.createElement("div");
-                        minutes.id = "rotation-minutes-minutes-" + (i + 1);
-                        minutes.className = "rotation-minutes-minutes";
-                        row.appendChild(minutes);
-
-                        let minus = document.createElement("div");
-                        minus.id = "rotation-minutes-minus-" + (i + 1);
-                        minus.className = "rotation-minutes-minus";
-                        minutes.appendChild(minus);
-                        minus.innerHTML = "-";
-                        minus.style.color = "#d24d57";
-
-                        let bar = document.createElement("div");
-                        bar.id = "rotation-minutes-bar-" + (i + 1);
-                        bar.className = "rotation-minutes-bar";
-                        minutes.appendChild(bar);
-
-                        let fill = document.createElement("div");
-                        fill.id = "rotation-minutes-fill-" + (i + 1);
-                        fill.className = "rotation-minutes-fill";
-                        bar.appendChild(fill);
-                        fill.style.width = (player.ratings.playingtime / 48 * 100) + "%";
-
-                        let plus = document.createElement("div");
-                        plus.id = "rotation-minutes-plus-" + (i + 1);
-                        plus.className = "rotation-minutes-plus";
-                        minutes.appendChild(plus);
-                        plus.innerHTML = "+";
-                        plus.style.color = "#22B573";
-
-                        let value = document.createElement("div");
-                        value.id = "rotation-minutes-value-" + (i + 1);
-                        value.className = "rotation-minutes-value";
-                        minutes.appendChild(value);
-                        value.innerHTML = player.ratings.playingtime;
-
-                        minus.addEventListener("click", function() {
-                            let remaining = (240 - sumTeamTotalMinutes(team.players));
-
-                            if (remaining < 240) {
-
-                                team.players[i].ratings.playingtime--;
-
-                                value.innerHTML = team.players[i].ratings.playingtime;
-
-                                fill.style.width = (team.players[i].ratings.playingtime / 48 * 100) + "%";
-
-                                let new_remaining = (240 - sumTeamTotalMinutes(team.players));
-                                minutes_remaining.innerHTML = "Minutes remaining: " + new_remaining;
-
-                                if (new_remaining != 0) {
-                                    rotation_team_warning.style.display = "flex";
-                                } else {
-                                    rotation_team_warning.style.display = "none";
-                                }
-
-                                removeRecord("teams", team.id);
-                                addRecord("teams", team);
-                            }
-
-                        });
-
-                        plus.addEventListener("click", function() {
-
-                            let remaining = (240 - sumTeamTotalMinutes(team.players));
-
-                            if (remaining > 0) {
-
-                                team.players[i].ratings.playingtime++;
-
-                                value.innerHTML = team.players[i].ratings.playingtime;
-
-                                fill.style.width = (team.players[i].ratings.playingtime / 48 * 100) + "%";
-
-                                let new_remaining = (240 - sumTeamTotalMinutes(team.players));
-                                minutes_remaining.innerHTML = "Minutes remaining: " + new_remaining;
-
-                                if (new_remaining != 0) {
-                                    rotation_team_warning.style.display = "flex";
-                                } else {
-                                    rotation_team_warning.style.display = "none";
-                                }
-
-                                removeRecord("teams", team.id);
-                                addRecord("teams", team);
-                            }
-
-                        });
-
+                        if (team.players[i] == "") {
+                            ready_team = false;
+                            warning_message = "Your team must contain 10 players in total.";
+                            break;
+                        }
                     }
 
-                    let rotation_bottom_container = document.createElement("div");
-                    rotation_bottom_container.id = "team-rotation-bottom-container";
-                    rotation_menu_container.appendChild(rotation_bottom_container);
+                    if (ready_team) {
 
-                    let rotation_done = document.createElement("div");
-                    rotation_done.id = "team-rotation-bottom-rotation-done";
-                    rotation_done.className = "action_btn";
-                    rotation_bottom_container.appendChild(rotation_done);
-                    rotation_done.innerHTML = "Done";
+                        let overlay = document.getElementById("team-overlay");
+                        overlay.style.display = "flex";
+                        overlay.innerHTML = "";
 
-                    rotation_done.addEventListener("click", function() {
+                        let rotation_menu_container = document.createElement("div");
+                        rotation_menu_container.id = "team-rotation-menu-container";
+                        overlay.appendChild(rotation_menu_container);
 
-                        document.getElementById("team-overlay").style.display = "none";
+                        let rotation_top_container = document.createElement("div");
+                        rotation_top_container.id = "team-rotation-top-container";
+                        rotation_menu_container.appendChild(rotation_top_container);
 
-                    });
+                        let minutes_remaining = document.createElement("div");
+                        minutes_remaining.id = "team-rotation-top-minutes-remaining";
+                        rotation_top_container.appendChild(minutes_remaining);
+                        minutes_remaining.innerHTML = "Minutes remaining: " + (240 - sumTeamTotalMinutes(team.players));
+
+                        let auto_assign = document.createElement("div");
+                        auto_assign.id = "team-rotation-top-auto-assign";
+                        rotation_top_container.appendChild(auto_assign);
+
+                        let auto_assign_button = document.createElement("div");
+                        auto_assign_button.id = "team-rotation-top-auto-assign-button";
+                        auto_assign.appendChild(auto_assign_button);
+                        auto_assign_button.innerHTML = "Auto-assign";
+
+                        auto_assign_button.addEventListener("click", function() {
+
+                            team.players = autoAssignTeamPlayingTime(team.players);
+
+                            removeRecord("teams", team.id);
+                            addRecord("teams", team);
+
+                        });
+
+                        let rotation_minutes_container = document.createElement("div");
+                        rotation_minutes_container.id = "team-rotation-minutes-container";
+                        rotation_menu_container.appendChild(rotation_minutes_container);
+
+                        for (let i = 0; i < team.players.length; i++) {
+
+                            // Fetch player id
+                            let player = team.players[i];
+
+                            let row = document.createElement("div");
+                            row.id = "rotation-minutes-row-" + (i + 1);
+                            row.className = "rotation-minutes-row";
+                            rotation_minutes_container.appendChild(row);
+
+                            let position = document.createElement("div");
+                            position.id = "rotation-minutes-position-" + (i + 1);
+                            position.className = "rotation-minutes-position";
+                            row.appendChild(position);
+                            position.innerHTML = position_array[i % 5];
+
+                            let name = document.createElement("div");
+                            name.id = "rotation-minutes-name-" + (i + 1);
+                            name.className = "rotation-minutes-name";
+                            row.appendChild(name);
+                            name.style.background = player.color2;
+                            name.style.color = player.color3;
+
+                            let name_value = document.createElement("div");
+                            name_value.id = "rotation-minutes-name-value-" + (i + 1);
+                            name_value.className = "rotation-minutes-name-value";
+                            name.appendChild(name_value);
+                            name_value.innerHTML = player.first[0] + ". " + player.last;
+
+                            let overall = document.createElement("div");
+                            overall.id = "rotation-minutes-overall-" + (i + 1);
+                            overall.className = "rotation-minutes-overall team-rating-box";
+                            row.appendChild(overall);
+                            overall.innerHTML = Math.round(calculateRatings(player).overall);
+                            overall.style.color = getRatingColor(Math.round(calculateRatings(player).overall));
+
+                            let minutes = document.createElement("div");
+                            minutes.id = "rotation-minutes-minutes-" + (i + 1);
+                            minutes.className = "rotation-minutes-minutes";
+                            row.appendChild(minutes);
+
+                            let minus = document.createElement("div");
+                            minus.id = "rotation-minutes-minus-" + (i + 1);
+                            minus.className = "rotation-minutes-minus";
+                            minutes.appendChild(minus);
+                            minus.innerHTML = "-";
+                            minus.style.color = "#d24d57";
+
+                            let bar = document.createElement("div");
+                            bar.id = "rotation-minutes-bar-" + (i + 1);
+                            bar.className = "rotation-minutes-bar";
+                            minutes.appendChild(bar);
+
+                            let fill = document.createElement("div");
+                            fill.id = "rotation-minutes-fill-" + (i + 1);
+                            fill.className = "rotation-minutes-fill";
+                            bar.appendChild(fill);
+                            fill.style.width = (player.ratings.playingtime / 48 * 100) + "%";
+
+                            let plus = document.createElement("div");
+                            plus.id = "rotation-minutes-plus-" + (i + 1);
+                            plus.className = "rotation-minutes-plus";
+                            minutes.appendChild(plus);
+                            plus.innerHTML = "+";
+                            plus.style.color = "#22B573";
+
+                            let value = document.createElement("div");
+                            value.id = "rotation-minutes-value-" + (i + 1);
+                            value.className = "rotation-minutes-value";
+                            minutes.appendChild(value);
+                            value.innerHTML = player.ratings.playingtime;
+
+                            minus.addEventListener("click", function() {
+                                let remaining = (240 - sumTeamTotalMinutes(team.players));
+
+                                if (remaining < 240) {
+
+                                    team.players[i].ratings.playingtime--;
+
+                                    value.innerHTML = team.players[i].ratings.playingtime;
+
+                                    fill.style.width = (team.players[i].ratings.playingtime / 48 * 100) + "%";
+
+                                    let new_remaining = (240 - sumTeamTotalMinutes(team.players));
+                                    minutes_remaining.innerHTML = "Minutes remaining: " + new_remaining;
+
+                                    if (new_remaining != 0) {
+                                        rotation_team_warning.style.display = "flex";
+                                    } else {
+                                        rotation_team_warning.style.display = "none";
+                                    }
+
+                                    removeRecord("teams", team.id);
+                                    addRecord("teams", team);
+                                }
+
+                            });
+
+                            plus.addEventListener("click", function() {
+
+                                let remaining = (240 - sumTeamTotalMinutes(team.players));
+
+                                if (remaining > 0) {
+
+                                    team.players[i].ratings.playingtime++;
+
+                                    value.innerHTML = team.players[i].ratings.playingtime;
+
+                                    fill.style.width = (team.players[i].ratings.playingtime / 48 * 100) + "%";
+
+                                    let new_remaining = (240 - sumTeamTotalMinutes(team.players));
+                                    minutes_remaining.innerHTML = "Minutes remaining: " + new_remaining;
+
+                                    if (new_remaining != 0) {
+                                        rotation_team_warning.style.display = "flex";
+                                    } else {
+                                        rotation_team_warning.style.display = "none";
+                                    }
+
+                                    removeRecord("teams", team.id);
+                                    addRecord("teams", team);
+                                }
+
+                            });
+
+                        }
+
+                        let rotation_bottom_container = document.createElement("div");
+                        rotation_bottom_container.id = "team-rotation-bottom-container";
+                        rotation_menu_container.appendChild(rotation_bottom_container);
+
+                        let rotation_done = document.createElement("div");
+                        rotation_done.id = "team-rotation-bottom-rotation-done";
+                        rotation_done.className = "action_btn";
+                        rotation_bottom_container.appendChild(rotation_done);
+                        rotation_done.innerHTML = "Done";
+
+                        rotation_done.addEventListener("click", function() {
+
+                            document.getElementById("team-overlay").style.display = "none";
+
+                        });
+
+                    } else {
+                        let msg = "Incomplete team! Please fill every position.";
+                        let button_label = "Collection";
+                        let landing_page = "collection-container";
+                        displayWarning(msg, button_label, landing_page);
+                    }
 
                 });
 
