@@ -1151,6 +1151,7 @@ input#collection-search-input-box {
     width: 100%;
     height: 100%;
     position: absolute;
+    font-weight: bold;
     background: rgba(0, 0, 0, .89);
 }
 .team-row-option-replace, .team-row-option-details {
