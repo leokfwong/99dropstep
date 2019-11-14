@@ -6703,6 +6703,65 @@ function updatePlayByPlay(play) {
             shooting_chart.className = "play-stats-play-by-play-row-play-shooting-chart";
             details.appendChild(shooting_chart);
 
+            let shot_charts_canvas = document.createElement("canvas");
+            shot_charts_canvas.id = "play-gamestats-shot-charts-canvas";
+            shooting_chart.appendChild(shot_charts_canvas);
+
+            function drawShotCharts() {
+
+                let canvas = document.getElementById('play-gamestats-shot-charts-canvas');
+                //let gameStats = JSON.parse(localStorage.getItem("game-stats"));
+
+                if (canvas.getContext) {
+
+                    let ctx = canvas.getContext('2d');
+
+                    let width = "200";
+                    let height = "125";
+
+                    console.log(width, height);
+
+                    ctx.canvas.width = width;
+                    ctx.canvas.height = height;
+
+                    ctx.beginPath();
+                    ctx.arc(width / 2, 0, (width / 2) * .8, 0, Math.PI, false); // Outer circle
+                    ctx.lineWidth = 2;
+                    ctx.strokeStyle = "lightgrey";
+                    ctx.stroke();
+
+                    ctx.beginPath();
+                    ctx.lineWidth = 2;
+                    ctx.arc(width / 2, (width / 2 * .8 - (width / 9)), (width / 9), 0, Math.PI, false);
+                    ctx.stroke();
+
+                    ctx.beginPath();
+                    ctx.lineWidth = 2;
+                    ctx.strokeRect((width / 2) - width / 9, 0, 2 * (width / 9), ((width / 2) * .8) - width / 9);
+                    ctx.stroke();
+
+                    ctx.beginPath();
+                    ctx.moveTo(width / 2 - 20, 10);
+                    ctx.lineTo(width / 2 + 20, 10);
+                    ctx.stroke();
+
+                    ctx.beginPath();
+                    ctx.arc(width / 2, 10 + width / 50, width / 50, 0, Math.PI * 2, false);
+                    ctx.stroke();
+
+                    ctx.beginPath();
+                    ctx.lineWidth = 2;
+                    ctx.setLineDash([5, 3]);
+                    ctx.arc(width / 2, (width / 2 * .8 - (width / 9)), (width / 9), 0, Math.PI, true);
+                    ctx.stroke();
+
+                    //console.log(gameStats.shotchart.agent, gameStats.shotchart.position);
+
+                }
+            }
+
+            drawShotCharts();
+
         } else if (event.event == "shooting foul") {
 
             let fouler = document.createElement("span");

@@ -2544,9 +2544,15 @@ input#collection-search-input-box {
     width: 25%;
 }
 .play-stats-play-by-play-row-play-shooting-chart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 200px;
     height: 150px;
-    background: pink;
+}
+#play-gamestats-shot-charts-canvas {
+    background: #2A2723;
+    border: solid 2px lightgrey;
 }
 .play-stats-play-by-play-row-score {
     display: flex;
