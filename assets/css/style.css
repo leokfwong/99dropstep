@@ -2550,7 +2550,7 @@ input#collection-search-input-box {
     width: 200px;
     height: 150px;
 }
-#play-gamestats-shot-charts-canvas {
+.play-gamestats-shot-charts-canvas {
     background: #2A2723;
     border: solid 2px lightgrey;
 }

@@ -5641,8 +5641,59 @@ function simulateShotSuccess(play) {
             "play_assist": assist_event,
             "play_block": block_event,
             "score": fetchScore(play, "usr") + " - " + fetchScore(play, "cpu"),
-            "make": play.madeFG
+            "make": play.madeFG,
+            "fouled": play.fouled
         };
+
+        function simulateShotChartCoordinates(play) {
+
+            let agent = play.possession;
+            let shotType = play.shotType;
+            let miss_make = play.madeFG;
+            let shooter = play.shooter;
+            let player_coordinates = play.team[agent].roster[shooter.gamestats.pos - 1].gamestats.stats.coordinates;
+
+            let random = Math.random();
+
+            let width = "200";
+            let radius, inner;
+
+            if (shotType == "inside" | shotType == "dunk") {
+                radius = (width / 2) * .1;
+                inner = (width / 2) * .2;
+            } else if (shotType == "midrange") {
+                radius = (width / 2) * 0.4;
+                inner = (width / 2) * 0.3;
+            } else if (shotType == "outside") {
+                radius = (width / 2) * 0.1;
+                inner = (width / 2) * 0.9;
+            } else {
+                console.log("Something went wrong!");
+            }
+
+            let pt_angle, pt_radius_sq, pt_x, pt_y;
+
+            pt_angle = Math.random() * 2 * Math.PI;
+            pt_radius_sq = Math.random() * radius * radius;
+
+            pt_x = Math.sqrt(inner * inner) * Math.cos(pt_angle) + Math.sqrt(pt_radius_sq) * Math.cos(pt_angle);
+            pt_y = Math.sqrt(inner * inner) * Math.sin(pt_angle) + Math.sqrt(pt_radius_sq) * Math.cos(pt_angle);
+
+            let current_coordinates = ([pt_x + (width / 2), Math.abs(pt_y), miss_make]);
+            player_coordinates.push(current_coordinates);
+
+            console.log(current_coordinates);
+            event.coordinates = current_coordinates;
+
+            return (play);
+        }
+
+        if (play.fouled == 0 | (play.fouled == 1 & play.madeFG == 1)) {
+
+            play = simulateShotChartCoordinates(play);
+
+        }
+
         play.playbyplay.push(event);
 
         // Fouled! How many FTs?
@@ -6704,13 +6755,12 @@ function updatePlayByPlay(play) {
             details.appendChild(shooting_chart);
 
             let shot_charts_canvas = document.createElement("canvas");
-            shot_charts_canvas.id = "play-gamestats-shot-charts-canvas";
+            shot_charts_canvas.className = "play-gamestats-shot-charts-canvas";
             shooting_chart.appendChild(shot_charts_canvas);
 
-            function drawShotCharts() {
+            function drawShotCharts(canvas_div, event) {
 
-                let canvas = document.getElementById('play-gamestats-shot-charts-canvas');
-                //let gameStats = JSON.parse(localStorage.getItem("game-stats"));
+                let canvas = canvas_div;
 
                 if (canvas.getContext) {
 
@@ -6755,12 +6805,26 @@ function updatePlayByPlay(play) {
                     ctx.arc(width / 2, (width / 2 * .8 - (width / 9)), (width / 9), 0, Math.PI, true);
                     ctx.stroke();
 
-                    //console.log(gameStats.shotchart.agent, gameStats.shotchart.position);
+                    let marker;
+                    if (event.coordinates[2] == 1) {
+                        ctx.fillStyle = "#2ECC71";
+                        marker = "O";
+                    } else {
+                        ctx.fillStyle = "#e74c3c";
+                        marker = "X";
+                    }
+                    //ctx.fillText(marker, event.coordinates[0], event.coordinates[1]);
+                    ctx.fillRect(event.coordinates[0], event.coordinates[1], 7, 7);
 
                 }
             }
+            console.log(event.fouled, event.make);
+            if (event.fouled == 0 | (event.fouled == 1 & event.make == 1)) {
 
-            drawShotCharts();
+                drawShotCharts(shot_charts_canvas, event);
+
+            }
+
 
         } else if (event.event == "shooting foul") {
 
@@ -7832,6 +7896,7 @@ function initializePlayerIngameStats() {
         } else {
             stats[stats_array[i]] = 0;
         }
+        stats["coordinates"] = [];
 
     }
 
