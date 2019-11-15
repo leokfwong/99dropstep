@@ -1341,16 +1341,17 @@ function loadShop() {
                                 let fill = document.createElement("div");
                                 fill.id = "shop-open-collected-fill";
                                 box.appendChild(fill);
-                                let cnt = player.count / 20 * 100;
-                                if (cnt > 100) {
+                                let cnt = player.count / player_upgrade_requirements_json.rarity[player.rarity].level[player.level + 1].cards * 100;
+                                if (cnt >= 100) {
                                     cnt = 100
+                                    fill.style.background = "lightgreen";
                                 };
                                 fill.style.width = cnt + "%";
 
                                 let count = document.createElement("div");
                                 count.id = "shop-open-collected-count";
                                 box.appendChild(count);
-                                count.innerHTML = player.count + " / 20";
+                                count.innerHTML = player.count + " / " + player_upgrade_requirements_json.rarity[player.rarity].level[player.level + 1].cards;
 
                                 card_flow.pop();
 
@@ -1376,13 +1377,14 @@ function loadShop() {
                                         image_src.className = "div-fadein";
                                         image.appendChild(image_src);
 
-                                        let cnt = player.count / 20 * 100;
-                                        if (cnt > 100) {
+                                        let cnt = player.count / player_upgrade_requirements_json.rarity[player.rarity].level[player.level + 1].cards * 100;
+                                        if (cnt >= 100) {
                                             cnt = 100
+                                            fill.style.background = "lightgreen";
                                         };
                                         fill.style.width = cnt + "%";
 
-                                        count.innerHTML = player.count + " / 20";
+                                        count.innerHTML = player.count + " / " + player_upgrade_requirements_json.rarity[player.rarity].level[player.level + 1].cards;
 
                                         card_out_of.innerHTML = "Card " + (10 - card_flow.length) + " out of 9";
 
@@ -1968,9 +1970,10 @@ function loadCollection() {
                     count_fill.id = "collection-count-fill-" + id;
                     count_fill.className = "collection-count-fill";
                     count_box.appendChild(count_fill);
-                    let cnt = collection[i].count / 20 * 100;
-                    if (cnt > 100) {
-                        cnt = 100
+                    let cnt = collection[i].count / player_upgrade_requirements_json.rarity[collection[i].rarity].level[collection[i].level + 1].cards * 100;
+                    if (cnt >= 100) {
+                        cnt = 100;
+                        count_fill.style.background = "lightgreen";
                     };
                     count_fill.style.width = cnt + "%";
 
@@ -1978,7 +1981,7 @@ function loadCollection() {
                     count_text.id = "collection-count-text-" + id;
                     count_text.className = "collection-count-text";
                     count_box.appendChild(count_text);
-                    count_text.innerHTML = `${collection[i].count}/20`;
+                    count_text.innerHTML = collection[i].count + "/" + player_upgrade_requirements_json.rarity[collection[i].rarity].level[collection[i].level + 1].cards;
 
                 }
             } else {
@@ -2650,19 +2653,20 @@ function loadCardDetails(id) {
                 text.id = "card-stats-upgrade-" + itm + "-box-text";
                 text.className = "card-stats-box-upgrade-text";
                 bar.appendChild(text);
-                text.innerHTML = "1/20";
 
                 if (itm == "cards-collected") {
 
                     title.innerHTML = "Cards Collected";
-                    text.innerHTML = card.count + "/20";
-                    fill.style.width = (card.count / 20 * 100) + "%";
+                    let cards_required = player_upgrade_requirements_json.rarity[card.rarity].level[card.level + 1].cards;
+                    text.innerHTML = card.count + "/" + cards_required;
+                    fill.style.width = (card.count / cards_required * 100) + "%";
 
                 } else if (itm == "minutes-played") {
 
                     title.innerHTML = "Minutes Played";
-                    text.innerHTML = card.stats.min + "/50";
-                    fill.style.width = (card.stats.min / 50 * 100) + "%";
+                    let minutes_required = player_upgrade_requirements_json.rarity[card.rarity].level[card.level + 1].minutes;
+                    text.innerHTML = card.count + "/" + minutes_required;
+                    fill.style.width = (card.stats.min / minutes_required * 100) + "%";
 
                 }
 

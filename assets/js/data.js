@@ -339,6 +339,91 @@ let playoffs_teams_json = [{
     "image": "losangeles_lakers_2008-2009_banner"
 }]
 
+const player_upgrade_requirements_json = {
+    "rarity": {
+        "common": {
+            "level": {
+                "2": {
+                    "cards": "2",
+                    "minutes": "25"
+                },
+                "3": {
+                    "cards": "5",
+                    "minutes": "50"
+                },
+                "4": {
+                    "cards": "15",
+                    "minutes": "75"
+                },
+                "5": {
+                    "cards": "20",
+                    "minutes": "100"
+                }
+            }
+        },
+        "rare": {
+            "level": {
+                "2": {
+                    "cards": "2",
+                    "minutes": "50"
+                },
+                "3": {
+                    "cards": "6",
+                    "minutes": "100"
+                },
+                "4": {
+                    "cards": "10",
+                    "minutes": "150"
+                },
+                "5": {
+                    "cards": "14",
+                    "minutes": "200"
+                }
+            }
+        },
+        "epic": {
+            "level": {
+                "2": {
+                    "cards": "2",
+                    "minutes": "100"
+                },
+                "3": {
+                    "cards": "5",
+                    "minutes": "200"
+                },
+                "4": {
+                    "cards": "8",
+                    "minutes": "300"
+                },
+                "5": {
+                    "cards": "11",
+                    "minutes": "400"
+                }
+            }
+        },
+        "legendary": {
+            "level": {
+                "2": {
+                    "cards": "2",
+                    "minutes": "150"
+                },
+                "3": {
+                    "cards": "3",
+                    "minutes": "300"
+                },
+                "4": {
+                    "cards": "4",
+                    "minutes": "450"
+                },
+                "5": {
+                    "cards": "5",
+                    "minutes": "600"
+                }
+            }
+        }
+    }
+}
+
 const players_json = [{
     "id": "0001",
     "type": "player",
@@ -354,7 +439,7 @@ const players_json = [{
     "salary": 20,
     "unlockedlevel": 98,
     "tier": 0,
-    "rarity": "Legendary",
+    "rarity": "legendary",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -414,7 +499,7 @@ const players_json = [{
     "salary": 11,
     "unlockedlevel": 97,
     "tier": 0,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -474,7 +559,7 @@ const players_json = [{
     "salary": 11,
     "unlockedlevel": 91,
     "tier": 0,
-    "rarity": "Legendary",
+    "rarity": "legendary",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -534,7 +619,7 @@ const players_json = [{
     "salary": 17,
     "unlockedlevel": 99,
     "tier": 0,
-    "rarity": "Legendary",
+    "rarity": "legendary",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -594,7 +679,7 @@ const players_json = [{
     "salary": 10,
     "unlockedlevel": 93,
     "tier": 0,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -654,7 +739,7 @@ const players_json = [{
     "salary": 14,
     "unlockedlevel": 89,
     "tier": 1,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -714,7 +799,7 @@ const players_json = [{
     "salary": 16,
     "unlockedlevel": 90,
     "tier": 1,
-    "rarity": "Epic",
+    "rarity": "epic",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -774,7 +859,7 @@ const players_json = [{
     "salary": 26,
     "unlockedlevel": 79,
     "tier": 1,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -834,7 +919,7 @@ const players_json = [{
     "salary": 19,
     "unlockedlevel": 76,
     "tier": 1,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -894,7 +979,7 @@ const players_json = [{
     "salary": 12,
     "unlockedlevel": 77,
     "tier": 1,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -954,7 +1039,7 @@ const players_json = [{
     "salary": 30,
     "unlockedlevel": 78,
     "tier": 1,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -1014,7 +1099,7 @@ const players_json = [{
     "salary": 16,
     "unlockedlevel": 69,
     "tier": 1,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -1074,7 +1159,7 @@ const players_json = [{
     "salary": 26,
     "unlockedlevel": 70,
     "tier": 1,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -1134,7 +1219,7 @@ const players_json = [{
     "salary": 23,
     "unlockedlevel": 72,
     "tier": 1,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -1194,7 +1279,7 @@ const players_json = [{
     "salary": 15,
     "unlockedlevel": 80,
     "tier": 1,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -1254,7 +1339,7 @@ const players_json = [{
     "salary": 16,
     "unlockedlevel": 71,
     "tier": 1,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -1314,7 +1399,7 @@ const players_json = [{
     "salary": 28,
     "unlockedlevel": 73,
     "tier": 1,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -1374,7 +1459,7 @@ const players_json = [{
     "salary": 22,
     "unlockedlevel": 92,
     "tier": 1,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -1434,7 +1519,7 @@ const players_json = [{
     "salary": 18,
     "unlockedlevel": 74,
     "tier": 1,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -1494,7 +1579,7 @@ const players_json = [{
     "salary": 11,
     "unlockedlevel": 83,
     "tier": 2,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -1554,7 +1639,7 @@ const players_json = [{
     "salary": 12,
     "unlockedlevel": 34,
     "tier": 2,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -1614,7 +1699,7 @@ const players_json = [{
     "salary": 2,
     "unlockedlevel": 35,
     "tier": 2,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -1674,7 +1759,7 @@ const players_json = [{
     "salary": 16,
     "unlockedlevel": 36,
     "tier": 2,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -1734,7 +1819,7 @@ const players_json = [{
     "salary": 6,
     "unlockedlevel": 37,
     "tier": 2,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -1794,7 +1879,7 @@ const players_json = [{
     "salary": 31,
     "unlockedlevel": 38,
     "tier": 2,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -1854,7 +1939,7 @@ const players_json = [{
     "salary": 6,
     "unlockedlevel": 39,
     "tier": 2,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -1914,7 +1999,7 @@ const players_json = [{
     "salary": 3,
     "unlockedlevel": 40,
     "tier": 2,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -1974,7 +2059,7 @@ const players_json = [{
     "salary": 11,
     "unlockedlevel": 68,
     "tier": 2,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -2034,7 +2119,7 @@ const players_json = [{
     "salary": 25,
     "unlockedlevel": 41,
     "tier": 2,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -2094,7 +2179,7 @@ const players_json = [{
     "salary": 3,
     "unlockedlevel": 62,
     "tier": 2,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -2154,7 +2239,7 @@ const players_json = [{
     "salary": 3,
     "unlockedlevel": 42,
     "tier": 2,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -2214,7 +2299,7 @@ const players_json = [{
     "salary": 2,
     "unlockedlevel": 43,
     "tier": 2,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -2274,7 +2359,7 @@ const players_json = [{
     "salary": 23,
     "unlockedlevel": 44,
     "tier": 2,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -2332,7 +2417,7 @@ const players_json = [{
     "conference": "Western Conference",
     "season": "2017-2018",
     "salary": 2,
-    "rarity": "Rare",
+    "rarity": "rare",
     "unlockedlevel": 45,
     "tier": 2,
     "level": 1,
@@ -2394,7 +2479,7 @@ const players_json = [{
     "salary": 3,
     "unlockedlevel": 46,
     "tier": 2,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -2454,7 +2539,7 @@ const players_json = [{
     "salary": 16,
     "unlockedlevel": 63,
     "tier": 2,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -2514,7 +2599,7 @@ const players_json = [{
     "salary": 2,
     "unlockedlevel": 2,
     "tier": 4,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -2574,7 +2659,7 @@ const players_json = [{
     "salary": 19,
     "unlockedlevel": 32,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -2634,7 +2719,7 @@ const players_json = [{
     "salary": 2,
     "unlockedlevel": 31,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -2694,7 +2779,7 @@ const players_json = [{
     "salary": 14,
     "unlockedlevel": 30,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -2754,7 +2839,7 @@ const players_json = [{
     "salary": 7,
     "unlockedlevel": 32,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -2814,7 +2899,7 @@ const players_json = [{
     "salary": 8,
     "unlockedlevel": 29,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -2874,7 +2959,7 @@ const players_json = [{
     "salary": 11,
     "unlockedlevel": 28,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -2934,7 +3019,7 @@ const players_json = [{
     "salary": 8,
     "unlockedlevel": 27,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -2994,7 +3079,7 @@ const players_json = [{
     "salary": 14,
     "unlockedlevel": 26,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -3054,7 +3139,7 @@ const players_json = [{
     "salary": 12,
     "unlockedlevel": 25,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -3114,7 +3199,7 @@ const players_json = [{
     "salary": 6,
     "unlockedlevel": 24,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -3174,7 +3259,7 @@ const players_json = [{
     "salary": 6,
     "unlockedlevel": 0,
     "tier": 4,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -3234,7 +3319,7 @@ const players_json = [{
     "salary": 1,
     "unlockedlevel": 0,
     "tier": 4,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -3294,7 +3379,7 @@ const players_json = [{
     "salary": 5,
     "unlockedlevel": 23,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -3354,7 +3439,7 @@ const players_json = [{
     "salary": 18,
     "unlockedlevel": 22,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -3414,7 +3499,7 @@ const players_json = [{
     "salary": 4,
     "unlockedlevel": 3,
     "tier": 4,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -3474,7 +3559,7 @@ const players_json = [{
     "salary": 6,
     "unlockedlevel": 21,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -3534,7 +3619,7 @@ const players_json = [{
     "salary": 6,
     "unlockedlevel": 20,
     "tier": 3,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -3594,7 +3679,7 @@ const players_json = [{
     "salary": 8,
     "unlockedlevel": 33,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -3654,7 +3739,7 @@ const players_json = [{
     "salary": 5,
     "unlockedlevel": 19,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -3714,7 +3799,7 @@ const players_json = [{
     "salary": 4,
     "unlockedlevel": 0,
     "tier": 4,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -3774,7 +3859,7 @@ const players_json = [{
     "salary": 3,
     "unlockedlevel": 1,
     "tier": 4,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -3834,7 +3919,7 @@ const players_json = [{
     "salary": 5,
     "unlockedlevel": 3,
     "tier": 4,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -3894,7 +3979,7 @@ const players_json = [{
     "salary": 2,
     "unlockedlevel": 15,
     "tier": 4,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -3954,7 +4039,7 @@ const players_json = [{
     "salary": 2,
     "unlockedlevel": 18,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -4014,7 +4099,7 @@ const players_json = [{
     "salary": 4,
     "unlockedlevel": 17,
     "tier": 3,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -4074,7 +4159,7 @@ const players_json = [{
     "salary": 2,
     "unlockedlevel": 16,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -4134,7 +4219,7 @@ const players_json = [{
     "salary": 9,
     "unlockedlevel": 15,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -4194,7 +4279,7 @@ const players_json = [{
     "salary": 4,
     "unlockedlevel": 47,
     "tier": 2,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -4254,7 +4339,7 @@ const players_json = [{
     "salary": 23,
     "unlockedlevel": 14,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -4314,7 +4399,7 @@ const players_json = [{
     "salary": 21,
     "unlockedlevel": 13,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -4374,7 +4459,7 @@ const players_json = [{
     "salary": 5,
     "unlockedlevel": 12,
     "tier": 3,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -4434,7 +4519,7 @@ const players_json = [{
     "salary": 21,
     "unlockedlevel": 11,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -4494,7 +4579,7 @@ const players_json = [{
     "salary": 6,
     "unlockedlevel": 75,
     "tier": 1,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -4554,7 +4639,7 @@ const players_json = [{
     "salary": 16,
     "unlockedlevel": 48,
     "tier": 2,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -4614,7 +4699,7 @@ const players_json = [{
     "salary": 19,
     "unlockedlevel": 81,
     "tier": 1,
-    "rarity": "Epic",
+    "rarity": "epic",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -4674,7 +4759,7 @@ const players_json = [{
     "salary": 7,
     "unlockedlevel": 10,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -4734,7 +4819,7 @@ const players_json = [{
     "salary": 11,
     "unlockedlevel": 9,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -4794,7 +4879,7 @@ const players_json = [{
     "salary": 7,
     "unlockedlevel": 49,
     "tier": 2,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -4854,7 +4939,7 @@ const players_json = [{
     "salary": 12,
     "unlockedlevel": 92,
     "tier": 0,
-    "rarity": "Legendary",
+    "rarity": "legendary",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -4914,7 +4999,7 @@ const players_json = [{
     "salary": 28,
     "unlockedlevel": 94,
     "tier": 0,
-    "rarity": "Legendary",
+    "rarity": "legendary",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -4974,7 +5059,7 @@ const players_json = [{
     "salary": 11,
     "unlockedlevel": 67,
     "tier": 2,
-    "rarity": "Epic",
+    "rarity": "epic",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -5034,7 +5119,7 @@ const players_json = [{
     "salary": 3,
     "unlockedlevel": 3,
     "tier": 4,
-    "rarity": "Legendary",
+    "rarity": "legendary",
     "unlockedlevel": 3,
     "level": 1,
     "count": 1,
@@ -5095,7 +5180,7 @@ const players_json = [{
     "salary": 2,
     "unlockedlevel": 95,
     "tier": 0,
-    "rarity": "Legendary",
+    "rarity": "legendary",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -5158,7 +5243,7 @@ const players_json = [{
     "salary": 18,
     "unlockedlevel": 82,
     "tier": 1,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -5218,7 +5303,7 @@ const players_json = [{
     "salary": 16,
     "unlockedlevel": 66,
     "tier": 2,
-    "rarity": "Epic",
+    "rarity": "epic",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -5278,7 +5363,7 @@ const players_json = [{
     "salary": 29,
     "unlockedlevel": 50,
     "tier": 2,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -5338,7 +5423,7 @@ const players_json = [{
     "salary": 6,
     "unlockedlevel": 65,
     "tier": 2,
-    "rarity": "Epic",
+    "rarity": "epic",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -5398,7 +5483,7 @@ const players_json = [{
     "salary": 6,
     "unlockedlevel": 50,
     "tier": 2,
-    "rarity": "Epic",
+    "rarity": "epic",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -5458,7 +5543,7 @@ const players_json = [{
     "salary": 11,
     "unlockedlevel": 64,
     "tier": 2,
-    "rarity": "Epic",
+    "rarity": "epic",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -5518,7 +5603,7 @@ const players_json = [{
     "salary": 3,
     "unlockedlevel": 0,
     "tier": 4,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -5578,7 +5663,7 @@ const players_json = [{
     "salary": 8,
     "unlockedlevel": 61,
     "tier": 2,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -5638,7 +5723,7 @@ const players_json = [{
     "salary": 3,
     "unlockedlevel": 8,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -5698,7 +5783,7 @@ const players_json = [{
     "salary": 2,
     "unlockedlevel": 0,
     "tier": 4,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -5758,7 +5843,7 @@ const players_json = [{
     "salary": 1,
     "unlockedlevel": 10,
     "tier": 3,
-    "rarity": "Epic",
+    "rarity": "epic",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -5818,7 +5903,7 @@ const players_json = [{
     "salary": 14,
     "unlockedlevel": 51,
     "tier": 2,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -5878,7 +5963,7 @@ const players_json = [{
     "salary": 3,
     "unlockedlevel": 15,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -5938,7 +6023,7 @@ const players_json = [{
     "salary": 7,
     "unlockedlevel": 96,
     "tier": 0,
-    "rarity": "Legendary",
+    "rarity": "legendary",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -5998,7 +6083,7 @@ const players_json = [{
     "salary": 2,
     "unlockedlevel": 4,
     "tier": 4,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -6058,7 +6143,7 @@ const players_json = [{
     "salary": 1,
     "unlockedlevel": 0,
     "tier": 4,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -6118,7 +6203,7 @@ const players_json = [{
     "salary": 4,
     "unlockedlevel": 0,
     "tier": 4,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -6178,7 +6263,7 @@ const players_json = [{
     "salary": 2,
     "unlockedlevel": 2,
     "tier": 4,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -6238,7 +6323,7 @@ const players_json = [{
     "salary": 2,
     "unlockedlevel": 4,
     "tier": 4,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -6298,7 +6383,7 @@ const players_json = [{
     "salary": 1,
     "unlockedlevel": 5,
     "tier": 4,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -6358,7 +6443,7 @@ const players_json = [{
     "salary": 4,
     "unlockedlevel": 6,
     "tier": 4,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -6418,7 +6503,7 @@ const players_json = [{
     "salary": 10,
     "unlockedlevel": 17,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -6478,7 +6563,7 @@ const players_json = [{
     "salary": 24,
     "unlockedlevel": 85,
     "tier": 1,
-    "rarity": "Epic",
+    "rarity": "epic",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -6538,7 +6623,7 @@ const players_json = [{
     "salary": 6,
     "unlockedlevel": 83,
     "tier": 1,
-    "rarity": "Epic",
+    "rarity": "epic",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -6598,7 +6683,7 @@ const players_json = [{
     "salary": 5,
     "unlockedlevel": 86,
     "tier": 1,
-    "rarity": "Epic",
+    "rarity": "epic",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -6658,7 +6743,7 @@ const players_json = [{
     "salary": 14,
     "unlockedlevel": 88,
     "tier": 1,
-    "rarity": "Epic",
+    "rarity": "epic",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -6718,7 +6803,7 @@ const players_json = [{
     "salary": 10,
     "unlockedlevel": 60,
     "tier": 2,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -6778,7 +6863,7 @@ const players_json = [{
     "salary": 10,
     "unlockedlevel": 87,
     "tier": 1,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -6838,7 +6923,7 @@ const players_json = [{
     "salary": 3,
     "unlockedlevel": 18,
     "tier": 3,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -6898,7 +6983,7 @@ const players_json = [{
     "salary": 5,
     "unlockedlevel": 19,
     "tier": 3,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -6958,7 +7043,7 @@ const players_json = [{
     "salary": 23,
     "unlockedlevel": 20,
     "tier": 3,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -7018,7 +7103,7 @@ const players_json = [{
     "salary": 11,
     "unlockedlevel": 6,
     "tier": 4,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -7078,7 +7163,7 @@ const players_json = [{
     "salary": 5,
     "unlockedlevel": 7,
     "tier": 4,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -7138,7 +7223,7 @@ const players_json = [{
     "salary": 2,
     "unlockedlevel": 21,
     "tier": 3,
-    "rarity": "Epic",
+    "rarity": "epic",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -7198,7 +7283,7 @@ const players_json = [{
     "salary": 10,
     "unlockedlevel": 59,
     "tier": 2,
-    "rarity": "Epic",
+    "rarity": "epic",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -7258,7 +7343,7 @@ const players_json = [{
     "salary": 4,
     "unlockedlevel": 7,
     "tier": 4,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -7318,7 +7403,7 @@ const players_json = [{
     "salary": 3,
     "unlockedlevel": 0,
     "tier": 4,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -7378,7 +7463,7 @@ const players_json = [{
     "salary": 5,
     "unlockedlevel": 58,
     "tier": 2,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -7438,7 +7523,7 @@ const players_json = [{
     "salary": 16,
     "unlockedlevel": 57,
     "tier": 2,
-    "rarity": "Epic",
+    "rarity": "epic",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -7498,7 +7583,7 @@ const players_json = [{
     "salary": 11,
     "unlockedlevel": 56,
     "tier": 2,
-    "rarity": "Epic",
+    "rarity": "epic",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -7558,7 +7643,7 @@ const players_json = [{
     "salary": 2,
     "unlockedlevel": 22,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -7618,7 +7703,7 @@ const players_json = [{
     "salary": 4,
     "unlockedlevel": 0,
     "tier": 4,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -7678,7 +7763,7 @@ const players_json = [{
     "salary": 16,
     "unlockedlevel": 52,
     "tier": 2,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -7738,7 +7823,7 @@ const players_json = [{
     "salary": 3,
     "unlockedlevel": 23,
     "tier": 3,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -7798,7 +7883,7 @@ const players_json = [{
     "salary": 4,
     "unlockedlevel": 24,
     "tier": 3,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -7858,7 +7943,7 @@ const players_json = [{
     "salary": 21,
     "unlockedlevel": 53,
     "tier": 2,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -7918,7 +8003,7 @@ const players_json = [{
     "salary": 1,
     "unlockedlevel": 54,
     "tier": 2,
-    "rarity": "Epic",
+    "rarity": "epic",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -7978,7 +8063,7 @@ const players_json = [{
     "salary": 6,
     "unlockedlevel": 54,
     "tier": 2,
-    "rarity": "Epic",
+    "rarity": "epic",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -8038,7 +8123,7 @@ const players_json = [{
     "salary": 13,
     "unlockedlevel": 84,
     "tier": 1,
-    "rarity": "Epic",
+    "rarity": "epic",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -8098,7 +8183,7 @@ const players_json = [{
     "salary": 1,
     "unlockedlevel": 1,
     "tier": 4,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -8158,7 +8243,7 @@ const players_json = [{
     "salary": 17,
     "unlockedlevel": 55,
     "tier": 2,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -8218,7 +8303,7 @@ const players_json = [{
     "salary": 24,
     "unlockedlevel": 55,
     "tier": 2,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -8278,7 +8363,7 @@ const players_json = [{
     "salary": 22,
     "unlockedlevel": 55,
     "tier": 2,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -8338,7 +8423,7 @@ const players_json = [{
     "salary": 9,
     "unlockedlevel": 25,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -8398,7 +8483,7 @@ const players_json = [{
     "salary": 28,
     "unlockedlevel": 85,
     "tier": 1,
-    "rarity": "Epic",
+    "rarity": "epic",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -8458,7 +8543,7 @@ const players_json = [{
     "salary": 3,
     "unlockedlevel": 9,
     "tier": 4,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -8518,7 +8603,7 @@ const players_json = [{
     "salary": 2,
     "unlockedlevel": 13,
     "tier": 4,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -8578,7 +8663,7 @@ const players_json = [{
     "salary": 12,
     "unlockedlevel": 23,
     "tier": 3,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -8638,7 +8723,7 @@ const players_json = [{
     "salary": 1,
     "unlockedlevel": 5,
     "tier": 4,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -8698,7 +8783,7 @@ const players_json = [{
     "salary": 5,
     "unlockedlevel": 26,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -8758,7 +8843,7 @@ const players_json = [{
     "salary": 4,
     "unlockedlevel": 42,
     "tier": 2,
-    "rarity": "Epic",
+    "rarity": "epic",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -8818,7 +8903,7 @@ const players_json = [{
     "salary": 1,
     "unlockedlevel": 16,
     "tier": 4,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -8878,7 +8963,7 @@ const players_json = [{
     "salary": 17,
     "unlockedlevel": 56,
     "tier": 2,
-    "rarity": "Legendary",
+    "rarity": "legendary",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -8938,7 +9023,7 @@ const players_json = [{
     "salary": 7,
     "unlockedlevel": 21,
     "tier": 4,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -8998,7 +9083,7 @@ const players_json = [{
     "salary": 7,
     "unlockedlevel": 11,
     "tier": 4,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -9058,7 +9143,7 @@ const players_json = [{
     "salary": 3,
     "unlockedlevel": 13,
     "tier": 4,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -9118,7 +9203,7 @@ const players_json = [{
     "salary": 2,
     "unlockedlevel": 33,
     "tier": 3,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -9178,7 +9263,7 @@ const players_json = [{
     "salary": 1,
     "unlockedlevel": 0,
     "tier": 4,
-    "rarity": "Epic",
+    "rarity": "epic",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -9238,7 +9323,7 @@ const players_json = [{
     "salary": 7,
     "unlockedlevel": 13,
     "tier": 4,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -9298,7 +9383,7 @@ const players_json = [{
     "salary": 9,
     "unlockedlevel": 66,
     "tier": 2,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -9358,7 +9443,7 @@ const players_json = [{
     "salary": 6,
     "unlockedlevel": 67,
     "tier": 2,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -9418,7 +9503,7 @@ const players_json = [{
     "salary": 11,
     "unlockedlevel": 60,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -9478,7 +9563,7 @@ const players_json = [{
     "salary": 22,
     "unlockedlevel": 65,
     "tier": 2,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -9538,7 +9623,7 @@ const players_json = [{
     "salary": 4,
     "unlockedlevel": 15,
     "tier": 3,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -9598,7 +9683,7 @@ const players_json = [{
     "salary": 20,
     "unlockedlevel": 99,
     "tier": 0,
-    "rarity": "Legendary",
+    "rarity": "legendary",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -9658,7 +9743,7 @@ const players_json = [{
     "salary": 20,
     "unlockedlevel": 99,
     "tier": 0,
-    "rarity": "Legendary",
+    "rarity": "legendary",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -9718,7 +9803,7 @@ const players_json = [{
     "salary": 13,
     "unlockedlevel": 13,
     "tier": 4,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -9778,7 +9863,7 @@ const players_json = [{
     "salary": 13,
     "unlockedlevel": 17,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -9838,7 +9923,7 @@ const players_json = [{
     "salary": 3,
     "unlockedlevel": 9,
     "tier": 4,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -9898,7 +9983,7 @@ const players_json = [{
     "salary": 2,
     "unlockedlevel": 10,
     "tier": 4,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -9958,7 +10043,7 @@ const players_json = [{
     "salary": 9,
     "unlockedlevel": 77,
     "tier": 2,
-    "rarity": "Epic",
+    "rarity": "epic",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -10018,7 +10103,7 @@ const players_json = [{
     "salary": 4,
     "unlockedlevel": 49,
     "tier": 3,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -10078,7 +10163,7 @@ const players_json = [{
     "salary": 1,
     "unlockedlevel": 2,
     "tier": 4,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -10138,7 +10223,7 @@ const players_json = [{
     "salary": 2,
     "unlockedlevel": 0,
     "tier": 4,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -10198,7 +10283,7 @@ const players_json = [{
     "salary": 8,
     "unlockedlevel": 43,
     "tier": 2,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -10258,7 +10343,7 @@ const players_json = [{
     "salary": 2,
     "unlockedlevel": 0,
     "tier": 4,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -10318,7 +10403,7 @@ const players_json = [{
     "salary": 3,
     "unlockedlevel": 0,
     "tier": 4,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -10378,7 +10463,7 @@ const players_json = [{
     "salary": 20,
     "unlockedlevel": 85,
     "tier": 1,
-    "rarity": "Epic",
+    "rarity": "epic",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -10438,7 +10523,7 @@ const players_json = [{
     "salary": 30,
     "unlockedlevel": 88,
     "tier": 1,
-    "rarity": "Epic",
+    "rarity": "epic",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -10498,7 +10583,7 @@ const players_json = [{
     "salary": 1,
     "unlockedlevel": 51,
     "tier": 2,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -10558,7 +10643,7 @@ const players_json = [{
     "salary": 14,
     "unlockedlevel": 49,
     "tier": 2,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -10618,7 +10703,7 @@ const players_json = [{
     "salary": 6,
     "unlockedlevel": 39,
     "tier": 3,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -10678,7 +10763,7 @@ const players_json = [{
     "salary": 6,
     "unlockedlevel": 42,
     "tier": 2,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -10738,7 +10823,7 @@ const players_json = [{
     "salary": 5,
     "unlockedlevel": 26,
     "tier": 3,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -10798,7 +10883,7 @@ const players_json = [{
     "salary": 3,
     "unlockedlevel": 37,
     "tier": 3,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -10858,7 +10943,7 @@ const players_json = [{
     "salary": 4,
     "unlockedlevel": 0,
     "tier": 4,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -10918,7 +11003,7 @@ const players_json = [{
     "salary": 11,
     "unlockedlevel": 0,
     "tier": 4,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -10978,7 +11063,7 @@ const players_json = [{
     "salary": 20,
     "unlockedlevel": 98,
     "tier": 0,
-    "rarity": "Legendary",
+    "rarity": "legendary",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -11038,7 +11123,7 @@ const players_json = [{
     "salary": 24,
     "unlockedlevel": 49,
     "tier": 2,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -11098,7 +11183,7 @@ const players_json = [{
     "salary": 5,
     "unlockedlevel": 81,
     "tier": 1,
-    "rarity": "Epic",
+    "rarity": "epic",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -11158,7 +11243,7 @@ const players_json = [{
     "salary": 5,
     "unlockedlevel": 17,
     "tier": 4,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -11218,7 +11303,7 @@ const players_json = [{
     "salary": 1,
     "unlockedlevel": 15,
     "tier": 4,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -11278,7 +11363,7 @@ const players_json = [{
     "salary": 2,
     "unlockedlevel": 0,
     "tier": 4,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -11338,7 +11423,7 @@ const players_json = [{
     "salary": 7,
     "unlockedlevel": 57,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -11398,7 +11483,7 @@ const players_json = [{
     "salary": 1,
     "unlockedlevel": 0,
     "tier": 4,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -11458,7 +11543,7 @@ const players_json = [{
     "salary": 10,
     "unlockedlevel": 27,
     "tier": 4,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -11518,7 +11603,7 @@ const players_json = [{
     "salary": 7,
     "unlockedlevel": 72,
     "tier": 2,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -11578,7 +11663,7 @@ const players_json = [{
     "salary": 3,
     "unlockedlevel": 29,
     "tier": 3,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -11638,7 +11723,7 @@ const players_json = [{
     "salary": 21,
     "unlockedlevel": 98,
     "tier": 0,
-    "rarity": "Legendary",
+    "rarity": "legendary",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -11698,7 +11783,7 @@ const players_json = [{
     "salary": 5,
     "unlockedlevel": 55,
     "tier": 3,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -11758,7 +11843,7 @@ const players_json = [{
     "salary": 6,
     "unlockedlevel": 44,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -11818,7 +11903,7 @@ const players_json = [{
     "salary": 11,
     "unlockedlevel": 43,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -11878,7 +11963,7 @@ const players_json = [{
     "salary": 2,
     "unlockedlevel": 89,
     "tier": 0,
-    "rarity": "Legendary",
+    "rarity": "legendary",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -11938,7 +12023,7 @@ const players_json = [{
     "salary": 6,
     "unlockedlevel": 29,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -11998,7 +12083,7 @@ const players_json = [{
     "salary": 17,
     "unlockedlevel": 59,
     "tier": 2,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -12058,7 +12143,7 @@ const players_json = [{
     "salary": 3,
     "unlockedlevel": 48,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -12118,7 +12203,7 @@ const players_json = [{
     "salary": 1,
     "unlockedlevel": 36,
     "tier": 3,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -12178,7 +12263,7 @@ const players_json = [{
     "salary": 23,
     "unlockedlevel": 52,
     "tier": 2,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -12238,7 +12323,7 @@ const players_json = [{
     "salary": 9,
     "unlockedlevel": 67,
     "tier": 1,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -12298,7 +12383,7 @@ const players_json = [{
     "salary": 15,
     "unlockedlevel": 79,
     "tier": 1,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -12358,7 +12443,7 @@ const players_json = [{
     "salary": 7,
     "unlockedlevel": 57,
     "tier": 3,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -12418,7 +12503,7 @@ const players_json = [{
     "salary": 29,
     "unlockedlevel": 89,
     "tier": 1,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -12478,7 +12563,7 @@ const players_json = [{
     "salary": 1,
     "unlockedlevel": 9,
     "tier": 3,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -12538,7 +12623,7 @@ const players_json = [{
     "salary": 10,
     "unlockedlevel": 87,
     "tier": 1,
-    "rarity": "Epic",
+    "rarity": "epic",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -12598,7 +12683,7 @@ const players_json = [{
     "salary": 4,
     "unlockedlevel": 57,
     "tier": 2,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -12658,7 +12743,7 @@ const players_json = [{
     "salary": 1,
     "unlockedlevel": 3,
     "tier": 2,
-    "rarity": "Legendary",
+    "rarity": "legendary",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -12718,7 +12803,7 @@ const players_json = [{
     "salary": 11,
     "unlockedlevel": 65,
     "tier": 2,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -12778,7 +12863,7 @@ const players_json = [{
     "salary": 24,
     "unlockedlevel": 72,
     "tier": 2,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -12838,7 +12923,7 @@ const players_json = [{
     "salary": 6,
     "unlockedlevel": 77,
     "tier": 2,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -12898,7 +12983,7 @@ const players_json = [{
     "salary": 3,
     "unlockedlevel": 56,
     "tier": 2,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -12958,7 +13043,7 @@ const players_json = [{
     "salary": 4,
     "unlockedlevel": 21,
     "tier": 2,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -13018,7 +13103,7 @@ const players_json = [{
     "salary": 1,
     "unlockedlevel": 17,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -13078,7 +13163,7 @@ const players_json = [{
     "salary": 8,
     "unlockedlevel": 61,
     "tier": 2,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -13138,7 +13223,7 @@ const players_json = [{
     "salary": 23,
     "unlockedlevel": 63,
     "tier": 2,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -13198,7 +13283,7 @@ const players_json = [{
     "salary": 8,
     "unlockedlevel": 57,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -13258,7 +13343,7 @@ const players_json = [{
     "salary": 8,
     "unlockedlevel": 59,
     "tier": 2,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -13318,7 +13403,7 @@ const players_json = [{
     "salary": 13,
     "unlockedlevel": 89,
     "tier": 0,
-    "rarity": "Legendary",
+    "rarity": "legendary",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -13378,7 +13463,7 @@ const players_json = [{
     "salary": 3,
     "unlockedlevel": 30,
     "tier": 2,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -13438,7 +13523,7 @@ const players_json = [{
     "salary": 3,
     "unlockedlevel": 33,
     "tier": 2,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -13498,7 +13583,7 @@ const players_json = [{
     "salary": 15,
     "unlockedlevel": 77,
     "tier": 1,
-    "rarity": "Epic",
+    "rarity": "epic",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -13558,7 +13643,7 @@ const players_json = [{
     "salary": 3,
     "unlockedlevel": 27,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -13618,7 +13703,7 @@ const players_json = [{
     "salary": 14,
     "unlockedlevel": 86,
     "tier": 1,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -13678,7 +13763,7 @@ const players_json = [{
     "salary": 2,
     "unlockedlevel": 66,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -13738,7 +13823,7 @@ const players_json = [{
     "salary": 5,
     "unlockedlevel": 78,
     "tier": 2,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -13798,7 +13883,7 @@ const players_json = [{
     "salary": 28,
     "unlockedlevel": 69,
     "tier": 2,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -13858,7 +13943,7 @@ const players_json = [{
     "salary": 4,
     "unlockedlevel": 17,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -13918,7 +14003,7 @@ const players_json = [{
     "salary": 3,
     "unlockedlevel": 24,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -13978,7 +14063,7 @@ const players_json = [{
     "salary": 16,
     "unlockedlevel": 68,
     "tier": 2,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -14038,7 +14123,7 @@ const players_json = [{
     "salary": 6,
     "unlockedlevel": 12,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -14098,7 +14183,7 @@ const players_json = [{
     "salary": 22,
     "unlockedlevel": 78,
     "tier": 2,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -14158,7 +14243,7 @@ const players_json = [{
     "salary": 5,
     "unlockedlevel": 74,
     "tier": 2,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -14218,7 +14303,7 @@ const players_json = [{
     "salary": 6,
     "unlockedlevel": 21,
     "tier": 4,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -14278,7 +14363,7 @@ const players_json = [{
     "salary": 10,
     "unlockedlevel": 66,
     "tier": 2,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -14338,7 +14423,7 @@ const players_json = [{
     "salary": 2,
     "unlockedlevel": 88,
     "tier": 1,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -14398,7 +14483,7 @@ const players_json = [{
     "salary": 1,
     "unlockedlevel": 69,
     "tier": 1,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -14458,7 +14543,7 @@ const players_json = [{
     "salary": 10,
     "unlockedlevel": 78,
     "tier": 2,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -14518,7 +14603,7 @@ const players_json = [{
     "salary": 2,
     "unlockedlevel": 61,
     "tier": 2,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -14578,7 +14663,7 @@ const players_json = [{
     "salary": 15,
     "unlockedlevel": 57,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -14638,7 +14723,7 @@ const players_json = [{
     "salary": 15,
     "unlockedlevel": 62,
     "tier": 2,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -14698,7 +14783,7 @@ const players_json = [{
     "salary": 23,
     "unlockedlevel": 81,
     "tier": 1,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -14758,7 +14843,7 @@ const players_json = [{
     "salary": 3,
     "unlockedlevel": 0,
     "tier": 4,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -14818,7 +14903,7 @@ const players_json = [{
     "salary": 24,
     "unlockedlevel": 73,
     "tier": 2,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -14878,7 +14963,7 @@ const players_json = [{
     "salary": 24,
     "unlockedlevel": 76,
     "tier": 2,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -14938,7 +15023,7 @@ const players_json = [{
     "salary": 10,
     "unlockedlevel": 59,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -14998,7 +15083,7 @@ const players_json = [{
     "salary": 4,
     "unlockedlevel": 43,
     "tier": 4,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -15058,7 +15143,7 @@ const players_json = [{
     "salary": 12,
     "unlockedlevel": 61,
     "tier": 2,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -15118,7 +15203,7 @@ const players_json = [{
     "salary": 9,
     "unlockedlevel": 46,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -15178,7 +15263,7 @@ const players_json = [{
     "salary": 10,
     "unlockedlevel": 60,
     "tier": 2,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -15238,7 +15323,7 @@ const players_json = [{
     "salary": 14,
     "unlockedlevel": 42,
     "tier": 2,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -15298,7 +15383,7 @@ const players_json = [{
     "salary": 7,
     "unlockedlevel": 77,
     "tier": 1,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -15358,7 +15443,7 @@ const players_json = [{
     "salary": 5,
     "unlockedlevel": 69,
     "tier": 2,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -15418,7 +15503,7 @@ const players_json = [{
     "salary": 5,
     "unlockedlevel": 71,
     "tier": 2,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -15478,7 +15563,7 @@ const players_json = [{
     "salary": 23,
     "unlockedlevel": 3,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -15538,7 +15623,7 @@ const players_json = [{
     "salary": 3,
     "unlockedlevel": 11,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -15598,7 +15683,7 @@ const players_json = [{
     "salary": 1,
     "unlockedlevel": 20,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -15658,7 +15743,7 @@ const players_json = [{
     "salary": 15,
     "unlockedlevel": 26,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -15718,7 +15803,7 @@ const players_json = [{
     "salary": 3,
     "unlockedlevel": 22,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -15778,7 +15863,7 @@ const players_json = [{
     "salary": 23,
     "unlockedlevel": 96,
     "tier": 1,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -15838,7 +15923,7 @@ const players_json = [{
     "salary": 5,
     "unlockedlevel": 32,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -15898,7 +15983,7 @@ const players_json = [{
     "salary": 16,
     "unlockedlevel": 47,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -15958,7 +16043,7 @@ const players_json = [{
     "salary": 4,
     "unlockedlevel": 56,
     "tier": 2,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -16018,7 +16103,7 @@ const players_json = [{
     "salary": 7,
     "unlockedlevel": 61,
     "tier": 2,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -16078,7 +16163,7 @@ const players_json = [{
     "salary": 13,
     "unlockedlevel": 82,
     "tier": 1,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -16138,7 +16223,7 @@ const players_json = [{
     "salary": 3,
     "unlockedlevel": 69,
     "tier": 2,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -16198,7 +16283,7 @@ const players_json = [{
     "salary": 13,
     "unlockedlevel": 75,
     "tier": 1,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -16258,7 +16343,7 @@ const players_json = [{
     "salary": 5,
     "unlockedlevel": 20,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -16318,7 +16403,7 @@ const players_json = [{
     "salary": 3,
     "unlockedlevel": 36,
     "tier": 2,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -16378,7 +16463,7 @@ const players_json = [{
     "salary": 4,
     "unlockedlevel": 86,
     "tier": 0,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -16438,7 +16523,7 @@ const players_json = [{
     "salary": 4,
     "unlockedlevel": 34,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -16498,7 +16583,7 @@ const players_json = [{
     "salary": 14,
     "unlockedlevel": 74,
     "tier": 1,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -16558,7 +16643,7 @@ const players_json = [{
     "salary": 2,
     "unlockedlevel": 22,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -16618,7 +16703,7 @@ const players_json = [{
     "salary": 3,
     "unlockedlevel": 33,
     "tier": 2,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -16678,7 +16763,7 @@ const players_json = [{
     "salary": 5,
     "unlockedlevel": 45,
     "tier": 2,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -16738,7 +16823,7 @@ const players_json = [{
     "salary": 7,
     "unlockedlevel": 30,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -16798,7 +16883,7 @@ const players_json = [{
     "salary": 14,
     "unlockedlevel": 27,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -16858,7 +16943,7 @@ const players_json = [{
     "salary": 12,
     "unlockedlevel": 23,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -16918,7 +17003,7 @@ const players_json = [{
     "salary": 1,
     "unlockedlevel": 65,
     "tier": 2,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -16978,7 +17063,7 @@ const players_json = [{
     "salary": 28,
     "unlockedlevel": 85,
     "tier": 1,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -17038,7 +17123,7 @@ const players_json = [{
     "salary": 22,
     "unlockedlevel": 76,
     "tier": 2,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -17098,7 +17183,7 @@ const players_json = [{
     "salary": 28,
     "unlockedlevel": 87,
     "tier": 1,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -17158,7 +17243,7 @@ const players_json = [{
     "salary": 36,
     "unlockedlevel": 64,
     "tier": 2,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -17218,7 +17303,7 @@ const players_json = [{
     "salary": 36,
     "unlockedlevel": 90,
     "tier": 1,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -17278,7 +17363,7 @@ const players_json = [{
     "salary": 30,
     "unlockedlevel": 97,
     "tier": 1,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -17338,7 +17423,7 @@ const players_json = [{
     "salary": 2,
     "unlockedlevel": 73,
     "tier": 2,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -17398,7 +17483,7 @@ const players_json = [{
     "salary": 2,
     "unlockedlevel": 48,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -17458,7 +17543,7 @@ const players_json = [{
     "salary": 22,
     "unlockedlevel": 62,
     "tier": 2,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -17518,7 +17603,7 @@ const players_json = [{
     "salary": 3,
     "unlockedlevel": 42,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -17578,7 +17663,7 @@ const players_json = [{
     "salary": 4,
     "unlockedlevel": 47,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -17638,7 +17723,7 @@ const players_json = [{
     "salary": 1,
     "unlockedlevel": 5,
     "tier": 4,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -17698,7 +17783,7 @@ const players_json = [{
     "salary": 4,
     "unlockedlevel": 11,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -17758,7 +17843,7 @@ const players_json = [{
     "salary": 1,
     "unlockedlevel": 7,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -17818,7 +17903,7 @@ const players_json = [{
     "salary": 7,
     "unlockedlevel": 0,
     "tier": 4,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -17878,7 +17963,7 @@ const players_json = [{
     "salary": 3,
     "unlockedlevel": 4,
     "tier": 4,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -17938,7 +18023,7 @@ const players_json = [{
     "salary": 3,
     "unlockedlevel": 71,
     "tier": 2,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -17998,7 +18083,7 @@ const players_json = [{
     "salary": 5,
     "unlockedlevel": 52,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -18058,7 +18143,7 @@ const players_json = [{
     "salary": 14,
     "unlockedlevel": 62,
     "tier": 2,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -18118,7 +18203,7 @@ const players_json = [{
     "salary": 15,
     "unlockedlevel": 69,
     "tier": 1,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -18178,7 +18263,7 @@ const players_json = [{
     "salary": 3,
     "unlockedlevel": 49,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -18238,7 +18323,7 @@ const players_json = [{
     "salary": 1,
     "unlockedlevel": 12,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -18298,7 +18383,7 @@ const players_json = [{
     "salary": 4,
     "unlockedlevel": 8,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -18358,7 +18443,7 @@ const players_json = [{
     "salary": 2,
     "unlockedlevel": 5,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -18418,7 +18503,7 @@ const players_json = [{
     "salary": 5,
     "unlockedlevel": 48,
     "tier": 2,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -18478,7 +18563,7 @@ const players_json = [{
     "salary": 20,
     "unlockedlevel": 88,
     "tier": 1,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "ratings": {
@@ -18538,7 +18623,7 @@ const coaches_json = [{
     "salary": 6,
     "unlockedlevel": 10,
     "tier": 4,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "position": "X",
@@ -18561,7 +18646,7 @@ const coaches_json = [{
     "salary": 7,
     "unlockedlevel": 95,
     "tier": 0,
-    "rarity": "Legendary",
+    "rarity": "legendary",
     "level": 1,
     "count": 1,
     "position": "X",
@@ -18584,7 +18669,7 @@ const coaches_json = [{
     "salary": 6,
     "unlockedlevel": 50,
     "tier": 2,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "position": "X",
@@ -18607,7 +18692,7 @@ const coaches_json = [{
     "salary": 2,
     "unlockedlevel": 5,
     "tier": 4,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "position": "X",
@@ -18630,7 +18715,7 @@ const arenas_json = [{
     "salary": 5,
     "unlockedlevel": 75,
     "tier": 1,
-    "rarity": "Legendary",
+    "rarity": "legendary",
     "level": 1,
     "count": 1,
     "position": "Z",
@@ -18651,7 +18736,7 @@ const arenas_json = [{
     "salary": 4,
     "unlockedlevel": 65,
     "tier": 1,
-    "rarity": "Legendary",
+    "rarity": "legendary",
     "level": 1,
     "count": 1,
     "position": "Z",
@@ -18672,7 +18757,7 @@ const arenas_json = [{
     "salary": 3,
     "unlockedlevel": 70,
     "tier": 1,
-    "rarity": "Legendary",
+    "rarity": "legendary",
     "level": 1,
     "count": 1,
     "position": "Z",
@@ -18693,7 +18778,7 @@ const arenas_json = [{
     "salary": 1,
     "unlockedlevel": 5,
     "tier": 3,
-    "rarity": "Common",
+    "rarity": "common",
     "level": 1,
     "count": 1,
     "position": "Z",
@@ -18714,7 +18799,7 @@ const arenas_json = [{
     "salary": 3,
     "unlockedlevel": 50,
     "tier": 1,
-    "rarity": "Rare",
+    "rarity": "rare",
     "level": 1,
     "count": 1,
     "position": "Z",
