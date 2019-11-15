@@ -3423,7 +3423,14 @@ function updatePlayoffsBoxScore(playoffs) {
 
                 } else if (["fgp", "3pp", "ftp"].indexOf(stat) > -1) {
 
-                    itm.innerHTML = (Math.round(average * 10) / 10) + "%";
+                    let mades = document.getElementById("play-playoffs-stats-boxscore-right-stats-row-" + (i + 1) + "-" + (j - 1)).innerHTML;
+                    let attempts = document.getElementById("play-playoffs-stats-boxscore-right-stats-row-" + (i + 1) + "-" + j).innerHTML;
+
+                    if (attempts != 0) {
+                        itm.innerHTML = (Math.round((mades / attempts * 100) * 10) / 10) + "%";
+                    } else {
+                        itm.innerHTML = "0%";
+                    }
 
                 } else if (stat == "tg") {
 
