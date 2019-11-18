@@ -6761,14 +6761,6 @@ function updatePlayByPlay(play) {
 
             }
 
-            let shooting_chart = document.createElement("div");
-            shooting_chart.className = "play-stats-play-by-play-row-play-shooting-chart";
-            details.appendChild(shooting_chart);
-
-            let shot_charts_canvas = document.createElement("canvas");
-            shot_charts_canvas.className = "play-gamestats-shot-charts-canvas";
-            shooting_chart.appendChild(shot_charts_canvas);
-
             function drawShotCharts(canvas_div, event) {
 
                 let canvas = canvas_div;
@@ -6831,6 +6823,14 @@ function updatePlayByPlay(play) {
             }
             console.log(event.fouled, event.make);
             if (event.fouled == 0 | (event.fouled == 1 & event.make == 1)) {
+
+                let shooting_chart = document.createElement("div");
+                shooting_chart.className = "play-stats-play-by-play-row-play-shooting-chart";
+                details.appendChild(shooting_chart);
+
+                let shot_charts_canvas = document.createElement("canvas");
+                shot_charts_canvas.className = "play-gamestats-shot-charts-canvas";
+                shooting_chart.appendChild(shot_charts_canvas);
 
                 drawShotCharts(shot_charts_canvas, event);
 
