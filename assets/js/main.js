@@ -4162,10 +4162,19 @@ function initializePlayStats(gamemode) {
 
                 let players_to_exclude_from_random = [];
 
-                // Initialize user team
-                for (let i = 0; i < team.players.length; i++) {
+                let team_usr;
+                if (gamemode == "Quick Game") {
+                    team_usr = team.players;
+                } else if (gamemode == "Playoffs") {
+                    team_usr = playoffs.usrTeam;
+                } else {
+                    console.log("Ohter game mode.");
+                }
 
-                    let card = team.players[i];
+                // Initialize user team
+                for (let i = 0; i < team_usr.length; i++) {
+
+                    let card = team_usr[i];
                     players_to_exclude_from_random.push(card.id);
 
                     card.gamestats = {};
