@@ -3787,7 +3787,35 @@ function updatePlayoffsBoxScore(playoffs) {
         if (game_stats_array.length == 0) {
             itm.innerHTML = "0";
         } else {
-            itm.innerHTML = 99;
+
+            let total = 0;
+            for (let i = 0; i < game_stats_array.length; i++) {
+                for (let j = 0; j < game_stats_array[i].play.team[agent].roster.length; j++) {
+                    total += game_stats_array[i].play.team[agent].roster[j].gamestats.stats[boxscore_stats_array[a]];
+                }
+            }
+            let total_average = Math.round((total / game_stats_array.length) * 10 / 10);
+
+            if (boxscore_stats_array[a] == "min") {
+                itm.innerHTML = convertTime2MinuteSecond(total_average);
+            } else if (["fgp", "3pp", "ftp"].indexOf(boxscore_stats_array[a]) > -1) {
+
+                let mades = document.getElementById("play-playoffs-stats-boxscore-right-totals-stats-row-" + (a - 1)).innerHTML;
+                let attempts = document.getElementById("play-playoffs-stats-boxscore-right-totals-stats-row-" + a).innerHTML;
+
+                if (attempts != 0) {
+                    itm.innerHTML = (Math.round((mades / attempts * 100) * 10) / 10) + "%";
+                } else {
+                    itm.innerHTML = "0%";
+                }
+
+            } else if (boxscore_stats_array[a] == "tg") {
+
+                itm.innerHTML = fetchTeammateGrade(total_average / game_stats_array[0].play.team[agent].roster.length);
+
+            } else {
+                itm.innerHTML = total_average;
+            }
         }
     }
 

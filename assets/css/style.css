@@ -2169,7 +2169,9 @@ input#collection-search-input-box {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: lightgreen;
+    background: #2A2723;
+    color: lightgrey;
+    border: none;
     width: 80%;
     height: 100%;
 }
