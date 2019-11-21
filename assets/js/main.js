@@ -3552,14 +3552,23 @@ function displayPlayoffsHomepage(playoffs) {
 
     let toggle_usr = document.createElement("div");
     toggle_usr.id = "play-playoffs-stats-toggle-box-usr";
-    toggle_usr.className = "play-stats-toggle-box-agent";
+    toggle_usr.className = "play-stats-toggle-box-agent play-stats-toggle-box-agent-active";
     toggle_box.appendChild(toggle_usr);
     toggle_usr.innerHTML = "USR";
+
+    let toggle_cpu = document.createElement("div");
+    toggle_cpu.id = "play-playoffs-stats-toggle-box-cpu";
+    toggle_cpu.className = "play-stats-toggle-box-agent";
+    toggle_box.appendChild(toggle_cpu);
+    toggle_cpu.innerHTML = "CPU";
+
     toggle_usr.addEventListener("click", function() {
 
         fetchRecord("playoffs", "0001", function(playoffs) {
             playoffs.statsview = "usr";
-            console.log("Switching playoffs boxscore view to cpu");
+            console.log("Switching playoffs boxscore view to usr");
+            toggle_cpu.className = "play-stats-toggle-box-agent"
+            toggle_usr.className = "play-stats-toggle-box-agent play-stats-toggle-box-agent-active";
             updatePlayoffsBoxScore(playoffs);
 
             removeRecord("playoffs", "0001");
@@ -3568,16 +3577,13 @@ function displayPlayoffsHomepage(playoffs) {
 
     });
 
-    let toggle_cpu = document.createElement("div");
-    toggle_cpu.id = "play-playoffs-stats-toggle-box-cpu";
-    toggle_cpu.className = "play-stats-toggle-box-agent"
-    toggle_box.appendChild(toggle_cpu);
-    toggle_cpu.innerHTML = "CPU";
     toggle_cpu.addEventListener("click", function() {
 
         fetchRecord("playoffs", "0001", function(playoffs) {
             playoffs.statsview = "cpu";
             console.log("Switching playoffs boxscore view to cpu");
+            toggle_cpu.className = "play-stats-toggle-box-agent play-stats-toggle-box-agent-active"
+            toggle_usr.className = "play-stats-toggle-box-agent";
             updatePlayoffsBoxScore(playoffs);
 
             removeRecord("playoffs", "0001");
