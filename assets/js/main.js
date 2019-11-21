@@ -4307,7 +4307,7 @@ function initializePlayStats(gamemode) {
     gameplan_btn.id = "play-action-gameplan-btn";
     gameplan_btn.className = "play-action-sct-btn";
     gameplan.appendChild(gameplan_btn);
-    gameplan_btn.innerHTML = "Gameplan";
+    gameplan_btn.innerHTML = "Substitutions";
 
     gameplan_btn.addEventListener("click", function() {
 
@@ -4424,6 +4424,8 @@ function displayGameplanMenu() {
 
     }
 
+    displaySubstitutionsMenu();
+
 }
 
 function displaySubstitutionsMenu() {
@@ -4440,7 +4442,8 @@ function displaySubstitutionsMenu() {
     overlay_header.appendChild(overlay_header_back);
     overlay_header_back.innerHTML = "<<";
     overlay_header_back.addEventListener("click", function() {
-        displayGameplanMenu();
+        let overlay = document.getElementById("play-overlay");
+        overlay.style.display = "none";
     });
 
     let overlay_header_text = document.createElement("div");
@@ -4658,6 +4661,8 @@ function displaySubstitutionsMenu() {
                                             play = selectPlayerToSubIn(play, "usr", data);
                                             console.log(play.team["usr"].substitutions);
 
+                                            updateSubstitutionLights(play);
+
                                             removeRecord("play", "0001");
                                             addRecord("play", play);
 
@@ -4857,37 +4862,55 @@ function selectSubstitution(play, i, agent) {
 function callTimeout(agent) {
 
     fetchRecord("play", "0001", function(play) {
+        
+        let end_of_period;
+
+        if (agent == "endofperiod") {
+            end_of_period = true;
+            agent = "usr";
+            play.team[agent].timeouts += 1;
+        }
 
         if (play.team[agent].timeouts > 0) {
             play.team[agent].timeouts -= 1;
-        }
 
-        for (let i = 1; i <= 7; i++) {
-            let light = document.getElementById("play-scoreboard-" + agent + "-timeouts-light-" + i);
-            if (i <= play.team[agent].timeouts) {
-                light.style.background = "lightgrey";
-            } else {
-                light.style.background = "white";
+            for (let i = 1; i <= 7; i++) {
+                let light = document.getElementById("play-scoreboard-" + agent + "-timeouts-light-" + i);
+                if (i <= play.team[agent].timeouts) {
+                    light.style.background = "lightgrey";
+                } else {
+                    light.style.background = "#2A2723";
+                }
             }
+
+            play = increaseAllStamina(play, 5);
+
+            play = makeSubstitutions(play);
+
+            let event_play;
+            if (end_of_period) {
+                event_play = "End of period.";
+            } else {
+                event_play = play.possession + " full timeout (Remaining: " + play.team[agent].timeouts + ")";
+            }
+
+            let event = {
+                "time": play.time,
+                "team": play.possession,
+                "play": event_play,
+                "score": fetchScore(play, "usr") + " - " + fetchScore(play, "cpu"),
+                "make": 0
+            };
+            play.playbyplay.push(event);
+
+            updatePlayByPlay(play);
+
+            removeRecord("play", "0001");
+            addRecord("play", play);
+
+        } else {
+            console.log("No more timeouts remaining!");
         }
-
-        play = increaseAllStamina(play, 5);
-
-        play = makeSubstitutions(play);
-
-        let event = {
-            "time": play.time,
-            "team": play.possession,
-            "play": play.possession + " full timeout (Remaining: " + play.team[agent].timeouts + ")",
-            "score": fetchScore(play, "usr") + " - " + fetchScore(play, "cpu"),
-            "make": 0
-        };
-        play.playbyplay.push(event);
-
-        updatePlayByPlay(play);
-
-        removeRecord("play", "0001");
-        addRecord("play", play);
 
     });
 
@@ -5195,6 +5218,7 @@ function simulateNextPossession() {
                 if (play.time > end_of_quarter_times[i]) {
                     if (play.time - seconds < end_of_quarter_times[i]) {
                         seconds = play.time - end_of_quarter_times[i];
+                        callTimeout("endofperiod");
                         console.log("End of Q" + (play.overtime + i + 1));
                     }
                 }
@@ -5216,7 +5240,6 @@ function simulateNextPossession() {
             if (play.time == 1440) {
                 play = increaseAllStamina(play, 10);
                 play = subAllStarters(play);
-
             }
 
             // Check if 7m remaining, sub in starters
@@ -6030,12 +6053,15 @@ function simulateShotSuccess(play) {
             let width = "200";
             let radius, inner;
 
-            if (shotType == "inside" | shotType == "dunk") {
-                radius = (width / 2) * .1;
-                inner = (width / 2) * .2;
-            } else if (shotType == "midrange") {
-                radius = (width / 2) * 0.4;
+            if (shotType == "dunk") {
+                radius = (width / 2) * 0.1;
+                inner = (width / 2) * 0.2;
+            } else if (shotType == "inside") {
+                radius = (width / 2) * 0.1;
                 inner = (width / 2) * 0.3;
+            } else if (shotType == "midrange") {
+                radius = (width / 2) * 0.1;
+                inner = (width / 2) * 0.6;
             } else if (shotType == "outside") {
                 radius = (width / 2) * 0.1;
                 inner = (width / 2) * 0.9;
@@ -7660,7 +7686,7 @@ function initializeGameTrackerChart() {
     let wrapper = document.getElementById("wrapper");
 
     let width = wrapper.offsetWidth * .9;
-    let height = wrapper.offsetWidth * .5;
+    let height = wrapper.offsetWidth * .6;
 
     let canvas = document.createElement("canvas");
     canvas.id = "play-stats-game-stats-game-tracker-chart-canvas";

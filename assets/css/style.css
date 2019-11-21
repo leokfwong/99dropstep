@@ -2212,7 +2212,7 @@ input#collection-search-input-box {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 8%;
+    height: 7%;
     font-size: 91%;
     font-weight: bold;
     background: lightgrey;
@@ -2245,8 +2245,9 @@ input#collection-search-input-box {
     align-items: center;
     width: 100%;
     height: 100%;
-    background: white;
-    border-bottom: solid 2px #2A2723;
+    background: #2A2723;
+    border-bottom: solid 2px lightgrey;
+    border-top: solid 2px lightgrey;
     box-sizing: border-box;
 }
 .play-scoreboard-section {
@@ -2263,7 +2264,7 @@ input#collection-search-input-box {
     align-items: center;
     width: 100%;
     height: 25%;
-    color: grey;
+    color: lightgrey;
     font-weight: bold;
     font-size: 81%;
 }
@@ -2273,7 +2274,7 @@ input#collection-search-input-box {
     align-items: center;
     width: 100%;
     height: 50%;
-    color: grey;
+    color: lightgrey;
     font-size: 200%;
     font-weight: bold;
     font-family: "Raleway";
@@ -2316,7 +2317,7 @@ input#collection-search-input-box {
     align-items: center;
     width: 100%;
     height: 35%;
-    color: grey;
+    color: lightgrey;
 }
 #play-stats-content {
     display: flex;
@@ -2324,7 +2325,7 @@ input#collection-search-input-box {
     align-items: center;
     flex-direction: column;
     width: 100%;
-    height: 62%;
+    height: 63%;
     background: white;
     position: relative;
 }
@@ -2366,6 +2367,7 @@ input#collection-search-input-box {
     height: 70%;
     background: #2A2723;
     color: lightgrey;
+    font-size: 81%;
 }
 #play-action-timeout-btn {
     display: flex;
@@ -2583,7 +2585,7 @@ input#collection-search-input-box {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 10%;
+    height: 8%;
     background: lightgrey;
     border-bottom: solid 1px #2A2723;
     box-sizing: border-box;
@@ -2649,6 +2651,10 @@ input#collection-search-input-box {
     height: 100%;
     padding-left: 640px;
 }
+#play-stats-boxscore-right-totals-stats-row {
+    background: #2A2723;
+    color: lightgrey;
+}
 .play-stats-boxscore-header-itm {
     display: flex;
     justify-content: center;
@@ -2661,7 +2667,7 @@ input#collection-search-input-box {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 90%;
+    height: 92%;
     background: white;
     position: relative;
     overflow-y: auto;
@@ -2682,7 +2688,7 @@ input#collection-search-input-box {
     align-items: center;
     flex-direction: column;
     width: 100%;
-    height: 2.9em;
+    height: 2.7em;
     font-size: 81%;
     font-weight: bold;
     color: #2A2723;
@@ -2690,7 +2696,7 @@ input#collection-search-input-box {
     z-index: 1;
 }
 .play-stats-boxscore-left-name:nth-child(even) {
-    background: #F0F0F0;
+    background: #E8E8E8;
 }
 #play-stats-boxscore-left-name-header, #play-playoffs-stats-boxscore-left-name-header {
     height: 2em;
@@ -2734,7 +2740,7 @@ input#collection-search-input-box {
     overflow-x: scroll;
 }
 .play-stats-boxscore-right-stats-row:nth-child(even) {
-    background: #F0F0F0;
+    background: #E8E8E8;
 }
 #play-stats-boxscore-right-stats-row-header, #play-playoffs-stats-boxscore-right-stats-row-header {
     height: 2em;
@@ -2743,7 +2749,7 @@ input#collection-search-input-box {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 2.9em;
+    height: 2.7em;
     font-size: 81%;
     padding-left: 640px;
 }
@@ -2985,13 +2991,14 @@ input#collection-search-input-box {
     width: 90%;
     height: 90%;
     background: white;
+    border: solid 2px lightgrey;
 }
 #play-overlay-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: 10%;
+    height: 8%;
     background: lightgrey;
     color: white;
     font-weight: bold;
@@ -3001,7 +3008,7 @@ input#collection-search-input-box {
     color: #2A2723;
 }
 #play-overlay-header-text {
-    padding-right: 3%;
+    padding-right: 10px;
     color: #2A2723;
 }
 #play-overlay-content {
@@ -3010,7 +3017,7 @@ input#collection-search-input-box {
     align-items: center;
     flex-direction: column;
     width: 100%;
-    height: 90%;
+    height: 92%;
     background: white;
 }
 .play-overlay-sort-row {
@@ -3092,8 +3099,10 @@ input#collection-search-input-box {
     align-items: center;
     width: 100%;
     height: 10%;
-    background: #808080;
-    color: white;
+    background: lightgrey;
+    color: #2A2723;
+    font-size: 81%;
+    font-weight: bold;
 }
 .play-overlay-content-substitutions-player {
     display: flex;
@@ -3162,6 +3171,7 @@ input#collection-search-input-box {
     font-weight: bold;
 }
 .play-overlay-content-substitutions-player-name {
+    font-weight: bold;
     padding: 5px;
 }
 .play-overlay-content-substitutions-player-position {
@@ -3179,8 +3189,9 @@ input#collection-search-input-box {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50%;
-    height: 50%;
+    padding: 5px;
+    font-weight: bold;
+    color: #2A2723;
     border-radius: 3px;
 }
 /* PLAY END GAME REWARDS */
