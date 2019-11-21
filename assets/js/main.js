@@ -4863,14 +4863,6 @@ function callTimeout(agent) {
 
     fetchRecord("play", "0001", function(play) {
         
-        let end_of_period;
-
-        if (agent == "endofperiod") {
-            end_of_period = true;
-            agent = "usr";
-            play.team[agent].timeouts += 1;
-        }
-
         if (play.team[agent].timeouts > 0) {
             play.team[agent].timeouts -= 1;
 
@@ -4887,17 +4879,10 @@ function callTimeout(agent) {
 
             play = makeSubstitutions(play);
 
-            let event_play;
-            if (end_of_period) {
-                event_play = "End of period.";
-            } else {
-                event_play = play.possession + " full timeout (Remaining: " + play.team[agent].timeouts + ")";
-            }
-
             let event = {
                 "time": play.time,
                 "team": play.possession,
-                "play": event_play,
+                "play": play.possession + " full timeout (Remaining: " + play.team[agent].timeouts + ")",
                 "score": fetchScore(play, "usr") + " - " + fetchScore(play, "cpu"),
                 "make": 0
             };
@@ -5218,7 +5203,8 @@ function simulateNextPossession() {
                 if (play.time > end_of_quarter_times[i]) {
                     if (play.time - seconds < end_of_quarter_times[i]) {
                         seconds = play.time - end_of_quarter_times[i];
-                        callTimeout("endofperiod");
+                        play = increaseAllStamina(play, 5);
+                        play = makeSubstitutions(play);
                         console.log("End of Q" + (play.overtime + i + 1));
                     }
                 }
