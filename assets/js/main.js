@@ -4640,6 +4640,7 @@ function displaySubstitutionsMenu() {
                                     row_highlight.style.display = "flex";
 
                                     let data = {
+                                        "type": "one2one",
                                         "in_id": roster[j].id,
                                         "in_slot": roster[j].gamestats.slot,
                                         "out_id": player_out.id,
