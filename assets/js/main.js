@@ -5155,6 +5155,7 @@ function makeSubstitutions(play) {
     addRecord("play", play);
 
     displayStartingLineup(play);
+    updateHotCold(play);
 
     //play = resetSubstitutions(play);
 
@@ -5387,6 +5388,7 @@ function simulateNextPossession() {
             updateTeamStats(play);
             updateTime(play);
             updateStaminaBar(play);
+            play = hotColdDecay(play);
             updateHotCold(play);
 
             removeRecord("play", "0001");
@@ -6025,7 +6027,7 @@ function simulateShotSuccess(play) {
                 play.team[play.possession].roster[play.shooter.gamestats.pos - 1].gamestats.stats["3pm"] += 1;
                 play.team[play.possession].roster[play.shooter.gamestats.pos - 1].gamestats.stats["3pa"] += 1;
                 play.team[play.possession].roster[play.shooter.gamestats.pos - 1].gamestats.stats["tg"] += 3;
-                play.team[play.possession].roster[play.shooter.gamestats.pos - 1].gamestats.stats["hotcold"] += 1.5;
+                play.team[play.possession].roster[play.shooter.gamestats.pos - 1].gamestats.stats["hotcold"] += 3;
                 play.score[play.possession][fetchQuarter(play) - 1] += 3;
                 play = updateOnCourtPlusMinus(play, 3);
 
@@ -6033,7 +6035,7 @@ function simulateShotSuccess(play) {
 
                 play.team[play.possession].roster[play.shooter.gamestats.pos - 1].gamestats.stats["pts"] += 2;
                 play.team[play.possession].roster[play.shooter.gamestats.pos - 1].gamestats.stats["tg"] += 2;
-                play.team[play.possession].roster[play.shooter.gamestats.pos - 1].gamestats.stats["hotcold"] += 1;
+                play.team[play.possession].roster[play.shooter.gamestats.pos - 1].gamestats.stats["hotcold"] += 2;
                 play.score[play.possession][fetchQuarter(play) - 1] += 2;
                 play = updateOnCourtPlusMinus(play, 2);
 
@@ -6816,6 +6818,28 @@ function updateStaminaBar(play) {
 
 }
 
+function hotColdDecay(play) {
+
+    let agents = ["usr", "cpu"];
+
+    for (let i = 0; i < agents.length; i++) {
+        for (let j = 0; j < play.team[agents[i]].roster.length; j++) {
+
+            if (play.team[agents[i]].roster[j].gamestats.stats.hotcold > 0) {
+                console.log("Hotcold > 0");
+                play.team[agents[i]].roster[j].gamestats.stats.hotcold -= 0.1;
+            } else if (play.team[agents[i]].roster[j].gamestats.stats.hotcold < 0) {
+                console.log("Hotcold < 0");
+                play.team[agents[i]].roster[j].gamestats.stats.hotcold += 0.1;
+            } else {
+                console.log("Hotcold = 0");
+            }
+        }
+    }
+
+    return (play);
+}
+
 function updateHotCold(play) {
     let agents = ["usr", "cpu"];
 
@@ -6826,7 +6850,7 @@ function updateHotCold(play) {
 
             if (player.gamestats.active == 1) {
 
-                if (player.gamestats.stats.hotcold > 7) {
+                if (player.gamestats.stats.hotcold > 12) {
                     let div = document.getElementById("play-" + agents[i] + "-oncourt-player-image-" + player.gamestats.slot);
                     let hotcold = document.getElementById("play-" + agents[i] + "-oncourt-player-hotcold-" + player.gamestats.slot);
                     if (hotcold == undefined) {
@@ -6838,7 +6862,7 @@ function updateHotCold(play) {
                         div.appendChild(hotcold);
                     }
                     console.log(player.first + " " + player.last + " is hot!");
-                } else if (player.gamestats.stats.hotcold < -7) {
+                } else if (player.gamestats.stats.hotcold < -12) {
                     let div = document.getElementById("play-" + agents[i] + "-oncourt-player-image-" + player.gamestats.slot);
                     let hotcold = document.getElementById("play-" + agents[i] + "-oncourt-player-hotcold-" + player.gamestats.slot);
                     if (hotcold == undefined) {
