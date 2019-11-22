@@ -129,8 +129,8 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 80%;
-    height: 60%;
+    width: 90%;
+    height: 90%;
     background: white;
 }
 .collection-overlay-header {
@@ -142,13 +142,14 @@ body {
     background: lightgrey;
     color: white;
     font-weight: bold;
+    border-bottom: solid 1px #2A2723;
 }
 .collection-overlay-header-back {
-    padding-left: 3%;
+    padding-left: 10px;
     color: #2A2723;
 }
 .collection-overlay-header-text {
-    padding-right: 3%;
+    padding-right: 10px;
     color: #2A2723;
 }
 .collection-overlay-content {
@@ -166,6 +167,8 @@ body {
     align-items: center;
     width: 100%;
     height: 12.5%;
+    background: #2A2723;
+    color: lightgrey;
     border-bottom: solid 1px lightgrey;
 }
 #collection-overlay-sort-row-icon {
@@ -583,9 +586,10 @@ body {
     height: 100%;
 }
 .collection-tools-dropdown {
-    background: grey;
+    background: #2A2723;
     color: white;
     font-weight: bold;
+    font-size: 92%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -755,13 +759,24 @@ input#collection-search-input-box {
     justify-content: flex-start;
     align-items: center;
     width: 100%;
-    height: 33%;
+    height: 25%;
 }
 #collection-description-row-1 {
     font-weight: bold;
 }
 #collection-description-row-3 {
-    font-size: 75%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    height: 20%;
+    font-size: 81%;
+}
+#collection-description-row-4 {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 20%;
+    font-size: 81%;
 }
 .collection-stats {
     display: flex;
@@ -894,6 +909,7 @@ input#collection-search-input-box {
     width: 20%;
     height: 100%;
     border-right: solid 1px #2A2723;
+    font-size: 90%;
 }
 .team-selection-nav-box-active {
     background: #2A2723;
@@ -970,6 +986,7 @@ input#collection-search-input-box {
     width: 25%;
     height: 50%;
     color: lightgrey;
+    font-size: 72%;
 }
 .team-summary-rating-breakdown-bar {
     display: flex;
@@ -2508,7 +2525,7 @@ input#collection-search-input-box {
     align-items: center;
     width: 100%;
     height: 10%;
-    background: white;
+    background: lightgrey;
     border-top: solid 2px #2A2723;
     box-sizing: border-box;
 }

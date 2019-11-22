@@ -1796,7 +1796,9 @@ function loadCollection() {
                     if (summary.sort == sort_options[i]) {
 
                         // Set color to green
-                        row.style.background = "lightgreen";
+                        row.style.background = "#22B573";
+                        row.style.color = "#2A2723";
+                        row.style.fontWeight = "bold";
 
                         // Add sorting icon
                         let sort_icon = document.createElement("div");
@@ -1918,17 +1920,23 @@ function loadCollection() {
                         descr_row_1.style.fontSize = "81%";
                     }
 
-                    let descr_row_2 = document.createElement("div");
-                    descr_row_2.id = "collection-description-row-2";
-                    descr_row_2.className = "collection-description-row";
-                    description_box.appendChild(descr_row_2);
-                    descr_row_2.innerHTML = collection[i].position;
-
                     let descr_row_3 = document.createElement("div");
                     descr_row_3.id = "collection-description-row-3";
                     descr_row_3.className = "collection-description-row";
                     description_box.appendChild(descr_row_3);
                     descr_row_3.innerHTML = collection[i].team;
+
+                    let descr_row_4 = document.createElement("div");
+                    descr_row_4.id = "collection-description-row-4";
+                    descr_row_4.className = "collection-description-row";
+                    description_box.appendChild(descr_row_4);
+                    descr_row_4.innerHTML = collection[i].season;
+
+                    let descr_row_2 = document.createElement("div");
+                    descr_row_2.id = "collection-description-row-2";
+                    descr_row_2.className = "collection-description-row";
+                    description_box.appendChild(descr_row_2);
+                    descr_row_2.innerHTML = collection[i].position;
 
                     let stats = document.createElement("div");
                     stats.id = "collection-stats-" + id;
@@ -7879,6 +7887,7 @@ function initializeGameTrackerChart() {
             ctx.lineTo(x_origin + (x + 1) * (12 * w), height - 10);
             ctx.stroke();
 
+            ctx.font = "normal 10px Raleway";
             ctx.strokeText(quarters[x], x_origin + (x * (12 * w)) + 5, height - 10);
 
         }
