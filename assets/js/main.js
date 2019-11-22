@@ -5387,6 +5387,7 @@ function simulateNextPossession() {
             updateTeamStats(play);
             updateTime(play);
             updateStaminaBar(play);
+            updateHotCold(play);
 
             removeRecord("play", "0001");
             addRecord("play", play);
@@ -6024,6 +6025,7 @@ function simulateShotSuccess(play) {
                 play.team[play.possession].roster[play.shooter.gamestats.pos - 1].gamestats.stats["3pm"] += 1;
                 play.team[play.possession].roster[play.shooter.gamestats.pos - 1].gamestats.stats["3pa"] += 1;
                 play.team[play.possession].roster[play.shooter.gamestats.pos - 1].gamestats.stats["tg"] += 3;
+                play.team[play.possession].roster[play.shooter.gamestats.pos - 1].gamestats.stats["hotcold"] += 1.5;
                 play.score[play.possession][fetchQuarter(play) - 1] += 3;
                 play = updateOnCourtPlusMinus(play, 3);
 
@@ -6031,6 +6033,7 @@ function simulateShotSuccess(play) {
 
                 play.team[play.possession].roster[play.shooter.gamestats.pos - 1].gamestats.stats["pts"] += 2;
                 play.team[play.possession].roster[play.shooter.gamestats.pos - 1].gamestats.stats["tg"] += 2;
+                play.team[play.possession].roster[play.shooter.gamestats.pos - 1].gamestats.stats["hotcold"] += 1;
                 play.score[play.possession][fetchQuarter(play) - 1] += 2;
                 play = updateOnCourtPlusMinus(play, 2);
 
@@ -6043,6 +6046,7 @@ function simulateShotSuccess(play) {
             if (play.passer != "") {
                 play.team[play.possession].roster[play.passer.gamestats.pos - 1].gamestats.stats["ast"] += 1;
                 play.team[play.possession].roster[play.passer.gamestats.pos - 1].gamestats.stats["tg"] += 1;
+                play.team[play.possession].roster[play.passer.gamestats.pos - 1].gamestats.stats["hotcold"] += 0.25;
                 console.log("Assist made by " + play.passer.first + " " + play.passer.last);
             }
 
@@ -6057,11 +6061,13 @@ function simulateShotSuccess(play) {
 
                     play.team[play.possession].roster[play.shooter.gamestats.pos - 1].gamestats.stats["3pa"] += 1;
                     play.team[play.possession].roster[play.shooter.gamestats.pos - 1].gamestats.stats["tg"] -= 1.5;
+                    play.team[play.possession].roster[play.shooter.gamestats.pos - 1].gamestats.stats["hotcold"] -= 1.5;
 
                 }
 
                 play.team[play.possession].roster[play.shooter.gamestats.pos - 1].gamestats.stats["fga"] += 1;
                 play.team[play.possession].roster[play.shooter.gamestats.pos - 1].gamestats.stats["tg"] -= 1;
+                play.team[play.possession].roster[play.shooter.gamestats.pos - 1].gamestats.stats["hotcold"] -= 1;
 
             }
 
@@ -6220,8 +6226,10 @@ function simulateSteal(play) {
         play.steal = 1;
         play.team[fetchOtherAgent(play.possession)].roster[play.defender.gamestats.pos - 1].gamestats.stats["stl"] += 1;
         play.team[fetchOtherAgent(play.possession)].roster[play.defender.gamestats.pos - 1].gamestats.stats["tg"] += 3;
+        play.team[fetchOtherAgent(play.possession)].roster[play.defender.gamestats.pos - 1].gamestats.stats["hotcold"] += 1.5;
         play.team[play.possession].roster[play.shooter.gamestats.pos - 1].gamestats.stats["tov"] += 1;
         play.team[play.possession].roster[play.shooter.gamestats.pos - 1].gamestats.stats["tg"] -= 3;
+        play.team[play.possession].roster[play.shooter.gamestats.pos - 1].gamestats.stats["hotcold"] -= 1.5;
 
         let event = {
             "time": play.time - play.possessionDuration,
@@ -6336,8 +6344,10 @@ function simulateBlock(play) {
         play.successRate = 0;
         play.team[fetchOtherAgent(play.possession)].roster[play.defender.gamestats.pos - 1].gamestats.stats["blk"] += 1;
         play.team[fetchOtherAgent(play.possession)].roster[play.defender.gamestats.pos - 1].gamestats.stats["tg"] += 2;
+        play.team[fetchOtherAgent(play.possession)].roster[play.defender.gamestats.pos - 1].gamestats.stats["hotcold"] += 1;
         play.team[play.possession].roster[play.shooter.gamestats.pos - 1].gamestats.stats["ba"] += 1;
         play.team[play.possession].roster[play.shooter.gamestats.pos - 1].gamestats.stats["tg"] -= 2;
+        play.team[play.possession].roster[play.shooter.gamestats.pos - 1].gamestats.stats["hotcold"] -= 1;
         play.blocker = play.team[fetchOtherAgent(play.possession)].roster[play.defender.gamestats.pos - 1];
         play.blocked = 1;
 
@@ -6553,13 +6563,15 @@ function simulateFreeThrow(play) {
             play.team[play.possession].roster[play.shooter.gamestats.pos - 1].gamestats.stats.ftm += 1;
             play.team[play.possession].roster[play.shooter.gamestats.pos - 1].gamestats.stats.fta += 1;
             play.team[play.possession].roster[play.shooter.gamestats.pos - 1].gamestats.stats["tg"] += 1;
+            play.team[play.possession].roster[play.shooter.gamestats.pos - 1].gamestats.stats["hotcold"] += 0.5;
             play.score[play.possession][fetchQuarter(play) - 1] += 1;
             play = updateOnCourtPlusMinus(play, 1);
             play.madeFT = 1;
 
         } else {
             play.team[play.possession].roster[play.shooter.gamestats.pos - 1].gamestats.stats.fta += 1;
-            play.team[play.possession].roster[play.shooter.gamestats.pos - 1].gamestats.stats["tg"] -= .5;
+            play.team[play.possession].roster[play.shooter.gamestats.pos - 1].gamestats.stats["tg"] -= 0.5;
+            play.team[play.possession].roster[play.shooter.gamestats.pos - 1].gamestats.stats["hotcold"] -= 0.25;
             play.madeFT = 0;
         }
 
@@ -6663,10 +6675,12 @@ function simulateRebound(play) {
         play.team[play.possession].roster[rebounder.gamestats.pos - 1].gamestats.stats.reb += 1;
         play.team[play.possession].roster[rebounder.gamestats.pos - 1].gamestats.stats.oreb += 1;
         play.team[play.possession].roster[rebounder.gamestats.pos - 1].gamestats.stats["tg"] += 2;
+        play.team[play.possession].roster[rebounder.gamestats.pos - 1].gamestats.stats["hotcold"] += 0.5;
     } else {
         play.team[fetchOtherAgent(play.possession)].roster[rebounder.gamestats.pos - 1].gamestats.stats.reb += 1;
         play.team[fetchOtherAgent(play.possession)].roster[rebounder.gamestats.pos - 1].gamestats.stats.dreb += 1;
         play.team[fetchOtherAgent(play.possession)].roster[rebounder.gamestats.pos - 1].gamestats.stats["tg"] += 1;
+        play.team[fetchOtherAgent(play.possession)].roster[rebounder.gamestats.pos - 1].gamestats.stats["hotcold"] += 0.25;
     }
 
     console.log(rebounder.first + " " + rebounder.last + " gets " + rebound_type + " rebound");
@@ -6800,6 +6814,50 @@ function updateStaminaBar(play) {
         }
     }
 
+}
+
+function updateHotCold(play) {
+    let agents = ["usr", "cpu"];
+
+    for (let i = 0; i < agents.length; i++) {
+        for (let j = 0; j < play.team[agents[i]].roster.length; j++) {
+
+            let player = play.team[agents[i]].roster[j];
+
+            if (player.gamestats.active == 1) {
+
+                if (player.gamestats.stats.hotcold > 7) {
+                    let div = document.getElementById("play-" + agents[i] + "-oncourt-player-image-" + player.gamestats.slot);
+                    let hotcold = document.getElementById("play-" + agents[i] + "-oncourt-player-hotcold-" + player.gamestats.slot);
+                    if (hotcold == undefined) {
+                        hotcold = document.createElement("div");
+                        hotcold.id = "play-" + agents[i] + "-oncourt-player-hotcold-" + player.gamestats.slot;
+                        hotcold.className = "play-oncourt-player-hotcold";
+                        hotcold.innerHTML = "<i class='fas fa-fire'></i>";
+                        hotcold.style.color = player.color3;
+                        div.appendChild(hotcold);
+                    }
+                    console.log(player.first + " " + player.last + " is hot!");
+                } else if (player.gamestats.stats.hotcold < -7) {
+                    let div = document.getElementById("play-" + agents[i] + "-oncourt-player-image-" + player.gamestats.slot);
+                    let hotcold = document.getElementById("play-" + agents[i] + "-oncourt-player-hotcold-" + player.gamestats.slot);
+                    if (hotcold == undefined) {
+                        hotcold = document.createElement("div");
+                        hotcold.id = "play-" + agents[i] + "-oncourt-player-hotcold-" + player.gamestats.slot;
+                        hotcold.className = "play-oncourt-player-hotcold";
+                        hotcold.innerHTML = "<i class='far fa-snowflake'></i>";
+                        hotcold.style.color = player.color3;
+                        div.appendChild(hotcold);
+                    }
+                    console.log(player.first + " " + player.last + " is cold!");
+                } else {
+
+                }
+
+            }
+
+        }
+    }
 }
 
 function simulateTimePossession(play) {

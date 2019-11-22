@@ -50,7 +50,7 @@ function calculateRatings(player) {
     obj.offense = off_obj.rating / off_obj.weight;
     obj.defense = def_obj.rating / def_obj.weight;
     obj.physical = phys_obj.rating / phys_obj.weight;
-    obj.overall = (off_obj.rating + def_obj.rating + phys_obj.rating) / (off_obj.weight + def_obj.weight + phys_obj.weight);
+    obj.overall = ((off_obj.rating + def_obj.rating + phys_obj.rating) / (off_obj.weight + def_obj.weight + phys_obj.weight)) + 5;
 
     // Return object containing ratings for each category
     return (obj);
