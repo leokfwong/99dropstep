@@ -2871,74 +2871,161 @@ function loadGameModes() {
 
                                     console.log("Existing playoffs game!");
 
-                                    let warning = document.getElementById("warning-container");
-                                    warning.innerHTML = "";
-                                    warning.style.display = "flex";
+                                    let playoffs_resume_overlay = document.getElementById("playoffs-resume-overlay");
+                                    playoffs_resume_overlay.innerHTML = "";
+                                    playoffs_resume_overlay.style.display = "flex";
 
-                                    let warning_box = document.createElement("div");
-                                    warning_box.id = "warning-overlay-warning-box";
-                                    warning_box.className = "warning-box";
-                                    warning.appendChild(warning_box);
+                                    let playoffs_resume_box = document.createElement("div");
+                                    playoffs_resume_box.id = "playoffs-resume-overlay-box";
+                                    playoffs_resume_overlay.appendChild(playoffs_resume_box);
 
-                                    let warning_title = document.createElement("div");
-                                    warning_title.id = "warning-overlay-warning-title";
-                                    warning_title.className = "warning-title";
-                                    warning_box.appendChild(warning_title);
-                                    warning_title.innerHTML = "Warning!";
+                                    let playoffs_resume_header = document.createElement("div");
+                                    playoffs_resume_header.id = "playoffs-resume-overlay-box-header";
+                                    playoffs_resume_box.appendChild(playoffs_resume_header);
 
-                                    let warning_content = document.createElement("div");
-                                    warning_content.id = "warning-overlay-warning-content";
-                                    warning_content.className = "warning-content";
-                                    warning_box.appendChild(warning_content);
+                                    let playoffs_resume_header_back = document.createElement("div");
+                                    playoffs_resume_header_back.id = "playoffs-resume-overlay-box-header-back";
+                                    playoffs_resume_header.appendChild(playoffs_resume_header_back);
+                                    playoffs_resume_header_back.innerHTML = "<<";
+                                    playoffs_resume_header_back.addEventListener("click", function() {
+                                        playoffs_resume_overlay.style.display = "none";
+                                    });
 
-                                    let warning_message = document.createElement("div");
-                                    warning_message.id = "warning-overlay-warning-message";
-                                    warning_message.className = "warning-message";
-                                    warning_content.appendChild(warning_message);
-                                    warning_message.innerHTML = "Ongoing game! Resume?";
+                                    let playoffs_resume_header_text = document.createElement("div");
+                                    playoffs_resume_header_text.id = "playoffs-resume-overlay-box-header-text";
+                                    playoffs_resume_header.appendChild(playoffs_resume_header_text);
+                                    playoffs_resume_header_text.innerHTML = "Ongoing Playoffs";
 
-                                    let warning_action = document.createElement("div");
-                                    warning_action.id = "warning-overlay-warning-action";
-                                    warning_action.className = "warning-action";
-                                    warning_content.appendChild(warning_action);
+                                    let playoffs_resume_content = document.createElement("div");
+                                    playoffs_resume_content.id = "playoffs-resume-overlay-box-content";
+                                    playoffs_resume_box.appendChild(playoffs_resume_content);
 
-                                    let warning_action_container = document.createElement("div");
-                                    warning_action_container.id = "warning-overlay-warning-action-container";
-                                    warning_action_container.className = "warning-action-container";
-                                    warning_action.appendChild(warning_action_container);
+                                    let playoffs_resume_section = document.createElement("div");
+                                    playoffs_resume_section.id = "playoffs-resume-overlay-box-content-section";
+                                    playoffs_resume_content.appendChild(playoffs_resume_section);
 
-                                    let warning_action_cancel = document.createElement("div");
-                                    warning_action_cancel.id = "warning-overlay-warning-action-cancel";
-                                    warning_action_cancel.className = "warning-action-cancel";
-                                    warning_action_container.appendChild(warning_action_cancel);
+                                    let playoffs_resume_section_score = document.createElement("div");
+                                    playoffs_resume_section_score.id = "playoffs-resume-overlay-box-content-section-score";
+                                    playoffs_resume_section.appendChild(playoffs_resume_section_score);
 
-                                    let warning_action_cancel_button = document.createElement("div");
-                                    warning_action_cancel_button.id = "warning-overlay-warning-action-cancel-button";
-                                    warning_action_cancel_button.className = "warning-action-button";
-                                    warning_action_cancel.appendChild(warning_action_cancel_button);
-                                    warning_action_cancel_button.innerHTML = "New Game";
+                                    let playoffs_resume_section_score_box = document.createElement("div");
+                                    playoffs_resume_section_score_box.id = "playoffs-resume-overlay-box-content-section-score-box";
+                                    playoffs_resume_section_score.appendChild(playoffs_resume_section_score_box);
 
-                                    let warning_action_proceed = document.createElement("div");
-                                    warning_action_proceed.id = "warning-overlay-warning-action-proceed";
-                                    warning_action_proceed.className = "warning-action-proceed";
-                                    warning_action_container.appendChild(warning_action_proceed);
+                                    let playoffs_resume_section_score_usr = document.createElement("div");
+                                    playoffs_resume_section_score_usr.id = "playoffs-resume-overlay-box-content-section-score-box-usr";
+                                    playoffs_resume_section_score_usr.className = "playoffs-resume-overlay-box-content-section-score-box-agent";
+                                    playoffs_resume_section_score_box.appendChild(playoffs_resume_section_score_usr);
+                                    playoffs_resume_section_score_usr.innerHTML = playoffs.usrScore;
 
-                                    let warning_action_proceed_button = document.createElement("div");
-                                    warning_action_proceed_button.id = "warning-overlay-warning-action-proceed-button";
-                                    warning_action_proceed_button.className = "warning-action-button";
-                                    warning_action_proceed.appendChild(warning_action_proceed_button);
-                                    warning_action_proceed_button.innerHTML = "Resume";
+                                    let playoffs_resume_section_score_cpu = document.createElement("div");
+                                    playoffs_resume_section_score_cpu.id = "playoffs-resume-overlay-box-content-section-score-box-cpu";
+                                    playoffs_resume_section_score_cpu.className = "playoffs-resume-overlay-box-content-section-score-box-agent";
+                                    playoffs_resume_section_score_box.appendChild(playoffs_resume_section_score_cpu);
+                                    playoffs_resume_section_score_cpu.innerHTML = playoffs.cpuScore;
 
-                                    warning_action_cancel_button.addEventListener("click", function() {
-                                        warning.style.display = "none";
+                                    let playoffs_resume_section_image = document.createElement("div");
+                                    playoffs_resume_section_image.id = "playoffs-resume-overlay-box-content-section-image";
+                                    playoffs_resume_section.appendChild(playoffs_resume_section_image);
+
+                                    let playoffs_resume_section_image_img = document.createElement("img");
+                                    playoffs_resume_section_image_img.src = "assets/images/playoffs/" + playoffs_teams_json[parseInt(playoffs.id)].image + ".png";
+                                    playoffs_resume_section_image.appendChild(playoffs_resume_section_image_img);
+
+                                    let playoffs_resume_section_image_text = document.createElement("div");
+                                    playoffs_resume_section_image_text.id = "playoffs-resume-overlay-box-content-section-image-text";
+                                    playoffs_resume_section_image.appendChild(playoffs_resume_section_image_text);
+
+                                    let playoffs_resume_section_image_name = document.createElement("div");
+                                    playoffs_resume_section_image_name.id = "playoffs-resume-overlay-box-content-section-image-name";
+                                    playoffs_resume_section_image_text.appendChild(playoffs_resume_section_image_name);
+                                    playoffs_resume_section_image_name.innerHTML = playoffs_teams_json[parseInt(playoffs.id)].name;
+
+                                    let playoffs_resume_section_image_season = document.createElement("div");
+                                    playoffs_resume_section_image_season.id = "playoffs-resume-overlay-box-content-section-image-season";
+                                    playoffs_resume_section_image_text.appendChild(playoffs_resume_section_image_season);
+                                    playoffs_resume_section_image_season.innerHTML = playoffs_teams_json[parseInt(playoffs.id)].season;
+
+                                    let playoffs_resume_section_team = document.createElement("div");
+                                    playoffs_resume_section_team.id = "playoffs-resume-overlay-box-content-section-team";
+                                    playoffs_resume_section.appendChild(playoffs_resume_section_team);
+
+                                    let playoffs_resume_section_team_starter = document.createElement("div");
+                                    playoffs_resume_section_team_starter.id = "playoffs-resume-overlay-box-content-section-team-starter";
+                                    playoffs_resume_section_team.appendChild(playoffs_resume_section_team_starter);
+
+                                    let playoffs_resume_section_team_starter_title = document.createElement("div");
+                                    playoffs_resume_section_team_starter_title.id = "playoffs-resume-overlay-box-content-section-team-starter-title";
+                                    playoffs_resume_section_team_starter.appendChild(playoffs_resume_section_team_starter_title);
+                                    playoffs_resume_section_team_starter_title.innerHTML = "Starters";
+
+                                    let playoffs_resume_section_team_starter_images = document.createElement("div");
+                                    playoffs_resume_section_team_starter_images.id = "playoffs-resume-overlay-box-content-section-team-starter-images";
+                                    playoffs_resume_section_team_starter.appendChild(playoffs_resume_section_team_starter_images);
+
+                                    let playoffs_resume_section_team_bench = document.createElement("div");
+                                    playoffs_resume_section_team_bench.id = "playoffs-resume-overlay-box-content-section-team-bench";
+                                    playoffs_resume_section_team.appendChild(playoffs_resume_section_team_bench);
+
+                                    let playoffs_resume_section_team_bench_title = document.createElement("div");
+                                    playoffs_resume_section_team_bench_title.id = "playoffs-resume-overlay-box-content-section-team-bench-title";
+                                    playoffs_resume_section_team_bench.appendChild(playoffs_resume_section_team_bench_title);
+                                    playoffs_resume_section_team_bench_title.innerHTML = "Bench";
+
+                                    let playoffs_resume_section_team_bench_images = document.createElement("div");
+                                    playoffs_resume_section_team_bench_images.id = "playoffs-resume-overlay-box-content-section-team-bench-images";
+                                    playoffs_resume_section_team_bench.appendChild(playoffs_resume_section_team_bench_images);
+
+                                    for (let i = 0; i < 5; i++) {
+                                        let image_box_starter = document.createElement("div");
+                                        image_box_starter.id = "playoffs-resume-overlay-box-content-section-team-starter-image-box-" + i;
+                                        image_box_starter.className = "playoffs-resume-overlay-box-content-section-team-image-box";
+                                        playoffs_resume_section_team_starter_images.appendChild(image_box_starter);
+
+                                        let img_starter = document.createElement("img");
+                                        img_starter.src = "assets/images/thumbs/" + playoffs.usrTeam[i].image + "_" + playoffs.usrTeam[i].id + ".png";
+                                        image_box_starter.appendChild(img_starter);
+
+                                        let image_box_bench = document.createElement("div");
+                                        image_box_bench.id = "playoffs-resume-overlay-box-content-section-team-bench-image-box-" + (i + 5);
+                                        image_box_bench.className = "playoffs-resume-overlay-box-content-section-team-image-box";
+                                        playoffs_resume_section_team_bench_images.appendChild(image_box_bench);
+
+                                        let img_bench = document.createElement("img");
+                                        img_bench.src = "assets/images/thumbs/" + playoffs.usrTeam[(i + 5)].image + "_" + playoffs.usrTeam[(i + 5)].id + ".png";
+                                        image_box_bench.appendChild(img_bench);
+                                    }
+
+                                    let playoffs_resume_footer = document.createElement("div");
+                                    playoffs_resume_footer.id = "playoffs-resume-overlay-box-content-footer";
+                                    playoffs_resume_content.appendChild(playoffs_resume_footer);
+
+                                    let playoffs_resume_newgame = document.createElement("div");
+                                    playoffs_resume_newgame.id = "playoffs-resume-overlay-box-content-footer-newgame";
+                                    playoffs_resume_footer.appendChild(playoffs_resume_newgame);
+
+                                    let playoffs_resume_newgame_button = document.createElement("div");
+                                    playoffs_resume_newgame_button.id = "playoffs-resume-overlay-box-content-footer-newgame-button";
+                                    playoffs_resume_newgame.appendChild(playoffs_resume_newgame_button);
+                                    playoffs_resume_newgame_button.innerHTML = "New Game";
+
+                                    let playoffs_resume_resume = document.createElement("div");
+                                    playoffs_resume_resume.id = "playoffs-resume-overlay-box-content-footer-resume";
+                                    playoffs_resume_footer.appendChild(playoffs_resume_resume);
+
+                                    let playoffs_resume_resume_button = document.createElement("div");
+                                    playoffs_resume_resume_button.id = "playoffs-resume-overlay-box-content-footer-resume-button";
+                                    playoffs_resume_resume.appendChild(playoffs_resume_resume_button);
+                                    playoffs_resume_resume_button.innerHTML = "Resume";
+
+                                    playoffs_resume_newgame_button.addEventListener("click", function() {
+                                        playoffs_resume_overlay.style.display = "none";
                                         initializePlayoffsTeamSelection();
                                     });
 
-                                    warning_action_proceed_button.addEventListener("click", function() {
-
+                                    playoffs_resume_resume_button.addEventListener("click", function() {
                                         displaySpecificPage("gamemodes-playoffs-team-homepage");
                                         displayPlayoffsHomepage(playoffs);
-
                                     });
 
 
@@ -4862,7 +4949,7 @@ function selectSubstitution(play, i, agent) {
 function callTimeout(agent) {
 
     fetchRecord("play", "0001", function(play) {
-        
+
         if (play.team[agent].timeouts > 0) {
             play.team[agent].timeouts -= 1;
 
