@@ -1936,7 +1936,13 @@ function loadCollection() {
                     descr_row_2.id = "collection-description-row-2";
                     descr_row_2.className = "collection-description-row";
                     description_box.appendChild(descr_row_2);
-                    descr_row_2.innerHTML = collection[i].position;
+                    descr_row_2.innerHTML = "Position(s): " + collection[i].position;
+
+                    let descr_row_5 = document.createElement("div");
+                    descr_row_5.id = "collection-description-row-5";
+                    descr_row_5.className = "collection-description-row";
+                    description_box.appendChild(descr_row_5);
+                    descr_row_5.innerHTML = "Salary: " + collection[i].salary + "M";
 
                     let stats = document.createElement("div");
                     stats.id = "collection-stats-" + id;
