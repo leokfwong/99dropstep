@@ -5305,6 +5305,7 @@ function simulateNextPossession() {
                 if (play.time > end_of_quarter_times[i]) {
                     if (play.time - seconds < end_of_quarter_times[i]) {
                         seconds = play.time - end_of_quarter_times[i];
+                        play.possessionDuration = seconds;
                         play = increaseAllStamina(play, 5);
                         play = makeSubstitutions(play);
                         console.log("End of Q" + (play.overtime + i + 1));
