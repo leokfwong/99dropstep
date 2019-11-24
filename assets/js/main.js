@@ -2932,6 +2932,11 @@ function loadGameModes() {
                                     playoffs_resume_section_score_box.appendChild(playoffs_resume_section_score_usr);
                                     playoffs_resume_section_score_usr.innerHTML = playoffs.usrScore;
 
+                                    let playoffs_resume_section_score_separator = document.createElement("div");
+                                    playoffs_resume_section_score_separator.id = "playoffs-resume-overlay-box-content-section-score-box-separator";
+                                    playoffs_resume_section_score_box.appendChild(playoffs_resume_section_score_separator);
+                                    playoffs_resume_section_score_separator.innerHTML = "-";
+
                                     let playoffs_resume_section_score_cpu = document.createElement("div");
                                     playoffs_resume_section_score_cpu.id = "playoffs-resume-overlay-box-content-section-score-box-cpu";
                                     playoffs_resume_section_score_cpu.className = "playoffs-resume-overlay-box-content-section-score-box-agent";

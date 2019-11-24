@@ -2083,7 +2083,6 @@ input#collection-search-input-box {
     justify-content: center;
     align-items: flex-start;
     width: 90%;
-    height: 30%;
     position: relative;
 }
 #playoffs-resume-overlay-box-content-section-image-text {
@@ -2115,14 +2114,25 @@ input#collection-search-input-box {
     align-items: center;
     width: 50%;
     height: 90%;
+    border: solid 2px lightgrey;
+    border-radius: 5px;
 }
 .playoffs-resume-overlay-box-content-section-score-box-agent {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50%;
+    width: 40%;
     height: 100%;
     font-family: "Ozone";
+    font-size: 300%;
+    color: lightgrey;
+}
+#playoffs-resume-overlay-box-content-section-score-box-separator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    height: 100%;
     font-size: 300%;
     color: lightgrey;
 }
