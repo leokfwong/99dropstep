@@ -1260,9 +1260,9 @@ const players_json = [{
     "position": "PF/C",
     "fgaintensity": 1,
     "fgaaverage": 12,
-    "color1": "#a33a3a",
-    "color2": "#62120c",
-    "color3": "#fda320",
+    "color1": "#A3341A",
+    "color2": "#510202",
+    "color3": "#FDA320",
     "image": "love_kevin_cleveland_cavaliers"
 }, {
     "id": "0015",
