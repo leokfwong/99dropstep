@@ -7864,8 +7864,8 @@ const players_json = [{
     "position": "SG/PG",
     "fgaintensity": 1,
     "fgaaverage": 17,
-    "color1": "#fee001",
-    "color2": "#ef642e",
+    "color1": "#ef642e",
+    "color2": "#fee001",
     "color3": "#ffffff",
     "image": "mitchell_donovan_utah_jazz"
 }, {
