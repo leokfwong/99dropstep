@@ -2082,7 +2082,7 @@ input#collection-search-input-box {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    width: 90%;
+    width: 100%;
     position: relative;
 }
 #playoffs-resume-overlay-box-content-section-image-text {
@@ -2163,7 +2163,6 @@ input#collection-search-input-box {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
     height: 70%;
 }
 .playoffs-resume-overlay-box-content-section-team-image-box {
@@ -2179,7 +2178,7 @@ input#collection-search-input-box {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 500px;
     height: 25%;
 }
 #playoffs-resume-overlay-box-content-footer-newgame, #playoffs-resume-overlay-box-content-footer-resume {
