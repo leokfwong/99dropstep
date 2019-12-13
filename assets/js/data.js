@@ -18668,6 +18668,66 @@ const players_json = [{
     "color2": "#2535AD",
     "color3": "#FBD651",
     "image": "curry_stephen_goldenstate_warriors"
+}, {
+    "id": "0305",
+    "type": "player",
+    "first": "Klay",
+    "last": "Thompson",
+    "height": "6-6",
+    "weight": "215",
+    "number": 11,
+    "country": "United States",
+    "team": "Golden State Warriors",
+    "conference": "Western Conference",
+    "season": "2015-2016",
+    "salary": 16,
+    "unlockedlevel": 88,
+    "tier": 1,
+    "rarity": "common",
+    "level": 1,
+    "count": 1,
+    "ratings": {
+        "inside": {
+            "value": 74,
+            "tendency": 25
+        },
+        "dunk": {
+            "value": 80,
+            "tendency": 1
+        },
+        "midrange": {
+            "value": 81,
+            "tendency": 27
+        },
+        "outside": {
+            "value": 82,
+            "tendency": 47
+        },
+        "drawfoul": 58,
+        "freethrow": 87,
+        "interior": 82,
+        "perimeter": 86,
+        "offensiverebound": 60,
+        "defensiverebound": 69,
+        "speed": 84,
+        "vertical": 77,
+        "strength": 81,
+        "hands": 85,
+        "stamina": 93,
+        "hustle": 82,
+        "passing": 62,
+        "steal": 53,
+        "block": 49,
+        "offensiveconsistency": 83,
+        "defensiveconsistency": 88
+    },
+    "position": "SG/SF",
+    "fgaintensity": 2,
+    "fgaaverage": 17,
+    "color1": "#6498D8",
+    "color2": "#192484",
+    "color3": "#FFCF34",
+    "image": "thompson_klay_goldenstate_warriors"
 }];
 
 const coaches_json = [{
