@@ -2178,7 +2178,7 @@ input#collection-search-input-box {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 500px;
+    width: 100%;
     height: 25%;
 }
 #playoffs-resume-overlay-box-content-footer-newgame, #playoffs-resume-overlay-box-content-footer-resume {
