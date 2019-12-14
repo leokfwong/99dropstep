@@ -18728,6 +18728,126 @@ const players_json = [{
     "color2": "#192484",
     "color3": "#FFCF34",
     "image": "thompson_klay_goldenstate_warriors"
+}, {
+    "id": "0306",
+    "type": "player",
+    "first": "Harrison",
+    "last": "Barnes",
+    "height": "6-8",
+    "weight": "225",
+    "number": 40,
+    "country": "United States",
+    "team": "Golden State Warriors",
+    "conference": "Western Conference",
+    "season": "2015-2016",
+    "salary": 4,
+    "unlockedlevel": 50,
+    "tier": 3,
+    "rarity": "common",
+    "level": 1,
+    "count": 1,
+    "ratings": {
+        "inside": {
+            "value": 71,
+            "tendency": 28
+        },
+        "dunk": {
+            "value": 84,
+            "tendency": 9
+        },
+        "midrange": {
+            "value": 75,
+            "tendency": 29
+        },
+        "outside": {
+            "value": 71,
+            "tendency": 34
+        },
+        "drawfoul": 55,
+        "freethrow": 76,
+        "interior": 77,
+        "perimeter": 79,
+        "offensiverebound": 65,
+        "defensiverebound": 70,
+        "speed": 80,
+        "vertical": 81,
+        "strength": 80,
+        "hands": 79,
+        "stamina": 92,
+        "hustle": 80,
+        "passing": 61,
+        "steal": 50,
+        "block": 43,
+        "offensiveconsistency": 76,
+        "defensiveconsistency": 74
+    },
+    "position": "SF/PF",
+    "fgaintensity": 1,
+    "fgaaverage": 10,
+    "color1": "#FFFFFF",
+    "color2": "#E7E8F2",
+    "color3": "#252C89",
+    "image": "barnes_harrison_goldenstate_warriors"
+}, {
+    "id": "0307",
+    "type": "player",
+    "first": "Leandro",
+    "last": "Barbosa",
+    "height": "6-3",
+    "weight": "194",
+    "number": 19,
+    "country": "Brazil",
+    "team": "Golden State Warriors",
+    "conference": "Western Conference",
+    "season": "2015-2016",
+    "salary": 1,
+    "unlockedlevel": 21,
+    "tier": 3,
+    "rarity": "common",
+    "level": 1,
+    "count": 1,
+    "ratings": {
+        "inside": {
+            "value": 69,
+            "tendency": 50
+        },
+        "dunk": {
+            "value": 60,
+            "tendency": 0
+        },
+        "midrange": {
+            "value": 69,
+            "tendency": 20
+        },
+        "outside": {
+            "value": 69,
+            "tendency": 30
+        },
+        "drawfoul": 51,
+        "freethrow": 84,
+        "interior": 70,
+        "perimeter": 73,
+        "offensiverebound": 60,
+        "defensiverebound": 61,
+        "speed": 86,
+        "vertical": 70,
+        "strength": 78,
+        "hands": 83,
+        "stamina": 84,
+        "hustle": 84,
+        "passing": 59,
+        "steal": 50,
+        "block": 42,
+        "offensiveconsistency": 75,
+        "defensiveconsistency": 73
+    },
+    "position": "SG",
+    "fgaintensity": 0,
+    "fgaaverage": 5,
+    "color1": "#FFFFFF",
+    "color2": "#F4F0E1",
+    "color3": "#131419v",
+    "image": "barbosa_leandro_goldenstate_warriors"
 }];
 
 const coaches_json = [{
