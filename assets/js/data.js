@@ -18846,7 +18846,7 @@ const players_json = [{
     "fgaaverage": 5,
     "color1": "#FFFFFF",
     "color2": "#F4F0E1",
-    "color3": "#131419v",
+    "color3": "#131419",
     "image": "barbosa_leandro_goldenstate_warriors"
 }];
 
