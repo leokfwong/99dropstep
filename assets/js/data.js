@@ -18848,6 +18848,126 @@ const players_json = [{
     "color2": "#F4F0E1",
     "color3": "#131419",
     "image": "barbosa_leandro_goldenstate_warriors"
+}, {
+    "id": "0308",
+    "type": "player",
+    "first": "Shaun",
+    "last": "Livingston",
+    "height": "6-7",
+    "weight": "192",
+    "number": 34,
+    "country": "United States",
+    "team": "Golden State Warriors",
+    "conference": "Western Conference",
+    "season": "2015-2016",
+    "salary": 6,
+    "unlockedlevel": 38,
+    "tier": 3,
+    "rarity": "common",
+    "level": 1,
+    "count": 1,
+    "ratings": {
+        "inside": {
+            "value": 72,
+            "tendency": 35
+        },
+        "dunk": {
+            "value": 79,
+            "tendency": 11
+        },
+        "midrange": {
+            "value": 67,
+            "tendency": 51
+        },
+        "outside": {
+            "value": 67,
+            "tendency": 3
+        },
+        "drawfoul": 52,
+        "freethrow": 86,
+        "interior": 77,
+        "perimeter": 79,
+        "offensiverebound": 61,
+        "defensiverebound": 62,
+        "speed": 79,
+        "vertical": 76,
+        "strength": 78,
+        "hands": 84,
+        "stamina": 86,
+        "hustle": 82,
+        "passing": 66,
+        "steal": 52,
+        "block": 45,
+        "offensiveconsistency": 77,
+        "defensiveconsistency": 78
+    },
+    "position": "PG/SG",
+    "fgaintensity": 0,
+    "fgaaverage": 5,
+    "color1": "#295EB2",
+    "color2": "#191972",
+    "color3": "#F7BC14",
+    "image": "livingston_shawn_goldenstate_warriors"
+}, {
+    "id": "0309",
+    "type": "player",
+    "first": "Festus",
+    "last": "Ezeli",
+    "height": "6-11",
+    "weight": "255",
+    "number": 31,
+    "country": "Nigeria",
+    "team": "Golden State Warriors",
+    "conference": "Western Conference",
+    "season": "2015-2016",
+    "salary": 2,
+    "unlockedlevel": 21,
+    "tier": 3,
+    "rarity": "common",
+    "level": 1,
+    "count": 1,
+    "ratings": {
+        "inside": {
+            "value": 71,
+            "tendency": 58
+        },
+        "dunk": {
+            "value": 80,
+            "tendency": 34
+        },
+        "midrange": {
+            "value": 65,
+            "tendency": 8
+        },
+        "outside": {
+            "value": 67,
+            "tendency": 0
+        },
+        "drawfoul": 59,
+        "freethrow": 53,
+        "interior": 78,
+        "perimeter": 70,
+        "offensiverebound": 70,
+        "defensiverebound": 69,
+        "speed": 70,
+        "vertical": 77,
+        "strength": 80,
+        "hands": 76,
+        "stamina": 84,
+        "hustle": 81,
+        "passing": 57,
+        "steal": 47,
+        "block": 57,
+        "offensiveconsistency": 71,
+        "defensiveconsistency": 73
+    },
+    "position": "C",
+    "fgaintensity": 0,
+    "fgaaverage": 5,
+    "color1": "#FFFFFF",
+    "color2": "#EFF0F9",
+    "color3": "#2424A0",
+    "image": "ezeli_festus_goldenstate_warriors"
 }];
 
 const coaches_json = [{
