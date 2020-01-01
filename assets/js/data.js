@@ -18968,6 +18968,66 @@ const players_json = [{
     "color2": "#EFF0F9",
     "color3": "#2424A0",
     "image": "ezeli_festus_goldenstate_warriors"
+}, {
+    "id": "0310",
+    "type": "player",
+    "first": "Andrew",
+    "last": "Bogut",
+    "height": "7-0",
+    "weight": "260",
+    "number": 12,
+    "country": "Australia",
+    "team": "Golden State Warriors",
+    "conference": "Western Conference",
+    "season": "2015-2016",
+    "salary": 12,
+    "unlockedlevel": 59,
+    "tier": 3,
+    "rarity": "common",
+    "level": 1,
+    "count": 1,
+    "ratings": {
+        "inside": {
+            "value": 70,
+            "tendency": 64
+        },
+        "dunk": {
+            "value": 80,
+            "tendency": 30
+        },
+        "midrange": {
+            "value": 65,
+            "tendency": 6
+        },
+        "outside": {
+            "value": 67,
+            "tendency": 0
+        },
+        "drawfoul": 50,
+        "freethrow": 48,
+        "interior": 87,
+        "perimeter": 72,
+        "offensiverebound": 68,
+        "defensiverebound": 76,
+        "speed": 68,
+        "vertical": 72,
+        "strength": 84,
+        "hands": 82,
+        "stamina": 86,
+        "hustle": 80,
+        "passing": 63,
+        "steal": 48,
+        "block": 64,
+        "offensiveconsistency": 75,
+        "defensiveconsistency": 81
+    },
+    "position": "C",
+    "fgaintensity": 0,
+    "fgaaverage": 4,
+    "color1": "#4F78C9",
+    "color2": "#1C307A",
+    "color3": "#EFF3FB",
+    "image": "bogut_andrew_goldenstate_warriors"
 }];
 
 const coaches_json = [{
