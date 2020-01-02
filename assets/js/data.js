@@ -14745,13 +14745,13 @@ const players_json = [{
         },
         "drawfoul": 53,
         "freethrow": 63,
-        "interior": 82,
-        "perimeter": 87,
+        "interior": 80,
+        "perimeter": 83,
         "offensiverebound": 63,
         "defensiverebound": 68,
         "speed": 76,
         "vertical": 79,
-        "strength": 88,
+        "strength": 85,
         "hands": 87,
         "stamina": 89,
         "hustle": 85,
@@ -14759,7 +14759,7 @@ const players_json = [{
         "steal": 56,
         "block": 49,
         "offensiveconsistency": 72,
-        "defensiveconsistency": 86
+        "defensiveconsistency": 84
     },
     "position": "SF",
     "fgaintensity": 0,
@@ -19028,6 +19028,66 @@ const players_json = [{
     "color2": "#1C307A",
     "color3": "#EFF3FB",
     "image": "bogut_andrew_goldenstate_warriors"
+}, {
+    "id": "0311",
+    "type": "player",
+    "first": "Andre",
+    "last": "Iguodala",
+    "height": "6-6",
+    "weight": "215",
+    "number": 9,
+    "country": "United States",
+    "team": "Golden State Warriors",
+    "conference": "Western Conference",
+    "season": "2015-2016",
+    "salary": 12,
+    "unlockedlevel": 61,
+    "tier": 3,
+    "rarity": "common",
+    "level": 1,
+    "count": 1,
+    "ratings": {
+        "inside": {
+            "value": 69,
+            "tendency": 23
+        },
+        "dunk": {
+            "value": 87,
+            "tendency": 14
+        },
+        "midrange": {
+            "value": 70,
+            "tendency": 21
+        },
+        "outside": {
+            "value": 70,
+            "tendency": 42
+        },
+        "drawfoul": 52,
+        "freethrow": 61,
+        "interior": 85,
+        "perimeter": 89,
+        "offensiverebound": 63,
+        "defensiverebound": 68,
+        "speed": 77,
+        "vertical": 87,
+        "strength": 88,
+        "hands": 88,
+        "stamina": 86,
+        "hustle": 84,
+        "passing": 67,
+        "steal": 59,
+        "block": 45,
+        "offensiveconsistency": 72,
+        "defensiveconsistency": 88
+    },
+    "position": "SF",
+    "fgaintensity": 0,
+    "fgaaverage": 6,
+    "color1": "#1751A5",
+    "color2": "#0A0F42",
+    "color3": "#DCDDDB",
+    "image": "iguodala_andre_goldenstate_warriors"
 }];
 
 const coaches_json = [{
