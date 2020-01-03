@@ -19011,14 +19011,14 @@ const players_json = [{
         "defensiverebound": 76,
         "speed": 68,
         "vertical": 72,
-        "strength": 84,
-        "hands": 82,
+        "strength": 88,
+        "hands": 85,
         "stamina": 86,
-        "hustle": 80,
+        "hustle": 82,
         "passing": 63,
         "steal": 48,
         "block": 64,
-        "offensiveconsistency": 75,
+        "offensiveconsistency": 78,
         "defensiveconsistency": 81
     },
     "position": "C",
@@ -19084,10 +19084,70 @@ const players_json = [{
     "position": "SF",
     "fgaintensity": 0,
     "fgaaverage": 6,
-    "color1": "#1751A5",
-    "color2": "#0A0F42",
+    "color1": "#6498D8",
+    "color2": "#253082",
     "color3": "#DCDDDB",
     "image": "iguodala_andre_goldenstate_warriors"
+}, {
+    "id": "0312",
+    "type": "player",
+    "first": "Marreese",
+    "last": "Speights",
+    "height": "6-10",
+    "weight": "255",
+    "number": 5,
+    "country": "United States",
+    "team": "Golden State Warriors",
+    "conference": "Western Conference",
+    "season": "2015-2016",
+    "salary": 4,
+    "unlockedlevel": 15,
+    "tier": 3,
+    "rarity": "common",
+    "level": 1,
+    "count": 1,
+    "ratings": {
+        "inside": {
+            "value": 69,
+            "tendency": 35
+        },
+        "dunk": {
+            "value": 79,
+            "tendency": 5
+        },
+        "midrange": {
+            "value": 71,
+            "tendency": 46
+        },
+        "outside": {
+            "value": 69,
+            "tendency": 14
+        },
+        "drawfoul": 53,
+        "freethrow": 83,
+        "interior": 78,
+        "perimeter": 72,
+        "offensiverebound": 65,
+        "defensiverebound": 65,
+        "speed": 72,
+        "vertical": 79,
+        "strength": 85,
+        "hands": 79,
+        "stamina": 81,
+        "hustle": 77,
+        "passing": 57,
+        "steal": 45,
+        "block": 48,
+        "offensiveconsistency": 78,
+        "defensiveconsistency": 72
+    },
+    "position": "C/PF",
+    "fgaintensity": 0,
+    "fgaaverage": 6,
+    "color1": "#FFFFFF",
+    "color2": "#E9EDF4",
+    "color3": "#174184",
+    "image": "speights_marreese_goldenstate_warriors"
 }];
 
 const coaches_json = [{

@@ -709,7 +709,7 @@ function autoAssignTeamPlayingTime(team) {
 
         // If starter, give a boost to score
         if (i < 5) {
-            starter_boost = 49000;
+            starter_boost = 69000;
         }
 
         // Calculate score based on formula
