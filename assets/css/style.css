@@ -3380,6 +3380,7 @@ input#collection-search-input-box {
     align-items: center;
     width: 70%;
     height: 100%;
+    position: relative;
 }
 .play-overlay-content-substitutions-player-fouled-out {
     display: flex;

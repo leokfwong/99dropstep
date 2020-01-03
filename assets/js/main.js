@@ -4678,7 +4678,7 @@ function displaySubstitutionsMenu() {
             info.style.background = player.color1;
             info.style.color = player.color3;
 
-            if (player.gamestats.stats.pf > 5 & player.gamestats.slot > 5) {
+            if (player.gamestats.stats.pf > FOULS_ALLOWED & player.gamestats.slot > 5) {
 
                 let fouled_out = document.createElement("div");
                 fouled_out.id = "play-overlay-content-substitutions-" + type + "-player-fouled-out-" + (i + 1);
@@ -6537,11 +6537,15 @@ function simulateShootingFoul(play) {
         play.team[fetchOtherAgent(play.possession)].roster[play.defender.gamestats.pos - 1].gamestats.stats.pf += 1;
         play.fouled = 1;
 
-        if (play.team[fetchOtherAgent(play.possession)].roster[play.defender.gamestats.pos - 1].gamestats.stats.pf > 5) {
+        if (play.team[fetchOtherAgent(play.possession)].roster[play.defender.gamestats.pos - 1].gamestats.stats.pf == (FOULS_ALLOWED + 1)) {
 
             // TODO: Implement automatic substitution of players with 6 fouls
             //play = selectSubstitution(play, (play.defender.gamestats.pos - 1), fetchOtherAgent(play.possession));
-            //play = makeSubstitutions(play);
+            /*console.log("Fouled out! Forced to sub out");
+            let position_array = ["pg", "sg", "sf", "pf", "c"];
+            let fouler = play.team[fetchOtherAgent(play.possession)].roster[play.defender.gamestats.pos - 1];
+            play.team[fetchOtherAgent(play.possession)].substitutions[position_array[fouler.gamestats.slot - 1]].sub = 1;
+            play = makeSubstitutions(play);*/
 
         }
 

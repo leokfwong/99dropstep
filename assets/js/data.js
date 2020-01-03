@@ -1,3 +1,5 @@
+const FOULS_ALLOWED = 5;
+
 const userdata_json = [{
     "id": "0001",
     "level": 1,
