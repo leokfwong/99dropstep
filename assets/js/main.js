@@ -5033,49 +5033,58 @@ function increaseAllStamina(play, boost) {
 
 function subAllStarters(play) {
 
-    for (t = 0; t < 3; t++) {
-        let roster = play.team.usr.roster;
-        // For each position
-        for (x = 0; x < 5; x++) {
-            let out_player;
-            // Find the player subbing out at position x
-            for (let j = 0; j < roster.length; j++) {
-                if (roster[j].gamestats.slot == (x + 1)) {
-                    out_player = roster[j];
+    let agents = ["usr", "cpu"];
+
+    for (t = 0; t < agents.length; t++) {
+        let roster = play.team[agents[t]].roster;
+        // Check to see if all 5 starters are in the right positions
+        let clear = false;
+        while (clear == false) {
+            clear = true;
+            for (x = 0; x < 5; x++) {
+                if (roster[x].gamestats.slot != roster[x].gamestats.pos) {
+                    clear = false;
+                    break;
                 }
             }
-            let in_player;
-            // Find the player who starts at position x
-            for (let k = 0; k < roster.length; k++) {
-                if (roster[k].gamestats.pos == (x + 1)) {
-                    in_player = roster[k];
+            // For each position
+            for (x = 0; x < 5; x++) {
+                let out_player;
+                // Find the player subbing out at position x
+                for (let j = 0; j < roster.length; j++) {
+                    if (roster[j].gamestats.slot == (x + 1)) {
+                        out_player = roster[j];
+                    }
                 }
-            }
-            if (out_player.id != in_player.id) {
-                // If equal, do nothing, the current player at position x is already the starter
-                if (in_player.gamestats.slot > 5) {
-                    // If the player who is supposed to start is already in the starting line-up, do nothing
-                    if (in_player.gamestats.stats.pf <= FOULS_ALLOWED) {
-                        // If the player subbing in has less than the amount of fouls allowed
-                        let data = {
-                            "type": "one2one",
-                            "in_id": in_player.id,
-                            "in_slot": in_player.gamestats.slot,
-                            "out_id": out_player.id,
-                            "out_slot": out_player.gamestats.slot
+                let in_player;
+                // Find the player who starts at position x
+                for (let k = 0; k < roster.length; k++) {
+                    if (roster[k].gamestats.pos == (x + 1)) {
+                        in_player = roster[k];
+                    }
+                }
+                if (out_player.id != in_player.id) {
+                    // If equal, do nothing, the current player at position x is already the starter
+                    if (in_player.gamestats.slot > 5) {
+                        // If the player who is supposed to start is already in the starting line-up, do nothing
+                        if (in_player.gamestats.stats.pf <= FOULS_ALLOWED) {
+                            // If the player subbing in has less than the amount of fouls allowed
+                            let data = {
+                                "type": "one2one",
+                                "in_id": in_player.id,
+                                "in_slot": in_player.gamestats.slot,
+                                "out_id": out_player.id,
+                                "out_slot": out_player.gamestats.slot
+                            }
+                            play = selectPlayerToSubIn(play, agents[t], data);
                         }
-                        play = selectPlayerToSubIn(play, "usr", data);
                     }
                 }
             }
+            play = makeSubstitutions(play);
         }
-
-        play = makeSubstitutions(play);
-
     }
-
     return (play);
-
 }
 
 function makeSubstitutions(play) {
@@ -5321,12 +5330,6 @@ function simulateNextPossession() {
                 play.gameover = 1;
             }
 
-            // Check if halftime, boost stamina and sub in starters
-            if (play.time == 1440) {
-                play = increaseAllStamina(play, 10);
-                play = subAllStarters(play);
-            }
-
             // Check if 7m remaining, sub in starters
             if ((play.time < 420 & play.time + seconds >= 420)) {
                 //play = subAllStarters(play);
@@ -5365,6 +5368,12 @@ function simulateNextPossession() {
 
                     }
                 }
+            }
+
+            // Check if halftime, boost stamina and sub in starters
+            if (play.time == 1440) {
+                play = increaseAllStamina(play, 10);
+                play = subAllStarters(play);
             }
 
             // Update substitutions lights
