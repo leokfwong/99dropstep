@@ -5020,7 +5020,7 @@ function increaseAllStamina(play, boost) {
             if (current_stamina + boost > max_stamina) {
                 play.team[agents[i]].roster[j].gamestats.ratings.stamina = max_stamina;
             } else {
-                console.log("Increase all players' stamina by +5.");
+                console.log("Increase all players' stamina by +" + boost);
                 play.team[agents[i]].roster[j].gamestats.ratings.stamina += boost;
             }
 
@@ -5145,7 +5145,12 @@ function makeSubstitutions(play) {
                         "score": fetchScore(play, "usr") + " - " + fetchScore(play, "cpu"),
                         "make": 0
                     };
-                    play.playbyplay.push(event);
+                    console.log("BOBB")
+                    console.log(play.time)
+                    console.log(play.possessionDuration)
+                    if (play.time != 1440 & play.time != 0) {
+                        play.playbyplay.push(event);
+                    }
                     console.log(substitutions.data);
                     if (substitutions.data.type == "one2one") {
                         let tmp = player_in.gamestats.slot;
@@ -5311,8 +5316,6 @@ function simulateNextPossession() {
                     if (play.time - seconds < end_of_quarter_times[i]) {
                         seconds = play.time - end_of_quarter_times[i];
                         play.possessionDuration = seconds;
-                        play = increaseAllStamina(play, 5);
-                        play = makeSubstitutions(play);
                         console.log("End of Q" + (play.overtime + i + 1));
                     }
                 }
@@ -5374,6 +5377,12 @@ function simulateNextPossession() {
             if (play.time == 1440) {
                 play = increaseAllStamina(play, 10);
                 play = subAllStarters(play);
+            }
+
+            if ([2160, 720].indexOf(play.time) > -1) {
+                console.log("End of quarter! Increase stamina and substitutions!");
+                play = increaseAllStamina(play, 5);
+                play = makeSubstitutions(play);
             }
 
             // Update substitutions lights
@@ -7279,7 +7288,6 @@ function updatePlayByPlay(play) {
 
     let quarter_content = document.getElementById("play-stats-play-by-play-quarter-content-" + quarter);
 
-
     for (let i = 0; i < play.playbyplay.length; i++) {
 
         let event = play.playbyplay[i];
@@ -7548,7 +7556,6 @@ function updatePlayByPlay(play) {
             play.innerHTML = " " + event.play;
 
         } else if (event.event == "substitution") {
-
             let player_in = document.createElement("span");
             player_in.className = "play-stats-play-by-play-row-outcome-shootingfoul-player-in play-by-play-player-name";
             play_itm.appendChild(player_in);
