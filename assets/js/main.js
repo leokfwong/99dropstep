@@ -6609,7 +6609,7 @@ function simulateFreeThrow(play) {
         };
         play.playbyplay.push(event);
 
-        if (i == play.numberOfFT - 2) {
+        if (i == 0) {
             play = makeSubstitutions(play);
         }
 
