@@ -4742,7 +4742,7 @@ function displaySubstitutionsMenu() {
 
                             if (roster[j].gamestats.slot > 5) {
 
-                                if (roster[j].position.indexOf(position_array[i]) > -1 & roster[j].gamestats.stats.pf < 6) {
+                                if ((roster[j].position.indexOf(position_array[i]) > -1) & roster[j].gamestats.stats.pf <= FOULS_ALLOWED) {
 
                                     console.log(roster[j].last);
                                     let row_highlight = document.getElementById("play-overlay-content-substitutions-bench-player-highlight-" + roster[j].gamestats.slot);
@@ -5034,49 +5034,40 @@ function increaseAllStamina(play, boost) {
 function subAllStarters(play) {
 
     for (t = 0; t < 3; t++) {
-
         let roster = play.team.usr.roster;
-
         // For each position
         for (x = 0; x < 5; x++) {
-
             let out_player;
-
             // Find the player subbing out at position x
             for (let j = 0; j < roster.length; j++) {
                 if (roster[j].gamestats.slot == (x + 1)) {
                     out_player = roster[j];
                 }
             }
-
             let in_player;
-
             // Find the player who starts at position x
             for (let k = 0; k < roster.length; k++) {
                 if (roster[k].gamestats.pos == (x + 1)) {
                     in_player = roster[k];
                 }
             }
-
             if (out_player.id != in_player.id) {
-
                 // If equal, do nothing, the current player at position x is already the starter
                 if (in_player.gamestats.slot > 5) {
-
                     // If the player who is supposed to start is already in the starting line-up, do nothing
-                    let data = {
-                        "type": "one2one",
-                        "in_id": in_player.id,
-                        "in_slot": in_player.gamestats.slot,
-                        "out_id": out_player.id,
-                        "out_slot": out_player.gamestats.slot
+                    if (in_player.gamestats.stats.pf <= FOULS_ALLOWED) {
+                        // If the player subbing in has less than the amount of fouls allowed
+                        let data = {
+                            "type": "one2one",
+                            "in_id": in_player.id,
+                            "in_slot": in_player.gamestats.slot,
+                            "out_id": out_player.id,
+                            "out_slot": out_player.gamestats.slot
+                        }
+                        play = selectPlayerToSubIn(play, "usr", data);
                     }
-                    play = selectPlayerToSubIn(play, "usr", data);
-
                 }
-
             }
-
         }
 
         play = makeSubstitutions(play);
@@ -5500,6 +5491,133 @@ function simulateNextPossession() {
 
 }
 
+function fouledOutSubstitution(play, pos) {
+
+    let agent = fetchOtherAgent(play.possession);
+    let position_array = ["pg", "sg", "sf", "pf", "c"];
+
+    let roster = play.team[agent].roster;
+
+    let out_player = roster[pos - 1];
+    console.log(out_player.first + " " + out_player.last + " has fouled out and will sub out!");
+
+    // Check to see if player is already awaiting substitution
+    let pending_sub = false;
+    let substitution = play.team[agent].substitutions[position_array[out_player.gamestats.slot - 1]];
+    if (substitution.sub == 1) {
+        pending_sub = true;
+    }
+
+    // Find potential bench players who fit the position
+    if (pending_sub == false) {
+        let potential_in_players = [];
+        let position = position_array[out_player.gamestats.slot - 1].toUpperCase();
+
+        for (let l = 0; l < roster.length; l++) {
+            let in_player = roster[l];
+            if (in_player.gamestats.active == 0) {
+                if ((in_player.position.indexOf(position) > -1) & in_player.gamestats.stats.pf <= FOULS_ALLOWED) {
+                    potential_in_players.push(in_player);
+                }
+            }
+        }
+
+        let transition_sub = false;
+        let transition_data = [];
+
+        if (potential_in_players.length == 0) {
+            // Check if there are active players who can switch positions
+            for (let s = 0; s < roster.length; s++) {
+                let active_player_same_pos = roster[s];
+                if (active_player_same_pos.id != out_player.id) {
+                    if (active_player_same_pos.gamestats.active == 1) {
+                        let substitution = play.team[agent].substitutions[position_array[active_player_same_pos.gamestats.slot - 1]];
+                        if (substitution.sub == 0) {
+                            if (active_player_same_pos.position.indexOf(position) > -1) {
+                                console.log(active_player_same_pos.first + " " + active_player_same_pos.last + " could be switched to " + position + "!");
+                                let trans_obj = {};
+                                trans_obj.position = (position_array[active_player_same_pos.gamestats.slot - 1]);
+                                trans_obj.id = (active_player_same_pos.id);
+                                transition_data.push(trans_obj);
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Check again now to see if there is a possible transition substitution
+            if (transition_data.length != 0) {
+                for (let t = 0; t < transition_data.length; t++) {
+                    for (let l = 0; l < roster.length; l++) {
+                        let in_player = roster[l];
+                        if (in_player.gamestats.active == 0) {
+                            if ((in_player.position.indexOf(transition_data[t].position.toUpperCase()) > -1) & in_player.gamestats.stats.pf <= FOULS_ALLOWED) {
+                                potential_in_players.push(in_player);
+                            }
+                        }
+                    }
+                }
+            }
+            console.log(potential_in_players);
+            // If we were able to find bench players who could sub in
+            if (potential_in_players.length > 0) {
+                transition_sub = true;
+            }
+        }
+
+        let winner;
+        let max_remaining_pt = 0;
+
+        // Pick bench player will most time remaining to play
+        for (let m = 0; m < potential_in_players.length; m++) {
+            let in_player = potential_in_players[m];
+            let remaining_pt = (in_player.ratings.playingtime * 60) - in_player.gamestats.stats.min;
+            if (remaining_pt > max_remaining_pt) {
+                winner = in_player;
+                max_remaining_pt = remaining_pt;
+            }
+        }
+
+        if (winner != undefined) {
+            // TODO: Optimize...
+            let trans_id, trans_slot;
+            for (let q = 0; q < transition_data.length; q++) {
+                if (winner.position.indexOf(transition_data[q].position.toUpperCase()) > -1) {
+                    trans_slot = position_array.indexOf(transition_data[q].position) + 1;
+                    trans_id = transition_data[q].id;
+                    break;
+                }
+            }
+
+            if (transition_sub) {
+                data = {
+                    "type": "3way",
+                    "in_id": winner.id,
+                    "in_slot": winner.gamestats.slot,
+                    "trans_id": trans_id,
+                    "trans_slot": trans_slot,
+                    "out_id": out_player.id,
+                    "out_slot": out_player.gamestats.slot
+                };
+                console.log("3WAYYYYYYYYYYYYY");
+                console.log(data);
+
+            } else {
+                data = {
+                    "type": "one2one",
+                    "in_id": winner.id,
+                    "in_slot": winner.gamestats.slot,
+                    "out_id": out_player.id,
+                    "out_slot": out_player.gamestats.slot
+                };
+            }
+            play = selectPlayerToSubIn(play, agent, data);
+        }
+
+    }
+    return (play)
+}
+
 function autoSubstitution(play) {
 
     let agents = ["usr", "cpu"];
@@ -5542,31 +5660,21 @@ function autoSubstitution(play) {
 
                     // Find potential bench players who fit the position
                     if (pending_sub == false) {
-
                         let potential_in_players = [];
                         let position = position_array[out_player.gamestats.slot - 1].toUpperCase();
-
                         for (let l = 0; l < roster.length; l++) {
-
                             let in_player = roster[l];
-
                             if (in_player.gamestats.active == 0) {
-
-                                if (in_player.position.indexOf(position) > -1) {
-
+                                if ((in_player.position.indexOf(position) > -1) & in_player.gamestats.stats.pf <= FOULS_ALLOWED) {
                                     potential_in_players.push(in_player);
-
                                 }
-
                             }
-
                         }
 
                         let transition_sub = false;
                         let transition_data = [];
 
                         if (potential_in_players.length == 0) {
-
                             // Check if there are active players who can switch positions
                             for (let s = 0; s < roster.length; s++) {
                                 let active_player_same_pos = roster[s];
@@ -5592,7 +5700,7 @@ function autoSubstitution(play) {
                                     for (let l = 0; l < roster.length; l++) {
                                         let in_player = roster[l];
                                         if (in_player.gamestats.active == 0) {
-                                            if (in_player.position.indexOf(transition_data[t].position.toUpperCase()) > -1) {
+                                            if ((in_player.position.indexOf(transition_data[t].position.toUpperCase()) > -1) & in_player.gamestats.stats.pf <= FOULS_ALLOWED) {
                                                 potential_in_players.push(in_player);
                                             }
                                         }
@@ -6541,11 +6649,8 @@ function simulateShootingFoul(play) {
 
             // TODO: Implement automatic substitution of players with 6 fouls
             //play = selectSubstitution(play, (play.defender.gamestats.pos - 1), fetchOtherAgent(play.possession));
-            /*console.log("Fouled out! Forced to sub out");
-            let position_array = ["pg", "sg", "sf", "pf", "c"];
-            let fouler = play.team[fetchOtherAgent(play.possession)].roster[play.defender.gamestats.pos - 1];
-            play.team[fetchOtherAgent(play.possession)].substitutions[position_array[fouler.gamestats.slot - 1]].sub = 1;
-            play = makeSubstitutions(play);*/
+            console.log("Fouled out! Forced to sub out");
+            play = fouledOutSubstitution(play, play.defender.gamestats.pos)
 
         }
 
