@@ -1,6 +1,6 @@
 const FOULS_ALLOWED = 5;
 
-const player_stats_json = ["ast", "blk", "cpustr", "dd", "dreb", "fga", "fga3", "fgm", "fta", "ftm", "gp", "gs", "l", "min", "oreb", "pf", "pm", "potg", "pts", "reb", "stl", "td", "tov", "usrstr", "w"];
+const player_stats_json = ["ast", "ba", "blk", "cpustr", "dd", "dreb", "fga", "fgm", "fta", "ftm", "3pa", "3pm", "gp", "gs", "l", "min", "oreb", "pf", "pm", "potg", "pts", "reb", "stl", "td", "tg", "tov", "usrstr", "w"];
 
 const userdata_json = [{
     "id": "0001",

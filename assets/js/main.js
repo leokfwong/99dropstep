@@ -5632,6 +5632,37 @@ function updatePlayerStats(play) {
                 (function() {
                     if (collection[j].id == player.id) {
                         let card = collection[j];
+                        // Update stats
+                        for (let k=0; k < player_stats_json.length; k++) {
+                            if (player_stats_json[k] == "cpustr") {
+                                //TODO
+                            } else if (player_stats_json[k] == "usrstr") {
+                                //TODO
+                            } else if (player_stats_json[k] == "dd") {
+                                //TODO
+                            } else if (player_stats_json[k] == "gp") {
+                                card.stats.gp += 1;
+                            } else if (player_stats_json[k] == "gs") {
+                                if (player.gamestats.pos <= 5) {
+                                    card.stats.gs += 1;
+                                }
+                            } else if (player_stats_json[k] == "l") {
+                                if (fetchScore(play, "usr") < fetchScore(play, "cpu")) {
+                                    card.stats.l += 1;
+                                }
+                            } else if (player_stats_json[k] == "w") {
+                                if (fetchScore(play, "usr") > fetchScore(play, "cpu")) {
+                                    card.stats.w += 1;
+                                }
+                            } else if (player_stats_json[k] == "potg") {
+                                //TODO
+                            } else if (player_stats_json[k] == "td") {
+                                //TODO
+                            } else {
+                                card.stats[player_stats_json[k]] += player.gamestats.stats[player_stats_json[k]];
+                            }
+                        }
+                        // Update experience gain
                         card.exp += exp_gain;
                         console.log("Updating player " + card.first + " " + card.last + " EXP (" + exp_gain +")");
                         removeRecord("collection", card.id);
