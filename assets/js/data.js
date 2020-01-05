@@ -342,6 +342,12 @@ let playoffs_teams_json = [{
     "season": "2008-2009",
     "roster": ["0295", "0189", "0298", "0297", "0294", "0299", "0037", "0300", "0296", "0148"],
     "image": "losangeles_lakers_2008-2009_banner"
+}, {
+    "id": "0003",
+    "name": "Golden State Warriors",
+    "season": "2015-2016",
+    "roster": ["0304", "0305", "0306", "0012", "0310", "0308", "0307", "0311", "0312", "0309"],
+    "image": "goldenstate_warriors_2015-2016_banner"
 }]
 
 const player_upgrade_requirements_json = {

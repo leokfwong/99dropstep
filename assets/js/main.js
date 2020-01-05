@@ -5552,8 +5552,6 @@ function simulateNextPossession() {
 
             action_btn.addEventListener("click", function() {
 
-                updatePlayerStats(play);
-
                 if (play.gamemode == "Quick Game") {
 
                     displaySpecificPage("gamemodes-container");
@@ -6147,6 +6145,7 @@ function displayEndGameRewards(play) {
     end_game_rewards_button.addEventListener("click", function() {
 
         end_game_rewards_overlay.style.display = "none";
+        updatePlayerStats(play);
 
     });
 
