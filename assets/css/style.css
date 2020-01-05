@@ -740,7 +740,7 @@ input#collection-search-input-box {
 .collection-description {
     background: white;
     height: 100%;
-    width: 50vw;
+    width: 48vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -795,29 +795,99 @@ input#collection-search-input-box {
 .collection-stats {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
     flex-direction: column;
     background: turquoise;
     height: 100%;
-    width: 25vw;
+    width: 27vw;
     font-family: 'Raleway', sans-serif;
 }
 .collection-rating {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     width: 100%;
-    height: 56%;
+    height: 75%;
     font-weight: bold;
     font-size: 172%;
+}
+.collection-rating-cards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+}
+.collection-rating-cards-title {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    width: 100%;
+    height: 25%;
+    font-size: 42%;
+}
+.collection-rating-cards-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 75%;
+}
+.collection-rating-cards-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 70%;
+    font-size: 81%;
+}
+.blink {
+    opacity: 1;
+    animation: blink 2s infinite;
+}
+.collection-rating-cards-count {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 20%;
+    font-size: 50%;
+}
+.collection-rating-overall {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+}
+.collection-rating-overall-title {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    width: 100%;
+    height: 25%;
+    font-size: 42%;
+}
+.collection-rating-overall-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 75%;
 }
 .collection-rating-box {
     display: flex;
     justify-content: center;
     align-items: center;
     border: solid 2px #2A2723;
-    padding: 5px;
+    padding: 3px;
     border-radius: 5px;
+    font-size: 81%;
+    color: black;
 }
 .collection-level {
     display: flex;
@@ -825,38 +895,46 @@ input#collection-search-input-box {
     align-items: center;
     font-size: 81%;
     font-weight: bold;
-    width: 100%;
-    height: 22%;
+    width: 90%;
+    height: 25%;
 }
-.collection-count {
+.collection-level-value {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    width: 100%;
-    height: 22%;
+    align-items: center;
+    width: 20%;
+    height: 100%;
 }
-.collection-count-box {
+.collection-level-value-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 50%;
+    font-size: 90%;
+}
+.collection-level-exp-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 85%;
+    height: 100%;
+}
+.collection-level-exp-box {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 90%;
-    height: 80%;
-    background: white;
+    height: 50%;
     position: relative;
     border: solid 1px black;
-    border-radius: 2px;
 }
-.collection-count-fill {
+.collection-level-exp-fill {
+    position: absolute;
+    left: 0px;
     width: 70%;
     height: 100%;
-    background: #C0C0C0;
-    position: absolute;
-    left: 0;
-}
-.collection-count-text {
-    font-size: 81%;
-    font-weight: bold;
-    position: absolute;
+    background: lightblue;
 }
 #collection-empty-container {
     display: flex;
@@ -1606,8 +1684,18 @@ input#collection-search-input-box {
     color: white;
     font-weight: bold;
 }
+@keyframes blink {
+  50% { opacity: 1 }
+  0%, 100% { opacity: .55 }
+}
 #card-stats-card-select-button {
-    background: lightgreen;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3%;
+    border: none;
+    opacity: 1;
+    animation: blink 2s infinite;
 }
 #card-stats-content-1 {
     display: flex;
@@ -1685,6 +1773,7 @@ input#collection-search-input-box {
     height: 10%;
     background: #2A2723;
     color: white;
+    font-weight: bold;
 }
 #card-stats-stats-nav-left, #card-stats-stats-nav-right {
     display: flex;
@@ -1707,7 +1796,7 @@ input#collection-search-input-box {
     flex-direction: column;
     width: 100%;
     height: 90%;
-    background: rgba(255, 255, 255, .9);
+    background: rgba(0, 0, 0, .11);
     padding-top: 4%;
 }
 .card-stats-stats-content-row {
@@ -1722,6 +1811,7 @@ input#collection-search-input-box {
     justify-content: flex-start;
     align-items: center;
     width: 70%;
+    font-weight: bold;
 }
 .card-stats-stats-content-row-rating {
     display: flex;
@@ -1735,6 +1825,7 @@ input#collection-search-input-box {
     align-items: center;
     height: 7vmin;
     width: 7vmin;
+    color: black;
     border: solid 1px black;
     border-radius: 5px;
     font-weight: bold;

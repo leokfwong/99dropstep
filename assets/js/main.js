@@ -1949,53 +1949,106 @@ function loadCollection() {
                     stats.className = "collection-stats";
                     row.appendChild(stats);
                     stats.style.background = collection[i].color2;
-
-                    let level = document.createElement("div");
-                    level.id = "collection-level-" + id;
-                    level.className = "collection-level";
-                    stats.appendChild(level);
-                    level.innerHTML = "Level " + collection[i].level;
-                    level.style.color = collection[i].color3;
+                    stats.style.color = collection[i].color3;
 
                     let rating = document.createElement("div");
                     rating.id = "collection-rating-" + id;
                     rating.className = "collection-rating";
                     stats.appendChild(rating);
 
+                    let rating_cards = document.createElement("div");
+                    rating_cards.id = "collection-rating-cards-" + id;
+                    rating_cards.className = "collection-rating-cards";
+                    rating.appendChild(rating_cards);
+
+                    let rating_cards_title = document.createElement("div");
+                    rating_cards_title.id = "collection-rating-cards-title-" + id;
+                    rating_cards_title.className = "collection-rating-cards-title";
+                    rating_cards.appendChild(rating_cards_title);
+                    rating_cards_title.innerHTML = "Cards";
+
+                    let rating_cards_content = document.createElement("div");
+                    rating_cards_content.id = "collection-rating-cards-content-" + id;
+                    rating_cards_content.className = "collection-rating-cards-content";
+                    rating_cards.appendChild(rating_cards_content);
+
+                    let required_cards_for_level_up = player_upgrade_requirements_json.rarity[collection[i].rarity].level[collection[i].level + 1].cards;
+
+                    let rating_cards_icon = document.createElement("div");
+                    rating_cards_icon.id = "collection-rating-cards-icon-" + id;
+                    rating_cards_icon.className = "collection-rating-cards-icon";
+                    rating_cards_content.appendChild(rating_cards_icon);
+                    if (collection[i].count < required_cards_for_level_up) {
+                        rating_cards_icon.innerHTML = "<i class='far fa-clone'></i>"
+                    } else {
+                        rating_cards_icon.innerHTML = "<i class='fas fa-clone'></i>"
+                    }
+                    
+
+                    let rating_cards_count = document.createElement("div");
+                    rating_cards_count.id = "collection-rating-cards-count-" + id;
+                    rating_cards_count.className = "collection-rating-cards-count";
+                    rating_cards_content.appendChild(rating_cards_count);
+                    rating_cards_count.innerHTML = collection[i].count + "/" + required_cards_for_level_up;
+
+                    let rating_overall = document.createElement("div");
+                    rating_overall.id = "collection-rating-overall-" + id;
+                    rating_overall.className = "collection-rating-overall";
+                    rating.appendChild(rating_overall);
+
+                    let rating_overall_title = document.createElement("div");
+                    rating_overall_title.id = "collection-rating-overall-title-" + id;
+                    rating_overall_title.className = "collection-rating-overall-title";
+                    rating_overall.appendChild(rating_overall_title);
+                    rating_overall_title.innerHTML = "Overall";
+
+                    let rating_overall_content = document.createElement("div");
+                    rating_overall_content.id = "collection-rating-overall-content-" + id;
+                    rating_overall_content.className = "collection-rating-overall-content";
+                    rating_overall.appendChild(rating_overall_content);
+
                     let rating_box = document.createElement("div");
                     rating_box.id = "collection-rating-box-" + id;
                     rating_box.className = "collection-rating-box";
-                    rating.appendChild(rating_box);
+                    rating_overall_content.appendChild(rating_box);
                     let rating_obj = calculateRatings(collection[i]);
                     rating_box.innerHTML = Math.round(rating_obj.overall);
                     rating_box.style.background = getRatingColor(Math.round(rating_obj.overall));
 
-                    let count = document.createElement("div");
-                    count.id = "collection-count-" + id;
-                    count.className = "collection-count";
-                    stats.appendChild(count);
+                    let level = document.createElement("div");
+                    level.id = "collection-level-" + id;
+                    level.className = "collection-level";
+                    stats.appendChild(level);
 
-                    let count_box = document.createElement("div");
-                    count_box.id = "collection-count-box-" + id;
-                    count_box.className = "collection-count-box";
-                    count.appendChild(count_box);
+                    let level_value = document.createElement("div");
+                    level_value.id = "collection-level-value-" + id;
+                    level_value.className = "collection-level-value";
+                    level.appendChild(level_value);
 
-                    let count_fill = document.createElement("div");
-                    count_fill.id = "collection-count-fill-" + id;
-                    count_fill.className = "collection-count-fill";
-                    count_box.appendChild(count_fill);
-                    let cnt = collection[i].count / player_upgrade_requirements_json.rarity[collection[i].rarity].level[collection[i].level + 1].cards * 100;
-                    if (cnt >= 100) {
-                        cnt = 100;
-                        count_fill.style.background = "lightgreen";
-                    };
-                    count_fill.style.width = cnt + "%";
+                    let level_value_box = document.createElement("div");
+                    level_value_box.id = "collection-level-value-box-" + id;
+                    level_value_box.className = "collection-level-value-box";
+                    level_value.appendChild(level_value_box);
+                    level_value_box.innerHTML = collection[i].level;
+                    level_value_box.style.color = collection[i].color3;
+                    level_value_box.style.border = "solid 1px " + collection[i].color3;
 
-                    let count_text = document.createElement("div");
-                    count_text.id = "collection-count-text-" + id;
-                    count_text.className = "collection-count-text";
-                    count_box.appendChild(count_text);
-                    count_text.innerHTML = collection[i].count + "/" + player_upgrade_requirements_json.rarity[collection[i].rarity].level[collection[i].level + 1].cards;
+                    let level_exp_container = document.createElement("div");
+                    level_exp_container.id = "collection-level-exp-container-" + id;
+                    level_exp_container.className = "collection-level-exp-container";
+                    level.appendChild(level_exp_container);
+
+                    let level_exp_box = document.createElement("div");
+                    level_exp_box.id = "collection-level-exp-box-" + id;
+                    level_exp_box.className = "collection-level-exp-box";
+                    level_exp_container.appendChild(level_exp_box);
+                    level_exp_box.style.border = "solid 1px " + collection[i].color3;
+
+                    let level_exp_fill = document.createElement("div");
+                    level_exp_fill.id = "collection-level-exp-fill-" + id;
+                    level_exp_fill.className = "collection-level-exp-fill";
+                    level_exp_box.appendChild(level_exp_fill);
+                    level_exp_fill.style.background = collection[i].color3;
 
                 }
             } else {
@@ -2266,9 +2319,11 @@ function loadCardDetails(id) {
 
             let select_btn = document.createElement("div");
             select_btn.id = "card-stats-card-select-button";
-            select_btn.className = "action_btn";
             select_container.appendChild(select_btn);
-            select_btn.innerHTML = "SELECT";
+            select_btn.innerHTML = "ADD TO TEAM";
+            select_btn.style.background = card.color3;
+            select_btn.style.color = card.color2;
+
             select_btn.addEventListener("click", function() {
 
                 displaySpecificPage("team-container");
@@ -2704,10 +2759,13 @@ function loadCardDetails(id) {
             let stats_box = document.createElement("div");
             stats_box.id = "card-stats-stats-box";
             stats_container.appendChild(stats_box);
+            stats_box.style.border = "solid 2px " + card.color3;
 
             let stats_nav = document.createElement("div");
             stats_nav.id = "card-stats-stats-nav";
             stats_box.appendChild(stats_nav);
+            stats_nav.style.background = card.color3;
+            stats_nav.style.color = card.color2;
 
             let nav_options = ["offense", "defense", "physical"];
 
@@ -2745,6 +2803,7 @@ function loadCardDetails(id) {
             let stats_content = document.createElement("div");
             stats_content.id = "card-stats-stats-content";
             stats_box.appendChild(stats_content);
+            stats_content.style.color = card.color3;
 
             function displayCardStats(cat) {
 
