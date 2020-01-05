@@ -1973,6 +1973,7 @@ function loadCollection() {
                     rating_cards.appendChild(rating_cards_content);
 
                     let required_cards_for_level_up = player_upgrade_requirements_json.rarity[collection[i].rarity].level[collection[i].level + 1].cards;
+                    let required_exp_for_level_up = player_upgrade_requirements_json.rarity[collection[i].rarity].level[collection[i].level + 1].exp;
 
                     let rating_cards_icon = document.createElement("div");
                     rating_cards_icon.id = "collection-rating-cards-icon-" + id;
@@ -1983,7 +1984,7 @@ function loadCollection() {
                     } else {
                         rating_cards_icon.innerHTML = "<i class='fas fa-clone'></i>"
                     }
-                    
+
 
                     let rating_cards_count = document.createElement("div");
                     rating_cards_count.id = "collection-rating-cards-count-" + id;
@@ -2049,6 +2050,13 @@ function loadCollection() {
                     level_exp_fill.className = "collection-level-exp-fill";
                     level_exp_box.appendChild(level_exp_fill);
                     level_exp_fill.style.background = collection[i].color3;
+                    let exp_percentage;
+                    if ((collection[i].exp / required_exp_for_level_up * 100) > 100) {
+                        exp_percentage = "100%";
+                    } else {
+                        exp_percentage = (collection[i].exp / required_exp_for_level_up * 100) + "%";
+                    }
+                    level_exp_fill.style.width = exp_percentage;
 
                 }
             } else {
@@ -2691,61 +2699,101 @@ function loadCardDetails(id) {
             upgrade_container.id = "card-stats-upgrade-container";
             section_1.appendChild(upgrade_container);
 
-            let progress = document.createElement("div");
-            progress.id = "card-stats-ugprade-progress";
-            upgrade_container.appendChild(progress);
+            let content = document.createElement("div");
+            content.id = "card-stats-ugprade-content";
+            upgrade_container.appendChild(content);
+            content.style.color = card.color3;
 
-            ["cards-collected", "minutes-played"].forEach(function(itm) {
+            let cards = document.createElement("div");
+            cards.id = "card-stats-ugprade-cards";
+            content.appendChild(cards);
 
-                let box = document.createElement("div");
-                box.id = "card-stats-upgrade-" + itm + "-box";
-                box.className = "card-stats-box";
-                progress.appendChild(box);
+            let cards_title = document.createElement("div");
+            cards_title.id = "card-stats-ugprade-cards-title";
+            cards.appendChild(cards_title);
+            cards_title.innerHTML = "Cards";
 
-                let title = document.createElement("div");
-                title.id = "card-stats-upgrade-" + itm + "-box-title";
-                title.className = "card-stats-box-title";
-                box.appendChild(title);
-                title.innerHTML = itm;
+            let cards_content = document.createElement("div");
+            cards_content.id = "card-stats-ugprade-cards-content";
+            cards.appendChild(cards_content);
 
-                let bar = document.createElement("div");
-                bar.id = "card-stats-upgrade-" + itm + "-box-bar";
-                bar.className = "card-stats-box-text";
-                box.appendChild(bar);
+            let required_cards_for_level_up = player_upgrade_requirements_json.rarity[card.rarity].level[card.level + 1].cards;
+            let required_exp_for_level_up = player_upgrade_requirements_json.rarity[card.rarity].level[card.level + 1].exp;
 
-                let fill = document.createElement("div");
-                fill.id = "card-stats-upgrade-" + itm + "-box-fill";
-                fill.className = "card-stats-box-upgrade-fill";
-                bar.appendChild(fill);
+            let cards_icon = document.createElement("div");
+            cards_icon.id = "card-stats-ugprade-cards-icon";
+            cards_content.appendChild(cards_icon);
+            if (card.count < required_cards_for_level_up) {
+                cards_icon.innerHTML = "<i class='far fa-clone'></i>"
+            } else {
+                cards_icon.innerHTML = "<i class='fas fa-clone'></i>"
+            }
 
-                let text = document.createElement("div");
-                text.id = "card-stats-upgrade-" + itm + "-box-text";
-                text.className = "card-stats-box-upgrade-text";
-                bar.appendChild(text);
+            let cards_count = document.createElement("div");
+            cards_count.id = "card-stats-ugprade-cards-count";
+            cards_content.appendChild(cards_count);
+            cards_count.innerHTML = card.count + "/" + required_cards_for_level_up;
 
-                if (itm == "cards-collected") {
+            let level = document.createElement("div");
+            level.id = "card-stats-ugprade-level";
+            content.appendChild(level);
 
-                    title.innerHTML = "Cards Collected";
-                    let cards_required = player_upgrade_requirements_json.rarity[card.rarity].level[card.level + 1].cards;
-                    text.innerHTML = card.count + "/" + cards_required;
-                    fill.style.width = (card.count / cards_required * 100) + "%";
+            let stats_level_title = document.createElement("div");
+            stats_level_title.id = "card-stats-ugprade-level-title";
+            level.appendChild(stats_level_title);
+            stats_level_title.innerHTML = "Experience";
 
-                } else if (itm == "minutes-played") {
+            let stats_level_content = document.createElement("div");
+            stats_level_content.id = "card-stats-ugprade-level-content";
+            level.appendChild(stats_level_content);
 
-                    title.innerHTML = "Minutes Played";
-                    let minutes_required = player_upgrade_requirements_json.rarity[card.rarity].level[card.level + 1].minutes;
-                    text.innerHTML = card.count + "/" + minutes_required;
-                    fill.style.width = (card.stats.min / minutes_required * 100) + "%";
+            let stats_level_value = document.createElement("div");
+            stats_level_value.id = "card-stats-ugprade-level-value";
+            stats_level_content.appendChild(stats_level_value);
 
-                }
+            let stats_level_value_box = document.createElement("div");
+            stats_level_value_box.id = "card-stats-ugprade-level-value-box";
+            stats_level_value.appendChild(stats_level_value_box);
+            stats_level_value_box.innerHTML = card.level;
+            stats_level_value_box.style.color = card.color3;
+            stats_level_value_box.style.border = "solid 2px " + card.color3;
 
-            });
+            let stats_level_exp_container = document.createElement("div");
+            stats_level_exp_container.id = "card-stats-ugprade-level-exp-container";
+            stats_level_content.appendChild(stats_level_exp_container);
 
-            let upgrade_btn = document.createElement("div");
-            upgrade_btn.id = "card-stats-card-upgrade-button";
-            upgrade_btn.className = "action_btn";
-            upgrade_container.appendChild(upgrade_btn);
-            upgrade_btn.innerHTML = "UPGRADE";
+            let stats_level_exp_box = document.createElement("div");
+            stats_level_exp_box.id = "card-stats-ugprade-level-exp-box";
+            stats_level_exp_container.appendChild(stats_level_exp_box);
+            stats_level_exp_box.style.border = "solid 2px " + card.color3;
+
+            let stats_level_exp_fill = document.createElement("div");
+            stats_level_exp_fill.id = "card-stats-ugprade-level-exp-fill";
+            stats_level_exp_box.appendChild(stats_level_exp_fill);
+            stats_level_exp_fill.style.background = card.color3;
+            let exp_percentage;
+            if ((card.exp / required_exp_for_level_up * 100) > 100) {
+                exp_percentage = "100%";
+            } else {
+                exp_percentage = (card.exp / required_exp_for_level_up * 100) + "%";
+            }
+            stats_level_exp_fill.style.width = exp_percentage;
+
+            let stats_level_exp = document.createElement("div");
+            stats_level_exp.id = "card-stats-ugprade-level-exp";
+            level.appendChild(stats_level_exp);
+            stats_level_exp.innerHTML = card.exp + "/" + required_exp_for_level_up;
+
+            let action = document.createElement("div");
+            action.id = "card-stats-ugprade-action";
+            upgrade_container.appendChild(action);
+
+            let upgrade_button = document.createElement("div");
+            upgrade_button.id = "card-stats-ugprade-button";
+            action.appendChild(upgrade_button);
+            upgrade_button.innerHTML = "Upgrade";
+            upgrade_button.style.background = card.color3;
+            upgrade_button.style.color = card.color2;
 
             /* SECTION 2 - CARD STATS */
 
@@ -5504,6 +5552,8 @@ function simulateNextPossession() {
 
             action_btn.addEventListener("click", function() {
 
+                updatePlayerStats(play);
+
                 if (play.gamemode == "Quick Game") {
 
                     displaySpecificPage("gamemodes-container");
@@ -5566,6 +5616,10 @@ function simulateNextPossession() {
 
     });
 
+}
+
+function updatePlayerStats(play) {
+    
 }
 
 function fouledOutSubstitution(play, pos) {

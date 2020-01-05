@@ -3,6 +3,7 @@ const FOULS_ALLOWED = 5;
 const userdata_json = [{
     "id": "0001",
     "level": 1,
+    "exp": 0,
     "experience": 0,
     "totalcoins": 5000,
     "filter": null,
@@ -347,19 +348,19 @@ const player_upgrade_requirements_json = {
             "level": {
                 "2": {
                     "cards": "2",
-                    "minutes": "25"
+                    "exp": "25"
                 },
                 "3": {
                     "cards": "5",
-                    "minutes": "50"
+                    "exp": "50"
                 },
                 "4": {
                     "cards": "15",
-                    "minutes": "75"
+                    "exp": "100"
                 },
                 "5": {
                     "cards": "20",
-                    "minutes": "100"
+                    "exp": "200"
                 }
             }
         },
@@ -367,19 +368,19 @@ const player_upgrade_requirements_json = {
             "level": {
                 "2": {
                     "cards": "2",
-                    "minutes": "50"
+                    "exp": "50"
                 },
                 "3": {
                     "cards": "6",
-                    "minutes": "100"
+                    "exp": "100"
                 },
                 "4": {
                     "cards": "10",
-                    "minutes": "150"
+                    "exp": "200"
                 },
                 "5": {
                     "cards": "14",
-                    "minutes": "200"
+                    "exp": "500"
                 }
             }
         },
@@ -387,19 +388,19 @@ const player_upgrade_requirements_json = {
             "level": {
                 "2": {
                     "cards": "2",
-                    "minutes": "100"
+                    "exp": "100"
                 },
                 "3": {
                     "cards": "5",
-                    "minutes": "200"
+                    "exp": "200"
                 },
                 "4": {
                     "cards": "8",
-                    "minutes": "300"
+                    "exp": "500"
                 },
                 "5": {
                     "cards": "11",
-                    "minutes": "400"
+                    "exp": "1000"
                 }
             }
         },
@@ -407,19 +408,19 @@ const player_upgrade_requirements_json = {
             "level": {
                 "2": {
                     "cards": "2",
-                    "minutes": "150"
+                    "exp": "200"
                 },
                 "3": {
                     "cards": "3",
-                    "minutes": "300"
+                    "exp": "500"
                 },
                 "4": {
                     "cards": "4",
-                    "minutes": "450"
+                    "exp": "1000"
                 },
                 "5": {
                     "cards": "5",
-                    "minutes": "600"
+                    "exp": "2000"
                 }
             }
         }
@@ -443,6 +444,7 @@ const players_json = [{
     "tier": 0,
     "rarity": "legendary",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -503,6 +505,7 @@ const players_json = [{
     "tier": 0,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -563,6 +566,7 @@ const players_json = [{
     "tier": 0,
     "rarity": "legendary",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -623,6 +627,7 @@ const players_json = [{
     "tier": 0,
     "rarity": "legendary",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -683,6 +688,7 @@ const players_json = [{
     "tier": 0,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -743,6 +749,7 @@ const players_json = [{
     "tier": 1,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -803,6 +810,7 @@ const players_json = [{
     "tier": 1,
     "rarity": "epic",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -863,6 +871,7 @@ const players_json = [{
     "tier": 1,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -923,6 +932,7 @@ const players_json = [{
     "tier": 1,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -983,6 +993,7 @@ const players_json = [{
     "tier": 1,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -1043,6 +1054,7 @@ const players_json = [{
     "tier": 1,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -1103,6 +1115,7 @@ const players_json = [{
     "tier": 1,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -1163,6 +1176,7 @@ const players_json = [{
     "tier": 1,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -1223,6 +1237,7 @@ const players_json = [{
     "tier": 1,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -1283,6 +1298,7 @@ const players_json = [{
     "tier": 1,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -1343,6 +1359,7 @@ const players_json = [{
     "tier": 1,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -1403,6 +1420,7 @@ const players_json = [{
     "tier": 1,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -1463,6 +1481,7 @@ const players_json = [{
     "tier": 1,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -1523,6 +1542,7 @@ const players_json = [{
     "tier": 1,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -1583,6 +1603,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -1643,6 +1664,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -1703,6 +1725,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -1763,6 +1786,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -1823,6 +1847,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -1883,6 +1908,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -1943,6 +1969,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -2003,6 +2030,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -2063,6 +2091,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -2123,6 +2152,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -2183,6 +2213,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -2243,6 +2274,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -2303,6 +2335,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -2363,6 +2396,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -2423,6 +2457,7 @@ const players_json = [{
     "unlockedlevel": 45,
     "tier": 2,
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -2483,6 +2518,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -2543,6 +2579,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -2603,6 +2640,7 @@ const players_json = [{
     "tier": 4,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -2663,6 +2701,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -2723,6 +2762,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -2783,6 +2823,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -2843,6 +2884,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -2903,6 +2945,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -2963,6 +3006,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -3023,6 +3067,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -3083,6 +3128,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -3143,6 +3189,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -3203,6 +3250,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -3263,6 +3311,7 @@ const players_json = [{
     "tier": 4,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -3323,6 +3372,7 @@ const players_json = [{
     "tier": 4,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -3383,6 +3433,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -3443,6 +3494,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -3503,6 +3555,7 @@ const players_json = [{
     "tier": 4,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -3563,6 +3616,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -3623,6 +3677,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -3683,6 +3738,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -3743,6 +3799,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -3803,6 +3860,7 @@ const players_json = [{
     "tier": 4,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -3863,6 +3921,7 @@ const players_json = [{
     "tier": 4,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -3923,6 +3982,7 @@ const players_json = [{
     "tier": 4,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -3983,6 +4043,7 @@ const players_json = [{
     "tier": 4,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -4043,6 +4104,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -4103,6 +4165,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -4163,6 +4226,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -4223,6 +4287,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -4283,6 +4348,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -4343,6 +4409,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -4403,6 +4470,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -4463,6 +4531,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -4523,6 +4592,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -4583,6 +4653,7 @@ const players_json = [{
     "tier": 1,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -4643,6 +4714,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -4703,6 +4775,7 @@ const players_json = [{
     "tier": 1,
     "rarity": "epic",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -4763,6 +4836,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -4823,6 +4897,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -4883,6 +4958,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -4943,6 +5019,7 @@ const players_json = [{
     "tier": 0,
     "rarity": "legendary",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -5003,6 +5080,7 @@ const players_json = [{
     "tier": 0,
     "rarity": "legendary",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -5063,6 +5141,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "epic",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -5124,6 +5203,7 @@ const players_json = [{
     "rarity": "legendary",
     "unlockedlevel": 3,
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -5184,6 +5264,7 @@ const players_json = [{
     "tier": 0,
     "rarity": "legendary",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -5247,6 +5328,7 @@ const players_json = [{
     "tier": 1,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -5307,6 +5389,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "epic",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -5367,6 +5450,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -5427,6 +5511,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "epic",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -5487,6 +5572,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "epic",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -5547,6 +5633,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "epic",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -5607,6 +5694,7 @@ const players_json = [{
     "tier": 4,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -5667,6 +5755,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -5727,6 +5816,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -5787,6 +5877,7 @@ const players_json = [{
     "tier": 4,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -5847,6 +5938,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "epic",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -5907,6 +5999,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -5967,6 +6060,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -6027,6 +6121,7 @@ const players_json = [{
     "tier": 0,
     "rarity": "legendary",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -6087,6 +6182,7 @@ const players_json = [{
     "tier": 4,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -6147,6 +6243,7 @@ const players_json = [{
     "tier": 4,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -6207,6 +6304,7 @@ const players_json = [{
     "tier": 4,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -6267,6 +6365,7 @@ const players_json = [{
     "tier": 4,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -6327,6 +6426,7 @@ const players_json = [{
     "tier": 4,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -6387,6 +6487,7 @@ const players_json = [{
     "tier": 4,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -6447,6 +6548,7 @@ const players_json = [{
     "tier": 4,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -6507,6 +6609,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -6567,6 +6670,7 @@ const players_json = [{
     "tier": 1,
     "rarity": "epic",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -6627,6 +6731,7 @@ const players_json = [{
     "tier": 1,
     "rarity": "epic",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -6687,6 +6792,7 @@ const players_json = [{
     "tier": 1,
     "rarity": "epic",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -6747,6 +6853,7 @@ const players_json = [{
     "tier": 1,
     "rarity": "epic",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -6807,6 +6914,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -6867,6 +6975,7 @@ const players_json = [{
     "tier": 1,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -6927,6 +7036,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -6987,6 +7097,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -7047,6 +7158,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -7107,6 +7219,7 @@ const players_json = [{
     "tier": 4,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -7167,6 +7280,7 @@ const players_json = [{
     "tier": 4,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -7227,6 +7341,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "epic",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -7287,6 +7402,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "epic",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -7347,6 +7463,7 @@ const players_json = [{
     "tier": 4,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -7407,6 +7524,7 @@ const players_json = [{
     "tier": 4,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -7467,6 +7585,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -7527,6 +7646,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "epic",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -7587,6 +7707,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "epic",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -7647,6 +7768,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -7707,6 +7829,7 @@ const players_json = [{
     "tier": 4,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -7767,6 +7890,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -7827,6 +7951,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -7887,6 +8012,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -7947,6 +8073,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -8007,6 +8134,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "epic",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -8067,6 +8195,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "epic",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -8127,6 +8256,7 @@ const players_json = [{
     "tier": 1,
     "rarity": "epic",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -8187,6 +8317,7 @@ const players_json = [{
     "tier": 4,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -8247,6 +8378,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -8307,6 +8439,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -8367,6 +8500,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -8427,6 +8561,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -8487,6 +8622,7 @@ const players_json = [{
     "tier": 1,
     "rarity": "epic",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -8547,6 +8683,7 @@ const players_json = [{
     "tier": 4,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -8607,6 +8744,7 @@ const players_json = [{
     "tier": 4,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -8667,6 +8805,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -8727,6 +8866,7 @@ const players_json = [{
     "tier": 4,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -8787,6 +8927,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -8847,6 +8988,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "epic",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -8907,6 +9049,7 @@ const players_json = [{
     "tier": 4,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -8967,6 +9110,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "legendary",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -9027,6 +9171,7 @@ const players_json = [{
     "tier": 4,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -9087,6 +9232,7 @@ const players_json = [{
     "tier": 4,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -9147,6 +9293,7 @@ const players_json = [{
     "tier": 4,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -9207,6 +9354,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -9267,6 +9415,7 @@ const players_json = [{
     "tier": 4,
     "rarity": "epic",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -9327,6 +9476,7 @@ const players_json = [{
     "tier": 4,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -9387,6 +9537,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -9447,6 +9598,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -9507,6 +9659,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -9567,6 +9720,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -9627,6 +9781,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -9687,6 +9842,7 @@ const players_json = [{
     "tier": 0,
     "rarity": "legendary",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -9747,6 +9903,7 @@ const players_json = [{
     "tier": 0,
     "rarity": "legendary",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -9807,6 +9964,7 @@ const players_json = [{
     "tier": 4,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -9867,6 +10025,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -9927,6 +10086,7 @@ const players_json = [{
     "tier": 4,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -9987,6 +10147,7 @@ const players_json = [{
     "tier": 4,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -10047,6 +10208,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "epic",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -10107,6 +10269,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -10167,6 +10330,7 @@ const players_json = [{
     "tier": 4,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -10227,6 +10391,7 @@ const players_json = [{
     "tier": 4,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -10287,6 +10452,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -10347,6 +10513,7 @@ const players_json = [{
     "tier": 4,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -10407,6 +10574,7 @@ const players_json = [{
     "tier": 4,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -10467,6 +10635,7 @@ const players_json = [{
     "tier": 1,
     "rarity": "epic",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -10527,6 +10696,7 @@ const players_json = [{
     "tier": 1,
     "rarity": "epic",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -10587,6 +10757,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -10647,6 +10818,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -10707,6 +10879,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -10767,6 +10940,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -10827,6 +11001,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -10887,6 +11062,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -10947,6 +11123,7 @@ const players_json = [{
     "tier": 4,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -11007,6 +11184,7 @@ const players_json = [{
     "tier": 4,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -11067,6 +11245,7 @@ const players_json = [{
     "tier": 0,
     "rarity": "legendary",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -11127,6 +11306,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -11187,6 +11367,7 @@ const players_json = [{
     "tier": 1,
     "rarity": "epic",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -11247,6 +11428,7 @@ const players_json = [{
     "tier": 4,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -11307,6 +11489,7 @@ const players_json = [{
     "tier": 4,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -11367,6 +11550,7 @@ const players_json = [{
     "tier": 4,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -11427,6 +11611,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -11487,6 +11672,7 @@ const players_json = [{
     "tier": 4,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -11547,6 +11733,7 @@ const players_json = [{
     "tier": 4,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -11607,6 +11794,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -11667,6 +11855,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -11727,6 +11916,7 @@ const players_json = [{
     "tier": 0,
     "rarity": "legendary",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -11787,6 +11977,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -11847,6 +12038,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -11907,6 +12099,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -11967,6 +12160,7 @@ const players_json = [{
     "tier": 0,
     "rarity": "legendary",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -12027,6 +12221,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -12087,6 +12282,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -12147,6 +12343,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -12207,6 +12404,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -12267,6 +12465,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -12327,6 +12526,7 @@ const players_json = [{
     "tier": 1,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -12387,6 +12587,7 @@ const players_json = [{
     "tier": 1,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -12447,6 +12648,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -12507,6 +12709,7 @@ const players_json = [{
     "tier": 1,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -12567,6 +12770,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -12627,6 +12831,7 @@ const players_json = [{
     "tier": 1,
     "rarity": "epic",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -12687,6 +12892,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -12747,6 +12953,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "legendary",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -12807,6 +13014,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -12867,6 +13075,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -12927,6 +13136,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -12987,6 +13197,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -13047,6 +13258,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -13107,6 +13319,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -13167,6 +13380,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -13227,6 +13441,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -13287,6 +13502,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -13347,6 +13563,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -13407,6 +13624,7 @@ const players_json = [{
     "tier": 0,
     "rarity": "legendary",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -13467,6 +13685,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -13527,6 +13746,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -13587,6 +13807,7 @@ const players_json = [{
     "tier": 1,
     "rarity": "epic",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -13647,6 +13868,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -13707,6 +13929,7 @@ const players_json = [{
     "tier": 1,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -13767,6 +13990,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -13827,6 +14051,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -13887,6 +14112,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -13947,6 +14173,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -14007,6 +14234,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -14067,6 +14295,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -14127,6 +14356,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -14187,6 +14417,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -14247,6 +14478,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -14307,6 +14539,7 @@ const players_json = [{
     "tier": 4,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -14367,6 +14600,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -14427,6 +14661,7 @@ const players_json = [{
     "tier": 1,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -14487,6 +14722,7 @@ const players_json = [{
     "tier": 1,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -14547,6 +14783,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -14607,6 +14844,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -14667,6 +14905,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -14727,6 +14966,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -14787,6 +15027,7 @@ const players_json = [{
     "tier": 1,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -14847,6 +15088,7 @@ const players_json = [{
     "tier": 4,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -14907,6 +15149,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -14967,6 +15210,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -15027,6 +15271,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -15087,6 +15332,7 @@ const players_json = [{
     "tier": 4,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -15147,6 +15393,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -15207,6 +15454,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -15267,6 +15515,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -15327,6 +15576,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -15387,6 +15637,7 @@ const players_json = [{
     "tier": 1,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -15447,6 +15698,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -15507,6 +15759,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -15567,6 +15820,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -15627,6 +15881,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -15687,6 +15942,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -15747,6 +16003,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -15807,6 +16064,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -15867,6 +16125,7 @@ const players_json = [{
     "tier": 1,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -15927,6 +16186,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -15987,6 +16247,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -16047,6 +16308,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -16107,6 +16369,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -16167,6 +16430,7 @@ const players_json = [{
     "tier": 1,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -16227,6 +16491,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -16287,6 +16552,7 @@ const players_json = [{
     "tier": 1,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -16347,6 +16613,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -16407,6 +16674,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -16467,6 +16735,7 @@ const players_json = [{
     "tier": 0,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -16527,6 +16796,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -16587,6 +16857,7 @@ const players_json = [{
     "tier": 1,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -16647,6 +16918,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -16707,6 +16979,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -16767,6 +17040,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -16827,6 +17101,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -16887,6 +17162,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -16947,6 +17223,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -17007,6 +17284,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -17067,6 +17345,7 @@ const players_json = [{
     "tier": 1,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -17127,6 +17406,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -17187,6 +17467,7 @@ const players_json = [{
     "tier": 1,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -17247,6 +17528,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -17307,6 +17589,7 @@ const players_json = [{
     "tier": 1,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -17367,6 +17650,7 @@ const players_json = [{
     "tier": 1,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -17427,6 +17711,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -17487,6 +17772,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -17547,6 +17833,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -17607,6 +17894,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -17667,6 +17955,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -17727,6 +18016,7 @@ const players_json = [{
     "tier": 4,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -17787,6 +18077,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -17847,6 +18138,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -17907,6 +18199,7 @@ const players_json = [{
     "tier": 4,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -17967,6 +18260,7 @@ const players_json = [{
     "tier": 4,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -18027,6 +18321,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -18087,6 +18382,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -18147,6 +18443,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -18207,6 +18504,7 @@ const players_json = [{
     "tier": 1,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -18267,6 +18565,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -18327,6 +18626,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -18387,6 +18687,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -18447,6 +18748,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -18507,6 +18809,7 @@ const players_json = [{
     "tier": 2,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -18567,6 +18870,7 @@ const players_json = [{
     "tier": 1,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -18627,6 +18931,7 @@ const players_json = [{
     "tier": 1,
     "rarity": "legendary",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -18687,6 +18992,7 @@ const players_json = [{
     "tier": 1,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -18747,6 +19053,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -18807,6 +19114,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -18867,6 +19175,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -18927,6 +19236,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -18987,6 +19297,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -19047,6 +19358,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -19107,6 +19419,7 @@ const players_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "ratings": {
         "inside": {
@@ -19167,6 +19480,7 @@ const coaches_json = [{
     "tier": 4,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "position": "X",
     "color1": "#552583",
@@ -19190,6 +19504,7 @@ const coaches_json = [{
     "tier": 0,
     "rarity": "legendary",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "position": "X",
     "color1": "#C4CED4",
@@ -19213,6 +19528,7 @@ const coaches_json = [{
     "tier": 2,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "position": "X",
     "color1": "#00471B",
@@ -19236,6 +19552,7 @@ const coaches_json = [{
     "tier": 4,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "position": "X",
     "color1": "#CE1141",
@@ -19259,6 +19576,7 @@ const arenas_json = [{
     "tier": 1,
     "rarity": "legendary",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "position": "Z",
     "color1": "#0057B0",
@@ -19280,6 +19598,7 @@ const arenas_json = [{
     "tier": 1,
     "rarity": "legendary",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "position": "Z",
     "color1": "#008248",
@@ -19301,6 +19620,7 @@ const arenas_json = [{
     "tier": 1,
     "rarity": "legendary",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "position": "Z",
     "color1": "#552583",
@@ -19322,6 +19642,7 @@ const arenas_json = [{
     "tier": 3,
     "rarity": "common",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "position": "Z",
     "color1": "#00285E",
@@ -19343,6 +19664,7 @@ const arenas_json = [{
     "tier": 1,
     "rarity": "rare",
     "level": 1,
+    "exp": 0,
     "count": 1,
     "position": "Z",
     "color1": "#CE1141",

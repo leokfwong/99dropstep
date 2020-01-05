@@ -157,6 +157,7 @@ function Player(player) {
     this.tier = player.tier;
     this.rarity = player.rarity;
     this.level = player.level;
+    this.exp = player.exp;
     this.count = player.count;
     this.ratings = player.ratings;
     this.position = player.position;

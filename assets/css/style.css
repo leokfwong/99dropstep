@@ -1702,7 +1702,7 @@ input#collection-search-input-box {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 30vh;
+    height: 25vh;
 }
 #card-stats-upgrade-container {
     display: flex;
@@ -1710,41 +1710,137 @@ input#collection-search-input-box {
     align-items: center;
     flex-direction: column;
     width: 100%;
+    height: 100%;
+}
+#card-stats-ugprade-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 60%;
+    font-weight: bold;
+}
+#card-stats-ugprade-cards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 25%;
     height: 80%;
 }
-#card-stats-ugprade-progress {
+#card-stats-ugprade-cards-title {
     display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-    width: 90%;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 25%;
+    font-size: 90%;
+    font-weight: bold;
+}
+#card-stats-ugprade-cards-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 75%;
+}
+#card-stats-ugprade-cards-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 70%;
+    font-size: 150%;
+}
+#card-stats-ugprade-cards-count {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 30%;
+}
+#card-stats-ugprade-level {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 75%;
+    height: 80%;
+}
+#card-stats-ugprade-level-title {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 80%;
+    height: 25%;
+    font-size: 90%;
+    font-weight: bold;
+}
+#card-stats-ugprade-level-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
     height: 50%;
 }
-#card-stats-upgrade-cards-collected-box, #card-stats-upgrade-minutes-played-box {
-    width: 45%;
-    height: 60%;
+#card-stats-ugprade-level-value {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 12%;
+    height: 50%;
+    font-weight: bold;
 }
-#card-stats-upgrade-cards-collected-box-title, #card-stats-upgrade-minutes-played-box-title {
-    height: 40%;
-    font-size: 81%;
+#card-stats-ugprade-level-value-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
 }
-#card-stats-upgrade-cards-collected-box-bar, #card-stats-upgrade-minutes-played-box-bar {
-    height: 60%;
+#card-stats-ugprade-level-exp-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 68%;
+    height: 100%;
+}
+#card-stats-ugprade-level-exp-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 50%;
+    border-left: 0px !important;
     position: relative;
 }
-.card-stats-box-upgrade-fill {
-    height: 100%;
+#card-stats-ugprade-level-exp-fill {
+    position: absolute;
+    left: 0px;
     width: 70%;
-    background: lightgrey;
-    position: absolute;
-    left: 0;
-    border-radius: 0 0 0 7px;
+    height: 100%;
 }
-.card-stats-box-upgrade-text {
+#card-stats-ugprade-level-exp {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 80%;
+    height: 25%;
+}
+#card-stats-ugprade-action {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 40%;
+}
+#card-stats-ugprade-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3%;
     font-weight: bold;
-    position: absolute;
-}
-#card-stats-card-upgrade-button {
-    background: lightgreen;
 }
 #card-stats-content-2 {
     height: 85vh;
