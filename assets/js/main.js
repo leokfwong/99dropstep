@@ -1661,7 +1661,7 @@ function initializeCardStats(card) {
 
     console.log("Initializing stats");
 
-    let stats = ["ast", "blk", "cpustr", "dd", "dreb", "fga", "fga3", "fgm", "fta", "ftm", "gp", "gs", "l", "min", "oreb", "pf", "pm", "potg", "pts", "reb", "stl", "td", "tov", "usrstr", "w"];
+    let stats = player_stats_json;
 
     card.stats = {};
     card.new = true;
@@ -5619,7 +5619,29 @@ function simulateNextPossession() {
 }
 
 function updatePlayerStats(play) {
-    
+
+    let roster = play.team.usr.roster;
+
+    fetchTable("collection", function(collection) {
+
+        for (let i = 0; i < roster.length; i++) {
+            let player = roster[i];
+            let exp_gain = Math.floor(player.gamestats.stats.min * player.gamestats.stats.tg / 10000);
+
+            for (let j = 0; j < collection.length; j++) {
+                (function() {
+                    if (collection[j].id == player.id) {
+                        let card = collection[j];
+                        card.exp += exp_gain;
+                        console.log("Updating player " + card.first + " " + card.last + " EXP (" + exp_gain +")");
+                        removeRecord("collection", card.id);
+                        addRecord("collection", card);
+                    }
+                })();
+            }
+        }
+    });
+
 }
 
 function fouledOutSubstitution(play, pos) {
