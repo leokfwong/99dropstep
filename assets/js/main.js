@@ -676,7 +676,7 @@ function loadTeams() {
                         });
 
                     } else {
-                        let msg = "Incomplete team! Please fill every position.";
+                        let msg = "Incomplete roster! Please fill every position.";
                         let button_label = "Collection";
                         let landing_page = "collection-container";
                         displayWarning(msg, button_label, landing_page);
@@ -2794,6 +2794,42 @@ function loadCardDetails(id) {
             upgrade_button.innerHTML = "Upgrade";
             upgrade_button.style.background = card.color3;
             upgrade_button.style.color = card.color2;
+
+            upgrade_button.addEventListener("click", function() {
+                fetchRecord("collection", card.id, function(card) {
+                    // Fetch requirements
+                    let required_cards_for_level_up = player_upgrade_requirements_json.rarity[card.rarity].level[card.level + 1].cards;
+                    let required_exp_for_level_up = player_upgrade_requirements_json.rarity[card.rarity].level[card.level + 1].exp;
+                    if (card.exp >= required_exp_for_level_up & card.count >= required_cards_for_level_up) {
+                        // Update level
+                        card.level += 1;
+                        level_text.innerHTML = card.level;
+                        stats_level_value_box.innerHTML = card.level;
+                        // Fetch new requirements
+                        let new_required_cards_for_level_up = player_upgrade_requirements_json.rarity[card.rarity].level[card.level + 1].cards;
+                        let new_required_exp_for_level_up = player_upgrade_requirements_json.rarity[card.rarity].level[card.level + 1].exp;
+                        // Update counts
+                        if (card.count < new_required_cards_for_level_up) {
+                            cards_icon.innerHTML = "<i class='far fa-clone'></i>"
+                        } else {
+                            cards_icon.innerHTML = "<i class='fas fa-clone'></i>"
+                        }
+                        cards_count.innerHTML = card.count + "/" + new_required_cards_for_level_up;
+                        // Update experience
+                        let exp_percentage;
+                        if ((card.exp / new_required_exp_for_level_up * 100) > 100) {
+                            exp_percentage = "100%";
+                        } else {
+                            exp_percentage = (card.exp / new_required_exp_for_level_up * 100) + "%";
+                        }
+                        stats_level_exp_fill.style.width = exp_percentage;
+                        stats_level_exp.innerHTML = card.exp + "/" + new_required_exp_for_level_up;
+                        // Update collection
+                        removeRecord("collection", card.id);
+                        addRecord("collection", card);
+                    }
+                });
+            });
 
             /* SECTION 2 - CARD STATS */
 
@@ -5631,7 +5667,7 @@ function updatePlayerStats(play) {
                     if (collection[j].id == player.id) {
                         let card = collection[j];
                         // Update stats
-                        for (let k=0; k < player_stats_json.length; k++) {
+                        for (let k = 0; k < player_stats_json.length; k++) {
                             if (player_stats_json[k] == "cpustr") {
                                 //TODO
                             } else if (player_stats_json[k] == "usrstr") {
@@ -5662,7 +5698,7 @@ function updatePlayerStats(play) {
                         }
                         // Update experience gain
                         card.exp += exp_gain;
-                        console.log("Updating player " + card.first + " " + card.last + " EXP (" + exp_gain +")");
+                        console.log("Updating player " + card.first + " " + card.last + " EXP (" + exp_gain + ")");
                         removeRecord("collection", card.id);
                         addRecord("collection", card);
                     }
