@@ -1133,7 +1133,7 @@ function loadShop() {
                 shop_buy_button.innerHTML = "Buy";
 
                 shop_buy_button.addEventListener("click", function() {
-
+                    console.log(i);
                     if ((summary.totalcoins - shop[i].price) >= 0) {
 
                         //buyItem(shop[i].content, 9, shop[i].price);
@@ -1617,12 +1617,12 @@ function buyItem(ids, num, price) {
                 let new_card;
 
                 if (card != undefined) {
-                    console.log(`${card.first} ${card.last} (${card.id}) already exists.`);
+                    console.log(card.first + " " + card.last + " (" + card.id + ") already exists.");
                     card.count += rewards[x].count;
                     removeRecord("collection", card.id);
                     addRecord("collection", card);
                 } else {
-                    console.log(`${rewards[x].card.first} ${rewards[x].card.last} (${rewards[x].card.id}) doesn't exist.`);
+                    console.log(rewards[x].card.first + " " + rewards[x].card.last + " (" + rewards[x].card.id + ") doesn't exist.");
                     new_card = new Player(rewards[x].card);
                     new_card.count = rewards[x].count;
                     new_card = initializeCardStats(new_card);
@@ -7268,11 +7268,11 @@ function simulateTimePossession(play) {
 
 }
 
-function generateRandomTeam(subset = null) {
+function generateRandomTeam(subset) {
 
     let pool;
 
-    if (subset != null) {
+    if (subset != undefined) {
         pool = subset;
     } else {
         pool = players_json;
