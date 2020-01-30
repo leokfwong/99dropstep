@@ -2,18 +2,21 @@
     font-family: Ozone;
     src: url("../font/Ozone/Ozone.ttf") format("truetype");
 }
-
 body {
     background: #2A2723;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
 }
-
 #wrapper {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 500px;
-    height: 100vh;
+    height: 800px;
     background: darkgrey;
     margin: 0 auto;
     cursor: default;
